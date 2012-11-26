@@ -1,0 +1,61 @@
+/**
+ *  
+ */
+/**
+ * 
+ */.container div {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  margin: 20px;
+  float: left;
+}
+.radius {
+  border: 2px solid #e3f;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+.shadow {
+  -webkit-box-shadow: 10px 10px 5px #000000;
+  -moz-box-shadow: 10px 10px 5px #000000;
+  box-shadow: 10px 10px 5px #000000;
+}
+.transition {
+  -webkit-transition: width 2s;
+  -moz-transition: width 2s;
+  -ms-transition: width 2s;
+  -o-transition: width 2s;
+  transition: width 2s;
+}
+.transition:hover {
+  width: 300px;
+}
+.rotate {
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+.translate {
+  -webkit-transform: translate(100px, 50px);
+  -moz-transform: translate(100px, 50px);
+  -ms-transform: translate(100px, 50px);
+  -o-transform: translate(100px, 50px);
+  transform: translate(100px, 50px);
+}
+.scale {
+  -webkit-transform: scale(2, 1);
+  -moz-transform: scale(2, 1);
+  -ms-transform: scale(2, 1);
+  -o-transform: scale(2, 1);
+  transform: scale(2, 1);
+}
+.skew {
+  -webkit-transform: skew(30deg, 0deg);
+  -moz-transform: skew(30deg, 0deg);
+  -ms-transform: skew(30deg, 0deg);
+  -o-transform: skew(30deg, 0deg);
+  transform: skew(30deg, 0deg);
+}
