@@ -14,9 +14,9 @@ function redirectToUI(){
 	window.location = "order/index.html";
 }
 </script>
-<title>Test £¡£¡</title>
+<title>Test ï¿½ï¿½ï¿½ï¿½</title>
 </head>
 <body onload="onload();">
-	
+	sunxiaofan edit
 </body>
 </html>
