@@ -5,8 +5,9 @@
 // Core variables and mixins
 @import "../variables.less";
 @import "../mixins.less";
+@import "../components.less";
 
-.container div {
+.container > div {
 	width: 100px;
 	height: 100px;
 	background-color: #ccc;
@@ -37,4 +38,7 @@
 }
 .skew {
 	.skew(30deg, 0deg);
+}
+div.iphone-checkbox {
+	width: 200px;
 }
