@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>餐点管理-配餐模式</title>
+		<link rel="stylesheet" href="/order/assert/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/order/assert/css/order.css">
+		<style type="text/css">
+			body {
+				/*padding: 50px 0px;*/
+				/*background-color: #f5f5f5;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="span10 container-fixed">
+			<div class="querybar">
+				<div class="row">
+					<div class="span3">
+					</div>
+					<div class="span4">
+					</div>
+					<div class="span3">
+						<button class="btn"><i class="icon-plus"></i>添加分类</button>
+						<button class="btn pull-right"><i class="icon-plus"></i>添加食物</button>
+					</div>
+				</div>
+			</div>
+			<table class="table table-striped">
+				<tr>
+					<th>订单编号</th>
+					<th>下单时间</th>
+					<th>预计送达时间</th>
+					<th>送餐地址</th>
+					<th>联系电话</th>
+					<th>餐点</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td>0001</td>
+					<td>10:00</td>
+					<td>11:00</td>
+					<td>香丽二楼</td>
+					<td>15818501051</td>
+					<td>番茄+牛肉</td>
+					<td><input type="button" class="btn" value="出单"></td>
+				</tr>
+				<tr>
+					<td>0002</td>
+					<td>10:20</td>
+					<td>11:00</td>
+					<td>景发大厦</td>
+					<td>15818501052</td>
+					<td>榨菜+猪肝+紫菜</td>
+					<td><input type="button" class="btn" value="出单"></td>
+				</tr>
+				<tr>
+					<td>0003</td>
+					<td>10:30</td>
+					<td>11:30</td>
+					<td>商报大厦</td>
+					<td>15818501053</td>
+					<td>凉瓜+肉片</td>
+					<td><input type="button" class="btn" value="出单"></td>
+				</tr>
+				<tr>
+					<td>0004</td>
+					<td>11:10</td>
+					<td>12:00</td>
+					<td>香丽一楼</td>
+					<td>15818501054</td>
+					<td>茄子+冬瓜</td>
+					<td><input type="button" class="btn" value="出单"></td>
+				</tr>
+			</table>
+			<!-- pagination -->
+			<div id="page"></div>
+		</div>
+
+		<script type="text/javascript" src="/order/assert/js/jquery-1.8.0.js"></script>
+		<script type="text/javascript" src="/order/assert/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/order/assert/js/jquery.pagination.js"></script>
+		<script type="text/javascript">
+
+			jQuery(function ($) {
+
+				$("#page").pagination({
+					class: "pagination-right", 
+					page: 1, 
+					count: 10, 
+					callback: function (current_page, new_page) {
+					}, 
+					refresh: false
+				});
+			});
+
+		</script>
+	</body>
+</html>
