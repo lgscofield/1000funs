@@ -35,7 +35,6 @@ div.ios {
 		display: none;
 		&:checked + i {
 			margin-left: (@ios_checkbox_width / 2) - 1;
-			.animation(labelOn .2s ease-in 1);
 		}
 	}
 
@@ -46,38 +45,12 @@ div.ios {
 		#gradient > .vertical(#A1A1A1, #FFFFFF);
 		border: 1px solid #E5E5E5;
 		.border-radius(3px);
-		.box-shadow(#244766 -1px 0px 3px);
 		position: relative;
 		z-index: 1;
-		.animation(labelOff .2s ease-in 1);
 	}
 }
-
 label.ios > span {
 	height: @ios_checkbox_height + 2;
 	line-height: @ios_checkbox_height + 2;
 	vertical-align: top;
 }
-
-.labelOn() {
-	from { margin-left: 0; }
-	to { margin-left: (@ios_checkbox_width / 2) - 1; }
-}
-
-.labelOff() {
-	from { margin-left: (@ios_checkbox_width / 2) - 1; }
-	to { margin-left: 0; }
-}
-
-@-webkit-keyframes labelOn { .labelOn; }
-@-moz-keyframes labelOn { .labelOn; }
-@-ms-keyframes labelOn { .labelOn; }
-@-o-keyframes labelOn { .labelOn; }
-@keyframes labelOn { .labelOn; }
-
-@-webkit-keyframes labelOff { .labelOff; }
-@-moz-keyframes labelOff { .labelOff; }
-@-ms-keyframes labelOff { .labelOff; }
-@-o-keyframes labelOff { .labelOff; }
-@keyframes labelOff { .labelOff; }
-
