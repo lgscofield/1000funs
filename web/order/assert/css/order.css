@@ -66,6 +66,9 @@
 .container-fixed {
   margin-left: 0px;
 }
+.querybar {
+  height: 42px;
+}
 .querybar form {
   margin-bottom: 10px;
 }
