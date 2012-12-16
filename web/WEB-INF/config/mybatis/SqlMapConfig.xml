@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<!-- 可以为一个vo类取一个别名，后面用的时候可以直接用该vo类的别名    而不用在写  包+类名称    -->
+		<typeAlias type="com.test.StudentVO" alias="Student" />
+		
+	</typeAliases>
+	<mappers>
+		<!-- 对应vo类的DAO接口 所对应的xml配置文件的路径信息 -->
+		<!--
+		<mapper resource="com/test/dbconfig/Student.xml" />
+		 -->
+		
+		<mapper resource="com/funs/order/dbconfig/OrderSQL.xml" />
+	</mappers>
+	
+	<!-- -->
+</configuration>
+

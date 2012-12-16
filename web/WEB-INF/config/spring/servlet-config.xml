@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		     http://www.springframework.org/schema/beans
+		     http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		     http://www.springframework.org/schema/tx
+		     http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		     http://www.springframework.org/schema/aop
+		     http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		     http://www.springframework.org/schema/context
+		     http://www.springframework.org/schema/context/spring-context.xsd
+		     http://www.directwebremoting.org/schema/spring-dwr
+        	 http://www.directwebremoting.org/schema/spring-dwr-2.5.xsd
+        	 http://www.springframework.org/schema/mvc
+        	 http://www.springframework.org/schema/mvc/spring-mvc-2.5.xsd">
+        	 
+	<!-- SpringMVC配置 -->
+	<bean class="com.funs.core.springmvc.ChristControllerHandlerMapping" />
+	 <!-- 把标记了@Controller注解的类转换为bean -->
+	 <!-- 这句暂时留着做个例子，实质上是没有这个类的
+	 <context:component-scan base-package="com.funs.xxxx.action" />
+	 -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<bean id="viewNameTranslator" class="com.funs.core.springmvc.ChristRequestToViewNameTranslator"/>
+
+	<!-- 默认JSP处理 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value=""/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>
