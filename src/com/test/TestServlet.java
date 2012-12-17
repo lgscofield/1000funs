@@ -1,7 +1,7 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼þÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑÐÖÆ¡£
+* ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
 ******************************************************************************/
 package com.test;
 
@@ -15,16 +15,24 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import com.funs.order.appservice.OrderAppService;
+import com.comtop.top.cfg.client.util.JsonCommonUtil;
+import com.funs.core.util.tools.DataGenerator;
+import com.funs.user.appservice.UserAppService;
+import com.funs.user.model.UserVO;
 
 /**
- * Servlet²âÊÔÀà
+ * Servletï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
- * @author »Æ¿ÆÁÖ
+ * @author ï¿½Æ¿ï¿½ï¿½ï¿½
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version  2012-12-16 ï¿½Æ¿ï¿½ï¿½ï¿½
  */
 public class TestServlet extends HttpServlet{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2399166345711874635L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -36,15 +44,20 @@ public class TestServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		//³õÊ¼»¯SpringµÄÈÝÆ÷£¬µÃµ½Ò»¸öApplicationContext¶ÔÏó    
+		//ï¿½ï¿½Ê¼ï¿½ï¿½Springï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ò»ï¿½ï¿½ApplicationContextï¿½ï¿½ï¿½ï¿½    
 		ApplicationContext context=WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());    
-		//´ÓcontextµÄµÃµ½Ò»¸öbean,ÊµÀý»¯¶ÔÏó
+		//ï¿½ï¿½contextï¿½ÄµÃµï¿½Ò»ï¿½ï¿½bean,Êµï¿½ï¿½ï¿½ï¿½ï¿½
 		//ITestTableDAOService dao=(ITestTableDAOService)context.getBean("ITestTableDAOService"); 
 		//ITestTableDAOService2 orderAppService=(ITestTableDAOService2)context.getBean("ITestTableDAOService");
-		OrderAppService orderAppService = (OrderAppService)context.getBean("OrderService");
-		System.out.println("===========²âÊÔ¿ªÊ¼=========");
-		orderAppService.doInsert();
-		System.out.println("===========²âÊÔ½áÊø=========");
+//		OrderAppService orderAppService = (OrderAppService)context.getBean("OrderService");
+//		System.out.println("===========ï¿½ï¿½ï¿½Ô¿ï¿½Ê¼=========");
+//		orderAppService.doInsert();
+//		System.out.println("===========ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½=========");
 		
+		UserAppService userAppService = (UserAppService)context.getBean("UserService");
+		System.out.println("userAppService.doInsert(new User())");
+		UserVO objUserVO = (UserVO)DataGenerator.get(UserVO.class,10);
+		String strUserVO = JsonCommonUtil.objectToJson(objUserVO);
+		userAppService.doInsert(strUserVO);
 	}
 }

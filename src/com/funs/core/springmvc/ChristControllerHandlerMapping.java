@@ -12,19 +12,10 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
      */
     private static final String CONTROLLER_SUFFIX = "";
     
-    /**
-     * 
-     */
     private boolean caseSensitive = false;
     
-    /**
-     * 
-     */
     private String pathPrefix;
     
-    /**
-     * 
-     */
     private String basePackage;
     
     /**
@@ -32,7 +23,7 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
      * <p>
      * Default is "false", using pure lower case paths, e.g. turning the class name "BuyForm" into "buyform".
      * 
-     * @param caseSensitive ÊÇ·ñÇø·Ö´óÐ¡Ð´
+     * @param caseSensitive ï¿½Ç·ï¿½ï¿½ï¿½Ö´ï¿½Ð¡Ð´
      */
     public void setCaseSensitive(boolean caseSensitive) {
         this.caseSensitive = caseSensitive;
@@ -44,7 +35,7 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
      * Default is a plain slash ("/"). A path like "/mymodule" can be specified in order to have controller path mappings prefixed with that path,
      * e.g. "/mymodule/buyform" instead of "/buyform" for the class name "BuyForm".
      * 
-     * @param prefixPath Ç°×ºÂ·¾¶
+     * @param prefixPath Ç°×ºÂ·ï¿½ï¿½
      */
     public void setPathPrefix(String prefixPath) {
         this.pathPrefix = prefixPath;
@@ -66,7 +57,7 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
      * "/mymodule/buyform" for the class name "com.mycompany.myapp.mymodule.BuyForm". Subpackage hierarchies are represented as individual path
      * elements, e.g. "/mymodule/mysubmodule/buyform" for the class name "com.mycompany.myapp.mymodule.mysubmodule.BuyForm".
      * 
-     * @param basePackage ±¨Ãû
+     * @param basePackage ï¿½ï¿½ï¿½ï¿½
      */
     public void setBasePackage(String basePackage) {
         this.basePackage = basePackage;
@@ -76,13 +67,12 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
     }
     
     /**
-     * @param beanName ÊµÌåÃû
-     * @param beanClass ÊµÌåÀà
+     * @param beanName Êµï¿½ï¿½ï¿½ï¿½
+     * @param beanClass Êµï¿½ï¿½ï¿½ï¿½
      * @return String[]
      */
     @Override
-    @SuppressWarnings("unchecked")
-    protected String[] buildUrlsForHandler(String beanName, Class beanClass) {
+    protected String[] buildUrlsForHandler(String beanName, @SuppressWarnings("rawtypes") Class beanClass) {
         return generatePathMappings(beanClass);
     }
     
@@ -110,10 +100,10 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
     }
     
     /**
-     * ¸ù¾Ý±¨ÃûÈ¡Ä£¿éÃû
+     * ï¿½ï¿½Ý±ï¿½ï¿½ï¿½È¡Ä£ï¿½ï¿½ï¿½ï¿½
      * 
-     * @param packageName °üÃû
-     * @return Ä£¿éÃû
+     * @param packageName ï¿½ï¿½ï¿½ï¿½
+     * @return Ä£ï¿½ï¿½ï¿½ï¿½
      */
     private String getMoudleName(String packageName) {
         StringBuffer sbResult = new StringBuffer(256);

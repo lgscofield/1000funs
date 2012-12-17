@@ -1,24 +1,29 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼þÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑÐÖÆ¡£
+* ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
 *****************************************************************************/
 package com.funs.core.base.exception;
 
 /**
- * Òì³£»ùÀà
+ * ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
  *
- * @author »Æ¿ÆÁÖ
+ * @author ï¿½Æ¿ï¿½ï¿½ï¿½
  * @since jdk6.0
- * @version  2012-12-15 »Æ¿ÆÁÖ
+ * @version  2012-12-15 ï¿½Æ¿ï¿½ï¿½ï¿½
  */
 public class BaseException extends RuntimeException {
 	
 	/**
-     * Òì³£¹¹Ôìº¯Êý
+	 * 
+	 */
+	private static final long serialVersionUID = -4312572936568395900L;
+
+	/**
+     * ï¿½ì³£ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
      * 
-     * @param message Òì³£´íÎóÏûÏ¢
-     * @param throwable Òý·¢µÄÒì³£Àà
+     * @param message ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+     * @param throwable ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½
      */
     public BaseException(String message, Throwable throwable) {
         super(message, throwable);
