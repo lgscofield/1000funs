@@ -1,7 +1,7 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼þÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑÐÖÆ¡£
+* ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
 *****************************************************************************/
 package com.funs.order.appservice;
 
@@ -10,9 +10,9 @@ import com.funs.order.dao.OrderDAO;
 /**
  * 
  *
- * @author »Æ¿ÆÁÖ
+ * @author ï¿½Æ¿ï¿½ï¿½ï¿½
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version  2012-12-16 ï¿½Æ¿ï¿½ï¿½ï¿½
  */
 public class OrderAppService {
 	
@@ -26,7 +26,7 @@ public class OrderAppService {
 		return orderDAO;  
 	}
 	
-	//Õâ¸ösetterÖØÒª£¬setter·½Ê½Ö»springÔÚÊµÏÖ×¢ÈëµÄÊ±ºòµ÷ÓÃµÄ·½·¨  
+	//ï¿½ï¿½ï¿½setterï¿½ï¿½Òªï¿½ï¿½setterï¿½ï¿½Ê½Ö»springï¿½ï¿½Êµï¿½ï¿½×¢ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½  
 	public void setOrderDAO(OrderDAO testImpl) {   
 		this.orderDAO = testImpl;  
 	}

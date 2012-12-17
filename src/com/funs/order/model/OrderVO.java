@@ -5,7 +5,6 @@
  *****************************************************************************/
 package com.funs.order.model;
 
-import com.comtop.top.cfg.client.util.JsonCommonUtil;
 import com.funs.core.base.model.BaseVO;
 
 /**

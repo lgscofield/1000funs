@@ -1,7 +1,7 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼þÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑÐÖÆ¡£
+* ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
 *****************************************************************************/
 package com.funs.order.dao;
 
@@ -14,14 +14,14 @@ import com.funs.order.model.OrderVO;
 /**
  * 
  *
- * @author »Æ¿ÆÁÖ
+ * @author ï¿½Æ¿ï¿½ï¿½ï¿½
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version  2012-12-16 ï¿½Æ¿ï¿½ï¿½ï¿½
  */
 public class OrderDAO extends BaseDAO{
 	
 	/**
-     * ÈÕÖ¾
+     * ï¿½ï¿½Ö¾
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderDAO.class);
 	
@@ -31,9 +31,9 @@ public class OrderDAO extends BaseDAO{
 		objOrderVO.setOrderId(orderId);
 		objOrderVO.setOrderType("tc");
 		objOrderVO.setPrice(15.00);
-		LOGGER.info("========ÐÂÔö²Ù×÷===================");
+		LOGGER.info("========ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½===================");
 		System.out.println(this.sqlSessionTemplate);
 		this.sqlSessionTemplate.insert("com.funs.order.doInsert", objOrderVO); 
-		LOGGER.info("³É¹¦²åÈëÊý¾Ý1£º\n"+objOrderVO);
+		LOGGER.info("ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½\n"+objOrderVO);
 	}
 }
