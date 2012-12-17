@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+	
+<!--订单 --> 
+<mapper namespace="com.funs.order"> 
+
+<!-- 插入一行数据 -->  
+<insert id="doInsert" parameterType="com.funs.order.model.OrderVO">   
+	INSERT INTO ORDERFORM (ORDER_ID,ORDER_TYPE,PRICE) VALUES (#{orderId},#{orderType},#{price})
+</insert>
+
+<!-- 查询该表的总行数 -->
+<select id="getCount" resultType="int">   
+	SELECT COUNT(*)FROM ORDERFORM  
+</select>
+
+</mapper>

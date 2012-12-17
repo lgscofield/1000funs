@@ -1,17 +1,23 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼şÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑĞÖÆ¡£
+	æœ¬è½¯ä»¶ç”±åƒæ–¹ç™¾å‘³å…¬å¸å¼€å‘
 *****************************************************************************/
 package com.funs.core.base.model;
 
+import com.comtop.top.cfg.client.util.JsonCommonUtil;
+
 /**
- * VO»ùÀà
+ * VOåŸºç¡€ç±»
  *
- * @author »Æ¿ÆÁÖ
+ * @author é»„ç§‘æ—
  * @since jdk6.0
- * @version  2012-12-15 »Æ¿ÆÁÖ
+ * @version  2012-12-15 
+ * 
  */
 public class BaseVO {
 	
+	public String toString() {
+		return JsonCommonUtil.objectToJson(this);
+	}
 }

@@ -6,7 +6,6 @@
 package com.funs.order.appservice;
 
 import com.funs.order.dao.OrderDAO;
-import com.test.ITestTableDAOImpl2;
 
 /**
  * 

@@ -1,32 +1,35 @@
 /******************************************************************************
-* Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
-* All Rights Reserved.
-* ±¾Èí¼þÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑÐÖÆ¡£
-*****************************************************************************/
+ * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
+ * All Rights Reserved.
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
+ *****************************************************************************/
 package com.funs.order.model;
 
+import com.comtop.top.cfg.client.util.JsonCommonUtil;
+import com.funs.core.base.model.BaseVO;
+
 /**
- * ¶©µ¥VO
- *
- * @author »Æ¿ÆÁÖ
+ * ï¿½ï¿½ï¿½ï¿½VO
+ * 
+ * @author ï¿½Æ¿ï¿½ï¿½ï¿½
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version 2012-12-16 ï¿½Æ¿ï¿½ï¿½ï¿½
  */
-public class OrderVO {
-	
+public class OrderVO extends BaseVO {
+
 	/**
-     * ¶©µ¥ºÅ
-     */
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 */
 	private int orderId;
-	
+
 	/**
-     * ¶©µ¥Àà±ð
-     */
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 */
 	private String orderType;
-	
+
 	/**
-     * ¼Û¸ñ
-     */
+	 * ï¿½Û¸ï¿½
+	 */
 	private double price;
 
 	public int getOrderId() {
@@ -52,12 +55,12 @@ public class OrderVO {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
-	public String toString(){
-		StringBuffer sb = new StringBuffer(128);
-		sb.append("orderId="+orderId+"\n");
-		sb.append("orderType="+orderType+"\n");
-		sb.append("price="+price+"\n");
-		return sb.toString();
+
+	public static void main(String[] args) {
+		OrderVO order = new OrderVO();
+		order.setOrderId(1);
+		order.setOrderType("type1");
+		order.setPrice(2.2);
+		System.out.println("toString:" + order.toString());
 	}
 }
