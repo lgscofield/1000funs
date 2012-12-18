@@ -4,9 +4,6 @@
  *****************************************************************************/
 package com.funs.user.appservice;
 
-import org.codehaus.jackson.type.TypeReference;
-
-import com.comtop.top.cfg.client.util.JsonCommonUtil;
 import com.funs.user.dao.UserDAO;
 import com.funs.user.model.UserVO;
 
@@ -19,9 +16,12 @@ public class UserAppService {
 
 	private UserDAO userDAO;
 
-	public void doInsert(String jsonUser) {
-		UserVO objUser = JsonCommonUtil.jsonToObject(jsonUser, new TypeReference<UserVO>(){});
-		this.userDAO.doInsert(objUser);
+	public void doInsert(UserVO userVO) {
+		this.userDAO.insertUser(userVO);
+	}
+	
+	public UserVO doQuery(String name){
+		return userDAO.queryUserByName(name);
 	}
 
 	public UserDAO getUserDAO() {

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import com.comtop.top.cfg.client.util.JsonCommonUtil;
 import com.funs.core.util.tools.DataGenerator;
 import com.funs.user.appservice.UserAppService;
 import com.funs.user.model.UserVO;
@@ -35,8 +34,7 @@ public class TestServlet extends HttpServlet{
 		
 		UserAppService userAppService = (UserAppService)context.getBean("UserService");
 		System.out.println("userAppService.doInsert(new User())");
-		UserVO objUserVO = (UserVO)DataGenerator.get(UserVO.class,10);
-		String strUserVO = JsonCommonUtil.objectToJson(objUserVO);
-		userAppService.doInsert(strUserVO);
+		UserVO userVO = (UserVO)DataGenerator.get(UserVO.class,10);
+		userAppService.doInsert(userVO);
 	}
 }

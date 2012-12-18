@@ -1,7 +1,7 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* �����Ϊ����ǧ����ζ��˾�������ơ�
+* 本软件为深圳千方百味公司开发研制。
 *****************************************************************************/
 package com.funs.order.appservice;
 
@@ -10,9 +10,9 @@ import com.funs.order.dao.OrderDAO;
 /**
  * 
  *
- * @author �ƿ���
+ * @author 黄科林
  * @since jdk6.0
- * @version  2012-12-16 �ƿ���
+ * @version  2012-12-16 黄科林
  */
 public class OrderAppService {
 	
@@ -26,7 +26,7 @@ public class OrderAppService {
 		return orderDAO;  
 	}
 	
-	//���setter��Ҫ��setter��ʽֻspring��ʵ��ע���ʱ����õķ���  
+	//这个setter重要，setter方式只spring在实现注入的时候调用的方法  
 	public void setOrderDAO(OrderDAO testImpl) {   
 		this.orderDAO = testImpl;  
 	}

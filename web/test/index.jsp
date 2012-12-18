@@ -2,28 +2,20 @@
 <html>
 	<head>
 		<title>The Template Of Jsp</title>
-		<script type="text/javascript" src="/1000funs/web/dwr/engine.js"></script>
-		<script type="text/javascript" src="/1000funs/web/dwr/util.js"></script>
-		<script type="text/javascript" src="/1000funs/web/dwr/interface/UserTest.js"></script>
+		<script type="text/javascript" src="/1000funs/dwr/engine.js"></script>
+		<script type="text/javascript" src="/1000funs/dwr/util.js"></script>
+		<script type="text/javascript" src="/1000funs/dwr/interface/UserTest.js"></script>
 		<script type="text/javascript">
 			function doInsert () {
 				UserTest.doInsert(function(result){
-					if (result.length > 2) {
-						document.getElementById("insert_result").innerHTML="succuess:"+result;
-					}else{
-						document.getElementById("insert_result").innerHTML="error, code:"+result;
-					}
+					document.getElementById("insert_result").innerHTML="succuess:"+result.userName;
 				});
 			}
 
 			function doQuery () {
 				var param = document.getElementById("query_text").value;
 				UserTest.doQuery(param,function(result){
-					if (result.length > 2) {
-						document.getElementById("query_result").innerHTML="succuess:"+result;
-					}else{
-						document.getElementById("query_result").innerHTML="error, code:"+result;
-					}
+					document.getElementById("query_result").innerHTML="succuess:"+result;
 				});
 			}
 

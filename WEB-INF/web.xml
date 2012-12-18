@@ -14,13 +14,17 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<!-- 上面配置的spring配置文件的路径，区分大小写 -->
-		<param-value>WEB-INF/config/spring/applicationContext.xml
+		<param-value>/WEB-INF/config/spring/applicationContext.xml
 		</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
+	
+	    <listener>
+        <listener-class>com.funs.core.springmvc.ApplicationContextInitor</listener-class>
+    </listener>
 
 	<!-- spring mvc 配置 -->
 	<servlet>
@@ -58,7 +62,7 @@
 		<url-pattern>/dwr/*</url-pattern>
 	</servlet-mapping>
 
-	<!-- 配置TestServlet -->
+	<!-- 配置TestServlet
 	<servlet>
 		<servlet-name>testServlet</servlet-name>
 		<servlet-class>com.test.TestServlet</servlet-class>
@@ -67,5 +71,6 @@
 		<servlet-name>testServlet</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
+	 -->
 	
 </web-app>

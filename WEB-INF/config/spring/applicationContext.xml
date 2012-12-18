@@ -40,6 +40,15 @@
 		<property name="orderDAO" ref="OrderDAOImpl" />
 	</bean>
 	
+	<!-- 用户配置实现类，注入数据源 -->
+	<bean id="UserDAOImpl" class="com.funs.user.dao.UserDAO">   
+		<property name="sqlSessionTemplate" ref="sqlSession" />
+	</bean>
+	<bean id="UserService" class="com.funs.user.appservice.UserAppService">   
+		<property name="userDAO" ref="UserDAOImpl" />
+	</bean>
+	
+	
 	<!-- 配置实现类，注入数据源 -->  
 	<!--
 	<bean id="ITestTableDAOImpl" class="com.test.ITestTableDAOImpl2">   
@@ -55,8 +64,5 @@
 	
 	<!-- AOP和事务配置  -->
 	<import resource="aop-config.xml"/>
-	
-	
-	
 	
 </beans>

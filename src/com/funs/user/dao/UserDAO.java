@@ -14,8 +14,12 @@ import com.funs.user.model.UserVO;
  */
 public class UserDAO extends BaseDAO {
 
-	public void doInsert(UserVO user) {
-		UserVO userVO = new UserVO();
-		this.sqlSessionTemplate.insert("com.funs.user.doInsert", userVO);
+	public void insertUser(UserVO userVO) {
+		this.sqlSessionTemplate.insert("com.funs.user.insertUser", userVO);
 	}
+	
+	public UserVO queryUserByName(String name){
+		return (UserVO)this.sqlSessionTemplate.selectOne("com.funs.user.queryUserByName");
+	}
+	
 }
