@@ -1,16 +1,16 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼şÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑĞÖÆ¡£
+* æœ¬è½¯ä»¶ä¸ºæ·±åœ³åƒæ–¹ç™¾å‘³å…¬å¸å¼€å‘ç ”åˆ¶ã€‚
 *****************************************************************************/
 package com.funs.core.base.action;
 
 /**
- * action»ùÀà
+ * actionåŸºç±»
  * 
- * @author »Æ¿ÆÁÖ
+ * @author é»„ç§‘æ—
  * @since jdk6.0
- * @version  2012-12-15 »Æ¿ÆÁÖ
+ * @version  2012-12-15 é»„ç§‘æ—
  */
 public class BaseAction {
 

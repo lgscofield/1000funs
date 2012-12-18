@@ -10,42 +10,42 @@ import org.springframework.web.util.UrlPathHelper;
 public class ChristRequestToViewNameTranslator implements RequestToViewNameTranslator {
     
     /**
-     * Ğ±Ïß
+     * æ–œçº¿
      */
     private static final String SLASH = "/";
     
     /**
-     * Ç°×º
+     * å‰ç¼€
      */
     private String prefix = "";
     
     /**
-     * ºó×º
+     * åç¼€
      */
     private String suffix = "";
     
     /**
-     * ·Ö¸ô·û
+     * åˆ†éš”ç¬¦
      */
     private String separator = SLASH;
     
     /**
-     * ÊÇ·ñÈ¥µô¶¥Í·µÄĞ±Ïß
+     * æ˜¯å¦å»æ‰é¡¶å¤´çš„æ–œçº¿
      */
     private boolean stripLeadingSlash = true;
     
     /**
-     * ÊÇ·ñÈ¥µôÄ©Î²µÄĞ±Ïß
+     * æ˜¯å¦å»æ‰æœ«å°¾çš„æ–œçº¿
      */
     private boolean stripTrailingSlash = true;
     
     /**
-     * ÊÇ·ñÈ¥µôºó×ºÃû
+     * æ˜¯å¦å»æ‰åç¼€å
      */
     private boolean stripExtension = true;
     
     /**
-     * URL Â·¾¶°ïÖúÀà
+     * URL è·¯å¾„å¸®åŠ©ç±»
      */
     private UrlPathHelper urlPathHelper = new UrlPathHelper();
     
@@ -71,7 +71,7 @@ public class ChristRequestToViewNameTranslator implements RequestToViewNameTrans
      * Set the value that will replace '<code>/</code>' as the separator in the view name. The default behavior simply
      * leaves '<code>/</code>' as the separator.
      * 
-     * @param separator ·Ö¸ô·û
+     * @param separator åˆ†éš”ç¬¦
      */
     public void setSeparator(String separator) {
         this.separator = separator;
@@ -126,7 +126,7 @@ public class ChristRequestToViewNameTranslator implements RequestToViewNameTrans
      * Uses either the request encoding or the default encoding according to the Servlet spec (ISO-8859-1).
      * 
      * @see org.springframework.web.util.UrlPathHelper#setUrlDecode
-     * @param urlDecode ÊÇ·ñurl×ªÂë
+     * @param urlDecode æ˜¯å¦urlè½¬ç 
      */
     public void setUrlDecode(boolean urlDecode) {
         this.urlPathHelper.setUrlDecode(urlDecode);
@@ -185,9 +185,9 @@ public class ChristRequestToViewNameTranslator implements RequestToViewNameTrans
     }
     
     /**
-     * È¥µôÂ·¾¶ÖĞµÄactionÃû
+     * å»æ‰è·¯å¾„ä¸­çš„actionå
      * 
-     * @param path Â·¾¶
+     * @param path è·¯å¾„
      * @return String
      */
     private String deleteActionName(String path) {
@@ -205,9 +205,9 @@ public class ChristRequestToViewNameTranslator implements RequestToViewNameTrans
     }
     
     /**
-     * Ê××ÖÄ¸´óĞ´
+     * é¦–å­—æ¯å¤§å†™
      * 
-     * @param fileName ÎÄ¼şÃû
+     * @param fileName æ–‡ä»¶å
      * @return String
      */
     private String firstCharToUpperCase(String fileName) {

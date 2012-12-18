@@ -1,7 +1,7 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼şÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑĞÖÆ¡£
+* æœ¬è½¯ä»¶ä¸ºæ·±åœ³åƒæ–¹ç™¾å‘³å…¬å¸å¼€å‘ç ”åˆ¶ã€‚
 *****************************************************************************/
 package com.funs.core.base.dao;
 
@@ -12,38 +12,38 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.funs.core.base.exception.DAOException;
 
 /**
- * DAO»ùÀà
+ * DAOåŸºç±»
  *
- * @author »Æ¿ÆÁÖ
+ * @author é»„ç§‘æ—
  * @since jdk6.0
- * @version  2012-12-15 »Æ¿ÆÁÖ
+ * @version  2012-12-15 é»„ç§‘æ—
  */
 public class BaseDAO {
 	
 	/**
-     * SqlSessionTemplateÄ£°å¶ÔÏó sqlSessionTemplate
+     * SqlSessionTemplateæ¨¡æ¿å¯¹è±¡ sqlSessionTemplate
      */
     @Resource
     protected SqlSessionTemplate sqlSessionTemplate;
     
     /**
-     * @param sqlSessionTemplate MyBatisµÄSqlSessionTemplateÄ£°å¶ÔÏó
+     * @param sqlSessionTemplate MyBatisçš„SqlSessionTemplateæ¨¡æ¿å¯¹è±¡
      */
     public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
         this.sqlSessionTemplate = sqlSessionTemplate;
     }
     
     /**
-     * ¸ù¾İ²ÎÊı¶ÔÏóĞÂÔöÊı¾İ
+     * æ ¹æ®å‚æ•°å¯¹è±¡æ–°å¢æ•°æ®
      * 
-     * @param statementId MyBatisµÄstatementµÄid
-     * @param insertObject ´ıĞÂÔö²ÎÊı¶ÔÏó
+     * @param statementId MyBatisçš„statementçš„id
+     * @param insertObject å¾…æ–°å¢å‚æ•°å¯¹è±¡
      */
     public void insert(String statementId, Object insertObject) {
         try {
             sqlSessionTemplate.insert(statementId, insertObject);
         } catch (Exception e) {
-            throw new DAOException("¸ù¾İ²ÎÊı¶ÔÏóĞÂÔöÊı¾İÊ§°Ü,²ÎÊıÁĞ±í(statementId:" + statementId + " insertObject:" + insertObject + ")", e);
+            throw new DAOException("æ ¹æ®å‚æ•°å¯¹è±¡æ–°å¢æ•°æ®å¤±è´¥,å‚æ•°åˆ—è¡¨(statementId:" + statementId + " insertObject:" + insertObject + ")", e);
         }
     }
 }

@@ -12,10 +12,19 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
      */
     private static final String CONTROLLER_SUFFIX = "";
     
+    /**
+     * 
+     */
     private boolean caseSensitive = false;
     
+    /**
+     * 
+     */
     private String pathPrefix;
     
+    /**
+     * 
+     */
     private String basePackage;
     
     /**
@@ -23,7 +32,7 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
      * <p>
      * Default is "false", using pure lower case paths, e.g. turning the class name "BuyForm" into "buyform".
      * 
-     * @param caseSensitive �Ƿ���ִ�Сд
+     * @param caseSensitive 是否区分大小写
      */
     public void setCaseSensitive(boolean caseSensitive) {
         this.caseSensitive = caseSensitive;
@@ -35,7 +44,7 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
      * Default is a plain slash ("/"). A path like "/mymodule" can be specified in order to have controller path mappings prefixed with that path,
      * e.g. "/mymodule/buyform" instead of "/buyform" for the class name "BuyForm".
      * 
-     * @param prefixPath ǰ׺·��
+     * @param prefixPath 前缀路径
      */
     public void setPathPrefix(String prefixPath) {
         this.pathPrefix = prefixPath;
@@ -57,7 +66,7 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
      * "/mymodule/buyform" for the class name "com.mycompany.myapp.mymodule.BuyForm". Subpackage hierarchies are represented as individual path
      * elements, e.g. "/mymodule/mysubmodule/buyform" for the class name "com.mycompany.myapp.mymodule.mysubmodule.BuyForm".
      * 
-     * @param basePackage ����
+     * @param basePackage 报名
      */
     public void setBasePackage(String basePackage) {
         this.basePackage = basePackage;
@@ -67,12 +76,13 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
     }
     
     /**
-     * @param beanName ʵ����
-     * @param beanClass ʵ����
+     * @param beanName 实体名
+     * @param beanClass 实体类
      * @return String[]
      */
-    @Override
-    protected String[] buildUrlsForHandler(String beanName, @SuppressWarnings("rawtypes") Class beanClass) {
+    @SuppressWarnings("rawtypes")
+	@Override
+    protected String[] buildUrlsForHandler(String beanName, Class beanClass) {
         return generatePathMappings(beanClass);
     }
     
@@ -100,10 +110,10 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
     }
     
     /**
-     * ��ݱ���ȡģ����
+     * 根据报名取模块名
      * 
-     * @param packageName ����
-     * @return ģ����
+     * @param packageName 包名
+     * @return 模块名
      */
     private String getMoudleName(String packageName) {
         StringBuffer sbResult = new StringBuffer(256);

@@ -1,7 +1,7 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼şÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑĞÖÆ¡£
+* æœ¬è½¯ä»¶ä¸ºæ·±åœ³åƒæ–¹ç™¾å‘³å…¬å¸å¼€å‘ç ”åˆ¶ã€‚
 *****************************************************************************/
 package com.funs.core.util.tools;
 
@@ -12,91 +12,91 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * Ìá¹©ÈÕÆÚ»òÕßÊÇÊ±¼ä¸ñÊ½»¯´¦Àí¹¤¾ßÀà
+ * æä¾›æ—¥æœŸæˆ–è€…æ˜¯æ—¶é—´æ ¼å¼åŒ–å¤„ç†å·¥å…·ç±»
  *
- * @author »Æ¿ÆÁÖ
+ * @author é»„ç§‘æ—
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version  2012-12-16 é»„ç§‘æ—
  */
 public final class DateTimeFormatUtils {
 	
-	/** ´øÄêÔÂÈÕÊ±·ÖÃëµÄÈÕÆÚÊ±¼ä¸ñÊ½×Ö·û´®: yyyy-MM-dd HH:mm:ss */
+	/** å¸¦å¹´æœˆæ—¥æ—¶åˆ†ç§’çš„æ—¥æœŸæ—¶é—´æ ¼å¼å­—ç¬¦ä¸²: yyyy-MM-dd HH:mm:ss */
     public final static String ISO_DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     
-    /** ´øÄêÔÂÈÕÊ±·ÖµÄÈÕÆÚÊ±¼ä¸ñÊ½×Ö·û´®: yyyy-MM-dd HH:mm */
+    /** å¸¦å¹´æœˆæ—¥æ—¶åˆ†çš„æ—¥æœŸæ—¶é—´æ ¼å¼å­—ç¬¦ä¸²: yyyy-MM-dd HH:mm */
     public final static String ISO_DATETIME_FORMAT_SHORT = "yyyy-MM-dd HH:mm";
     
-    /** ´øÄêÔÂÈÕµÄÈÕÆÚ¸ñÊ½×Ö·û´®: yyyy-MM-dd */
+    /** å¸¦å¹´æœˆæ—¥çš„æ—¥æœŸæ ¼å¼å­—ç¬¦ä¸²: yyyy-MM-dd */
     public final static String ISO_DATE_FORMAT = "yyyy-MM-dd";
     
-    /** ´øÄêÔÂµÄÈÕÆÚ¸ñÊ½×Ö·û´®: yyyy-MM */
+    /** å¸¦å¹´æœˆçš„æ—¥æœŸæ ¼å¼å­—ç¬¦ä¸²: yyyy-MM */
     public final static String ISO_SHORT_DATE_FORMAT = "yyyy-MM";
     
-    /** ´øÊ±·ÖÃëµÄÊ±¼ä¸ñÊ½×Ö·û´®: HH:mm:ss */
+    /** å¸¦æ—¶åˆ†ç§’çš„æ—¶é—´æ ¼å¼å­—ç¬¦ä¸²: HH:mm:ss */
     public final static String ISO_TIME_FORMAT = "HH:mm:ss";
     
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      */
     private DateTimeFormatUtils() {
     }
     
     /**
-     * ¸ù¾İÈÕÆÚÊ±¼ä¸ñÊ½yyyy-MM-dd HH:mm:ssÀ´»ñÈ¡Ö¸¶¨µÄ¶ÔÏóµÄ×Ö·û´®ĞÅÏ¢
+     * æ ¹æ®æ—¥æœŸæ—¶é—´æ ¼å¼yyyy-MM-dd HH:mm:ssæ¥è·å–æŒ‡å®šçš„å¯¹è±¡çš„å­—ç¬¦ä¸²ä¿¡æ¯
      * 
-     * @param value ĞèÒª±»×ª»»µÄÈÕÆÚÊ±¼ä¶ÔÏóÒıÓÃ
-     * @return ·µ»ØµÄÊÇ¸ñÊ½»¯ºóµÄ×Ö·û´®
+     * @param value éœ€è¦è¢«è½¬æ¢çš„æ—¥æœŸæ—¶é—´å¯¹è±¡å¼•ç”¨
+     * @return è¿”å›çš„æ˜¯æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²
      */
     public static String formatDateTime(Date value) {
         return formatDateTime(value, ISO_DATETIME_FORMAT);
     }
     
     /**
-     * ¸ù¾İÈÕÆÚÊ±¼ä¸ñÊ½yyyy-MM-dd HH:mmÀ´»ñÈ¡Ö¸¶¨µÄ¶ÔÏóµÄ×Ö·û´®ĞÅÏ¢
+     * æ ¹æ®æ—¥æœŸæ—¶é—´æ ¼å¼yyyy-MM-dd HH:mmæ¥è·å–æŒ‡å®šçš„å¯¹è±¡çš„å­—ç¬¦ä¸²ä¿¡æ¯
      * 
-     * @param value ĞèÒª±»×ª»»µÄÈÕÆÚÊ±¼ä¶ÔÏóÒıÓÃ
-     * @return ·µ»ØµÄÊÇ¸ñÊ½»¯ºóµÄ×Ö·û´®
+     * @param value éœ€è¦è¢«è½¬æ¢çš„æ—¥æœŸæ—¶é—´å¯¹è±¡å¼•ç”¨
+     * @return è¿”å›çš„æ˜¯æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²
      */
     public static String formatShortDateTime(Date value) {
         return formatDateTime(value, ISO_DATETIME_FORMAT_SHORT);
     }
     
     /**
-     * ¸ù¾İÈÕÆÚ¸ñÊ½yyyy-MM-ddÀ´»ñÈ¡Ö¸¶¨µÄ¶ÔÏóµÄ×Ö·û´®ĞÅÏ¢
+     * æ ¹æ®æ—¥æœŸæ ¼å¼yyyy-MM-ddæ¥è·å–æŒ‡å®šçš„å¯¹è±¡çš„å­—ç¬¦ä¸²ä¿¡æ¯
      * 
-     * @param value ĞèÒª±»×ª»»µÄÈÕÆÚÊ±¼ä¶ÔÏóÒıÓÃ
-     * @return ·µ»ØµÄÊÇ¸ñÊ½»¯ºóµÄ×Ö·û´®
+     * @param value éœ€è¦è¢«è½¬æ¢çš„æ—¥æœŸæ—¶é—´å¯¹è±¡å¼•ç”¨
+     * @return è¿”å›çš„æ˜¯æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²
      */
     public static String formatDate(Date value) {
         return formatDateTime(value, ISO_DATE_FORMAT);
     }
     
     /**
-     * ¸ù¾İÈÕÆÚ¸ñÊ½yyyy-MMÀ´»ñÈ¡Ö¸¶¨µÄ¶ÔÏóµÄ×Ö·û´®ĞÅÏ¢
+     * æ ¹æ®æ—¥æœŸæ ¼å¼yyyy-MMæ¥è·å–æŒ‡å®šçš„å¯¹è±¡çš„å­—ç¬¦ä¸²ä¿¡æ¯
      * 
-     * @param value ĞèÒª±»×ª»»µÄÈÕÆÚÊ±¼ä¶ÔÏóÒıÓÃ
-     * @return ·µ»ØµÄÊÇ¸ñÊ½»¯ºóµÄ×Ö·û´®
+     * @param value éœ€è¦è¢«è½¬æ¢çš„æ—¥æœŸæ—¶é—´å¯¹è±¡å¼•ç”¨
+     * @return è¿”å›çš„æ˜¯æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²
      */
     public static String formatShortDate(Date value) {
         return formatDateTime(value, ISO_SHORT_DATE_FORMAT);
     }
     
     /**
-     * ¸ù¾İÊ±¼ä¸ñÊ½HH:mm:ssÀ´»ñÈ¡Ö¸¶¨µÄ¶ÔÏóµÄ×Ö·û´®ĞÅÏ¢
+     * æ ¹æ®æ—¶é—´æ ¼å¼HH:mm:ssæ¥è·å–æŒ‡å®šçš„å¯¹è±¡çš„å­—ç¬¦ä¸²ä¿¡æ¯
      * 
-     * @param value ĞèÒª±»×ª»»µÄÈÕÆÚÊ±¼ä¶ÔÏóÒıÓÃ
-     * @return ·µ»ØµÄÊÇ¸ñÊ½»¯ºóµÄ×Ö·û´®
+     * @param value éœ€è¦è¢«è½¬æ¢çš„æ—¥æœŸæ—¶é—´å¯¹è±¡å¼•ç”¨
+     * @return è¿”å›çš„æ˜¯æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²
      */
     public static String formatTime(Date value) {
         return formatDateTime(value, ISO_TIME_FORMAT);
     }
     
     /**
-     * ¸ù¾İÖ¸¶¨µÄÈÕÆÚÊ±¼ä¸ñÊ½À´»ñÈ¡Ö¸¶¨µÄ¶ÔÏóµÄ×Ö·û´®ĞÅÏ¢
+     * æ ¹æ®æŒ‡å®šçš„æ—¥æœŸæ—¶é—´æ ¼å¼æ¥è·å–æŒ‡å®šçš„å¯¹è±¡çš„å­—ç¬¦ä¸²ä¿¡æ¯
      * 
-     * @param value ĞèÒª±»×ª»»µÄÈÕÆÚÊ±¼ä¶ÔÏóÒıÓÃ
-     * @param defaultFormat Ö¸¶¨µÄÈÕÆÚÊ±¼ä¸ñÊ½,Îª¿ÕÊ±½«Ê¹ÓÃÄ¬ÈÏµÄÈÕÆÚÊ±¼ä¸ñÊ½yyyy-MM-dd HH:mm:ss
-     * @return ·µ»ØµÄÊÇ¸ñÊ½»¯ºóµÄ×Ö·û´®
+     * @param value éœ€è¦è¢«è½¬æ¢çš„æ—¥æœŸæ—¶é—´å¯¹è±¡å¼•ç”¨
+     * @param defaultFormat æŒ‡å®šçš„æ—¥æœŸæ—¶é—´æ ¼å¼,ä¸ºç©ºæ—¶å°†ä½¿ç”¨é»˜è®¤çš„æ—¥æœŸæ—¶é—´æ ¼å¼yyyy-MM-dd HH:mm:ss
+     * @return è¿”å›çš„æ˜¯æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²
      */
     public static String formatDateTime(Date value, String defaultFormat) {
         if (value == null) {
@@ -108,18 +108,18 @@ public final class DateTimeFormatUtils {
     }
     
     /**
-     * ¸ù¾İÖ¸¶¨µÄÈÕÆÚÊ±¼ä¸ñÊ½À´»ñÈ¡Ö¸¶¨µÄ¶ÔÏóµÄ×Ö·û´®ĞÅÏ¢
+     * æ ¹æ®æŒ‡å®šçš„æ—¥æœŸæ—¶é—´æ ¼å¼æ¥è·å–æŒ‡å®šçš„å¯¹è±¡çš„å­—ç¬¦ä¸²ä¿¡æ¯
      * 
-     * @param value ĞèÒª±»×ª»»µÄÈÕÆÚÊ±¼ä¶ÔÏóÒıÓÃ
-     * @param format Ö¸¶¨µÄÈÕÆÚÊ±¼ä¸ñÊ½,Îª¿ÕÊ±½«Ê¹ÓÃÄ¬ÈÏµÄÈÕÆÚÊ±¼ä¸ñÊ½yyyy-MM-dd HH:mm:ss
-     * @return ·µ»ØµÄÊÇ¸ñÊ½»¯ºóµÄ×Ö·û´®
+     * @param value éœ€è¦è¢«è½¬æ¢çš„æ—¥æœŸæ—¶é—´å¯¹è±¡å¼•ç”¨
+     * @param format æŒ‡å®šçš„æ—¥æœŸæ—¶é—´æ ¼å¼,ä¸ºç©ºæ—¶å°†ä½¿ç”¨é»˜è®¤çš„æ—¥æœŸæ—¶é—´æ ¼å¼yyyy-MM-dd HH:mm:ss
+     * @return è¿”å›çš„æ˜¯æ ¼å¼åŒ–åçš„å­—ç¬¦ä¸²
      */
     public static String getCurrentFormatDateTime(Date value, String format) {
         return formatDateTime(new Date(), format);
     }
     
     /**
-     * »ñÈ¡Ö¸¶¨ÈÕÆÚËùÔÚµÄ¼¾¶È¡£
+     * è·å–æŒ‡å®šæ—¥æœŸæ‰€åœ¨çš„å­£åº¦ã€‚
      * 
      * <pre>
      * DateTimeFormatUtils.getQuarter(java.sql.Date.valueOf(&quot;2004-01-01&quot;)=1
@@ -129,8 +129,8 @@ public final class DateTimeFormatUtils {
      * DateTimeFormatUtils.getQuarter(null) = 0;
      * </pre>
      * 
-     * @param date ĞèÒªÅĞ¶ÏµÄÊ±¼ä£¬ÀàĞÍÎªjava.util.Date.
-     * @return ·µ»ØÖ¸¶¨ÈÕÆÚËùÔÚµÄ¼¾¶È¡£
+     * @param date éœ€è¦åˆ¤æ–­çš„æ—¶é—´ï¼Œç±»å‹ä¸ºjava.util.Date.
+     * @return è¿”å›æŒ‡å®šæ—¥æœŸæ‰€åœ¨çš„å­£åº¦ã€‚
      */
     public static int getQuarter(Date date) {
         if (date == null) {
@@ -151,10 +151,10 @@ public final class DateTimeFormatUtils {
     }
     
     /**
-     * µÃµ½Ö¸¶¨ÈÕÆÚËùÔÚµÄÖÜ¡£
+     * å¾—åˆ°æŒ‡å®šæ—¥æœŸæ‰€åœ¨çš„å‘¨ã€‚
      * 
-     * @param dateValue ĞèÒªÅĞ¶ÏµÄÈÕÆÚÀàĞÍ¡£(java.util.Date)
-     * @return µÃµ½ÈÕÆÚËùÔÚµÄÖÜ¡£
+     * @param dateValue éœ€è¦åˆ¤æ–­çš„æ—¥æœŸç±»å‹ã€‚(java.util.Date)
+     * @return å¾—åˆ°æ—¥æœŸæ‰€åœ¨çš„å‘¨ã€‚
      */
     public static String getWeekID(Date dateValue) {
         String strWeekID = "";
@@ -171,45 +171,45 @@ public final class DateTimeFormatUtils {
     }
     
     /**
-     * µÃµ½ËùÔÚÖÜµÄµÚÒ»Ìì
+     * å¾—åˆ°æ‰€åœ¨å‘¨çš„ç¬¬ä¸€å¤©
      * 
-     * @param year ĞèÒªÅĞ¶ÏµÄÄê·İ¡£
-     * @param week ĞèÒªÅĞ¶ÏµÄµÚ¼¸ÖÜ¡£
-     * @return µÃµ½Ö¸¶¨Äê·İ£¬Ö¸¶¨ÖÜµÄµÚÒ»Ìì¡£
+     * @param year éœ€è¦åˆ¤æ–­çš„å¹´ä»½ã€‚
+     * @param week éœ€è¦åˆ¤æ–­çš„ç¬¬å‡ å‘¨ã€‚
+     * @return å¾—åˆ°æŒ‡å®šå¹´ä»½ï¼ŒæŒ‡å®šå‘¨çš„ç¬¬ä¸€å¤©ã€‚
      */
     public static String firstDayOfWeek(int year, int week) {
         Calendar objCalendar = Calendar.getInstance();
         objCalendar.set(Calendar.YEAR, year);
         objCalendar.set(Calendar.WEEK_OF_YEAR, week);
-        // ¿¼ÂÇCalendar.setFirstDayOfWeek()
+        // è€ƒè™‘Calendar.setFirstDayOfWeek()
         objCalendar.add(Calendar.DAY_OF_WEEK, (-1 * objCalendar.get(Calendar.DAY_OF_WEEK)) + 2);
         return formatDate(objCalendar.getTime());
     }
     
     /**
-     * µÃµ½ËùÔÚÖÜµÄ×îºóÒ»Ìì
+     * å¾—åˆ°æ‰€åœ¨å‘¨çš„æœ€åä¸€å¤©
      * 
-     * @param year ĞèÒªÅĞ¶ÏµÄÄê·İ¡£
-     * @param week ĞèÒªÅĞ¶ÏµÄµÚ¼¸ÖÜ¡£
-     * @return µÃµ½Ö¸¶¨Äê·İ£¬Ö¸¶¨ÖÜµÄ×îºóÒ»Ìì¡£
+     * @param year éœ€è¦åˆ¤æ–­çš„å¹´ä»½ã€‚
+     * @param week éœ€è¦åˆ¤æ–­çš„ç¬¬å‡ å‘¨ã€‚
+     * @return å¾—åˆ°æŒ‡å®šå¹´ä»½ï¼ŒæŒ‡å®šå‘¨çš„æœ€åä¸€å¤©ã€‚
      */
     public static String endDayOfWeek(int year, int week) {
         Calendar objCalendar = Calendar.getInstance();
         objCalendar.set(Calendar.YEAR, year);
         objCalendar.set(Calendar.WEEK_OF_YEAR, week);
-        // ¿¼ÂÇCalendar.setFirstDayOfWeek()
+        // è€ƒè™‘Calendar.setFirstDayOfWeek()
         objCalendar.add(Calendar.DAY_OF_WEEK, (-1 * objCalendar.get(Calendar.DAY_OF_WEEK)) + 2 + 6);
         return formatDate(objCalendar.getTime());
     }
     
     /**
-     * µÃµ½Ö¸¶¨ÈÕÆÚËùÔÚÖÜµÄÇ°Ò»ÖÜ»òÊÇÏÂÒ»ÖÜ
+     * å¾—åˆ°æŒ‡å®šæ—¥æœŸæ‰€åœ¨å‘¨çš„å‰ä¸€å‘¨æˆ–æ˜¯ä¸‹ä¸€å‘¨
      * 
-     * @param year ĞèÒªÅĞ¶ÏµÄÄê·İ¡£
-     * @param week ĞèÒªÅĞ¶ÏµÄµÚ¼¸ÖÜ¡£
-     * @param direction true »ñÈ¡Ç°Ò»ÖÜ¡£<BR>
-     *            false »ñÈ¡ºóÒ»ÖÜ<BR>
-     * @return µÃµ½Ö¸¶¨ÈÕÆÚËùÔÚÖÜµÄÇ°Ò»ÖÜ»òÊÇÏÂÒ»ÖÜ
+     * @param year éœ€è¦åˆ¤æ–­çš„å¹´ä»½ã€‚
+     * @param week éœ€è¦åˆ¤æ–­çš„ç¬¬å‡ å‘¨ã€‚
+     * @param direction true è·å–å‰ä¸€å‘¨ã€‚<BR>
+     *            false è·å–åä¸€å‘¨<BR>
+     * @return å¾—åˆ°æŒ‡å®šæ—¥æœŸæ‰€åœ¨å‘¨çš„å‰ä¸€å‘¨æˆ–æ˜¯ä¸‹ä¸€å‘¨
      */
     public static String rollWeek(int year, int week, boolean direction) {
         String strWeekID = "";
@@ -232,12 +232,12 @@ public final class DateTimeFormatUtils {
     }
     
     /**
-     * ·µ»Øµ±Ç°ÖÜ³ıÖ¸¶¨ÈÕÆÚÒÔÍâµÄÈÕÆÚ¼¯ºÏ.
+     * è¿”å›å½“å‰å‘¨é™¤æŒ‡å®šæ—¥æœŸä»¥å¤–çš„æ—¥æœŸé›†åˆ.
      * 
-     * @param year ĞèÒªÅĞ¶ÏµÄÄê·İ¡£
-     * @param week ĞèÒªÅĞ¶ÏµÄµÚ¼¸ÖÜ¡£
-     * @param deviateDate ĞèÒª±»ÅÅ³ıµÄÈÕÆÚ×Ö·û´®¼¯ºÏ
-     * @return ·µ»Øµ±Ç°ÖÜ³ıÖ¸¶¨ÈÕÆÚÒÔÍâµÄÈÕÆÚ¼¯ºÏ¡£
+     * @param year éœ€è¦åˆ¤æ–­çš„å¹´ä»½ã€‚
+     * @param week éœ€è¦åˆ¤æ–­çš„ç¬¬å‡ å‘¨ã€‚
+     * @param deviateDate éœ€è¦è¢«æ’é™¤çš„æ—¥æœŸå­—ç¬¦ä¸²é›†åˆ
+     * @return è¿”å›å½“å‰å‘¨é™¤æŒ‡å®šæ—¥æœŸä»¥å¤–çš„æ—¥æœŸé›†åˆã€‚
      */
     public static String[] otherDayOfWeek(int year, int week, String[] deviateDate) {
         List<String> objDates = new Vector<String>();

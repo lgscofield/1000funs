@@ -1,7 +1,7 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼şÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑĞÖÆ¡£
+* æœ¬è½¯ä»¶ä¸ºæ·±åœ³åƒæ–¹ç™¾å‘³å…¬å¸å¼€å‘ç ”åˆ¶ã€‚
 *****************************************************************************/
 package com.funs.core.util.tools;
 
@@ -16,37 +16,37 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang.WordUtils;
 
 /**
- * ×Ö·û´®´¦Àí¹¤¾ßÀà
+ * å­—ç¬¦ä¸²å¤„ç†å·¥å…·ç±»
  *
- * @author »Æ¿ÆÁÖ
+ * @author é»„ç§‘æ—
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version  2012-12-16 é»„ç§‘æ—
  */
 public final class StringUtils {
 	
 	/**
-     * ¿Õ×Ö·û´®Ê¹ÓÃ³£Á¿EMPTYÀ´´ú±í: <code>""</code>.
+     * ç©ºå­—ç¬¦ä¸²ä½¿ç”¨å¸¸é‡EMPTYæ¥ä»£è¡¨: <code>""</code>.
      */
     public static final String EMPTY = "";
     
     /**
      * <p>
-     * ¿É±ä³¤µÄstringËùÄÜÀ©Õ¹µÄ×î´ó³¤¶È³£Á¿.
+     * å¯å˜é•¿çš„stringæ‰€èƒ½æ‰©å±•çš„æœ€å¤§é•¿åº¦å¸¸é‡.
      * </p>
      */
     public static final int PAD_LIMIT = 8192;
     
     /**
      * <p>
-     * Ò»¸öÓÃÀ´Ìî³äµÄ<code>String</code>Êı×é.
+     * ä¸€ä¸ªç”¨æ¥å¡«å……çš„<code>String</code>æ•°ç»„.
      * </p>
      * <p>
-     * ÓÃÓÚ¸ßĞ§µÄ¿Õ¼äÌî³ä. ¸ù¾İĞèÒªÀ©Õ¹Ã¿¸östringµÄ³¤¶È.
+     * ç”¨äºé«˜æ•ˆçš„ç©ºé—´å¡«å……. æ ¹æ®éœ€è¦æ‰©å±•æ¯ä¸ªstringçš„é•¿åº¦.
      * </p>
      */
     private static final String[] CONSTANTS_PADDING = new String[Character.MAX_VALUE];
     
-    /** ¿Õ×Ö·û´®Êı×é */
+    /** ç©ºå­—ç¬¦ä¸²æ•°ç»„ */
     private static final String[] EMPTY_STRING_ARRAY = new String[0];
     
     static {
@@ -56,10 +56,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * <code>StringUtils</code> ÀàÖĞ³ıÁË¹¹Ôìº¯ÊıÆäËûµÄ¶¼ÊÇ¾²Ì¬·½·¨ ËùÒÔÔÚ³ÌĞòÖĞ²»Ó¦´´½¨Õâ¸öÀàµÄÊµÀı Ó¦ÏóÕâÑùÊ¹ÓÃ:<code>StringUtils.trim(" foo ");</code>.
+     * <code>StringUtils</code> ç±»ä¸­é™¤äº†æ„é€ å‡½æ•°å…¶ä»–çš„éƒ½æ˜¯é™æ€æ–¹æ³• æ‰€ä»¥åœ¨ç¨‹åºä¸­ä¸åº”åˆ›å»ºè¿™ä¸ªç±»çš„å®ä¾‹ åº”è±¡è¿™æ ·ä½¿ç”¨:<code>StringUtils.trim(" foo ");</code>.
      * </p>
      * <p>
-     * Ä¬ÈÏµÄ¹¹Ôì·½·¨ÊÇÎªÁË JavaBean µÄ²Ù×÷¡£
+     * é»˜è®¤çš„æ„é€ æ–¹æ³•æ˜¯ä¸ºäº† JavaBean çš„æ“ä½œã€‚
      * </p>
      */
     private StringUtils() {
@@ -67,7 +67,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ì²éstringµÄ³¤¶ÈÊÇ·ñÎª0(¿Õ×Ö·û´®)»òÕßstringÊÇ·ñÎªnull.
+     * æ£€æŸ¥stringçš„é•¿åº¦æ˜¯å¦ä¸º0(ç©ºå­—ç¬¦ä¸²)æˆ–è€…stringæ˜¯å¦ä¸ºnull.
      * </p>
      * 
      * <pre>
@@ -78,8 +78,8 @@ public final class StringUtils {
      * StringUtils.isEmpty(&quot;  bob  &quot;) = false
      * </pre>
      * 
-     * @param string ĞèÒª¼ì²éµÄstring, ¿ÉÄÜÎªnull
-     * @return <code>true</code> Èç¹ûstringÎªnull»òÕßstringµÄ³¤¶ÈÎª0
+     * @param string éœ€è¦æ£€æŸ¥çš„string, å¯èƒ½ä¸ºnull
+     * @return <code>true</code> å¦‚æœstringä¸ºnullæˆ–è€…stringçš„é•¿åº¦ä¸º0
      */
     public static boolean isEmpty(String string) {
         return org.apache.commons.lang.StringUtils.isEmpty(string);
@@ -87,7 +87,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÊÇ·ñstringµÄ³¤¶È²»Îª0(¿Õ×Ö·û´®)»òÕßstring²»Îªnull.
+     * æ˜¯å¦stringçš„é•¿åº¦ä¸ä¸º0(ç©ºå­—ç¬¦ä¸²)æˆ–è€…stringä¸ä¸ºnull.
      * </p>
      * 
      * <pre>
@@ -98,8 +98,8 @@ public final class StringUtils {
      * StringUtils.isNotEmpty(&quot;  bob  &quot;) = true
      * </pre>
      * 
-     * @param string ĞèÒª¼ì²éµÄstring, ¿ÉÄÜÎªnull
-     * @return <code>true</code> Èç¹ûstring²»Îªnull»òÕßstringµÄ³¤¶È²»Îª0»ò²»ÊÇ¿Õ¸ñ
+     * @param string éœ€è¦æ£€æŸ¥çš„string, å¯èƒ½ä¸ºnull
+     * @return <code>true</code> å¦‚æœstringä¸ä¸ºnullæˆ–è€…stringçš„é•¿åº¦ä¸ä¸º0æˆ–ä¸æ˜¯ç©ºæ ¼
      */
     public static boolean isNotEmpty(String string) {
         return org.apache.commons.lang.StringUtils.isNotEmpty(string);
@@ -107,7 +107,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ì²éstringÊÇ·ñÊÇ¿Õ°×»òÕßstringÎªnull.
+     * æ£€æŸ¥stringæ˜¯å¦æ˜¯ç©ºç™½æˆ–è€…stringä¸ºnull.
      * </p>
      * 
      * <pre>
@@ -118,8 +118,8 @@ public final class StringUtils {
      * StringUtils.isBlank(&quot;  bob  &quot;) = false
      * </pre>
      * 
-     * @param string ĞèÒª¼ì²éµÄstring, ¿ÉÄÜÎªnull
-     * @return <code>true</code> Èç¹ûstringÎªnull»òÕßstringÖĞÊı¾İÎª¿Õ°×
+     * @param string éœ€è¦æ£€æŸ¥çš„string, å¯èƒ½ä¸ºnull
+     * @return <code>true</code> å¦‚æœstringä¸ºnullæˆ–è€…stringä¸­æ•°æ®ä¸ºç©ºç™½
      * @since 2.0
      */
     public static boolean isBlank(String string) {
@@ -128,7 +128,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÊÇ·ñstring²»Îª¿Õ°×£¬stringµÄ³¤¶È²»Îª0£¬string²»Îªnull.
+     * æ˜¯å¦stringä¸ä¸ºç©ºç™½ï¼Œstringçš„é•¿åº¦ä¸ä¸º0ï¼Œstringä¸ä¸ºnull.
      * </p>
      * 
      * <pre>
@@ -139,8 +139,8 @@ public final class StringUtils {
      * StringUtils.isNotBlank(&quot;  bob  &quot;) = true
      * </pre>
      * 
-     * @param string ĞèÒª¼ì²éµÄstring, ¿ÉÄÜÎªnull
-     * @return <code>true</code> Èç¹ûstring²»Îªnull²¢ÇÒ string²»Îª¿Õ°×£¬stringµÄ³¤¶È²»Îª0.
+     * @param string éœ€è¦æ£€æŸ¥çš„string, å¯èƒ½ä¸ºnull
+     * @return <code>true</code> å¦‚æœstringä¸ä¸ºnullå¹¶ä¸” stringä¸ä¸ºç©ºç™½ï¼Œstringçš„é•¿åº¦ä¸ä¸º0.
      * @since 2.0
      */
     public static boolean isNotBlank(String string) {
@@ -149,7 +149,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÒÆÈ¥stringÇ°ºóÁ½±ßµÄ¿ØÖÆ×Ö·û(char &lt;= 32) µ±Óöµ½ <code>null</code> Ê±·µ»ØÒ»¸ö¿Õstring("").
+     * ç§»å»stringå‰åä¸¤è¾¹çš„æ§åˆ¶å­—ç¬¦(char &lt;= 32) å½“é‡åˆ° <code>null</code> æ—¶è¿”å›ä¸€ä¸ªç©ºstring("").
      * </p>
      * 
      * <pre>
@@ -161,9 +161,9 @@ public final class StringUtils {
      * </pre>
      * 
      * @see java.lang.String#trim()
-     * @param str ĞèÒªÇå¿Õ¿Õ°×µÄstring, ¿ÉÄÜÎªnull
-     * @return ±»Çå¿Õ¿Õ°×µÄstring,½á¹ûÖĞ²»°üº¬ÈÎºÎµÄ<code>null</code>
-     * @deprecated Ê¹ÓÃÕâÖÖ¸üÇåÎúµÄ·½·¨: {@link #trimToEmpty(String)}. ÔÚ Commons Lang 3.0. ´Ë·½·¨½«»á±»È¡Ïû
+     * @param str éœ€è¦æ¸…ç©ºç©ºç™½çš„string, å¯èƒ½ä¸ºnull
+     * @return è¢«æ¸…ç©ºç©ºç™½çš„string,ç»“æœä¸­ä¸åŒ…å«ä»»ä½•çš„<code>null</code>
+     * @deprecated ä½¿ç”¨è¿™ç§æ›´æ¸…æ™°çš„æ–¹æ³•: {@link #trimToEmpty(String)}. åœ¨ Commons Lang 3.0. æ­¤æ–¹æ³•å°†ä¼šè¢«å–æ¶ˆ
      */
     @Deprecated
     public static String clean(String str) {
@@ -172,13 +172,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÒÆÈ¥stringÇ°ºóÁ½±ßµÄ¿ØÖÆ×Ö·û (char &lt;= 32) µ±Óöµ½ <code>null</code> Ê±·µ»Ønull.
+     * ç§»å»stringå‰åä¸¤è¾¹çš„æ§åˆ¶å­—ç¬¦ (char &lt;= 32) å½“é‡åˆ° <code>null</code> æ—¶è¿”å›null.
      * </p>
      * <p>
-     * Õâ¸öÇå³ıstringÇ°ºó¿Õ°×µÄ·½·¨Ê¹ÓÃÁË {@link String#trim()}. Çå³ıÁËstringÇ°ºóµÄ×Ö·û(char &lt;= 32) ÒªÇå³ı¿Õ°××Ö·û¿ÉÒÔÑ¡ÓÃ {@link #strip(String)}.
+     * è¿™ä¸ªæ¸…é™¤stringå‰åç©ºç™½çš„æ–¹æ³•ä½¿ç”¨äº† {@link String#trim()}. æ¸…é™¤äº†stringå‰åçš„å­—ç¬¦(char &lt;= 32) è¦æ¸…é™¤ç©ºç™½å­—ç¬¦å¯ä»¥é€‰ç”¨ {@link #strip(String)}.
      * </p>
      * <p>
-     * Çå³ıstringµÄÖĞÄãËùÖÆ¶¨µÄ×Ö·û,ÈçÇå³ı"abc"ÖĞµÄ"a"½á¹ûÎª"bc", Ê¹ÓÃ {@link #strip(String, String)} ·½·¨.
+     * æ¸…é™¤stringçš„ä¸­ä½ æ‰€åˆ¶å®šçš„å­—ç¬¦,å¦‚æ¸…é™¤"abc"ä¸­çš„"a"ç»“æœä¸º"bc", ä½¿ç”¨ {@link #strip(String, String)} æ–¹æ³•.
      * </p>
      * 
      * <pre>
@@ -189,8 +189,8 @@ public final class StringUtils {
      * StringUtils.trim(&quot;    abc    &quot;) = &quot;abc&quot;
      * </pre>
      * 
-     * @param string ĞèÒª½øĞĞ´¦ÀíµÄstring,¿ÉÄÜÎª¿Õ
-     * @return Çå³ıÁ½¶Ë¿Õ°×µÄstring, µ±ÊäÈëÎªnullÊ±·µ»Ø<code>null</code>
+     * @param string éœ€è¦è¿›è¡Œå¤„ç†çš„string,å¯èƒ½ä¸ºç©º
+     * @return æ¸…é™¤ä¸¤ç«¯ç©ºç™½çš„string, å½“è¾“å…¥ä¸ºnullæ—¶è¿”å›<code>null</code>
      */
     public static String trim(String string) {
         return org.apache.commons.lang.StringUtils.trim(string);
@@ -198,9 +198,9 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÒÆ³ıstringÖĞÁ½¶ËµÄ¿ØÖÆ×Ö·û(char &lt;= 32) stringÎªnull,stringÖĞ×Ö·û¶¼Îª¿Õ°×(&lt;= 32)»òÕßstringµÄ³¤¶ÈÎª0Ê± ·µ»ØµÄ½á¹ûÎª<code>null</code>
+     * ç§»é™¤stringä¸­ä¸¤ç«¯çš„æ§åˆ¶å­—ç¬¦(char &lt;= 32) stringä¸ºnull,stringä¸­å­—ç¬¦éƒ½ä¸ºç©ºç™½(&lt;= 32)æˆ–è€…stringçš„é•¿åº¦ä¸º0æ—¶ è¿”å›çš„ç»“æœä¸º<code>null</code>
      * <p>
-     * Õâ¸öÇå³ıstringÇ°ºó¿Õ°×µÄ·½·¨Ê¹ÓÃÁË {@link String#trim()}. Çå³ıÁËstringÇ°ºóµÄ(char &lt;= 32)×Ö·û. ÒªÇå³ı¿Õ°×¿ÉÒÔÊ¹ÓÃ {@link #stripToNull(String)}
+     * è¿™ä¸ªæ¸…é™¤stringå‰åç©ºç™½çš„æ–¹æ³•ä½¿ç”¨äº† {@link String#trim()}. æ¸…é™¤äº†stringå‰åçš„(char &lt;= 32)å­—ç¬¦. è¦æ¸…é™¤ç©ºç™½å¯ä»¥ä½¿ç”¨ {@link #stripToNull(String)}
      * .
      * </p>
      * 
@@ -212,8 +212,8 @@ public final class StringUtils {
      * StringUtils.trimToNull(&quot;    abc    &quot;) = &quot;abc&quot;
      * </pre>
      * 
-     * @param string ĞèÒª½øĞĞ´¦ÀíµÄstring,¿ÉÄÜÎª¿Õ
-     * @return ·µ»Ø´¦ÀíºóµÄÊı¾İ µ±ÊäÈëµÄstringÖĞ×Ö·û¶¼Îª¿Õ°×(&lt;= 32),stringµÄ³¤¶ÈÎª0 »òÕßstringÎªnullÊ±·µ»Ø<code>null</code>
+     * @param string éœ€è¦è¿›è¡Œå¤„ç†çš„string,å¯èƒ½ä¸ºç©º
+     * @return è¿”å›å¤„ç†åçš„æ•°æ® å½“è¾“å…¥çš„stringä¸­å­—ç¬¦éƒ½ä¸ºç©ºç™½(&lt;= 32),stringçš„é•¿åº¦ä¸º0 æˆ–è€…stringä¸ºnullæ—¶è¿”å›<code>null</code>
      * @since 2.0
      */
     public static String trimToNull(String string) {
@@ -222,9 +222,9 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÒÆ³ıstringÇ°ºóÁ½¶ËµÄ¿ØÖÆ×Ö·û (char &lt;= 32) µ±stringÎª<code>null</code>,stringµÄ³¤¶ÈÎª0 »òÕßstringÖĞµÄËùÓĞ×Ö·û¶¼Îª¿Õ°×Ê±. ½á¹û·µ»Ø("").
+     * ç§»é™¤stringå‰åä¸¤ç«¯çš„æ§åˆ¶å­—ç¬¦ (char &lt;= 32) å½“stringä¸º<code>null</code>,stringçš„é•¿åº¦ä¸º0 æˆ–è€…stringä¸­çš„æ‰€æœ‰å­—ç¬¦éƒ½ä¸ºç©ºç™½æ—¶. ç»“æœè¿”å›("").
      * <p>
-     * Õâ¸öÇå³ıstringÇ°ºó¿Õ°×µÄ·½·¨Ê¹ÓÃÁË {@link String#trim()}. Çå³ıÁËstringÇ°ºóµÄ(char &lt;= 32)×Ö·û. ÒªÇå³ı¿Õ°×¿ÉÒÔÊ¹ÓÃ
+     * è¿™ä¸ªæ¸…é™¤stringå‰åç©ºç™½çš„æ–¹æ³•ä½¿ç”¨äº† {@link String#trim()}. æ¸…é™¤äº†stringå‰åçš„(char &lt;= 32)å­—ç¬¦. è¦æ¸…é™¤ç©ºç™½å¯ä»¥ä½¿ç”¨
      * {@link #stripToEmpty(String)}.
      * </p>
      * 
@@ -236,8 +236,8 @@ public final class StringUtils {
      * StringUtils.trimToEmpty(&quot;    abc    &quot;) = &quot;abc&quot;
      * </pre>
      * 
-     * @param string ĞèÒª½øĞĞ´¦ÀíµÄstring,¿ÉÄÜÎª¿Õ
-     * @return ·µ»Ø´¦ÀíºóµÄÊı¾İ, ÊäÈëÎª<code>null</code>Ê±·µ»Ø""
+     * @param string éœ€è¦è¿›è¡Œå¤„ç†çš„string,å¯èƒ½ä¸ºç©º
+     * @return è¿”å›å¤„ç†åçš„æ•°æ®, è¾“å…¥ä¸º<code>null</code>æ—¶è¿”å›""
      * @since 2.0
      */
     public static String trimToEmpty(String string) {
@@ -246,13 +246,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Çå³ıstringÁ½¶ËµÄ¿Õ°×µÄ×Ö·û.
+     * æ¸…é™¤stringä¸¤ç«¯çš„ç©ºç™½çš„å­—ç¬¦.
      * </p>
      * <p>
-     * Õâ¸ö·½·¨ºÍ{@link #trim(String)}ÀàËÆ,µ«ÊÇËüÒÆ³ıwhitespace. Whitespace µÄ¶¨ÒåÔÚ {@link Character#isWhitespace(char)}.
+     * è¿™ä¸ªæ–¹æ³•å’Œ{@link #trim(String)}ç±»ä¼¼,ä½†æ˜¯å®ƒç§»é™¤whitespace. Whitespace çš„å®šä¹‰åœ¨ {@link Character#isWhitespace(char)}.
      * </p>
      * <p>
-     * <code>null</code> µÄStringÊäÈë½«·µ»Ø <code>null</code>.
+     * <code>null</code> çš„Stringè¾“å…¥å°†è¿”å› <code>null</code>.
      * </p>
      * 
      * <pre>
@@ -266,8 +266,8 @@ public final class StringUtils {
      * StringUtils.strip(&quot; ab c &quot;) = &quot;ab c&quot;
      * </pre>
      * 
-     * @param string ĞèÒªÒÆ³ı¿Õ°×µÄstring,¿ÉÄÜÎªnull
-     * @return ´¦ÀíºóµÄ½á¹û, ÊäÈëÎªnullÊ±·µ»Ø<code>null</code>
+     * @param string éœ€è¦ç§»é™¤ç©ºç™½çš„string,å¯èƒ½ä¸ºnull
+     * @return å¤„ç†åçš„ç»“æœ, è¾“å…¥ä¸ºnullæ—¶è¿”å›<code>null</code>
      */
     public static String strip(String string) {
         return org.apache.commons.lang.StringUtils.strip(string);
@@ -275,10 +275,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Çå³ıstringÁ½¶ËµÄ¿Õ°×µÄ×Ö·û ·µ»Ø<code>null</code> µ«stringÎªnull,string³¤¶ÈÎª0»òÕßstringÖĞ×Ö·û¶¼Îª¿Õ°×.
+     * æ¸…é™¤stringä¸¤ç«¯çš„ç©ºç™½çš„å­—ç¬¦ è¿”å›<code>null</code> ä½†stringä¸ºnull,stringé•¿åº¦ä¸º0æˆ–è€…stringä¸­å­—ç¬¦éƒ½ä¸ºç©ºç™½.
      * </p>
      * <p>
-     * Õâ¸ö·½·¨ºÍ{@link #trimToNull(String)}ÀàËÆ,µ«ÊÇËüÒÆ³ıwhitespace. Whitespace µÄ¶¨ÒåÔÚ {@link Character#isWhitespace(char)}.
+     * è¿™ä¸ªæ–¹æ³•å’Œ{@link #trimToNull(String)}ç±»ä¼¼,ä½†æ˜¯å®ƒç§»é™¤whitespace. Whitespace çš„å®šä¹‰åœ¨ {@link Character#isWhitespace(char)}.
      * </p>
      * 
      * <pre>
@@ -292,8 +292,8 @@ public final class StringUtils {
      * StringUtils.strip(&quot; ab c &quot;) = &quot;ab c&quot;
      * </pre>
      * 
-     * @param string ĞèÒªÒÆ³ı¿Õ°×µÄstring,¿ÉÄÜÎªnull
-     * @return ´¦ÀíºóµÄ½á¹û, ·µ»Ø<code>null</code>µ«ÊäÈëÎªnull,string³¤¶ÈÎª0»òÕßstringÖĞ×Ö·û¶¼Îª¿Õ°×
+     * @param string éœ€è¦ç§»é™¤ç©ºç™½çš„string,å¯èƒ½ä¸ºnull
+     * @return å¤„ç†åçš„ç»“æœ, è¿”å›<code>null</code>ä½†è¾“å…¥ä¸ºnull,stringé•¿åº¦ä¸º0æˆ–è€…stringä¸­å­—ç¬¦éƒ½ä¸ºç©ºç™½
      * @since 2.0
      */
     public static String stripToNull(String string) {
@@ -302,10 +302,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Çå³ıstringÁ½¶ËµÄ¿Õ°×µÄ×Ö·û Èç¹ûÊäÈëÎª<code>null</code>·µ»Ø("").
+     * æ¸…é™¤stringä¸¤ç«¯çš„ç©ºç™½çš„å­—ç¬¦ å¦‚æœè¾“å…¥ä¸º<code>null</code>è¿”å›("").
      * </p>
      * <p>
-     * Õâ¸ö·½·¨ºÍ {@link #trimToEmpty(String)}ÀàËÆ,µ«ÊÇËüÒÆ³ıwhitespace. Whitespace µÄ¶¨ÒåÔÚ {@link Character#isWhitespace(char)}.
+     * è¿™ä¸ªæ–¹æ³•å’Œ {@link #trimToEmpty(String)}ç±»ä¼¼,ä½†æ˜¯å®ƒç§»é™¤whitespace. Whitespace çš„å®šä¹‰åœ¨ {@link Character#isWhitespace(char)}.
      * </p>
      * 
      * <pre>
@@ -319,8 +319,8 @@ public final class StringUtils {
      * StringUtils.strip(&quot; ab c &quot;) = &quot;ab c&quot;
      * </pre>
      * 
-     * @param string ĞèÒªÒÆ³ı¿Õ°×µÄstring,¿ÉÄÜÎªnull
-     * @return ´¦ÀíºóµÄ½á¹û, ÊäÈë<code>null</code>Ê±·µ»Ø"".
+     * @param string éœ€è¦ç§»é™¤ç©ºç™½çš„string,å¯èƒ½ä¸ºnull
+     * @return å¤„ç†åçš„ç»“æœ, è¾“å…¥<code>null</code>æ—¶è¿”å›"".
      * @since 2.0
      */
     public static String stripToEmpty(String string) {
@@ -329,13 +329,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Çå³ıstringÖĞÖ¸¶¨µÄ×Ö·û. Õâ¸ö·½·¨ºÍ {@link String#trim()}ÀàËÆ,µ«Äã¿ÉÒÔÑ¡ÔñÄãĞèÒªÒÆ³ıµÄ×Ö·û.
+     * æ¸…é™¤stringä¸­æŒ‡å®šçš„å­—ç¬¦. è¿™ä¸ªæ–¹æ³•å’Œ {@link String#trim()}ç±»ä¼¼,ä½†ä½ å¯ä»¥é€‰æ‹©ä½ éœ€è¦ç§»é™¤çš„å­—ç¬¦.
      * </p>
      * <p>
-     * µÚÒ»¸ö²ÎÊıÊäÈë<code>null</code>Ê±·µ»Ø<code>null</code>. ÊäÈë ("")Ê±·µ»Ø("").
+     * ç¬¬ä¸€ä¸ªå‚æ•°è¾“å…¥<code>null</code>æ—¶è¿”å›<code>null</code>. è¾“å…¥ ("")æ—¶è¿”å›("").
      * </p>
      * <p>
-     * Èç¹ûµÚ¶ş¸ö²ÎÊıÎª<code>null</code>, ÔÚ{@link Character#isWhitespace(char)}ÖĞ¶¨ÒåµÄwhitespace½«±»ÒÆ³ı. ºÍÊ¹ÓÃ{@link #strip(String)}Ò»Ñù.
+     * å¦‚æœç¬¬äºŒä¸ªå‚æ•°ä¸º<code>null</code>, åœ¨{@link Character#isWhitespace(char)}ä¸­å®šä¹‰çš„whitespaceå°†è¢«ç§»é™¤. å’Œä½¿ç”¨{@link #strip(String)}ä¸€æ ·.
      * </p>
      * 
      * <pre>
@@ -348,9 +348,9 @@ public final class StringUtils {
      * StringUtils.strip(&quot;  abcyx&quot;, &quot;xyz&quot;) = &quot;  abc&quot;
      * </pre>
      * 
-     * @param string ĞèÒªÒÆ³ı×Ö·ûµÄstring,¿ÉÄÜÎªnull
-     * @param stripChars Ñ¡ÔñÒªÒÆ³ıµÄ×Ö·û, null±»µ±×÷whitespace´¦Àí
-     * @return ·µ»ØÒÆ³ıºóµÄ½á¹û, Èç¹ûµÚÒ»¸ö²ÎÊıÎªnull·µ»Ø<code>null</code>
+     * @param string éœ€è¦ç§»é™¤å­—ç¬¦çš„string,å¯èƒ½ä¸ºnull
+     * @param stripChars é€‰æ‹©è¦ç§»é™¤çš„å­—ç¬¦, nullè¢«å½“ä½œwhitespaceå¤„ç†
+     * @return è¿”å›ç§»é™¤åçš„ç»“æœ, å¦‚æœç¬¬ä¸€ä¸ªå‚æ•°ä¸ºnullè¿”å›<code>null</code>
      */
     public static String strip(String string, String stripChars) {
         return org.apache.commons.lang.StringUtils.strip(string, stripChars);
@@ -358,13 +358,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÒÆ³ıstringµÄ¿ª¶ËÖĞÖ¸¶¨µÄ×Ö·û.
+     * ç§»é™¤stringçš„å¼€ç«¯ä¸­æŒ‡å®šçš„å­—ç¬¦.
      * </p>
      * <p>
-     * µÚÒ»¸ö²ÎÊıÎª<code>null</code>Ê±·µ»Ø<code>null</code>. ÊäÈëÎª ("") Ê±·µ»Ø ("").
+     * ç¬¬ä¸€ä¸ªå‚æ•°ä¸º<code>null</code>æ—¶è¿”å›<code>null</code>. è¾“å…¥ä¸º ("") æ—¶è¿”å› ("").
      * </p>
      * <p>
-     * µÚ¶ş¸ö²ÎÊıÎª <code>null</code>, ÔÚ{@link Character#isWhitespace(char)}ÖĞ¶¨ÒåµÄwhitespace½«±»ÒÆ³ı.
+     * ç¬¬äºŒä¸ªå‚æ•°ä¸º <code>null</code>, åœ¨{@link Character#isWhitespace(char)}ä¸­å®šä¹‰çš„whitespaceå°†è¢«ç§»é™¤.
      * </p>
      * 
      * <pre>
@@ -378,9 +378,9 @@ public final class StringUtils {
      * StringUtils.stripStart(&quot;yxabc  &quot;, &quot;xyz&quot;) = &quot;abc  &quot;
      * </pre>
      * 
-     * @param string ĞèÒªÒÆ³ı×Ö·ûµÄstring,¿ÉÄÜÎªnull
-     * @param stripChars Ñ¡ÔñÒªÒÆ³ıµÄ×Ö·û, null±»µ±×÷whitespace´¦Àí
-     * @return ·µ»ØÒÆ³ıºóµÄ½á¹û, Èç¹ûµÚÒ»¸ö²ÎÊıÎªnull·µ»Ø<code>null</code>
+     * @param string éœ€è¦ç§»é™¤å­—ç¬¦çš„string,å¯èƒ½ä¸ºnull
+     * @param stripChars é€‰æ‹©è¦ç§»é™¤çš„å­—ç¬¦, nullè¢«å½“ä½œwhitespaceå¤„ç†
+     * @return è¿”å›ç§»é™¤åçš„ç»“æœ, å¦‚æœç¬¬ä¸€ä¸ªå‚æ•°ä¸ºnullè¿”å›<code>null</code>
      */
     public static String stripStart(String string, String stripChars) {
         return org.apache.commons.lang.StringUtils.stripStart(string, stripChars);
@@ -388,13 +388,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÒÆ³ıstringµÄÄ©Î²ÖĞÖ¸¶¨µÄ×Ö·û.
+     * ç§»é™¤stringçš„æœ«å°¾ä¸­æŒ‡å®šçš„å­—ç¬¦.
      * </p>
      * <p>
-     * µÚÒ»¸ö²ÎÊıÎª<code>null</code>Ê±·µ»Ø<code>null</code>. ÊäÈëÎª ("") Ê±·µ»Ø ("").
+     * ç¬¬ä¸€ä¸ªå‚æ•°ä¸º<code>null</code>æ—¶è¿”å›<code>null</code>. è¾“å…¥ä¸º ("") æ—¶è¿”å› ("").
      * </p>
      * <p>
-     * µÚ¶ş¸ö²ÎÊıÎª <code>null</code>, ÔÚ{@link Character#isWhitespace(char)}ÖĞ¶¨ÒåµÄwhitespace½«±»ÒÆ³ı.
+     * ç¬¬äºŒä¸ªå‚æ•°ä¸º <code>null</code>, åœ¨{@link Character#isWhitespace(char)}ä¸­å®šä¹‰çš„whitespaceå°†è¢«ç§»é™¤.
      * </p>
      * 
      * <pre>
@@ -408,9 +408,9 @@ public final class StringUtils {
      * StringUtils.stripEnd(&quot;  abcyx&quot;, &quot;xyz&quot;) = &quot;  abc&quot;
      * </pre>
      * 
-     * @param string ĞèÒªÒÆ³ı×Ö·ûµÄstring,¿ÉÄÜÎªnull
-     * @param stripChars Ñ¡ÔñÒªÒÆ³ıµÄ×Ö·û, null±»µ±×÷whitespace´¦Àí
-     * @return ·µ»ØÒÆ³ıºóµÄ½á¹û, Èç¹ûµÚÒ»¸ö²ÎÊıÎªnull·µ»Ø<code>null</code>
+     * @param string éœ€è¦ç§»é™¤å­—ç¬¦çš„string,å¯èƒ½ä¸ºnull
+     * @param stripChars é€‰æ‹©è¦ç§»é™¤çš„å­—ç¬¦, nullè¢«å½“ä½œwhitespaceå¤„ç†
+     * @return è¿”å›ç§»é™¤åçš„ç»“æœ, å¦‚æœç¬¬ä¸€ä¸ªå‚æ•°ä¸ºnullè¿”å›<code>null</code>
      */
     public static String stripEnd(String string, String stripChars) {
         return org.apache.commons.lang.StringUtils.stripEnd(string, stripChars);
@@ -418,10 +418,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÒÆ³ıstringÊı×éÖĞÃ¿¸östringµÄÁ½¶ËµÄ¿Õ°××Ö·û. Whitespace µÄ¶¨ÒåÔÚ {@link Character#isWhitespace(char)}.
+     * ç§»é™¤stringæ•°ç»„ä¸­æ¯ä¸ªstringçš„ä¸¤ç«¯çš„ç©ºç™½å­—ç¬¦. Whitespace çš„å®šä¹‰åœ¨ {@link Character#isWhitespace(char)}.
      * </p>
      * <p>
-     * Ã¿´Î¶¼·µ»ØÒ»¸öĞÂµÄÊı×é, ³ıÁËÊı×éµÄ³¤¶ÈÎª0Ê±. Ò»¸ö<code>null</code>Êı×é½«·µ»Ø<code>null</code>. ¿ÕÊı×é½«·µ»ØËü±¾Éí. Êı×éÖĞÎª<code>null</code>µÄÊı×éÔªËØ½«±»ºöÂÔ.
+     * æ¯æ¬¡éƒ½è¿”å›ä¸€ä¸ªæ–°çš„æ•°ç»„, é™¤äº†æ•°ç»„çš„é•¿åº¦ä¸º0æ—¶. ä¸€ä¸ª<code>null</code>æ•°ç»„å°†è¿”å›<code>null</code>. ç©ºæ•°ç»„å°†è¿”å›å®ƒæœ¬èº«. æ•°ç»„ä¸­ä¸º<code>null</code>çš„æ•°ç»„å…ƒç´ å°†è¢«å¿½ç•¥.
      * </p>
      * 
      * <pre>
@@ -431,8 +431,8 @@ public final class StringUtils {
      * StringUtils.stripAll([&quot;abc  &quot;, null])  = [&quot;abc&quot;, null]
      * </pre>
      * 
-     * @param strs ĞèÒª´¦ÀíµÄstringÊı×é,¿ÉÒÔÎªnull
-     * @return ·µ»Ø´¦Àí½á¹û,Èç¹ûÊäÈëÎªnull½«·µ»Ø<code>null</code>
+     * @param strs éœ€è¦å¤„ç†çš„stringæ•°ç»„,å¯ä»¥ä¸ºnull
+     * @return è¿”å›å¤„ç†ç»“æœ,å¦‚æœè¾“å…¥ä¸ºnullå°†è¿”å›<code>null</code>
      */
     public static String[] stripAll(String[] strs) {
         return org.apache.commons.lang.StringUtils.stripAll(strs);
@@ -440,12 +440,12 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÒÆ³ıstringÊı×éÖĞÃ¿¸östringµÄÁ½¶ËµÄÖ¸¶¨×Ö·û .
+     * ç§»é™¤stringæ•°ç»„ä¸­æ¯ä¸ªstringçš„ä¸¤ç«¯çš„æŒ‡å®šå­—ç¬¦ .
      * </p>
-     * Whitespace µÄ¶¨ÒåÔÚ {@link Character#isWhitespace(char)}. </p>
+     * Whitespace çš„å®šä¹‰åœ¨ {@link Character#isWhitespace(char)}. </p>
      * <p>
-     * Ã¿´Î¶¼·µ»ØÒ»¸öĞÂµÄÊı×é, ³ıÁËÊı×éµÄ³¤¶ÈÎª0Ê±. Ò»¸ö<code>null</code>Êı×é½«·µ»Ø<code>null</code>. ¿ÕÊı×é½«·µ»ØËü±¾Éí. Êı×éÖĞÎª<code>null</code>µÄÊı×éÔªËØ½«±»ºöÂÔ.
-     * µÚ¶ş¸ö²ÎÊıÎª<code>null</code>Ê±½«ÒÆ³ıÔÚ {@link Character#isWhitespace(char)}¶¨ÒåµÄwhitespace .
+     * æ¯æ¬¡éƒ½è¿”å›ä¸€ä¸ªæ–°çš„æ•°ç»„, é™¤äº†æ•°ç»„çš„é•¿åº¦ä¸º0æ—¶. ä¸€ä¸ª<code>null</code>æ•°ç»„å°†è¿”å›<code>null</code>. ç©ºæ•°ç»„å°†è¿”å›å®ƒæœ¬èº«. æ•°ç»„ä¸­ä¸º<code>null</code>çš„æ•°ç»„å…ƒç´ å°†è¢«å¿½ç•¥.
+     * ç¬¬äºŒä¸ªå‚æ•°ä¸º<code>null</code>æ—¶å°†ç§»é™¤åœ¨ {@link Character#isWhitespace(char)}å®šä¹‰çš„whitespace .
      * </p>
      * 
      * <pre>
@@ -457,9 +457,9 @@ public final class StringUtils {
      * StringUtils.stripAll([&quot;yabcz&quot;, null], &quot;yz&quot;)  = [&quot;abc&quot;, null]
      * </pre>
      * 
-     * @param strs ĞèÒª´¦ÀíµÄstringÊı×é,¿ÉÒÔÎªnull
-     * @param stripChars Òª±»ÒÆ³ıµÄ×Ö·û, null±»ÈÏÎªÊÇwhitespace
-     * @return ´¦ÀíºóµÄ½á¹û, ÊäÈënullµÄÊı×éÊ±·µ»Ø<code>null</code>
+     * @param strs éœ€è¦å¤„ç†çš„stringæ•°ç»„,å¯ä»¥ä¸ºnull
+     * @param stripChars è¦è¢«ç§»é™¤çš„å­—ç¬¦, nullè¢«è®¤ä¸ºæ˜¯whitespace
+     * @return å¤„ç†åçš„ç»“æœ, è¾“å…¥nullçš„æ•°ç»„æ—¶è¿”å›<code>null</code>
      */
     public static String[] stripAll(String[] strs, String stripChars) {
         return org.apache.commons.lang.StringUtils.stripAll(strs, stripChars);
@@ -467,10 +467,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ±È½ÏÁ½¸östring, ÏàµÈÊ±·µ»Ø<code>true</code>.
+     * æ¯”è¾ƒä¸¤ä¸ªstring, ç›¸ç­‰æ—¶è¿”å›<code>true</code>.
      * </p>
      * <p>
-     * ÄÜ´¦Àí±È½ÏÖĞÓĞÎª<code>null</code>µÄÇé¿ö. Á½¸ö<code>null</code> ±È½ÏÊ±ÈÏÎªÊÇÏàµÈµÄ. ±È½ÏÊ±ÊÇÇø·Ö´óĞ¡Ğ´µÄ.
+     * èƒ½å¤„ç†æ¯”è¾ƒä¸­æœ‰ä¸º<code>null</code>çš„æƒ…å†µ. ä¸¤ä¸ª<code>null</code> æ¯”è¾ƒæ—¶è®¤ä¸ºæ˜¯ç›¸ç­‰çš„. æ¯”è¾ƒæ—¶æ˜¯åŒºåˆ†å¤§å°å†™çš„.
      * </p>
      * 
      * <pre>
@@ -482,9 +482,9 @@ public final class StringUtils {
      * </pre>
      * 
      * @see java.lang.String#equals(Object)
-     * @param str1 µÚÒ»¸östring²ÎÊı,¿ÉÄÜÎªnull
-     * @param str2 µÚ¶ş¸östring²ÎÊı,¿ÉÄÜÎªnull
-     * @return <code>true</code> µ±Á½¸östringÏàµÈÊ±, Çø·Ö´óĞ¡Ğ´, »òÕß Í¬Îª<code>null</code>
+     * @param str1 ç¬¬ä¸€ä¸ªstringå‚æ•°,å¯èƒ½ä¸ºnull
+     * @param str2 ç¬¬äºŒä¸ªstringå‚æ•°,å¯èƒ½ä¸ºnull
+     * @return <code>true</code> å½“ä¸¤ä¸ªstringç›¸ç­‰æ—¶, åŒºåˆ†å¤§å°å†™, æˆ–è€… åŒä¸º<code>null</code>
      */
     public static boolean equals(String str1, String str2) {
         return org.apache.commons.lang.StringUtils.equals(str1, str2);
@@ -492,10 +492,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ±È½ÏÁ½¸östring, ºöÂÔ´óĞ¡Ğ´Ê±ÏàµÈ·µ»Ø <code>true</code>.
+     * æ¯”è¾ƒä¸¤ä¸ªstring, å¿½ç•¥å¤§å°å†™æ—¶ç›¸ç­‰è¿”å› <code>true</code>.
      * </p>
      * <p>
-     * ÄÜ´¦Àí±È½ÏÖĞÓĞÎª<code>null</code>µÄÇé¿ö. Á½¸ö<code>null</code> ±È½ÏÊ±ÈÏÎªÊÇÏàµÈµÄ. ±È½ÏÊ±ÊÇ²»Çø·Ö´óĞ¡Ğ´µÄ.
+     * èƒ½å¤„ç†æ¯”è¾ƒä¸­æœ‰ä¸º<code>null</code>çš„æƒ…å†µ. ä¸¤ä¸ª<code>null</code> æ¯”è¾ƒæ—¶è®¤ä¸ºæ˜¯ç›¸ç­‰çš„. æ¯”è¾ƒæ—¶æ˜¯ä¸åŒºåˆ†å¤§å°å†™çš„.
      * </p>
      * 
      * <pre>
@@ -507,9 +507,9 @@ public final class StringUtils {
      * </pre>
      * 
      * @see java.lang.String#equalsIgnoreCase(String)
-     * @param str1 µÚÒ»¸östring²ÎÊı,¿ÉÄÜÎªnull
-     * @param str2 µÚ¶ş¸östring²ÎÊı,¿ÉÄÜÎªnull
-     * @return <code>true</code> Á½¸östringÏàµÈ, ²»Çø·Ö´óĞ¡Ğ´, »òÕß Í¬Îª<code>null</code>
+     * @param str1 ç¬¬ä¸€ä¸ªstringå‚æ•°,å¯èƒ½ä¸ºnull
+     * @param str2 ç¬¬äºŒä¸ªstringå‚æ•°,å¯èƒ½ä¸ºnull
+     * @return <code>true</code> ä¸¤ä¸ªstringç›¸ç­‰, ä¸åŒºåˆ†å¤§å°å†™, æˆ–è€… åŒä¸º<code>null</code>
      */
     public static boolean equalsIgnoreCase(String str1, String str2) {
         return org.apache.commons.lang.StringUtils.equalsIgnoreCase(str1, str2);
@@ -517,10 +517,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷stringÖĞµÚÒ»¸öÖ¸¶¨×Ö·ûµÄÎ»ÖÃ, ÄÜ´¦Àí<code>null</code>µÄÇé¿ö. Õâ¸ö·½·¨Ê¹ÓÃÁË {@link String#indexOf(int)}.
+     * æ£€ç´¢stringä¸­ç¬¬ä¸€ä¸ªæŒ‡å®šå­—ç¬¦çš„ä½ç½®, èƒ½å¤„ç†<code>null</code>çš„æƒ…å†µ. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº† {@link String#indexOf(int)}.
      * </p>
      * <p>
-     * Ò»¸ö<code>null</code>×Ö·û´®»òÕß("")×Ö·û´®½«»á·µ»Ø<code>-1</code>.
+     * ä¸€ä¸ª<code>null</code>å­—ç¬¦ä¸²æˆ–è€…("")å­—ç¬¦ä¸²å°†ä¼šè¿”å›<code>-1</code>.
      * </p>
      * 
      * <pre>
@@ -530,9 +530,9 @@ public final class StringUtils {
      * StringUtils.indexOf(&quot;aabaabaa&quot;, 'b') = 2
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchChar Òª½øĞĞ¼ìË÷µÄ×Ö·û
-     * @return µÚÒ»¸ö³öÏÖ¼ìË÷µÄ×Ö·ûµÄÎ»ÖÃ, -1 string ÖĞÃ»ÓĞÖ¸¶¨µÄ×Ö·û»òÕßÊäÈë<code>null</code>µÄ×Ö·û´®
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchChar è¦è¿›è¡Œæ£€ç´¢çš„å­—ç¬¦
+     * @return ç¬¬ä¸€ä¸ªå‡ºç°æ£€ç´¢çš„å­—ç¬¦çš„ä½ç½®, -1 string ä¸­æ²¡æœ‰æŒ‡å®šçš„å­—ç¬¦æˆ–è€…è¾“å…¥<code>null</code>çš„å­—ç¬¦ä¸²
      * @since 2.0
      */
     public static int indexOf(String string, char searchChar) {
@@ -541,10 +541,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷³östringÖĞ´ÓÆğÊ¼Î»¿ªÊ¼µÚÒ»¸öÖ¸¶¨×Ö·ûµÄÎ»ÖÃ,ÄÜ´¦Àí<code>null</code>µÄÇé¿ö. Õâ¸ö·½·¨Ê¹ÓÃÁË {@link String#indexOf(int, int)}.
+     * æ£€ç´¢å‡ºstringä¸­ä»èµ·å§‹ä½å¼€å§‹ç¬¬ä¸€ä¸ªæŒ‡å®šå­—ç¬¦çš„ä½ç½®,èƒ½å¤„ç†<code>null</code>çš„æƒ…å†µ. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº† {@link String#indexOf(int, int)}.
      * </p>
      * <p>
-     * Îª<code>null</code>»òÕß×Ö·û´®Îª("")½«·µ»Ø<code>-1</code>. Èç¹ûÆğÊ¼Î»Îª¸ºÊı½«µ±×÷´ÓµÚÒ»Î»¿ªÊ¼¼ìË÷. Èç¹ûÆğÊ¼µÄÎ»ÖÃ±ÈstringµÄ³¤¶È´ó½«·µ»Ø <code>-1</code>.
+     * ä¸º<code>null</code>æˆ–è€…å­—ç¬¦ä¸²ä¸º("")å°†è¿”å›<code>-1</code>. å¦‚æœèµ·å§‹ä½ä¸ºè´Ÿæ•°å°†å½“ä½œä»ç¬¬ä¸€ä½å¼€å§‹æ£€ç´¢. å¦‚æœèµ·å§‹çš„ä½ç½®æ¯”stringçš„é•¿åº¦å¤§å°†è¿”å› <code>-1</code>.
      * </p>
      * 
      * <pre>
@@ -556,10 +556,10 @@ public final class StringUtils {
      * StringUtils.indexOf(&quot;aabaabaa&quot;, 'b', -1) = 2
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchChar Òª½øĞĞ¼ìË÷µÄ×Ö·û
-     * @param startPos ÆğÊ¼Î»ÖÃ£¬¸ºÊı½«µ±×÷Áã
-     * @return µÚÒ»¸ö³öÏÖ¼ìË÷µÄ×Ö·ûµÄÎ»ÖÃ, -1 string ÖĞÃ»ÓĞÖ¸¶¨µÄ×Ö·û»òÕßÊäÈë<code>null</code>µÄ×Ö·û´®
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchChar è¦è¿›è¡Œæ£€ç´¢çš„å­—ç¬¦
+     * @param startPos èµ·å§‹ä½ç½®ï¼Œè´Ÿæ•°å°†å½“ä½œé›¶
+     * @return ç¬¬ä¸€ä¸ªå‡ºç°æ£€ç´¢çš„å­—ç¬¦çš„ä½ç½®, -1 string ä¸­æ²¡æœ‰æŒ‡å®šçš„å­—ç¬¦æˆ–è€…è¾“å…¥<code>null</code>çš„å­—ç¬¦ä¸²
      * @since 2.0
      */
     public static int indexOf(String string, char searchChar, int startPos) {
@@ -568,10 +568,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷stringÖĞµÚÒ»¸öÖ¸¶¨×Ö·ûµÄÎ»ÖÃ, ÄÜ´¦Àí <code>null</code>µÄÇé¿ö. TÕâ¸ö·½·¨Ê¹ÓÃÁË {@link String#indexOf(String)}.
+     * æ£€ç´¢stringä¸­ç¬¬ä¸€ä¸ªæŒ‡å®šå­—ç¬¦çš„ä½ç½®, èƒ½å¤„ç† <code>null</code>çš„æƒ…å†µ. Tè¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº† {@link String#indexOf(String)}.
      * </p>
      * <p>
-     * Îª<code>null</code> µÄString ·µ»Ø <code>-1</code>.
+     * ä¸º<code>null</code> çš„String è¿”å› <code>-1</code>.
      * </p>
      * 
      * <pre>
@@ -584,9 +584,9 @@ public final class StringUtils {
      * StringUtils.indexOf(&quot;aabaabaa&quot;, &quot;&quot;)   = 0
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchStr Òª½øĞĞ¼ìË÷µÄ×Ö·û,¿ÉÄÜÎªnull
-     * @return µÚÒ»¸ö³öÏÖ¼ìË÷µÄ×Ö·ûµÄÎ»ÖÃ, -1 string ÖĞÃ»ÓĞÖ¸¶¨µÄ×Ö·û»òÕßÊäÈë<code>null</code>µÄ×Ö·û´®
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchStr è¦è¿›è¡Œæ£€ç´¢çš„å­—ç¬¦,å¯èƒ½ä¸ºnull
+     * @return ç¬¬ä¸€ä¸ªå‡ºç°æ£€ç´¢çš„å­—ç¬¦çš„ä½ç½®, -1 string ä¸­æ²¡æœ‰æŒ‡å®šçš„å­—ç¬¦æˆ–è€…è¾“å…¥<code>null</code>çš„å­—ç¬¦ä¸²
      */
     public static int indexOf(String string, String searchStr) {
         return org.apache.commons.lang.StringUtils.indexOf(string, searchStr);
@@ -594,11 +594,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷³östringÖĞ´ÓÖ¸¶¨Î»¿ªÊ¼µÚÒ»¸öÖ¸¶¨×Ö·ûµÄÎ»ÖÃ, ÄÜ´¦Àí <code>null</code>µÄÇé¿ö. Õâ¸ö·½·¨Ê¹ÓÃÁË {@link String#indexOf(String, int)}.
+     * æ£€ç´¢å‡ºstringä¸­ä»æŒ‡å®šä½å¼€å§‹ç¬¬ä¸€ä¸ªæŒ‡å®šå­—ç¬¦çš„ä½ç½®, èƒ½å¤„ç† <code>null</code>çš„æƒ…å†µ. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº† {@link String#indexOf(String, int)}.
      * </p>
      * <p>
-     * Îª<code>null</code> µÄString ·µ»Ø <code>-1</code>. ¸ºÊıµÄ¼ìË÷Î»ÖÃµ±×÷Áã. ¿ÕµÄ×Ö·û("") ×ÜÊÇÂú×ãÌõ¼ş.
-     * Èç¹û¼ìË÷µÄÎ»ÖÃ´óÓÚstringµÄ³¤¶È,Ö»ÓĞµ±¼ìË÷µÄÊı¾İÎª("")Ê±²ÅÄÜ·µ»Ø½á¹û .
+     * ä¸º<code>null</code> çš„String è¿”å› <code>-1</code>. è´Ÿæ•°çš„æ£€ç´¢ä½ç½®å½“ä½œé›¶. ç©ºçš„å­—ç¬¦("") æ€»æ˜¯æ»¡è¶³æ¡ä»¶.
+     * å¦‚æœæ£€ç´¢çš„ä½ç½®å¤§äºstringçš„é•¿åº¦,åªæœ‰å½“æ£€ç´¢çš„æ•°æ®ä¸º("")æ—¶æ‰èƒ½è¿”å›ç»“æœ .
      * </p>
      * 
      * <pre>
@@ -615,10 +615,10 @@ public final class StringUtils {
      * StringUtils.indexOf(&quot;abc&quot;, &quot;&quot;, 9)        = 3
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchStr Òª½øĞĞ¼ìË÷µÄ×Ö·û,¿ÉÄÜÎªnull
-     * @param startPos ÆğÊ¼Î»ÖÃ£¬¸ºÊı½«µ±×÷Áã
-     * @return µÚÒ»¸ö³öÏÖ¼ìË÷µÄ×Ö·ûµÄÎ»ÖÃ, -1 string ÖĞÃ»ÓĞÖ¸¶¨µÄ×Ö·û»òÕßÊäÈë<code>null</code>µÄ×Ö·û´®
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchStr è¦è¿›è¡Œæ£€ç´¢çš„å­—ç¬¦,å¯èƒ½ä¸ºnull
+     * @param startPos èµ·å§‹ä½ç½®ï¼Œè´Ÿæ•°å°†å½“ä½œé›¶
+     * @return ç¬¬ä¸€ä¸ªå‡ºç°æ£€ç´¢çš„å­—ç¬¦çš„ä½ç½®, -1 string ä¸­æ²¡æœ‰æŒ‡å®šçš„å­—ç¬¦æˆ–è€…è¾“å…¥<code>null</code>çš„å­—ç¬¦ä¸²
      */
     public static int indexOf(String string, String searchStr, int startPos) {
         return org.apache.commons.lang.StringUtils.indexOf(string, searchStr, startPos);
@@ -626,10 +626,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷stringÖĞ×îºóÒ»¸öÖ¸¶¨×Ö·ûµÄÎ»ÖÃ, ÄÜ´¦Àí <code>null</code>µÄÇé¿ö. Õâ¸ö·½·¨Ê¹ÓÃÁË {@link String#lastIndexOf(int)}.
+     * æ£€ç´¢stringä¸­æœ€åä¸€ä¸ªæŒ‡å®šå­—ç¬¦çš„ä½ç½®, èƒ½å¤„ç† <code>null</code>çš„æƒ…å†µ. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº† {@link String#lastIndexOf(int)}.
      * </p>
      * <p>
-     * <code>null</code>µÄstring»òÕß("") String ·µ»Ø <code>-1</code>.
+     * <code>null</code>çš„stringæˆ–è€…("") String è¿”å› <code>-1</code>.
      * </p>
      * 
      * <pre>
@@ -639,9 +639,9 @@ public final class StringUtils {
      * StringUtils.lastIndexOf(&quot;aabaabaa&quot;, 'b') = 5
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchChar Òª½øĞĞ¼ìË÷µÄ×Ö·û
-     * @return ×îºó³öÏÖ¼ìË÷µÄ×Ö·ûµÄÎ»ÖÃ, -1 string ÖĞÃ»ÓĞÖ¸¶¨µÄ×Ö·û»òÕßÊäÈë<code>null</code>µÄ×Ö·û´®
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchChar è¦è¿›è¡Œæ£€ç´¢çš„å­—ç¬¦
+     * @return æœ€åå‡ºç°æ£€ç´¢çš„å­—ç¬¦çš„ä½ç½®, -1 string ä¸­æ²¡æœ‰æŒ‡å®šçš„å­—ç¬¦æˆ–è€…è¾“å…¥<code>null</code>çš„å­—ç¬¦ä¸²
      * @since 2.0
      */
     public static int lastIndexOf(String string, char searchChar) {
@@ -650,11 +650,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷³östringÖĞ´ÓÖ¸¶¨Î»¿ªÊ¼×îºóÒ»¸öÖ¸¶¨×Ö·ûµÄÎ»ÖÃ, ÄÜ´¦Àí <code>null</code>µÄÇé¿ö. Õâ¸ö·½·¨Ê¹ÓÃÁË {@link String#lastIndexOf(int, int)}.
+     * æ£€ç´¢å‡ºstringä¸­ä»æŒ‡å®šä½å¼€å§‹æœ€åä¸€ä¸ªæŒ‡å®šå­—ç¬¦çš„ä½ç½®, èƒ½å¤„ç† <code>null</code>çš„æƒ…å†µ. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº† {@link String#lastIndexOf(int, int)}.
      * </p>
      * <p>
-     * <code>null</code>µÄstring»òÕß("") String ·µ»Ø <code>-1</code>. Èç¹ûÆğÊ¼Î»ÖÃÎª¸ºÊı½«·µ»Ø<code>-1</code>.
-     * ÆğÊ¼Î»ÖÃ´óÓÚstringµÄ³¤¶È½«¼ìË÷Õû¸östring.
+     * <code>null</code>çš„stringæˆ–è€…("") String è¿”å› <code>-1</code>. å¦‚æœèµ·å§‹ä½ç½®ä¸ºè´Ÿæ•°å°†è¿”å›<code>-1</code>.
+     * èµ·å§‹ä½ç½®å¤§äºstringçš„é•¿åº¦å°†æ£€ç´¢æ•´ä¸ªstring.
      * </p>
      * 
      * <pre>
@@ -668,10 +668,10 @@ public final class StringUtils {
      * StringUtils.lastIndexOf(&quot;aabaabaa&quot;, 'a', 0)  = 0
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchChar ĞèÒª²éÑ¯µÄ×Ö·û
-     * @param startPos ²éÑ¯µÄÆğÊ¼Î»ÖÃ
-     * @return ×îºóÒ»¸öÖ¸¶¨×Ö·ûµÄÎ»ÖÃ, -1 string ÖĞÃ»ÓĞÖ¸¶¨µÄ×Ö·û»òÕßÊäÈë<code>null</code>µÄ×Ö·û´®
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchChar éœ€è¦æŸ¥è¯¢çš„å­—ç¬¦
+     * @param startPos æŸ¥è¯¢çš„èµ·å§‹ä½ç½®
+     * @return æœ€åä¸€ä¸ªæŒ‡å®šå­—ç¬¦çš„ä½ç½®, -1 string ä¸­æ²¡æœ‰æŒ‡å®šçš„å­—ç¬¦æˆ–è€…è¾“å…¥<code>null</code>çš„å­—ç¬¦ä¸²
      * @since 2.0
      */
     public static int lastIndexOf(String string, char searchChar, int startPos) {
@@ -680,10 +680,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷³östringÖĞ×îºóÒ»¸öÖ¸¶¨×Ö·ûµÄÎ»ÖÃ, ÄÜ´¦Àí <code>null</code>µÄÇé¿ö. Õâ¸ö·½·¨Ê¹ÓÃÁË {@link String#lastIndexOf(String)}.
+     * æ£€ç´¢å‡ºstringä¸­æœ€åä¸€ä¸ªæŒ‡å®šå­—ç¬¦çš„ä½ç½®, èƒ½å¤„ç† <code>null</code>çš„æƒ…å†µ. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº† {@link String#lastIndexOf(String)}.
      * </p>
      * <p>
-     * <code>null</code>µÄString ½«·µ»Ø <code>-1</code>.
+     * <code>null</code>çš„String å°†è¿”å› <code>-1</code>.
      * </p>
      * 
      * <pre>
@@ -696,9 +696,9 @@ public final class StringUtils {
      * StringUtils.lastIndexOf(&quot;aabaabaa&quot;, &quot;&quot;)   = 8
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchStr ĞèÒª²éÕÒµÄstring, ¿ÉÄÜÎªnull
-     * @return the last index of the search String, -1 string ÖĞÃ»ÓĞÖ¸¶¨µÄ×Ö·û»òÕßÊäÈë<code>null</code>µÄ×Ö·û´®
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchStr éœ€è¦æŸ¥æ‰¾çš„string, å¯èƒ½ä¸ºnull
+     * @return the last index of the search String, -1 string ä¸­æ²¡æœ‰æŒ‡å®šçš„å­—ç¬¦æˆ–è€…è¾“å…¥<code>null</code>çš„å­—ç¬¦ä¸²
      * @since 2.0
      */
     public static int lastIndexOf(String string, String searchStr) {
@@ -707,12 +707,12 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷³ö×Ö·û´®strÖĞÖ¸¶¨Î»ÖÃstartPosÒÔÇ°µÄ×Ö·û´®ÖĞ ÌØ¶¨×Ö·ûsearchStr×îºó³öÏÖµÄÎ»ÖÃ, ÄÜ´¦Àí <code>null</code>µÄÇé¿ö. Õâ¸ö·½·¨Ê¹ÓÃÁË
+     * æ£€ç´¢å‡ºå­—ç¬¦ä¸²strä¸­æŒ‡å®šä½ç½®startPosä»¥å‰çš„å­—ç¬¦ä¸²ä¸­ ç‰¹å®šå­—ç¬¦searchStræœ€åå‡ºç°çš„ä½ç½®, èƒ½å¤„ç† <code>null</code>çš„æƒ…å†µ. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº†
      * {@link String#lastIndexOf(String, int)}.
      * </p>
      * <p>
-     * <code>null</code> µÄString ½«·µ»Ø <code>-1</code>. Èç¹ûÆğÊ¼Î»ÖÃÎª¸ºÊı½«·µ»Ø <code>-1</code>. ³ı·ÇÆğÊ¼Î»ÖÃÎª¸ºÊı,ÄÇÃ´¿ÕµÄstring("")½«×ÜÊÇÄÜÆ¥Åä.
-     * Èç¹ûÆğÊ¼Î»³¬³öÁËstringµÄ³¤¶È½«¶ÔÕû¸östring½øĞĞ¼ìË÷.
+     * <code>null</code> çš„String å°†è¿”å› <code>-1</code>. å¦‚æœèµ·å§‹ä½ç½®ä¸ºè´Ÿæ•°å°†è¿”å› <code>-1</code>. é™¤éèµ·å§‹ä½ç½®ä¸ºè´Ÿæ•°,é‚£ä¹ˆç©ºçš„string("")å°†æ€»æ˜¯èƒ½åŒ¹é….
+     * å¦‚æœèµ·å§‹ä½è¶…å‡ºäº†stringçš„é•¿åº¦å°†å¯¹æ•´ä¸ªstringè¿›è¡Œæ£€ç´¢.
      * </p>
      * 
      * <pre>
@@ -727,10 +727,10 @@ public final class StringUtils {
      * StringUtils.lastIndexOf(&quot;aabaabaa&quot;, &quot;b&quot;, 0)  = -1
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchStr ĞèÒª²éÑ¯µÄstring, ¿ÉÄÜÎªnull
-     * @param startPos ¿ªÊ¼²éÑ¯µÄÎ»ÖÃ, ¸ºÊıµ±×÷Áã
-     * @return ¼ìË÷³öµÄÎ»ÖÃ, -1 string ÖĞÃ»ÓĞÖ¸¶¨µÄ×Ö·û»òÕßÊäÈë<code>null</code>µÄ×Ö·û´®
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchStr éœ€è¦æŸ¥è¯¢çš„string, å¯èƒ½ä¸ºnull
+     * @param startPos å¼€å§‹æŸ¥è¯¢çš„ä½ç½®, è´Ÿæ•°å½“ä½œé›¶
+     * @return æ£€ç´¢å‡ºçš„ä½ç½®, -1 string ä¸­æ²¡æœ‰æŒ‡å®šçš„å­—ç¬¦æˆ–è€…è¾“å…¥<code>null</code>çš„å­—ç¬¦ä¸²
      * @since 2.0
      */
     public static int lastIndexOf(String string, String searchStr, int startPos) {
@@ -739,10 +739,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ì²é×Ö·û´®strÊÇ·ñ°üº¬Ö¸¶¨µÄ×Ö·ûsearchChar, ÄÜ´¦Àí <code>null</code>µÄÇé¿ö. Õâ¸ö·½·¨Ê¹ÓÃÁË {@link String#indexOf(int)}.
+     * æ£€æŸ¥å­—ç¬¦ä¸²stræ˜¯å¦åŒ…å«æŒ‡å®šçš„å­—ç¬¦searchChar, èƒ½å¤„ç† <code>null</code>çš„æƒ…å†µ. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº† {@link String#indexOf(int)}.
      * </p>
      * <p>
-     * <code>null</code>×Ö·û»òÕß¿Õ×Ö·û´®("")½«·µ»Ø <code>false</code>.
+     * <code>null</code>å­—ç¬¦æˆ–è€…ç©ºå­—ç¬¦ä¸²("")å°†è¿”å› <code>false</code>.
      * </p>
      * 
      * <pre>
@@ -752,9 +752,9 @@ public final class StringUtils {
      * StringUtils.contains(&quot;abc&quot;, 'z') = false
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchChar Òª²éÕÒµÄ×Ö·û
-     * @return true stringÖĞ°üº¬Òª²éÕÒµÄ×Ö·û, false Ã»ÓĞÒª²éÕÒµÄ×Ö·û»òÕßÊäÈëÎ» <code>null</code>
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchChar è¦æŸ¥æ‰¾çš„å­—ç¬¦
+     * @return true stringä¸­åŒ…å«è¦æŸ¥æ‰¾çš„å­—ç¬¦, false æ²¡æœ‰è¦æŸ¥æ‰¾çš„å­—ç¬¦æˆ–è€…è¾“å…¥ä½ <code>null</code>
      * @since 2.0
      */
     public static boolean contains(String string, char searchChar) {
@@ -763,10 +763,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ì²éstringÊÇ·ñ³öÏÖÖ¸¶¨µÄ×Ö·û´®, ÄÜ´¦Àí <code>null</code>µÄÇé¿ö. Õâ¸ö·½·¨Ê¹ÓÃÁË {@link String#indexOf(int)}.
+     * æ£€æŸ¥stringæ˜¯å¦å‡ºç°æŒ‡å®šçš„å­—ç¬¦ä¸², èƒ½å¤„ç† <code>null</code>çš„æƒ…å†µ. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº† {@link String#indexOf(int)}.
      * </p>
      * <p>
-     * <code>null</code> µÄString ·µ»Ø <code>false</code>.
+     * <code>null</code> çš„String è¿”å› <code>false</code>.
      * </p>
      * 
      * <pre>
@@ -778,9 +778,9 @@ public final class StringUtils {
      * StringUtils.contains(&quot;abc&quot;, &quot;z&quot;)  = false
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchStr ĞèÒª²éÕÒµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return true stringÖĞ°üº¬Òª²éÕÒµÄ×Ö·û´®, false Ã»ÓĞÒª²éÕÒµÄ×Ö·û»òÕßÊäÈëÎ» <code>null</code>
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchStr éœ€è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return true stringä¸­åŒ…å«è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸², false æ²¡æœ‰è¦æŸ¥æ‰¾çš„å­—ç¬¦æˆ–è€…è¾“å…¥ä½ <code>null</code>
      * @since 2.0
      */
     public static boolean contains(String string, String searchStr) {
@@ -789,10 +789,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷³ö×Ö·û´®strÖĞµÚÒ»¸ö°üº¬×Ö·ûÊı×ésearchCharsÖĞÈÎÒâ×Ö·ûµÄÎ»ÖÃ .
+     * æ£€ç´¢å‡ºå­—ç¬¦ä¸²strä¸­ç¬¬ä¸€ä¸ªåŒ…å«å­—ç¬¦æ•°ç»„searchCharsä¸­ä»»æ„å­—ç¬¦çš„ä½ç½® .
      * </p>
      * <p>
-     * <code>null</code> µÄString ·µ»Ø<code>-1</code>. <code>null</code> »òÕß×Ö·ûÊı×éµÄ³¤¶ÈÎªÁã·µ»Ø<code>-1</code>.
+     * <code>null</code> çš„String è¿”å›<code>-1</code>. <code>null</code> æˆ–è€…å­—ç¬¦æ•°ç»„çš„é•¿åº¦ä¸ºé›¶è¿”å›<code>-1</code>.
      * </p>
      * 
      * <pre>
@@ -805,9 +805,9 @@ public final class StringUtils {
      * StringUtils.indexOfAny(&quot;aba&quot;, ['z'])           = -1
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchChars ĞèÒª²éÕÒµÄ×Ö·û, ¿ÉÄÜÎªnull
-     * @return ·µ»ØµÚÒ»¸ö¼ìË÷³öµÄÎ»ÖÃ, Ã»ÓĞÊÊºÏµÄ»òÕßÊäÈënull¶¼½«·µ»Ø-1
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchChars éœ€è¦æŸ¥æ‰¾çš„å­—ç¬¦, å¯èƒ½ä¸ºnull
+     * @return è¿”å›ç¬¬ä¸€ä¸ªæ£€ç´¢å‡ºçš„ä½ç½®, æ²¡æœ‰é€‚åˆçš„æˆ–è€…è¾“å…¥nulléƒ½å°†è¿”å›-1
      * @since 2.0
      */
     public static int indexOfAny(String string, char[] searchChars) {
@@ -816,10 +816,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷³ö×Ö·û´®strÖĞµÚÒ»¸ö³öÏÖ×Ö·û´®searchCharsµÄÈÎÒâ×Ö·ûµÄÎ»ÖÃ .
+     * æ£€ç´¢å‡ºå­—ç¬¦ä¸²strä¸­ç¬¬ä¸€ä¸ªå‡ºç°å­—ç¬¦ä¸²searchCharsçš„ä»»æ„å­—ç¬¦çš„ä½ç½® .
      * </p>
      * <p>
-     * <code>null</code> µÄString ·µ»Ø<code>-1</code>. ĞèÒª¼ìË÷µÄstringÎª<code>null</code> ·µ»Ø <code>-1</code>.
+     * <code>null</code> çš„String è¿”å›<code>-1</code>. éœ€è¦æ£€ç´¢çš„stringä¸º<code>null</code> è¿”å› <code>-1</code>.
      * </p>
      * 
      * <pre>
@@ -832,9 +832,9 @@ public final class StringUtils {
      * StringUtils.indexOfAny(&quot;aba&quot;,&quot;z&quot;)          = -1
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchChars ĞèÒª²éÕÒµÄ×Ö·û, ¿ÉÄÜÎªnull
-     * @return ·µ»ØµÚÒ»¸ö¼ìË÷³öµÄÎ»ÖÃ, Ã»ÓĞÊÊºÏµÄ»òÕßÊäÈënull¶¼½«·µ»Ø-1
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchChars éœ€è¦æŸ¥æ‰¾çš„å­—ç¬¦, å¯èƒ½ä¸ºnull
+     * @return è¿”å›ç¬¬ä¸€ä¸ªæ£€ç´¢å‡ºçš„ä½ç½®, æ²¡æœ‰é€‚åˆçš„æˆ–è€…è¾“å…¥nulléƒ½å°†è¿”å›-1
      * @since 2.0
      */
     public static int indexOfAny(String string, String searchChars) {
@@ -843,10 +843,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷³ö×Ö·û´®strÖĞµÚÒ»¸ö³öÏÖ²»ÊÇ×Ö·ûÊı×ésearchCharsµÄ×Ö·ûµÄÎ»ÖÃ .
+     * æ£€ç´¢å‡ºå­—ç¬¦ä¸²strä¸­ç¬¬ä¸€ä¸ªå‡ºç°ä¸æ˜¯å­—ç¬¦æ•°ç»„searchCharsçš„å­—ç¬¦çš„ä½ç½® .
      * </p>
      * <p>
-     * <code>null</code> µÄString ·µ»Ø <code>-1</code>. <code>null</code> »òÕß×Ö·ûµÄ³¤¶ÈÎªÁã·µ»Ø<code>-1</code>.
+     * <code>null</code> çš„String è¿”å› <code>-1</code>. <code>null</code> æˆ–è€…å­—ç¬¦çš„é•¿åº¦ä¸ºé›¶è¿”å›<code>-1</code>.
      * </p>
      * 
      * <pre>
@@ -859,9 +859,9 @@ public final class StringUtils {
      * StringUtils.indexOfAnyBut(&quot;aba&quot;, 'ab')       = -1
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchChars Òª¼ìË÷µÄ×Ö·û, ¿ÉÄÜÎªnull
-     * @return ·µ»ØµÚÒ»¸ö¼ìË÷³öµÄÎ»ÖÃ, Ã»ÓĞÊÊºÏµÄ»òÕßÊäÈënull¶¼½«·µ»Ø-1
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchChars è¦æ£€ç´¢çš„å­—ç¬¦, å¯èƒ½ä¸ºnull
+     * @return è¿”å›ç¬¬ä¸€ä¸ªæ£€ç´¢å‡ºçš„ä½ç½®, æ²¡æœ‰é€‚åˆçš„æˆ–è€…è¾“å…¥nulléƒ½å°†è¿”å›-1
      * @since 2.0
      */
     public static int indexOfAnyBut(String string, char[] searchChars) {
@@ -870,10 +870,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ìË÷³ö×Ö·û´®strÖĞµÚÒ»¸ö³öÏÖ²»ÊÇ×Ö·û´®searchCharsµÄ×Ö·ûµÄÎ»ÖÃ .
+     * æ£€ç´¢å‡ºå­—ç¬¦ä¸²strä¸­ç¬¬ä¸€ä¸ªå‡ºç°ä¸æ˜¯å­—ç¬¦ä¸²searchCharsçš„å­—ç¬¦çš„ä½ç½® .
      * </p>
      * <p>
-     * µÚÒ»¸ö²ÎÊıÎª<code>null</code>½«·µ»Ø<code>-1</code>. µÚ¶ş¸ö²ÎÊıÎª<code>null</code>½«·µ»Ø<code>-1</code>.
+     * ç¬¬ä¸€ä¸ªå‚æ•°ä¸º<code>null</code>å°†è¿”å›<code>-1</code>. ç¬¬äºŒä¸ªå‚æ•°ä¸º<code>null</code>å°†è¿”å›<code>-1</code>.
      * </p>
      * 
      * <pre>
@@ -886,9 +886,9 @@ public final class StringUtils {
      * StringUtils.indexOfAnyBut(&quot;aba&quot;,&quot;ab&quot;)         = -1
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchChars ×Ö·û´®AÖĞ¿ÉÄÜ°üº¬µÄ×Ö·û´®B, ¿ÉÄÜÎªnull
-     * @return ·µ»ØµÚÒ»¸ö¼ìË÷³öµÄÎ»ÖÃ, Ã»ÓĞÊÊºÏµÄ»òÕßÊäÈënull¶¼½«·µ»Ø-1
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchChars å­—ç¬¦ä¸²Aä¸­å¯èƒ½åŒ…å«çš„å­—ç¬¦ä¸²B, å¯èƒ½ä¸ºnull
+     * @return è¿”å›ç¬¬ä¸€ä¸ªæ£€ç´¢å‡ºçš„ä½ç½®, æ²¡æœ‰é€‚åˆçš„æˆ–è€…è¾“å…¥nulléƒ½å°†è¿”å›-1
      * @since 2.0
      */
     public static int indexOfAnyBut(String string, String searchChars) {
@@ -897,10 +897,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ×Ö·û´®strÖĞÊÇ·ñÖ»ÓĞ×Ö·ûÊı×évalidÖĞµÄ×Ö·û.
+     * å­—ç¬¦ä¸²strä¸­æ˜¯å¦åªæœ‰å­—ç¬¦æ•°ç»„validä¸­çš„å­—ç¬¦.
      * </p>
      * <p>
-     * µÚÒ»¸ö²ÎÊıÎª<code>null</code> ·µ»Ø <code>false</code>. µÚ¶ş¸ö²ÎÊıÎª<code>null</code> ·µ»Ø <code>false</code>. µÚÒ»¸ö²ÎÊıÎª ("") ·µ»Ø
+     * ç¬¬ä¸€ä¸ªå‚æ•°ä¸º<code>null</code> è¿”å› <code>false</code>. ç¬¬äºŒä¸ªå‚æ•°ä¸º<code>null</code> è¿”å› <code>false</code>. ç¬¬ä¸€ä¸ªå‚æ•°ä¸º ("") è¿”å›
      * <code>true</code>.
      * </p>
      * 
@@ -914,9 +914,9 @@ public final class StringUtils {
      * StringUtils.containsOnly(&quot;abz&quot;, 'abc')  = false
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param valid ×Ö·ûÊı×é²ÎÊı, ¿ÉÄÜÎªnull
-     * @return true ×Ö·û´®²»Îªnull,²¢ÇÒ×Ö·û´®ÖĞµÄ×Ö·û¶¼ÊÇ×Ö·ûÊı×éÖĞµÄ×Ö·û
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param valid å­—ç¬¦æ•°ç»„å‚æ•°, å¯èƒ½ä¸ºnull
+     * @return true å­—ç¬¦ä¸²ä¸ä¸ºnull,å¹¶ä¸”å­—ç¬¦ä¸²ä¸­çš„å­—ç¬¦éƒ½æ˜¯å­—ç¬¦æ•°ç»„ä¸­çš„å­—ç¬¦
      */
     public static boolean containsOnly(String string, char[] valid) {
         return org.apache.commons.lang.StringUtils.containsOnly(string, valid);
@@ -924,10 +924,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ×Ö·û´®strÖĞÊÇ·ñÖ»ÓĞ×Ö·û´®validCharsÖĞµÄ×Ö·û.
+     * å­—ç¬¦ä¸²strä¸­æ˜¯å¦åªæœ‰å­—ç¬¦ä¸²validCharsä¸­çš„å­—ç¬¦.
      * </p>
      * <p>
-     * µÚÒ»¸ö²ÎÊıÎª<code>null</code> ·µ»Ø <code>false</code>. µÚ¶ş¸ö²ÎÊıÎª<code>null</code> ·µ»Ø <code>false</code>. µÚÒ»¸ö²ÎÊıÎª ("") ·µ»Ø
+     * ç¬¬ä¸€ä¸ªå‚æ•°ä¸º<code>null</code> è¿”å› <code>false</code>. ç¬¬äºŒä¸ªå‚æ•°ä¸º<code>null</code> è¿”å› <code>false</code>. ç¬¬ä¸€ä¸ªå‚æ•°ä¸º ("") è¿”å›
      * <code>true</code>.
      * </p>
      * 
@@ -941,9 +941,9 @@ public final class StringUtils {
      * StringUtils.containsOnly(&quot;abz&quot;, &quot;abc&quot;)  = false
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param validChars ×Ö·û´®²ÎÊı, ¿ÉÄÜÎªnull
-     * @return true ×Ö·û´®²»Îªnull,²¢ÇÒ×Ö·û´®strÖĞµÄ×Ö·û¶¼ÊÇ×Ö·û´®validCharsÖĞµÄ×Ö·û
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param validChars å­—ç¬¦ä¸²å‚æ•°, å¯èƒ½ä¸ºnull
+     * @return true å­—ç¬¦ä¸²ä¸ä¸ºnull,å¹¶ä¸”å­—ç¬¦ä¸²strä¸­çš„å­—ç¬¦éƒ½æ˜¯å­—ç¬¦ä¸²validCharsä¸­çš„å­—ç¬¦
      * @since 2.0
      */
     public static boolean containsOnly(String string, String validChars) {
@@ -952,10 +952,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ì²é×Ö·û´®strÖĞÊÇ·ñ²»º¬ÓĞ×Ö·ûÊı×éinvalidCharÖĞµÄ×Ö·û.
+     * æ£€æŸ¥å­—ç¬¦ä¸²strä¸­æ˜¯å¦ä¸å«æœ‰å­—ç¬¦æ•°ç»„invalidCharä¸­çš„å­—ç¬¦.
      * </p>
      * <p>
-     * µÚÒ»¸ö²ÎÊıÎª<code>null</code> ·µ»Ø <code>true</code>. µÚ¶ş¸ö²ÎÊıÎª<code>null</code> ·µ»Ø <code>true</code>. ²ÎÊıÖĞÓĞÎª¿Õ("") Ê±·µ»Øtrue.
+     * ç¬¬ä¸€ä¸ªå‚æ•°ä¸º<code>null</code> è¿”å› <code>true</code>. ç¬¬äºŒä¸ªå‚æ•°ä¸º<code>null</code> è¿”å› <code>true</code>. å‚æ•°ä¸­æœ‰ä¸ºç©º("") æ—¶è¿”å›true.
      * </p>
      * 
      * <pre>
@@ -968,9 +968,9 @@ public final class StringUtils {
      * StringUtils.containsNone(&quot;abz&quot;, 'xyz')  = false
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnulll
-     * @param invalidChars ×Ö·ûÊı×é²ÎÊı, ¿ÉÄÜÎªnull
-     * @return true ×Ö·û´®strÖĞ²»°üº¬×Ö·ûÊı×éinvalidCharÖĞµÄ×Ö·û, »òÕß²ÎÊıÎªnull
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnulll
+     * @param invalidChars å­—ç¬¦æ•°ç»„å‚æ•°, å¯èƒ½ä¸ºnull
+     * @return true å­—ç¬¦ä¸²strä¸­ä¸åŒ…å«å­—ç¬¦æ•°ç»„invalidCharä¸­çš„å­—ç¬¦, æˆ–è€…å‚æ•°ä¸ºnull
      * @since 2.0
      */
     public static boolean containsNone(String string, char[] invalidChars) {
@@ -979,11 +979,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ì²é×Ö·û´®strÖĞÊÇ·ñ²»º¬ÓĞ×Ö·û´®invalidCharÖĞµÄ×Ö·û.
+     * æ£€æŸ¥å­—ç¬¦ä¸²strä¸­æ˜¯å¦ä¸å«æœ‰å­—ç¬¦ä¸²invalidCharä¸­çš„å­—ç¬¦.
      * </p>
      * <p>
-     * µÚÒ»¸ö²ÎÊıstrÎª<code>null</code> ·µ»Ø <code>true</code>. µÚ¶ş¸ö²ÎÊıinvalidCharsÎª<code>null</code> ·µ»Ø <code>true</code>.
-     * ²ÎÊıÖĞÓĞÎª¿Õ("") Ê±·µ»Øtrue.
+     * ç¬¬ä¸€ä¸ªå‚æ•°strä¸º<code>null</code> è¿”å› <code>true</code>. ç¬¬äºŒä¸ªå‚æ•°invalidCharsä¸º<code>null</code> è¿”å› <code>true</code>.
+     * å‚æ•°ä¸­æœ‰ä¸ºç©º("") æ—¶è¿”å›true.
      * </p>
      * 
      * <pre>
@@ -996,9 +996,9 @@ public final class StringUtils {
      * StringUtils.containsNone(&quot;abz&quot;, &quot;xyz&quot;)  = false
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param invalidChars ×Ö·û´®²ÎÊı, ¿ÉÄÜÎªnull
-     * @return true ×Ö·û´®strÖĞ²»°üº¬×Ö·û´®invalidCharÖĞµÄ×Ö·û, »òÕß²ÎÊıÎªnull
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param invalidChars å­—ç¬¦ä¸²å‚æ•°, å¯èƒ½ä¸ºnull
+     * @return true å­—ç¬¦ä¸²strä¸­ä¸åŒ…å«å­—ç¬¦ä¸²invalidCharä¸­çš„å­—ç¬¦, æˆ–è€…å‚æ•°ä¸ºnull
      * @since 2.0
      */
     public static boolean containsNone(String string, String invalidChars) {
@@ -1007,11 +1007,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÕÒ³ö×Ö·û´®strÖĞµÚÒ»´Î³öÏÖ×Ö·û´®Êı×ésearchStrsÖĞÔªËØµÄÎ»ÖÃ.
+     * æ‰¾å‡ºå­—ç¬¦ä¸²strä¸­ç¬¬ä¸€æ¬¡å‡ºç°å­—ç¬¦ä¸²æ•°ç»„searchStrsä¸­å…ƒç´ çš„ä½ç½®.
      * </p>
      * <p>
-     * µÚÒ»¸ö²ÎÊıstrÎª<code>null</code>·µ»Ø<code>-1</code>. µÚ¶ş¸ö²ÎÊısearchStrsÎª<code>null</code> »òÕß³¤¶ÈÎª0·µ»Ø<code>-1</code>.
-     * µÚ¶ş¸ö²ÎÊısearchStrsÎª<code>null</code> µÄÇé¿ö½«±»ºöÂÔ, µ«Èç¹ûÎª[""] ·µ»Ø <code>0</code> µ± <code>µÚÒ»¸ö²ÎÊı</code>²»ÎªnullÊ±. Õâ¸ö·½·¨Ê¹ÓÃÁË
+     * ç¬¬ä¸€ä¸ªå‚æ•°strä¸º<code>null</code>è¿”å›<code>-1</code>. ç¬¬äºŒä¸ªå‚æ•°searchStrsä¸º<code>null</code> æˆ–è€…é•¿åº¦ä¸º0è¿”å›<code>-1</code>.
+     * ç¬¬äºŒä¸ªå‚æ•°searchStrsä¸º<code>null</code> çš„æƒ…å†µå°†è¢«å¿½ç•¥, ä½†å¦‚æœä¸º[""] è¿”å› <code>0</code> å½“ <code>ç¬¬ä¸€ä¸ªå‚æ•°</code>ä¸ä¸ºnullæ—¶. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº†
      * {@link String#indexOf(String)}.
      * </p>
      * 
@@ -1028,9 +1028,9 @@ public final class StringUtils {
      * StringUtils.indexOfAny(&quot;&quot;, [&quot;a&quot;])                   = -1
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchStrs ×Ö·û´®Êı×é²ÎÊı, ¿ÉÄÜÎªnull
-     * @return ×Ö·û´®strÖĞµÚÒ»´Î³öÏÖ×Ö·û´®Êı×ésearchStrsÖĞÔªËØµÄÎ»ÖÃ, -1 Ã»ÓĞÊÊºÏµÄÇé¿ö
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchStrs å­—ç¬¦ä¸²æ•°ç»„å‚æ•°, å¯èƒ½ä¸ºnull
+     * @return å­—ç¬¦ä¸²strä¸­ç¬¬ä¸€æ¬¡å‡ºç°å­—ç¬¦ä¸²æ•°ç»„searchStrsä¸­å…ƒç´ çš„ä½ç½®, -1 æ²¡æœ‰é€‚åˆçš„æƒ…å†µ
      */
     public static int indexOfAny(String string, String[] searchStrs) {
         return org.apache.commons.lang.StringUtils.indexOfAny(string, searchStrs);
@@ -1038,12 +1038,12 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÕÒ³ö×Ö·û´®strÖĞ×îºó³öÏÖ×Ö·û´®Êı×ésearchStrsÖĞÔªËØµÄÎ»ÖÃ.
+     * æ‰¾å‡ºå­—ç¬¦ä¸²strä¸­æœ€åå‡ºç°å­—ç¬¦ä¸²æ•°ç»„searchStrsä¸­å…ƒç´ çš„ä½ç½®.
      * </p>
      * <p>
-     * µÚÒ»¸ö²ÎÊıstrÎª<code>null</code>·µ»Ø<code>-1</code>. A <code>null</code> search array will return <code>-1</code>. A
-     * <code>null</code> or zero length search array entry will be ignored, µ±µÚÒ»¸ö²ÎÊıstr²»ÎªnullÊ±,µÚ¶ş¸ö²ÎÊısearchStrsÖĞÓĞ"" µÄÇé¿ö ½«·µ»Ø
-     * <code>str</code>µÄ³¤¶È. Õâ¸ö·½·¨Ê¹ÓÃÁË {@link String#indexOf(String)}
+     * ç¬¬ä¸€ä¸ªå‚æ•°strä¸º<code>null</code>è¿”å›<code>-1</code>. A <code>null</code> search array will return <code>-1</code>. A
+     * <code>null</code> or zero length search array entry will be ignored, å½“ç¬¬ä¸€ä¸ªå‚æ•°strä¸ä¸ºnullæ—¶,ç¬¬äºŒä¸ªå‚æ•°searchStrsä¸­æœ‰"" çš„æƒ…å†µ å°†è¿”å›
+     * <code>str</code>çš„é•¿åº¦. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº† {@link String#indexOf(String)}
      * </p>
      * 
      * <pre>
@@ -1058,9 +1058,9 @@ public final class StringUtils {
      * StringUtils.lastIndexOfAny(&quot;zzabyycdxx&quot;, [&quot;mn&quot;,&quot;&quot;])   = 10
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄstring,¿ÉÄÜÎªnull
-     * @param searchStrs ×Ö·û´®Êı×é²ÎÊı, ¿ÉÄÜÎªnull
-     * @return ×Ö·û´®strÖĞ×îºó³öÏÖ×Ö·û´®Êı×ésearchStrsÖĞÔªËØµÄÎ»ÖÃ, -1 Ã»ÓĞÊÊºÏµÄÇé¿ö
+     * @param string éœ€è¦å¤„ç†çš„string,å¯èƒ½ä¸ºnull
+     * @param searchStrs å­—ç¬¦ä¸²æ•°ç»„å‚æ•°, å¯èƒ½ä¸ºnull
+     * @return å­—ç¬¦ä¸²strä¸­æœ€åå‡ºç°å­—ç¬¦ä¸²æ•°ç»„searchStrsä¸­å…ƒç´ çš„ä½ç½®, -1 æ²¡æœ‰é€‚åˆçš„æƒ…å†µ
      */
     public static int lastIndexOfAny(String string, String[] searchStrs) {
         return org.apache.commons.lang.StringUtils.lastIndexOfAny(string, searchStrs);
@@ -1068,10 +1068,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞÖ¸¶¨Î»ÖÃstartºóÃæµÄ×Ö·û´®.
+     * ä»å­—ç¬¦ä¸²strä¸­æŒ‡å®šä½ç½®startåé¢çš„å­—ç¬¦ä¸².
      * </p>
      * <p>
-     * µÚ¶ş¸ö²ÎÊıstartÎª¸ºÊıÊ±£¬È¡startµÄ¾ø¶ÔÖµ²¢´ÓstrµÄÄ©¶Ë¿ªµ¹Êı<code>n</code> ¸ö×Ö·û.
+     * ç¬¬äºŒä¸ªå‚æ•°startä¸ºè´Ÿæ•°æ—¶ï¼Œå–startçš„ç»å¯¹å€¼å¹¶ä»strçš„æœ«ç«¯å¼€å€’æ•°<code>n</code> ä¸ªå­—ç¬¦.
      * </p>
      * <p>
      * A <code>null</code> String will return <code>null</code>. An empty ("") String will return "".
@@ -1087,9 +1087,9 @@ public final class StringUtils {
      * StringUtils.substring(&quot;abc&quot;, -4) = &quot;abc&quot;
      * </pre>
      * 
-     * @param string Òª´ÓstrÖĞ»ñµÃ×Ó×Ö·û´®,¿ÉÄÜÎªnull
-     * @param start Î»ÖÃµÄ¿ªÊ¼Î»ÖÃ, ¸ºÊıÊ±È¡startµÄ¾ø¶ÔÖµ²¢´ÓstrµÄÄ©¶Ë¿ªµ¹Êı×Ö·û
-     * @return ´ÓÆğÊ¼Î»ÖÃstart¿ªÊ¼µÄ×Ó´®, ÊäÈëµÄµÚÒ»¸ö×Ö·û´®ÎªnullÊ±·µ»Ø<code>null</code>
+     * @param string è¦ä»strä¸­è·å¾—å­å­—ç¬¦ä¸²,å¯èƒ½ä¸ºnull
+     * @param start ä½ç½®çš„å¼€å§‹ä½ç½®, è´Ÿæ•°æ—¶å–startçš„ç»å¯¹å€¼å¹¶ä»strçš„æœ«ç«¯å¼€å€’æ•°å­—ç¬¦
+     * @return ä»èµ·å§‹ä½ç½®startå¼€å§‹çš„å­ä¸², è¾“å…¥çš„ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸²ä¸ºnullæ—¶è¿”å›<code>null</code>
      */
     public static String substring(String string, int start) {
         return org.apache.commons.lang.StringUtils.substring(string, start);
@@ -1097,17 +1097,17 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ»ñµÃ´Ó¿ªÊ¼Î»ÖÃstartµ½½áÊøÎ»endµÄ×Ó×Ö·û´®£¬²¢ÇÒ±ÜÃâÁËÒì³£.
+     * ä»å­—ç¬¦ä¸²strä¸­è·å¾—ä»å¼€å§‹ä½ç½®startåˆ°ç»“æŸä½endçš„å­å­—ç¬¦ä¸²ï¼Œå¹¶ä¸”é¿å…äº†å¼‚å¸¸.
      * </p>
      * <p>
-     * start/end ÄÜÊ¹ÓÃ¸ºÊıÀ´±íÊ¾,½«»á´Ó×Ö·û´®strµÄÄ©¶Ë¿ªÊ¼¼ÆÊı .
+     * start/end èƒ½ä½¿ç”¨è´Ÿæ•°æ¥è¡¨ç¤º,å°†ä¼šä»å­—ç¬¦ä¸²strçš„æœ«ç«¯å¼€å§‹è®¡æ•° .
      * </p>
      * <p>
-     * ·µ»ØµÄ×Ö·û´®´Ó<code>start</code>Î»ÖÃ¿ªÊ¼ µ½ <code>end</code> Î»ÖÃ½áÊø. ×Ö·û´®µÄ¿ªÊ¼Î»ÊÇÒÔ0¿ªÊ¼µÄ -- i.e.,ÒªÒÔ×Ö·û´®µÄµÚÒ»Î»¿ªÊ¼<code>start = 0</code>.
-     * ¸ºÊıµÄ¿ªÊ¼Î»ÖÃÆ«ÒÆÁ¿ÊÇÏà¶ÔÓÚstrµÄÄ©¶Ë¿ªÊ¼µÄ .
+     * è¿”å›çš„å­—ç¬¦ä¸²ä»<code>start</code>ä½ç½®å¼€å§‹ åˆ° <code>end</code> ä½ç½®ç»“æŸ. å­—ç¬¦ä¸²çš„å¼€å§‹ä½æ˜¯ä»¥0å¼€å§‹çš„ -- i.e.,è¦ä»¥å­—ç¬¦ä¸²çš„ç¬¬ä¸€ä½å¼€å§‹<code>start = 0</code>.
+     * è´Ÿæ•°çš„å¼€å§‹ä½ç½®åç§»é‡æ˜¯ç›¸å¯¹äºstrçš„æœ«ç«¯å¼€å§‹çš„ .
      * </p>
      * <p>
-     * Èç¹û¿ªÊ¼Î»ÖÃ<code>start</code>²»ÊÇÔÚ<code>end</code>Î»ÖÃµÄ×ó±ß,½«·µ»Ø "" .
+     * å¦‚æœå¼€å§‹ä½ç½®<code>start</code>ä¸æ˜¯åœ¨<code>end</code>ä½ç½®çš„å·¦è¾¹,å°†è¿”å› "" .
      * </p>
      * 
      * <pre>
@@ -1122,10 +1122,10 @@ public final class StringUtils {
      * StringUtils.substring(&quot;abc&quot;, -4, 2)  = &quot;ab&quot;
      * </pre>
      * 
-     * @param string Òª´ÓÖĞ»ñµÃ×Ó×Ö·û´®µÄstring,¿ÉÄÜÎªnull
-     * @param start ×Ó×Ö·û´®µÄ¿ªÊ¼Î»ÖÃ, ¸ºÊı´ú±í´Ó×Ö·û´®µÄÄ©¶Ë¿ªÊ¼¼ÆÊı
-     * @param end ×Ó×Ö·û´®µÄ½áÊøÎ»ÖÃ, ¸ºÊı´ú±í´Ó×Ö·û´®µÄÄ©¶Ë¿ªÊ¼¼ÆÊı
-     * @return ´Ó¿ªÊ¼startµ½½áÊøendµÄ×Ó×Ö·û´®,Èç¹ûÊäÈëµÄstrÎªnull·µ»Ø<code>null</code>
+     * @param string è¦ä»ä¸­è·å¾—å­å­—ç¬¦ä¸²çš„string,å¯èƒ½ä¸ºnull
+     * @param start å­å­—ç¬¦ä¸²çš„å¼€å§‹ä½ç½®, è´Ÿæ•°ä»£è¡¨ä»å­—ç¬¦ä¸²çš„æœ«ç«¯å¼€å§‹è®¡æ•°
+     * @param end å­å­—ç¬¦ä¸²çš„ç»“æŸä½ç½®, è´Ÿæ•°ä»£è¡¨ä»å­—ç¬¦ä¸²çš„æœ«ç«¯å¼€å§‹è®¡æ•°
+     * @return ä»å¼€å§‹startåˆ°ç»“æŸendçš„å­å­—ç¬¦ä¸²,å¦‚æœè¾“å…¥çš„strä¸ºnullè¿”å›<code>null</code>
      */
     public static String substring(String string, int start, int end) {
         return org.apache.commons.lang.StringUtils.substring(string, start, end);
@@ -1133,10 +1133,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®µÄ×î×ó±ß»ñµÃÖ¸¶¨³¤¶È<code>len</code> µÄ×Ö·û´®.
+     * ä»å­—ç¬¦ä¸²çš„æœ€å·¦è¾¹è·å¾—æŒ‡å®šé•¿åº¦<code>len</code> çš„å­—ç¬¦ä¸².
      * </p>
      * <p>
-     * Èç¹ûÖ¸¶¨³¤¶È<code>len</code> ²»ÊÇÓĞĞ§µÄ, »òÕßstrÎª<code>null</code>, str½«×÷Îª·µ»ØÖµ²¢²»Å×³öÒì³£. Èç¹ûÖ¸¶¨µÄ³¤¶ÈÎª¸ºÊı½«Å×³öÒì³£.
+     * å¦‚æœæŒ‡å®šé•¿åº¦<code>len</code> ä¸æ˜¯æœ‰æ•ˆçš„, æˆ–è€…strä¸º<code>null</code>, strå°†ä½œä¸ºè¿”å›å€¼å¹¶ä¸æŠ›å‡ºå¼‚å¸¸. å¦‚æœæŒ‡å®šçš„é•¿åº¦ä¸ºè´Ÿæ•°å°†æŠ›å‡ºå¼‚å¸¸.
      * </p>
      * 
      * <pre>
@@ -1148,9 +1148,9 @@ public final class StringUtils {
      * StringUtils.left(&quot;abc&quot;, 4)   = &quot;abc&quot;
      * </pre>
      * 
-     * @param string ĞèÒª×ª»»µÄ×Ö·û´®string, ¿ÉÄÜÎªnull
-     * @param len ÒªÇëÇóµÄ×Ö·û´®µÄ³¤¶È, ±ØĞëÎª0»òÕßÕıÊı
-     * @return Ö¸¶¨³¤¶ÈµÄ×Ö·û´®×î×ó±ßµÄ×Ö·û´®, Èç¹ûÊäÈëµÄ×Ö·û´®strÎªnull·µ»Ø<code>null</code>
+     * @param string éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸²string, å¯èƒ½ä¸ºnull
+     * @param len è¦è¯·æ±‚çš„å­—ç¬¦ä¸²çš„é•¿åº¦, å¿…é¡»ä¸º0æˆ–è€…æ­£æ•°
+     * @return æŒ‡å®šé•¿åº¦çš„å­—ç¬¦ä¸²æœ€å·¦è¾¹çš„å­—ç¬¦ä¸², å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²strä¸ºnullè¿”å›<code>null</code>
      */
     public static String left(String string, int len) {
         return org.apache.commons.lang.StringUtils.left(string, len);
@@ -1158,10 +1158,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®µÄ×îÓÒ±ß»ñµÃÖ¸¶¨³¤¶È<code>len</code> µÄ×Ö·û´®.
+     * ä»å­—ç¬¦ä¸²çš„æœ€å³è¾¹è·å¾—æŒ‡å®šé•¿åº¦<code>len</code> çš„å­—ç¬¦ä¸².
      * </p>
      * <p>
-     * Èç¹ûÖ¸¶¨³¤¶È<code>len</code> ²»ÊÇÓĞĞ§µÄ, »òÕßstrÎª <code>null</code>, str½«×÷Îª·µ»ØÖµ²¢²»Å×³öÒì³£ .Èç¹ûÖ¸¶¨µÄ³¤¶ÈlenÎª¸ºÊı½«Å×³öÒì³£.
+     * å¦‚æœæŒ‡å®šé•¿åº¦<code>len</code> ä¸æ˜¯æœ‰æ•ˆçš„, æˆ–è€…strä¸º <code>null</code>, strå°†ä½œä¸ºè¿”å›å€¼å¹¶ä¸æŠ›å‡ºå¼‚å¸¸ .å¦‚æœæŒ‡å®šçš„é•¿åº¦lenä¸ºè´Ÿæ•°å°†æŠ›å‡ºå¼‚å¸¸.
      * </p>
      * 
      * <pre>
@@ -1173,9 +1173,9 @@ public final class StringUtils {
      * StringUtils.right(&quot;abc&quot;, 4)   = &quot;abc&quot;
      * </pre>
      * 
-     * @param string ĞèÒª×ª»»µÄ×Ö·û´®string, ¿ÉÄÜÎªnull
-     * @param len ÒªÇëÇóµÄ×Ö·û´®µÄ³¤¶È, ±ØĞëÎª0»òÕßÕıÊı
-     * @return ¶¨³¤¶ÈµÄ×Ö·û´®×îÓÒ±ßµÄ×Ö·û´®, Èç¹ûÊäÈëµÄ×Ö·û´®strÎªnull·µ»Ø</code>
+     * @param string éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸²string, å¯èƒ½ä¸ºnull
+     * @param len è¦è¯·æ±‚çš„å­—ç¬¦ä¸²çš„é•¿åº¦, å¿…é¡»ä¸º0æˆ–è€…æ­£æ•°
+     * @return å®šé•¿åº¦çš„å­—ç¬¦ä¸²æœ€å³è¾¹çš„å­—ç¬¦ä¸², å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²strä¸ºnullè¿”å›</code>
      */
     public static String right(String string, int len) {
         return org.apache.commons.lang.StringUtils.right(string, len);
@@ -1183,11 +1183,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®µÄÖĞ¼ä»ñµÃÖ¸¶¨³¤¶È<code>len</code> µÄ×Ö·û´®.
+     * ä»å­—ç¬¦ä¸²çš„ä¸­é—´è·å¾—æŒ‡å®šé•¿åº¦<code>len</code> çš„å­—ç¬¦ä¸².
      * </p>
      * <p>
-     * Èç¹û<code>len</code>²ÎÊıÎªÎŞĞ§µÄ,´Ópos¿ªÊ¼µÄÊ£ÓàµÄ×Ö·û´®½«·µ»Ø ¶ø²»Å×³öÒì³£. Èç¹û×Ö·û´®strÎª<code>null</code>, ½«·µ»Ø<code>null</code> .
-     * Èç¹ûÖ¸¶¨µÄ³¤¶ÈlenÎª¸ºÊı½«Å×³öÒì³£.
+     * å¦‚æœ<code>len</code>å‚æ•°ä¸ºæ— æ•ˆçš„,ä»poså¼€å§‹çš„å‰©ä½™çš„å­—ç¬¦ä¸²å°†è¿”å› è€Œä¸æŠ›å‡ºå¼‚å¸¸. å¦‚æœå­—ç¬¦ä¸²strä¸º<code>null</code>, å°†è¿”å›<code>null</code> .
+     * å¦‚æœæŒ‡å®šçš„é•¿åº¦lenä¸ºè´Ÿæ•°å°†æŠ›å‡ºå¼‚å¸¸.
      * </p>
      * 
      * <pre>
@@ -1201,10 +1201,10 @@ public final class StringUtils {
      * StringUtils.mid(&quot;abc&quot;, -2, 2)  = &quot;ab&quot;
      * </pre>
      * 
-     * @param string ĞèÒª×ª»»µÄ×Ö·û´®string, ¿ÉÄÜÎªnull
-     * @param pos ·µ»ØµÄ×Ó´®µÄ¿ªÊ¼Î»ÖÃ, ÈçÎª¸ºÊıµ±³É0
-     * @param len Òª·µ»ØµÄ×Ó´®µÄ³¤¶È, ±ØĞëÎª0»òÕßÎªÕıÊı
-     * @return ÖĞ¼äµÄ×Ó×Ö·û´®,Èç¹ûÊäÈëµÄ×Ö·û´®strÎªnull·µ»Ø<code>null</code>
+     * @param string éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸²string, å¯èƒ½ä¸ºnull
+     * @param pos è¿”å›çš„å­ä¸²çš„å¼€å§‹ä½ç½®, å¦‚ä¸ºè´Ÿæ•°å½“æˆ0
+     * @param len è¦è¿”å›çš„å­ä¸²çš„é•¿åº¦, å¿…é¡»ä¸º0æˆ–è€…ä¸ºæ­£æ•°
+     * @return ä¸­é—´çš„å­å­—ç¬¦ä¸²,å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²strä¸ºnullè¿”å›<code>null</code>
      */
     public static String mid(String string, int pos, int len) {
         return org.apache.commons.lang.StringUtils.mid(string, pos, len);
@@ -1212,11 +1212,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ»ñµÃµÚÒ»¸ö³öÏÖ¸ôÀë×Ö·û´®separatorÖ®Ç°µÄ×Ó×Ö·û´®. ¸ôÀë×Ö·û´®separator²»×÷Îª½á¹û·µ»Ø.
+     * ä»å­—ç¬¦ä¸²strä¸­è·å¾—ç¬¬ä¸€ä¸ªå‡ºç°éš”ç¦»å­—ç¬¦ä¸²separatorä¹‹å‰çš„å­å­—ç¬¦ä¸². éš”ç¦»å­—ç¬¦ä¸²separatorä¸ä½œä¸ºç»“æœè¿”å›.
      * </p>
      * <p>
-     * ÊäÈë×Ö·û´®strÎª<code>null</code>·µ»Ø<code>null</code>. ¿ÕµÄ×Ö·û´®("")½«·µ»Ø¿Õ×Ö·û´®(""). ¸ôÀë×Ö·û´®separatorÎª<code>null</code>
-     * ½«·µ»Ø×Ö·û´®str±¾Éí.
+     * è¾“å…¥å­—ç¬¦ä¸²strä¸º<code>null</code>è¿”å›<code>null</code>. ç©ºçš„å­—ç¬¦ä¸²("")å°†è¿”å›ç©ºå­—ç¬¦ä¸²(""). éš”ç¦»å­—ç¬¦ä¸²separatorä¸º<code>null</code>
+     * å°†è¿”å›å­—ç¬¦ä¸²stræœ¬èº«.
      * </p>
      * 
      * <pre>
@@ -1230,9 +1230,9 @@ public final class StringUtils {
      * StringUtils.substringBefore(&quot;abc&quot;, null)  = &quot;abc&quot;
      * </pre>
      * 
-     * @param string Òª´¦ÀíµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param separator ¸ôÀë×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ×Ö·û´®strÖĞ»ñµÃµÚÒ»¸ö³öÏÖ¸ôÀë×Ö·û´®separatorÖ®Ç°µÄ×Ó×Ö·û´®, ÊäÈëµÄ×Ö·û´®strÎªnullÊ±·µ»Ø<code>null</code>
+     * @param string è¦å¤„ç†çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param separator éš”ç¦»å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å­—ç¬¦ä¸²strä¸­è·å¾—ç¬¬ä¸€ä¸ªå‡ºç°éš”ç¦»å­—ç¬¦ä¸²separatorä¹‹å‰çš„å­å­—ç¬¦ä¸², è¾“å…¥çš„å­—ç¬¦ä¸²strä¸ºnullæ—¶è¿”å›<code>null</code>
      * @since 2.0
      */
     public static String substringBefore(String string, String separator) {
@@ -1241,11 +1241,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ»ñµÃµÚÒ»¸ö³öÏÖ¸ôÀë×Ö·û´®separatorÖ®ºóµÄ×Ó×Ö·û´®. ¸ôÀë×Ö·û´®separator²»×÷Îª½á¹û·µ»Ø.
+     * ä»å­—ç¬¦ä¸²strä¸­è·å¾—ç¬¬ä¸€ä¸ªå‡ºç°éš”ç¦»å­—ç¬¦ä¸²separatorä¹‹åçš„å­å­—ç¬¦ä¸². éš”ç¦»å­—ç¬¦ä¸²separatorä¸ä½œä¸ºç»“æœè¿”å›.
      * </p>
      * <p>
-     * ÊäÈë×Ö·û´®strÎª<code>null</code>·µ»Ø<code>null</code>. ¿ÕµÄ×Ö·û´®("")½«·µ»Ø¿Õ×Ö·û´®(""). Èç¹ûµÚÒ»¸ö²ÎÊı×Ö·û´®²»Îª<code>null</code>
-     * µ«¸ôÀë×Ö·û´®separatorÎª<code>null</code> ½«·µ»Ø¿Õ×Ö·û´®(""). .
+     * è¾“å…¥å­—ç¬¦ä¸²strä¸º<code>null</code>è¿”å›<code>null</code>. ç©ºçš„å­—ç¬¦ä¸²("")å°†è¿”å›ç©ºå­—ç¬¦ä¸²(""). å¦‚æœç¬¬ä¸€ä¸ªå‚æ•°å­—ç¬¦ä¸²ä¸ä¸º<code>null</code>
+     * ä½†éš”ç¦»å­—ç¬¦ä¸²separatorä¸º<code>null</code> å°†è¿”å›ç©ºå­—ç¬¦ä¸²(""). .
      * </p>
      * 
      * <pre>
@@ -1259,9 +1259,9 @@ public final class StringUtils {
      * StringUtils.substringAfter(&quot;abc&quot;, &quot;&quot;)    = &quot;abc&quot;
      * </pre>
      * 
-     * @param string Òª´¦ÀíµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param separator ¸ôÀë×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ×Ö·û´®strÖĞ»ñµÃµÚÒ»¸ö³öÏÖ¸ôÀë×Ö·û´®separatorÖ®ºóµÄ×Ó×Ö·û´®, ÊäÈëµÄ×Ö·û´®strÎªnullÊ±·µ»Ø<code>null</code>
+     * @param string è¦å¤„ç†çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param separator éš”ç¦»å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å­—ç¬¦ä¸²strä¸­è·å¾—ç¬¬ä¸€ä¸ªå‡ºç°éš”ç¦»å­—ç¬¦ä¸²separatorä¹‹åçš„å­å­—ç¬¦ä¸², è¾“å…¥çš„å­—ç¬¦ä¸²strä¸ºnullæ—¶è¿”å›<code>null</code>
      * @since 2.0
      */
     public static String substringAfter(String string, String separator) {
@@ -1270,11 +1270,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ»ñµÃ×îºó³öÏÖ·Ö¸î·ûseparatorÖ®Ç°µÄ×Ó×Ö·û´®. ·Ö¸î·ûseparator²»×÷Îª½á¹û·µ»Ø.
+     * ä»å­—ç¬¦ä¸²strä¸­è·å¾—æœ€åå‡ºç°åˆ†å‰²ç¬¦separatorä¹‹å‰çš„å­å­—ç¬¦ä¸². åˆ†å‰²ç¬¦separatorä¸ä½œä¸ºç»“æœè¿”å›.
      * </p>
      * <p>
-     * ÊäÈë×Ö·û´®strÎª<code>null</code>·µ»Ø<code>null</code>. ¿ÕµÄ×Ö·û´®("")½«·µ»Ø¿Õ×Ö·û´®(""). ·Ö¸î·ûseparatorÎª <code>null</code>
-     * ½«·µ»ØÊäÈë×Ö·û´®str±¾Éí.
+     * è¾“å…¥å­—ç¬¦ä¸²strä¸º<code>null</code>è¿”å›<code>null</code>. ç©ºçš„å­—ç¬¦ä¸²("")å°†è¿”å›ç©ºå­—ç¬¦ä¸²(""). åˆ†å‰²ç¬¦separatorä¸º <code>null</code>
+     * å°†è¿”å›è¾“å…¥å­—ç¬¦ä¸²stræœ¬èº«.
      * </p>
      * 
      * <pre>
@@ -1288,9 +1288,9 @@ public final class StringUtils {
      * StringUtils.substringBeforeLast(&quot;a&quot;, &quot;&quot;)      = &quot;a&quot;
      * </pre>
      * 
-     * @param string Òª´¦ÀíµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param separator ·Ö¸î·û, ¿ÉÄÜÎªnull
-     * @return ×Ö·û´®strÖĞ»ñµÃ×îºó³öÏÖ·Ö¸î·ûseparatorÖ®Ç°µÄ×Ó×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®strÎªnull
+     * @param string è¦å¤„ç†çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param separator åˆ†å‰²ç¬¦, å¯èƒ½ä¸ºnull
+     * @return å­—ç¬¦ä¸²strä¸­è·å¾—æœ€åå‡ºç°åˆ†å‰²ç¬¦separatorä¹‹å‰çš„å­å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²strä¸ºnull
      * @since 2.0
      */
     public static String substringBeforeLast(String string, String separator) {
@@ -1299,11 +1299,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ»ñµÃ×îºó³öÏÖ¸ôÀë×Ö·û´®separatorÖ®ºóµÄ×Ó×Ö·û´®. ¸ôÀë×Ö·û´®separator²»×÷Îª½á¹û·µ»Ø.
+     * ä»å­—ç¬¦ä¸²strä¸­è·å¾—æœ€åå‡ºç°éš”ç¦»å­—ç¬¦ä¸²separatorä¹‹åçš„å­å­—ç¬¦ä¸². éš”ç¦»å­—ç¬¦ä¸²separatorä¸ä½œä¸ºç»“æœè¿”å›.
      * </p>
      * <p>
-     * ÊäÈë×Ö·û´®strÎª<code>null</code>·µ»Ø<code>null</code>. ¿ÕµÄ×Ö·û´®("")½«·µ»Ø¿Õ×Ö·û´®(""). ¸ôÀë×Ö·û´®separatorÎª <code>null</code>
-     * ½«·µ»Ø¿ÕµÄ×Ö·û´®("").
+     * è¾“å…¥å­—ç¬¦ä¸²strä¸º<code>null</code>è¿”å›<code>null</code>. ç©ºçš„å­—ç¬¦ä¸²("")å°†è¿”å›ç©ºå­—ç¬¦ä¸²(""). éš”ç¦»å­—ç¬¦ä¸²separatorä¸º <code>null</code>
+     * å°†è¿”å›ç©ºçš„å­—ç¬¦ä¸²("").
      * </p>
      * 
      * <pre>
@@ -1318,9 +1318,9 @@ public final class StringUtils {
      * StringUtils.substringAfterLast(&quot;a&quot;, &quot;z&quot;)     = &quot;&quot;
      * </pre>
      * 
-     * @param string Òª´¦ÀíµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param separator ¸ôÀë×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ×Ö·û´®strÖĞ»ñµÃ×îºó³öÏÖ¸ôÀë×Ö·û´®separatorÖ®ºóµÄ×Ó×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®strÎªnull
+     * @param string è¦å¤„ç†çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param separator éš”ç¦»å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å­—ç¬¦ä¸²strä¸­è·å¾—æœ€åå‡ºç°éš”ç¦»å­—ç¬¦ä¸²separatorä¹‹åçš„å­å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²strä¸ºnull
      * @since 2.0
      */
     public static String substringAfterLast(String string, String separator) {
@@ -1329,10 +1329,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ·ÖÀë³öÇ¶Ì×ÔÚÁ½¸öÍ¬Ñù×Ö·û´®tagÖĞ¼äµÄ×Ó×Ö·û´® .
+     * ä»å­—ç¬¦ä¸²strä¸­åˆ†ç¦»å‡ºåµŒå¥—åœ¨ä¸¤ä¸ªåŒæ ·å­—ç¬¦ä¸²tagä¸­é—´çš„å­å­—ç¬¦ä¸² .
      * </p>
      * <p>
-     * ÊäÈë×Ö·û´®strÎª<code>null</code>·µ»Ø<code>null</code>. µÚ¶ş¸ö²ÎÊıtagÎª<code>null</code>·µ»Ø<code>null</code>.
+     * è¾“å…¥å­—ç¬¦ä¸²strä¸º<code>null</code>è¿”å›<code>null</code>. ç¬¬äºŒä¸ªå‚æ•°tagä¸º<code>null</code>è¿”å›<code>null</code>.
      * </p>
      * 
      * <pre>
@@ -1344,9 +1344,9 @@ public final class StringUtils {
      * StringUtils.substringBetween(&quot;tagabctag&quot;, &quot;tag&quot;) = &quot;abc&quot;
      * </pre>
      * 
-     * @param string °üº¬×Ó×Ö·û´®µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param tag ×Ó×Ö·û´®Ö®Ç°ºÍÖ®ºóµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ×Ó×Ö·û´®, <code>null</code> Èç¹ûÃ»ÓĞÆ¥ÅäµÄÇé¿ö
+     * @param string åŒ…å«å­å­—ç¬¦ä¸²çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param tag å­å­—ç¬¦ä¸²ä¹‹å‰å’Œä¹‹åçš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å­å­—ç¬¦ä¸², <code>null</code> å¦‚æœæ²¡æœ‰åŒ¹é…çš„æƒ…å†µ
      * @since 2.0
      */
     public static String substringBetween(String string, String tag) {
@@ -1355,7 +1355,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ·ÖÀë³öÇ¶Ì×ÔÚÁ½¸ö×Ö·û´®open,closeÖĞ¼äµÄ×Ó×Ö·û´®. Ö»·µ»ØµÚÒ»¸öÆ¥ÅäµÄ×Ó´®.
+     * ä»å­—ç¬¦ä¸²strä¸­åˆ†ç¦»å‡ºåµŒå¥—åœ¨ä¸¤ä¸ªå­—ç¬¦ä¸²open,closeä¸­é—´çš„å­å­—ç¬¦ä¸². åªè¿”å›ç¬¬ä¸€ä¸ªåŒ¹é…çš„å­ä¸².
      * </p>
      * <p>
      * A <code>null</code> input String returns <code>null</code>. A <code>null</code> open/close returns
@@ -1373,10 +1373,10 @@ public final class StringUtils {
      * StringUtils.substringBetween(&quot;yabczyabcz&quot;, &quot;y&quot;, &quot;z&quot;)   = &quot;abc&quot;
      * </pre>
      * 
-     * @param string °üº¬×Ó´®µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param open ×Ó´®Ç°ÃæµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param close ×Ó´®ºóÃæµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ×Ó´®, <code>null</code> Èç¹ûÃ»ÓĞÆ¥ÅäµÄÇé¿ö
+     * @param string åŒ…å«å­ä¸²çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param open å­ä¸²å‰é¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param close å­ä¸²åé¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å­ä¸², <code>null</code> å¦‚æœæ²¡æœ‰åŒ¹é…çš„æƒ…å†µ
      * @since 2.0
      */
     public static String substringBetween(String string, String open, String close) {
@@ -1385,13 +1385,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ·ÖÀë³öÇ¶Ì×ÔÚÁ½¸ö×Ö·û´®open,closeÖĞ¼äµÄ×Ó×Ö·û´®. ·µ»ØÈ«²¿Æ¥ÅäµÄ×Ó´®´®Êı×é.
+     * ä»å­—ç¬¦ä¸²strä¸­åˆ†ç¦»å‡ºåµŒå¥—åœ¨ä¸¤ä¸ªå­—ç¬¦ä¸²open,closeä¸­é—´çš„å­å­—ç¬¦ä¸². è¿”å›å…¨éƒ¨åŒ¹é…çš„å­ä¸²ä¸²æ•°ç»„.
      * </p>
      * 
-     * @param string °üº¬×Ó´®µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param open ×Ó´®Ç°ÃæµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param close ×Ó´®ºóÃæµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return È«²¿×Ó´®Êı×é, <code>null</code> Èç¹ûÃ»ÓĞÆ¥ÅäµÄÇé¿ö
+     * @param string åŒ…å«å­ä¸²çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param open å­ä¸²å‰é¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param close å­ä¸²åé¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å…¨éƒ¨å­ä¸²æ•°ç»„, <code>null</code> å¦‚æœæ²¡æœ‰åŒ¹é…çš„æƒ…å†µ
      */
     public static String[] substringAllBetween(String string, String open, String close) {
         String strSub = getSubStringBetween(string, open, close);
@@ -1401,13 +1401,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ·ÖÀë³öÇ¶Ì×ÔÚÁ½¸ö×Ö·û´®open,closeÖĞ¼äµÄ×Ó×Ö·û´®. ·µ»ØÈ«²¿Æ¥ÅäµÄ×Ó´®.
+     * ä»å­—ç¬¦ä¸²strä¸­åˆ†ç¦»å‡ºåµŒå¥—åœ¨ä¸¤ä¸ªå­—ç¬¦ä¸²open,closeä¸­é—´çš„å­å­—ç¬¦ä¸². è¿”å›å…¨éƒ¨åŒ¹é…çš„å­ä¸².
      * </p>
      * 
-     * @param str °üº¬×Ó´®µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param open ×Ó´®Ç°ÃæµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param close ×Ó´®ºóÃæµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return È«²¿×Ó´®, <code>null</code> Èç¹ûÃ»ÓĞÆ¥ÅäµÄÇé¿ö
+     * @param str åŒ…å«å­ä¸²çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param open å­ä¸²å‰é¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param close å­ä¸²åé¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å…¨éƒ¨å­ä¸², <code>null</code> å¦‚æœæ²¡æœ‰åŒ¹é…çš„æƒ…å†µ
      */
     public static String getSubStringBetween(String str, String open, String close) {
         if (str == null || open == null || close == null) {
@@ -1419,7 +1419,7 @@ public final class StringUtils {
             int iEnd = str.indexOf(close, iStart + open.length());
             if (iEnd != -1) {
                 sbBuffer.append(str.substring(iStart + open.length(), iEnd));
-                // Ã¿¸ö×Ó´®ÓÃ&·Ö¸ô¿ª
+                // æ¯ä¸ªå­ä¸²ç”¨&åˆ†éš”å¼€
                 sbBuffer.append("&&");
                 String strSubStr = str.substring(iEnd + 1, str.length());
                 sbBuffer.append(getSubStringBetween(strSubStr, open, close));
@@ -1430,10 +1430,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ·ÖÀë³öÇ¶Ì×ÔÚÁ½¸öÍ¬Ñù×Ö·û´®tagÖĞ¼äµÄ×Ó×Ö·û´® .
+     * ä»å­—ç¬¦ä¸²strä¸­åˆ†ç¦»å‡ºåµŒå¥—åœ¨ä¸¤ä¸ªåŒæ ·å­—ç¬¦ä¸²tagä¸­é—´çš„å­å­—ç¬¦ä¸² .
      * </p>
      * <p>
-     * ÊäÈë×Ö·û´®strÎª<code>null</code>·µ»Ø<code>null</code>. µÚ¶ş¸ö²ÎÊıtagÎª<code>null</code>·µ»Ø<code>null</code>.
+     * è¾“å…¥å­—ç¬¦ä¸²strä¸º<code>null</code>è¿”å›<code>null</code>. ç¬¬äºŒä¸ªå‚æ•°tagä¸º<code>null</code>è¿”å›<code>null</code>.
      * </p>
      * 
      * <pre>
@@ -1445,10 +1445,10 @@ public final class StringUtils {
      * StringUtils.getNestedString(&quot;tagabctag&quot;, &quot;tag&quot;) = &quot;abc&quot;
      * </pre>
      * 
-     * @param str °üº¬Ç¶Ì××Ö·û´®µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param tag ÔÚÇ¶Ì××Ö·û´®Ç°ºóµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return Ç¶Ì××Ö·û´®, <code>null</code> Èç¹ûÃ»ÓĞÆ¥ÅäµÄÇé¿ö
-     * @deprecated Ó¦Ê¹ÓÃ¸üºÃµÄ·½·¨ {@link #substringBetween(String, String)}. ·½·¨½«ÔÚ Commons Lang 3.0.±»È¡Ïû
+     * @param str åŒ…å«åµŒå¥—å­—ç¬¦ä¸²çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param tag åœ¨åµŒå¥—å­—ç¬¦ä¸²å‰åçš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return åµŒå¥—å­—ç¬¦ä¸², <code>null</code> å¦‚æœæ²¡æœ‰åŒ¹é…çš„æƒ…å†µ
+     * @deprecated åº”ä½¿ç”¨æ›´å¥½çš„æ–¹æ³• {@link #substringBetween(String, String)}. æ–¹æ³•å°†åœ¨ Commons Lang 3.0.è¢«å–æ¶ˆ
      */
     @Deprecated
     public static String getNestedString(String str, String tag) {
@@ -1457,11 +1457,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ´Ó×Ö·û´®strÖĞ·ÖÀë³öÇ¶Ì×ÔÚÁ½¸ö×Ö·û´®open£¬closeÖĞ¼äµÄ×Ó×Ö·û´®. Ö»·µ»ØµÚÒ»¸öÆ¥ÅäµÄ×Ó´®.
+     * ä»å­—ç¬¦ä¸²strä¸­åˆ†ç¦»å‡ºåµŒå¥—åœ¨ä¸¤ä¸ªå­—ç¬¦ä¸²openï¼Œcloseä¸­é—´çš„å­å­—ç¬¦ä¸². åªè¿”å›ç¬¬ä¸€ä¸ªåŒ¹é…çš„å­ä¸².
      * </p>
      * <p>
-     * ÊäÈë×Ö·û´®strÎª<code>null</code>·µ»Ø<code>null</code>. <code>null</code>µÄ open/close ²ÎÊı·µ»Ø <code>null</code> (Ã»ÓĞÆ¥ÅäµÄ).
-     * ¿Õ°××Ö·ûµÄ("") open/close ·µ»ØÒ»¸ö¿Õ×Ö·û.
+     * è¾“å…¥å­—ç¬¦ä¸²strä¸º<code>null</code>è¿”å›<code>null</code>. <code>null</code>çš„ open/close å‚æ•°è¿”å› <code>null</code> (æ²¡æœ‰åŒ¹é…çš„).
+     * ç©ºç™½å­—ç¬¦çš„("") open/close è¿”å›ä¸€ä¸ªç©ºå­—ç¬¦.
      * </p>
      * 
      * <pre>
@@ -1475,11 +1475,11 @@ public final class StringUtils {
      * StringUtils.getNestedString(&quot;yabczyabcz&quot;, &quot;y&quot;, &quot;z&quot;)   = &quot;abc&quot;
      * </pre>
      * 
-     * @param str °üº¬Ç¶Ì××Ö·û´®µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param open Ç¶Ì××Ö·û´®Ö®Ç°µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param close Ç¶Ì××Ö·û´®Ö®ºóµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return Ç¶Ì××Ö·û´®, <code>null</code> Èç¹ûÃ»ÓĞÆ¥ÅäµÄÇé¿ö
-     * @deprecated Ó¦Ê¹ÓÃ¸üºÃµÄ·½·¨ {@link #substringBetween(String, String, String)}. ·½·¨½«ÔÚ Commons Lang 3.0.±»È¡Ïû
+     * @param str åŒ…å«åµŒå¥—å­—ç¬¦ä¸²çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param open åµŒå¥—å­—ç¬¦ä¸²ä¹‹å‰çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param close åµŒå¥—å­—ç¬¦ä¸²ä¹‹åçš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return åµŒå¥—å­—ç¬¦ä¸², <code>null</code> å¦‚æœæ²¡æœ‰åŒ¹é…çš„æƒ…å†µ
+     * @deprecated åº”ä½¿ç”¨æ›´å¥½çš„æ–¹æ³• {@link #substringBetween(String, String, String)}. æ–¹æ³•å°†åœ¨ Commons Lang 3.0.è¢«å–æ¶ˆ
      */
     @Deprecated
     public static String getNestedString(String str, String open, String close) {
@@ -1547,13 +1547,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¸ù¾İÖ¸¶¨µÄ·Ö¸î·ûseparator°Ñ×Ö·û´®·Ö¸îÎª×Ö·û´®Êı×é. Ò²¿ÉÒÔÑ¡ÔñÊ¹ÓÃ StringTokenizer.
+     * æ ¹æ®æŒ‡å®šçš„åˆ†å‰²ç¬¦separatoræŠŠå­—ç¬¦ä¸²åˆ†å‰²ä¸ºå­—ç¬¦ä¸²æ•°ç»„. ä¹Ÿå¯ä»¥é€‰æ‹©ä½¿ç”¨ StringTokenizer.
      * </p>
      * <p>
-     * ·Ö¸î·ûseparator²»×÷ÎªÊı×éÔªËØÖĞµÄÊı¾İ·µ»Ø. ÁÚ½üµÄ¶à¸ö·Ö¸î·ûseparators ±»ÈÏÎªÊÇÒ»¸ö·Ö¸î·ûseparator.
+     * åˆ†å‰²ç¬¦separatorä¸ä½œä¸ºæ•°ç»„å…ƒç´ ä¸­çš„æ•°æ®è¿”å›. é‚»è¿‘çš„å¤šä¸ªåˆ†å‰²ç¬¦separators è¢«è®¤ä¸ºæ˜¯ä¸€ä¸ªåˆ†å‰²ç¬¦separator.
      * </p>
      * <p>
-     * ÊäÈëµÄ×Ö·û´®Îª<code>null</code>·µ»Ø<code>null</code>.
+     * è¾“å…¥çš„å­—ç¬¦ä¸²ä¸º<code>null</code>è¿”å›<code>null</code>.
      * </p>
      * 
      * <pre>
@@ -1566,9 +1566,9 @@ public final class StringUtils {
      * StringUtils.split(&quot;a b c&quot;, ' ')    = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param separatorChars ×÷Îª·Ö¸ô·ûµÄ×Ö·û, Èç¹ûÎª<code>null</code>¾ÍÒÔwhitespace×÷Îª·Ö¸ô·û
-     * @return ´¦ÀíºóµÄÊı×é, <code>null</code>Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦å¤„ç†çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param separatorChars ä½œä¸ºåˆ†éš”ç¬¦çš„å­—ç¬¦, å¦‚æœä¸º<code>null</code>å°±ä»¥whitespaceä½œä¸ºåˆ†éš”ç¬¦
+     * @return å¤„ç†åçš„æ•°ç»„, <code>null</code>å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @since 2.0
      */
     public static String[] split(String string, String separatorChars) {
@@ -1577,13 +1577,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¸ù¾İÖ¸¶¨µÄ·Ö¸î·ûseparator°Ñ×Ö·û´®·Ö¸îÎª×Ö·û´®¼¯ºÏ. Ò²¿ÉÒÔÑ¡ÔñÊ¹ÓÃ StringTokenizer.
+     * æ ¹æ®æŒ‡å®šçš„åˆ†å‰²ç¬¦separatoræŠŠå­—ç¬¦ä¸²åˆ†å‰²ä¸ºå­—ç¬¦ä¸²é›†åˆ. ä¹Ÿå¯ä»¥é€‰æ‹©ä½¿ç”¨ StringTokenizer.
      * </p>
      * <p>
-     * ·Ö¸î·ûseparator²»×÷ÎªÊı×éÔªËØÖĞµÄÊı¾İ·µ»Ø. ÁÚ½üµÄ¶à¸ö·Ö¸î·ûseparators ±»ÈÏÎªÊÇÒ»¸ö·Ö¸î·ûseparator.
+     * åˆ†å‰²ç¬¦separatorä¸ä½œä¸ºæ•°ç»„å…ƒç´ ä¸­çš„æ•°æ®è¿”å›. é‚»è¿‘çš„å¤šä¸ªåˆ†å‰²ç¬¦separators è¢«è®¤ä¸ºæ˜¯ä¸€ä¸ªåˆ†å‰²ç¬¦separator.
      * </p>
      * <p>
-     * ÊäÈëµÄ×Ö·û´®Îª<code>null</code>·µ»Ø<code>null</code>.
+     * è¾“å…¥çš„å­—ç¬¦ä¸²ä¸º<code>null</code>è¿”å›<code>null</code>.
      * </p>
      * 
      * <pre>
@@ -1596,9 +1596,9 @@ public final class StringUtils {
      * StringUtils.split(&quot;a b c&quot;, ' ')    = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
      * </pre>
      * 
-     * @param string ĞèÒª´¦ÀíµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param separatorChars ×÷Îª·Ö¸ô·ûµÄ×Ö·û, Èç¹ûÎª<code>null</code>¾ÍÒÔwhitespace×÷Îª·Ö¸ô·û
-     * @return ´¦ÀíºóµÄ×Ö·û´®¼¯ºÏ, <code>null</code>Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦å¤„ç†çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param separatorChars ä½œä¸ºåˆ†éš”ç¬¦çš„å­—ç¬¦, å¦‚æœä¸º<code>null</code>å°±ä»¥whitespaceä½œä¸ºåˆ†éš”ç¬¦
+     * @return å¤„ç†åçš„å­—ç¬¦ä¸²é›†åˆ, <code>null</code>å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @since 2.0
      */
     public static List<String> splitString(String string, String separatorChars) {
@@ -1925,7 +1925,7 @@ public final class StringUtils {
     }
     
     /**
-     * ÔÚÖ¸¶¨µÄÎ»ÖÃÉÏ£¬»ñÈ¡ÀûÓÃ·Ö¸î·û·Ö¸îµÄ×Ö·û´®¡£
+     * åœ¨æŒ‡å®šçš„ä½ç½®ä¸Šï¼Œè·å–åˆ©ç”¨åˆ†å‰²ç¬¦åˆ†å‰²çš„å­—ç¬¦ä¸²ã€‚
      * 
      * <pre>
      * ProjectUtils.getSplitIndexString(&quot;000;111;222&quot;,&quot;;&quot;,0)=&quot;000&quot;
@@ -1934,10 +1934,10 @@ public final class StringUtils {
      * ProjectUtils.getSplitIndexString(&quot;&quot;,&quot;&quot;,0) = &quot;&quot;
      * </pre>
      * 
-     * @param source ĞèÒª±»·Ö¸îµÄ×Ö·û´®¡£
-     * @param splitString ±»Ö¸¶¨µÄ·Ö¸î·ûºÅ¡£
-     * @param position ·Ö¸î·ûËùÔÚµÄË÷Òı
-     * @return ·µ»ØÖ¸¶¨Î»ÖÃÉÏÃæ±»·Ö¸î·ûºÅ·Ö¸îµÄ×Ö·û´®¡£
+     * @param source éœ€è¦è¢«åˆ†å‰²çš„å­—ç¬¦ä¸²ã€‚
+     * @param splitString è¢«æŒ‡å®šçš„åˆ†å‰²ç¬¦å·ã€‚
+     * @param position åˆ†å‰²ç¬¦æ‰€åœ¨çš„ç´¢å¼•
+     * @return è¿”å›æŒ‡å®šä½ç½®ä¸Šé¢è¢«åˆ†å‰²ç¬¦å·åˆ†å‰²çš„å­—ç¬¦ä¸²ã€‚
      */
     public static String getSplitIndexString(String source, String splitString, int position) {
         String[] strSplitStrings = org.apache.commons.lang.StringUtils.split(source, splitString);
@@ -1949,7 +1949,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Á¬½ÓÊı×éarrayÎªÒ»¸ö×Ö·û´®. ÔÚÊı×éÖĞµÄnull¶ÔÏó»òÕß¿Õ×Ö·û´®½«±»ÈÏÎªÊÇÒ»¸ö¿ÕµÄ×Ö·û´®´¦Àí .
+     * è¿æ¥æ•°ç»„arrayä¸ºä¸€ä¸ªå­—ç¬¦ä¸². åœ¨æ•°ç»„ä¸­çš„nullå¯¹è±¡æˆ–è€…ç©ºå­—ç¬¦ä¸²å°†è¢«è®¤ä¸ºæ˜¯ä¸€ä¸ªç©ºçš„å­—ç¬¦ä¸²å¤„ç† .
      * </p>
      * 
      * <pre>
@@ -1960,9 +1960,9 @@ public final class StringUtils {
      * StringUtils.concatenate([null, &quot;&quot;, &quot;a&quot;]) = &quot;a&quot;
      * </pre>
      * 
-     * @param array ĞèÒªÁ¬½ÓµÄÊı×é, ¿ÉÄÜÎªnull
-     * @return Á¬½ÓºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄÎªnull
-     * @deprecated Ó¦Ê¹ÓÃ¸üºÃµÄ·½·¨{@link #join(Object[])} À´´úÌæ. ·½·¨½«ÔÚ Commons Lang 3.0.±»È¡Ïû
+     * @param array éœ€è¦è¿æ¥çš„æ•°ç»„, å¯èƒ½ä¸ºnull
+     * @return è¿æ¥åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„ä¸ºnull
+     * @deprecated åº”ä½¿ç”¨æ›´å¥½çš„æ–¹æ³•{@link #join(Object[])} æ¥ä»£æ›¿. æ–¹æ³•å°†åœ¨ Commons Lang 3.0.è¢«å–æ¶ˆ
      */
     @Deprecated
     public static String concatenate(Object[] array) {
@@ -1971,10 +1971,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Á¬½ÓÊı×éarrayÎªÒ»¸ö×Ö·û´® .
+     * è¿æ¥æ•°ç»„arrayä¸ºä¸€ä¸ªå­—ç¬¦ä¸² .
      * </p>
      * <p>
-     * ÔÚÁ¬½ÓºóµÄ×Ö·û´®ÖĞ²»°üÀ¨·Ö¸î·ûseparator. ÔÚÊı×éÖĞµÄnull¶ÔÏó»òÕß¿Õ×Ö·û´®½«±»ÈÏÎªÊÇÒ»¸ö¿ÕµÄ×Ö·û´®´¦Àí .
+     * åœ¨è¿æ¥åçš„å­—ç¬¦ä¸²ä¸­ä¸åŒ…æ‹¬åˆ†å‰²ç¬¦separator. åœ¨æ•°ç»„ä¸­çš„nullå¯¹è±¡æˆ–è€…ç©ºå­—ç¬¦ä¸²å°†è¢«è®¤ä¸ºæ˜¯ä¸€ä¸ªç©ºçš„å­—ç¬¦ä¸²å¤„ç† .
      * </p>
      * 
      * <pre>
@@ -1985,8 +1985,8 @@ public final class StringUtils {
      * StringUtils.join([null, &quot;&quot;, &quot;a&quot;]) = &quot;a&quot;
      * </pre>
      * 
-     * @param array ĞèÒªÁ¬½ÓµÄÊı×é, ¿ÉÄÜÎªnull
-     * @return Á¬½ÓºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄÊı×éÎªnull
+     * @param array éœ€è¦è¿æ¥çš„æ•°ç»„, å¯èƒ½ä¸ºnull
+     * @return è¿æ¥åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„æ•°ç»„ä¸ºnull
      * @since 2.0
      */
     public static String join(Object[] array) {
@@ -1995,10 +1995,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °ÑÒ»¸öÊı×éarrayºÍ¸ø¶¨µÄ×Ö·û·Ö¸î·ûseparatorÁ¬½ÓÎªÒ»¸ö×Ö·û´® .
+     * æŠŠä¸€ä¸ªæ•°ç»„arrayå’Œç»™å®šçš„å­—ç¬¦åˆ†å‰²ç¬¦separatorè¿æ¥ä¸ºä¸€ä¸ªå­—ç¬¦ä¸² .
      * </p>
      * <p>
-     * ÔÚÁ¬½ÓµÄÊı×éarrayÇ°ºó²»Ìí¼Ó·Ö¸ô·û. ÔÚÊı×éÖĞµÄnull¶ÔÏó»òÕß¿Õ×Ö·û´®½«±»ÈÏÎªÊÇÒ»¸ö¿ÕµÄ×Ö·û´®´¦Àí .
+     * åœ¨è¿æ¥çš„æ•°ç»„arrayå‰åä¸æ·»åŠ åˆ†éš”ç¬¦. åœ¨æ•°ç»„ä¸­çš„nullå¯¹è±¡æˆ–è€…ç©ºå­—ç¬¦ä¸²å°†è¢«è®¤ä¸ºæ˜¯ä¸€ä¸ªç©ºçš„å­—ç¬¦ä¸²å¤„ç† .
      * </p>
      * 
      * <pre>
@@ -2010,9 +2010,9 @@ public final class StringUtils {
      * StringUtils.join([null, &quot;&quot;, &quot;a&quot;], ';')  = &quot;;;a&quot;
      * </pre>
      * 
-     * @param array ĞèÁ¬½ÓµÄÊı×é, ¿ÉÄÜÎªnull
-     * @param separator ×Ö·û·Ö¸î·ûseparator
-     * @return Á¬½ÓºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄÊı×éÎªnull
+     * @param array éœ€è¿æ¥çš„æ•°ç»„, å¯èƒ½ä¸ºnull
+     * @param separator å­—ç¬¦åˆ†å‰²ç¬¦separator
+     * @return è¿æ¥åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„æ•°ç»„ä¸ºnull
      * @since 2.0
      */
     public static String join(Object[] array, char separator) {
@@ -2021,10 +2021,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °ÑÒ»¸öÊı×éarrayºÍ¸ø¶¨µÄ×Ö·û´®·Ö¸î·ûseparatorÁ¬½ÓÎªÒ»¸ö×Ö·û´® .
+     * æŠŠä¸€ä¸ªæ•°ç»„arrayå’Œç»™å®šçš„å­—ç¬¦ä¸²åˆ†å‰²ç¬¦separatorè¿æ¥ä¸ºä¸€ä¸ªå­—ç¬¦ä¸² .
      * </p>
      * <p>
-     * ÔÚÁ¬½ÓµÄÊı×éarrayÇ°ºó²»Ìí¼Ó·Ö¸ô·û. <code>null</code> ·Ö¸ô·û±»µ±³É¿Õ×Ö·û´® (""). ÔÚÊı×éÖĞµÄnull¶ÔÏó»òÕß¿Õ×Ö·û´®½«±»ÈÏÎªÊÇÒ»¸ö¿ÕµÄ×Ö·û´®´¦Àí .
+     * åœ¨è¿æ¥çš„æ•°ç»„arrayå‰åä¸æ·»åŠ åˆ†éš”ç¬¦. <code>null</code> åˆ†éš”ç¬¦è¢«å½“æˆç©ºå­—ç¬¦ä¸² (""). åœ¨æ•°ç»„ä¸­çš„nullå¯¹è±¡æˆ–è€…ç©ºå­—ç¬¦ä¸²å°†è¢«è®¤ä¸ºæ˜¯ä¸€ä¸ªç©ºçš„å­—ç¬¦ä¸²å¤„ç† .
      * </p>
      * 
      * <pre>
@@ -2037,9 +2037,9 @@ public final class StringUtils {
      * StringUtils.join([null, &quot;&quot;, &quot;a&quot;], ',')   = &quot;,,a&quot;
      * </pre>
      * 
-     * @param array ĞèÁ¬½ÓµÄÊı×é, ¿ÉÄÜÎªnull
-     * @param separator ×Ö·û´®·Ö¸î·ûseparator, null µ±×÷ ""
-     * @return Á¬½ÓºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄÊı×éÎªnull
+     * @param array éœ€è¿æ¥çš„æ•°ç»„, å¯èƒ½ä¸ºnull
+     * @param separator å­—ç¬¦ä¸²åˆ†å‰²ç¬¦separator, null å½“ä½œ ""
+     * @return è¿æ¥åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„æ•°ç»„ä¸ºnull
      */
     public static String join(Object[] array, String separator) {
         return org.apache.commons.lang.StringUtils.join(array, separator);
@@ -2047,18 +2047,18 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ<code>Iterator</code>ÖĞµÄËùÓĞÔªËØºÍ¸ø¶¨µÄ×Ö·û·Ö¸î·ûseparatorÁ¬½ÓÎªÒ»¸ö×Ö·û´® .
+     * æŠŠ<code>Iterator</code>ä¸­çš„æ‰€æœ‰å…ƒç´ å’Œç»™å®šçš„å­—ç¬¦åˆ†å‰²ç¬¦separatorè¿æ¥ä¸ºä¸€ä¸ªå­—ç¬¦ä¸² .
      * </p>
      * <p>
-     * ÔÚÁ¬½ÓµÄÁ´±íÇ°ºó²»Ìí¼Ó·Ö¸ô·û. ÔÚiterationÖĞµÄnull¶ÔÏó»òÕß¿Õ×Ö·û´®½«±»ÈÏÎªÊÇÒ»¸ö¿ÕµÄ×Ö·û´®´¦Àí .
+     * åœ¨è¿æ¥çš„é“¾è¡¨å‰åä¸æ·»åŠ åˆ†éš”ç¬¦. åœ¨iterationä¸­çš„nullå¯¹è±¡æˆ–è€…ç©ºå­—ç¬¦ä¸²å°†è¢«è®¤ä¸ºæ˜¯ä¸€ä¸ªç©ºçš„å­—ç¬¦ä¸²å¤„ç† .
      * </p>
      * <p>
-     * ÀıÈç: {@link #join(Object[],char)}.
+     * ä¾‹å¦‚: {@link #join(Object[],char)}.
      * </p>
      * 
-     * @param iterator ĞèÒª½øĞĞÁ¬½ÓµÄ<code>Iterator</code>, ¿ÉÄÜÎªnull
-     * @param separator ÓÃÓÚ¼ä¸ôµÄ×Ö·û
-     * @return Á¬½ÓºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄiteratorÎªnull
+     * @param iterator éœ€è¦è¿›è¡Œè¿æ¥çš„<code>Iterator</code>, å¯èƒ½ä¸ºnull
+     * @param separator ç”¨äºé—´éš”çš„å­—ç¬¦
+     * @return è¿æ¥åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„iteratorä¸ºnull
      * @since 2.0
      */
     public static String join(Iterator<?> iterator, char separator) {
@@ -2067,18 +2067,18 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ<code>Iterator</code>ÖĞµÄËùÓĞÔªËØºÍ¸ø¶¨µÄ×Ö·û´®·Ö¸î·ûseparatorÁ¬½ÓÎªÒ»¸ö×Ö·û´® .
+     * æŠŠ<code>Iterator</code>ä¸­çš„æ‰€æœ‰å…ƒç´ å’Œç»™å®šçš„å­—ç¬¦ä¸²åˆ†å‰²ç¬¦separatorè¿æ¥ä¸ºä¸€ä¸ªå­—ç¬¦ä¸² .
      * </p>
      * <p>
-     * ÔÚÁ¬½ÓµÄÁ´±íÇ°ºó²»Ìí¼Ó·Ö¸ô·û. <code>null</code>µÄ·Ö¸ô·ûseparator ±»µ±×÷¿Õ×Ö·û´®("").
+     * åœ¨è¿æ¥çš„é“¾è¡¨å‰åä¸æ·»åŠ åˆ†éš”ç¬¦. <code>null</code>çš„åˆ†éš”ç¬¦separator è¢«å½“ä½œç©ºå­—ç¬¦ä¸²("").
      * </p>
      * <p>
-     * ÀıÈç: {@link #join(Object[],String)}.
+     * ä¾‹å¦‚: {@link #join(Object[],String)}.
      * </p>
      * 
-     * @param iterator ĞèÒª½øĞĞÁ¬½ÓµÄ <code>Iterator</code>, ¿ÉÄÜÎªnull
-     * @param separator ÓÃÓÚ¼ä¸ôµÄ×Ö·û, nullµ±×÷""
-     * @return Á¬½ÓºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄiteratorÎªnull
+     * @param iterator éœ€è¦è¿›è¡Œè¿æ¥çš„ <code>Iterator</code>, å¯èƒ½ä¸ºnull
+     * @param separator ç”¨äºé—´éš”çš„å­—ç¬¦, nullå½“ä½œ""
+     * @return è¿æ¥åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„iteratorä¸ºnull
      */
     public static String join(Iterator<?> iterator, String separator) {
         return org.apache.commons.lang.StringUtils.join(iterator, separator);
@@ -2086,7 +2086,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * É¾³ıÔÚ{@link Character#isWhitespace(char)}¶¨ÒåµÄ¿Õ°××Ö·û .
+     * åˆ é™¤åœ¨{@link Character#isWhitespace(char)}å®šä¹‰çš„ç©ºç™½å­—ç¬¦ .
      * </p>
      * 
      * <pre>
@@ -2096,8 +2096,8 @@ public final class StringUtils {
      * StringUtils.deleteWhitespace(&quot;   ab  c  &quot;) = &quot;abc&quot;
      * </pre>
      * 
-     * @param string ĞèÒªÒÆ³ı¿Õ°×µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ÒÆ³ı¿Õ°×µÄ×Ö·û´®, <code>null</code> ÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦ç§»é™¤ç©ºç™½çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return ç§»é™¤ç©ºç™½çš„å­—ç¬¦ä¸², <code>null</code> è¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String deleteWhitespace(String string) {
         return org.apache.commons.lang.StringUtils.deleteWhitespace(string);
@@ -2105,10 +2105,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Ìæ»»Ò»¸ö×Ö·û´®textÖĞµÄ²¿·Ö×Ö·û´®replÎªÒ»ĞÂµÄ×Ö·û´®with,Ö»Ìæ»»¿ªÊ¼µÄµÚÒ»¸ö.
+     * æ›¿æ¢ä¸€ä¸ªå­—ç¬¦ä¸²textä¸­çš„éƒ¨åˆ†å­—ç¬¦ä¸²replä¸ºä¸€æ–°çš„å­—ç¬¦ä¸²with,åªæ›¿æ¢å¼€å§‹çš„ç¬¬ä¸€ä¸ª.
      * </p>
      * <p>
-     * ´«ÈëµÄ²ÎÊıÖĞÎª<code>null</code>Ê±Õâ¸ö·½·¨²»½øĞĞ²Ù×÷.
+     * ä¼ å…¥çš„å‚æ•°ä¸­ä¸º<code>null</code>æ—¶è¿™ä¸ªæ–¹æ³•ä¸è¿›è¡Œæ“ä½œ.
      * </p>
      * 
      * <pre>
@@ -2122,10 +2122,10 @@ public final class StringUtils {
      * </pre>
      * 
      * @see #replace(String text, String repl, String with, int max)
-     * @param text Òª½øĞĞÌæ»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param repl Òª±»Ìæ»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param with Ìæ»»ºóµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ½øĞĞÌæ»»²Ù×÷ºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param text è¦è¿›è¡Œæ›¿æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param repl è¦è¢«æ›¿æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param with æ›¿æ¢åçš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return è¿›è¡Œæ›¿æ¢æ“ä½œåçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String replaceOnce(String text, String repl, String with) {
         return org.apache.commons.lang.StringUtils.replaceOnce(text, repl, with);
@@ -2133,10 +2133,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Ìæ»»×Ö·û´®textÖĞËùÓĞ³öÏÖµÄ×Ö·û´®replÌæ»»ÎªĞÂµÄ×Ö·û´®with.
+     * æ›¿æ¢å­—ç¬¦ä¸²textä¸­æ‰€æœ‰å‡ºç°çš„å­—ç¬¦ä¸²replæ›¿æ¢ä¸ºæ–°çš„å­—ç¬¦ä¸²with.
      * </p>
      * <p>
-     * <code>null</code> ´«µİ¸øÕâ¸ö·½·¨½«²»»á±»´¦Àí²Ù×÷.
+     * <code>null</code> ä¼ é€’ç»™è¿™ä¸ªæ–¹æ³•å°†ä¸ä¼šè¢«å¤„ç†æ“ä½œ.
      * </p>
      * 
      * <pre>
@@ -2150,10 +2150,10 @@ public final class StringUtils {
      * </pre>
      * 
      * @see #replace(String text, String repl, String with, int max)
-     * @param text Òª½øĞĞÌæ»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param repl Òª±»Ìæ»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param with Ìæ»»ºóµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ½øĞĞÌæ»»²Ù×÷ºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param text è¦è¿›è¡Œæ›¿æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param repl è¦è¢«æ›¿æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param with æ›¿æ¢åçš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return è¿›è¡Œæ›¿æ¢æ“ä½œåçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String replace(String text, String repl, String with) {
         return org.apache.commons.lang.StringUtils.replace(text, repl, with);
@@ -2161,10 +2161,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ½«×Ö·û´®textÖĞ³öÏÖÖ¸¶¨¸öÊı<code>max</code>µÄ×Ö·û´®replÎªÌæ»»ĞÂµÄ×Ö·û´®with, .
+     * å°†å­—ç¬¦ä¸²textä¸­å‡ºç°æŒ‡å®šä¸ªæ•°<code>max</code>çš„å­—ç¬¦ä¸²replä¸ºæ›¿æ¢æ–°çš„å­—ç¬¦ä¸²with, .
      * </p>
      * <p>
-     * <code>null</code> ´«µİ¸øÕâ¸ö·½·¨½«²»»á±»´¦Àí²Ù×÷.
+     * <code>null</code> ä¼ é€’ç»™è¿™ä¸ªæ–¹æ³•å°†ä¸ä¼šè¢«å¤„ç†æ“ä½œ.
      * </p>
      * 
      * <pre>
@@ -2180,11 +2180,11 @@ public final class StringUtils {
      * StringUtils.replace(&quot;abaa&quot;, &quot;a&quot;, &quot;z&quot;, -1)  = &quot;zbzz&quot;
      * </pre>
      * 
-     * @param text Òª½øĞĞÌæ»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param repl Òª±»Ìæ»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param with Ìæ»»ºóµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param max ÒªÌæ»»µÄ×Ö·û´®µÄ¸öÊı, »òÕß <code>-1</code> ±êÊ¶Ã»ÓĞ¸öÊıÏŞÖÆ
-     * @return ½øĞĞÌæ»»²Ù×÷ºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param text è¦è¿›è¡Œæ›¿æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param repl è¦è¢«æ›¿æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param with æ›¿æ¢åçš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param max è¦æ›¿æ¢çš„å­—ç¬¦ä¸²çš„ä¸ªæ•°, æˆ–è€… <code>-1</code> æ ‡è¯†æ²¡æœ‰ä¸ªæ•°é™åˆ¶
+     * @return è¿›è¡Œæ›¿æ¢æ“ä½œåçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String replace(String text, String repl, String with, int max) {
         return org.apache.commons.lang.StringUtils.replace(text, repl, with, max);
@@ -2194,10 +2194,10 @@ public final class StringUtils {
     // -----------------------------------------------------------------------
     /**
      * <p>
-     * Ìæ»»×Ö·û´®strÖĞËùÓĞ³öÏÖµÄ×Ö·ûsearchCharÎªÒ»¸öĞÂµÄ×Ö·ûreplaceChar. Ò»¸ö null-safe µÄ°æ±¾ {@link String#replace(char, char)}.
+     * æ›¿æ¢å­—ç¬¦ä¸²strä¸­æ‰€æœ‰å‡ºç°çš„å­—ç¬¦searchCharä¸ºä¸€ä¸ªæ–°çš„å­—ç¬¦replaceChar. ä¸€ä¸ª null-safe çš„ç‰ˆæœ¬ {@link String#replace(char, char)}.
      * </p>
      * <p>
-     * <code>null</code> ×Ö·û´®µÄÊäÈë·µ»Ø <code>null</code>. ¿ÕµÄ×Ö·û´® ("") string ·µ»ØÒ»¸ö¿Õ×Ö·û´®.
+     * <code>null</code> å­—ç¬¦ä¸²çš„è¾“å…¥è¿”å› <code>null</code>. ç©ºçš„å­—ç¬¦ä¸² ("") string è¿”å›ä¸€ä¸ªç©ºå­—ç¬¦ä¸².
      * </p>
      * 
      * <pre>
@@ -2207,10 +2207,10 @@ public final class StringUtils {
      * StringUtils.replaceChars(&quot;abcba&quot;, 'z', 'y') = &quot;abcba&quot;
      * </pre>
      * 
-     * @param string Òª½øĞĞÌæ»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param searchChar ĞèÒªÌæ»»µÄ×Ö·û, ¿ÉÄÜÎªnull
-     * @param replaceChar Ìæ»»ºóµÄ×Ö·û, ¿ÉÄÜÎªnull
-     * @return Ìæ»»ºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦è¿›è¡Œæ›¿æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param searchChar éœ€è¦æ›¿æ¢çš„å­—ç¬¦, å¯èƒ½ä¸ºnull
+     * @param replaceChar æ›¿æ¢åçš„å­—ç¬¦, å¯èƒ½ä¸ºnull
+     * @return æ›¿æ¢åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @since 2.0
      */
     public static String replaceChars(String string, char searchChar, char replaceChar) {
@@ -2219,18 +2219,18 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Ìæ»»×Ö·û´®strÖĞµÄ¶à¸ö×Ö·ûsearchCharsÌæ»»ÎªĞÂµÄ×Ö·ûreplaceChars. Õâ¸ö·½·¨¿ÉÒÔÓÃÀ´É¾³ı×Ö·û.
+     * æ›¿æ¢å­—ç¬¦ä¸²strä¸­çš„å¤šä¸ªå­—ç¬¦searchCharsæ›¿æ¢ä¸ºæ–°çš„å­—ç¬¦replaceChars. è¿™ä¸ªæ–¹æ³•å¯ä»¥ç”¨æ¥åˆ é™¤å­—ç¬¦.
      * </p>
      * <p>
-     * ÀıÈç:<br />
+     * ä¾‹å¦‚:<br />
      * <code>replaceChars(&quot;hello&quot;, &quot;ho&quot;, &quot;jy&quot;) = jelly</code>.
      * </p>
      * <p>
-     * <code>null</code> ×Ö·û´®ÊäÈë·µ»Ø <code>null</code>. ¿Õ×Ö·û´® ("") ½«·µ»Ø¿Õ×Ö·û´®. ÊäÈënull»òÕß¿ÕµÄĞèÒªÌæ»»µÄ×Ö·ûsearchChars½«·Â·ğ¹ş×Ö·û´®str±¾Éí.
+     * <code>null</code> å­—ç¬¦ä¸²è¾“å…¥è¿”å› <code>null</code>. ç©ºå­—ç¬¦ä¸² ("") å°†è¿”å›ç©ºå­—ç¬¦ä¸². è¾“å…¥nullæˆ–è€…ç©ºçš„éœ€è¦æ›¿æ¢çš„å­—ç¬¦searchCharså°†ä»¿ä½›å“ˆå­—ç¬¦ä¸²stræœ¬èº«.
      * </p>
      * <p>
-     * Òª±»Ìæ»»µÄ×Ö·ûsearchCharsµÄ³¤¶ÈÍ¨³£Ó¦¸ÃµÈÓÚÌæ»»µÄ×Ö·ûreplaceCharsµÄ³¤¶È. Èç¹û±»Ìæ»»µÄ×Ö·ûsearchCharsµÄ³¤¶È¸ü³¤,±»Ìæ»»µÄ×Ö·ûsearchCharsÖĞ¶îÍâµÄ×Ö·û½«±»É¾³ı
-     * Èç¹ûÌæ»»µÄ×Ö·ûreplaceCharsµÄ³¤¶È¸ü³¤,Ìæ»»µÄ×Ö·ûreplaceCharsÖĞ¶îÍâµÄ×Ö·û½«±»ºöÂÔ .
+     * è¦è¢«æ›¿æ¢çš„å­—ç¬¦searchCharsçš„é•¿åº¦é€šå¸¸åº”è¯¥ç­‰äºæ›¿æ¢çš„å­—ç¬¦replaceCharsçš„é•¿åº¦. å¦‚æœè¢«æ›¿æ¢çš„å­—ç¬¦searchCharsçš„é•¿åº¦æ›´é•¿,è¢«æ›¿æ¢çš„å­—ç¬¦searchCharsä¸­é¢å¤–çš„å­—ç¬¦å°†è¢«åˆ é™¤
+     * å¦‚æœæ›¿æ¢çš„å­—ç¬¦replaceCharsçš„é•¿åº¦æ›´é•¿,æ›¿æ¢çš„å­—ç¬¦replaceCharsä¸­é¢å¤–çš„å­—ç¬¦å°†è¢«å¿½ç•¥ .
      * </p>
      * 
      * <pre>
@@ -2245,10 +2245,10 @@ public final class StringUtils {
      * StringUtils.replaceChars(&quot;abcba&quot;, &quot;bc&quot;, &quot;yzx&quot;) = &quot;ayzya&quot;
      * </pre>
      * 
-     * @param string ĞèÒª±»Ìæ»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param searchChars ×Ö·û´®ÖĞÒª±»Ìæ»»µÄ×Ö·û, ¿ÉÄÜÎªnull
-     * @param replaceChars Ìæ»»µÄ×Ö·û, ¿ÉÄÜÎªnull
-     * @return Ìæ»»ºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦è¢«æ›¿æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param searchChars å­—ç¬¦ä¸²ä¸­è¦è¢«æ›¿æ¢çš„å­—ç¬¦, å¯èƒ½ä¸ºnull
+     * @param replaceChars æ›¿æ¢çš„å­—ç¬¦, å¯èƒ½ä¸ºnull
+     * @return æ›¿æ¢åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @since 2.0
      */
     public static String replaceChars(String string, String searchChars, String replaceChars) {
@@ -2257,7 +2257,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÓÃ×Ö·û´®overlay¸²¸Ç×Ö·û´®textÖĞµÄ²¿·Ö×Ö·û. µ±start»òÕßend²ÎÊıÓĞ²»ºÏ·¨µÄÊı×ÖÊ±»áÅ×³öIndexOutOfBoundsExceptionÒì³£
+     * ç”¨å­—ç¬¦ä¸²overlayè¦†ç›–å­—ç¬¦ä¸²textä¸­çš„éƒ¨åˆ†å­—ç¬¦. å½“startæˆ–è€…endå‚æ•°æœ‰ä¸åˆæ³•çš„æ•°å­—æ—¶ä¼šæŠ›å‡ºIndexOutOfBoundsExceptionå¼‚å¸¸
      * </p>
      * 
      * <pre>
@@ -2272,12 +2272,12 @@ public final class StringUtils {
      * StringUtils.overlayString(&quot;abcdef&quot;, &quot;zzzz&quot;, 2, 8)  = IndexOutOfBoundsException
      * </pre>
      * 
-     * @param text ½«Òª±»¸²¸Ç×Ö·ûµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param overlay ¸²¸ÇµÄ×Ö·û, ¿ÉÄÜÎªnull
-     * @param start ¸²¸Ç×Ö·û´®µÄÆğÊ¼Î»ÖÃ,±ØĞëÊÇÓĞĞ§µÄÊı×Ö
-     * @param end ¸²¸Ç×Ö·û´®µÄ½áÊøÎ»ÖÃ,±ØĞëÊÇÓĞĞ§µÄÊı×Ö
-     * @return ¸²¸ÇºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
-     * @deprecated Ê¹ÓÃ {@link #overlay(String, String, int, int)} À´´úÌæ. ·½·¨½«ÔÚ Commons Lang 3.0. ±»È¡Ïû
+     * @param text å°†è¦è¢«è¦†ç›–å­—ç¬¦çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param overlay è¦†ç›–çš„å­—ç¬¦, å¯èƒ½ä¸ºnull
+     * @param start è¦†ç›–å­—ç¬¦ä¸²çš„èµ·å§‹ä½ç½®,å¿…é¡»æ˜¯æœ‰æ•ˆçš„æ•°å­—
+     * @param end è¦†ç›–å­—ç¬¦ä¸²çš„ç»“æŸä½ç½®,å¿…é¡»æ˜¯æœ‰æ•ˆçš„æ•°å­—
+     * @return è¦†ç›–åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
+     * @deprecated ä½¿ç”¨ {@link #overlay(String, String, int, int)} æ¥ä»£æ›¿. æ–¹æ³•å°†åœ¨ Commons Lang 3.0. è¢«å–æ¶ˆ
      */
     @Deprecated
     public static String overlayString(String text, String overlay, int start, int end) {
@@ -2287,11 +2287,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÓÃ×Ö·û´®overlay¸²¸Ç×Ö·û´®textÖĞµÄ²¿·Ö×Ö·û.
+     * ç”¨å­—ç¬¦ä¸²overlayè¦†ç›–å­—ç¬¦ä¸²textä¸­çš„éƒ¨åˆ†å­—ç¬¦.
      * </p>
      * <p>
-     * <code>null</code>µÄ×Ö·û´®ÊäÈë·µ»Ø<code>null</code>. startºÍend²ÎÊıÖĞÓĞÎª¸ºÊıÊ±µ±×÷0´¦Àí. startºÍend²ÎÊı´óÓÚ×Ö·û´®strµÄ³¤¶ÈÊ±ÒÔstrµÄ³¤¶ÈÀ´´¦Àí.
-     * start²ÎÊıÖĞÊÇÑ¡ÔñÁ½¸öÎ»ÖÃ²ÎÊıÖĞĞ¡µÄÄÇÒ»¸ö.
+     * <code>null</code>çš„å­—ç¬¦ä¸²è¾“å…¥è¿”å›<code>null</code>. startå’Œendå‚æ•°ä¸­æœ‰ä¸ºè´Ÿæ•°æ—¶å½“ä½œ0å¤„ç†. startå’Œendå‚æ•°å¤§äºå­—ç¬¦ä¸²strçš„é•¿åº¦æ—¶ä»¥strçš„é•¿åº¦æ¥å¤„ç†.
+     * startå‚æ•°ä¸­æ˜¯é€‰æ‹©ä¸¤ä¸ªä½ç½®å‚æ•°ä¸­å°çš„é‚£ä¸€ä¸ª.
      * </p>
      * 
      * <pre>
@@ -2308,11 +2308,11 @@ public final class StringUtils {
      * StringUtils.overlay(&quot;abcdef&quot;, &quot;zzzz&quot;, 8, 10)  = &quot;abcdefzzzz&quot;
      * </pre>
      * 
-     * @param string ½«Òª±»¸²¸Ç×Ö·ûµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param overlay ¸²¸ÇµÄ×Ö·û, ¿ÉÄÜÎªnull
-     * @param start ¸²¸Ç×Ö·û´®µÄÆğÊ¼Î»ÖÃ
-     * @param end ¸²¸Ç×Ö·û´®µÄ½áÊøÎ»ÖÃ
-     * @return ¸²¸ÇºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string å°†è¦è¢«è¦†ç›–å­—ç¬¦çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param overlay è¦†ç›–çš„å­—ç¬¦, å¯èƒ½ä¸ºnull
+     * @param start è¦†ç›–å­—ç¬¦ä¸²çš„èµ·å§‹ä½ç½®
+     * @param end è¦†ç›–å­—ç¬¦ä¸²çš„ç»“æŸä½ç½®
+     * @return è¦†ç›–åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @since 2.0
      */
     public static String overlay(String string, String overlay, int start, int end) {
@@ -2321,11 +2321,11 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Èç¹û×Ö·û´®strµÄÄ©Î²ÓĞ»»ĞĞ¾ÍÈ¥µôÒ»¸ö»»ĞĞ,¶à¸ö»»ĞĞµÄ±£ÁôÆäËûµÄ. »»ĞĞµÄ¶¨ÒåÎª &quot;<code>\n</code>&quot;, &quot;<code>\r</code>&quot;, »òÕß &quot;
+     * å¦‚æœå­—ç¬¦ä¸²strçš„æœ«å°¾æœ‰æ¢è¡Œå°±å»æ‰ä¸€ä¸ªæ¢è¡Œ,å¤šä¸ªæ¢è¡Œçš„ä¿ç•™å…¶ä»–çš„. æ¢è¡Œçš„å®šä¹‰ä¸º &quot;<code>\n</code>&quot;, &quot;<code>\r</code>&quot;, æˆ–è€… &quot;
      * <code>\r\n</code>&quot;.
      * </p>
      * <p>
-     * ×¢Òâ: Õâ¸ö·½·¨ÔÚ 2.0. ÓĞËù¸Ä±ä ÏÖÔÚºÍ Perl chomp ÏàÆ¥ÅäÁË.
+     * æ³¨æ„: è¿™ä¸ªæ–¹æ³•åœ¨ 2.0. æœ‰æ‰€æ”¹å˜ ç°åœ¨å’Œ Perl chomp ç›¸åŒ¹é…äº†.
      * </p>
      * 
      * <pre>
@@ -2342,8 +2342,8 @@ public final class StringUtils {
      * StringUtils.chomp(&quot;\r\n&quot;)        = &quot;&quot;
      * </pre>
      * 
-     * @param string ĞèÒªÈ¥µô»»ĞĞµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return È¥µô»»ĞĞµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦å»æ‰æ¢è¡Œçš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å»æ‰æ¢è¡Œçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String chomp(String string) {
         return org.apache.commons.lang.StringUtils.chomp(string);
@@ -2351,10 +2351,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Èç¹û×Ö·û´®<code>str</code>µÄÄ©¶ËÓĞÖ¸¶¨µÄ·Ö¸ô·û<code>separator</code> ¾ÍÈ¥µôÒ»¸ö , ÆäËûÊ£ÓàµÄ±£Áô.
+     * å¦‚æœå­—ç¬¦ä¸²<code>str</code>çš„æœ«ç«¯æœ‰æŒ‡å®šçš„åˆ†éš”ç¬¦<code>separator</code> å°±å»æ‰ä¸€ä¸ª , å…¶ä»–å‰©ä½™çš„ä¿ç•™.
      * </p>
      * <p>
-     * ×¢Òâ: Õâ¸ö·½·¨ÔÚ 2.0. ÓĞËù¸Ä±ä ÏÖÔÚºÍ Perl chomp ÏàÆ¥ÅäÁË. ÏÈÇ°µÄ°æ±¾Ê¹ÓÃÁË {@link #substringBeforeLast(String, String)}. Õâ¸ö·½·¨Ê¹ÓÃÁË
+     * æ³¨æ„: è¿™ä¸ªæ–¹æ³•åœ¨ 2.0. æœ‰æ‰€æ”¹å˜ ç°åœ¨å’Œ Perl chomp ç›¸åŒ¹é…äº†. å…ˆå‰çš„ç‰ˆæœ¬ä½¿ç”¨äº† {@link #substringBeforeLast(String, String)}. è¿™ä¸ªæ–¹æ³•ä½¿ç”¨äº†
      * {@link String#endsWith(String)}.
      * </p>
      * 
@@ -2371,9 +2371,9 @@ public final class StringUtils {
      * StringUtils.chomp(&quot;foo&quot;, null)     = &quot;foo&quot;
      * </pre>
      * 
-     * @param string ĞèÒªÈ¥µô·Ö¸ô·ûµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param separator Ö¸¶¨µÄ·Ö¸ô·û, ¿ÉÄÜÎªnull
-     * @return È¥µô·Ö¸ô·ûµÄ×Ö·û´®, <code>null</code>Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦å»æ‰åˆ†éš”ç¬¦çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param separator æŒ‡å®šçš„åˆ†éš”ç¬¦, å¯èƒ½ä¸ºnull
+     * @return å»æ‰åˆ†éš”ç¬¦çš„å­—ç¬¦ä¸², <code>null</code>å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String chomp(String string, String separator) {
         return org.apache.commons.lang.StringUtils.chomp(string, separator);
@@ -2381,13 +2381,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Èç¹û×Ö·û´®strµÄÄ©¶ËÊÇÒÔÖ¸¶¨µÄ×Ö·û´®sep½áÊøµÄ ÄÇÃ´¾ÍÉ¾È¥strµÄÄ©¶ËµÄsep×Ö·û´®.
+     * å¦‚æœå­—ç¬¦ä¸²strçš„æœ«ç«¯æ˜¯ä»¥æŒ‡å®šçš„å­—ç¬¦ä¸²sepç»“æŸçš„ é‚£ä¹ˆå°±åˆ å»strçš„æœ«ç«¯çš„sepå­—ç¬¦ä¸².
      * </p>
      * 
-     * @param str ĞèÒª´¦ÀíµÄ×Ö·û´®,²»ÄÜÎªnull
-     * @param sep ÒªÈ¥µôµÄ×Ö·û´®,²»ÄÜÎªnull
-     * @return È¥µô×Ö·û´®ºóµÄ×Ö·û´®
-     * @deprecated Ê¹ÓÃ {@link #chomp(String,String)} À´´úÌæ. ·½·¨½«ÔÚCommons Lang 3.0.±»È¡Ïû
+     * @param str éœ€è¦å¤„ç†çš„å­—ç¬¦ä¸²,ä¸èƒ½ä¸ºnull
+     * @param sep è¦å»æ‰çš„å­—ç¬¦ä¸²,ä¸èƒ½ä¸ºnull
+     * @return å»æ‰å­—ç¬¦ä¸²åçš„å­—ç¬¦ä¸²
+     * @deprecated ä½¿ç”¨ {@link #chomp(String,String)} æ¥ä»£æ›¿. æ–¹æ³•å°†åœ¨Commons Lang 3.0.è¢«å–æ¶ˆ
      */
     @Deprecated
     public static String chompLast(String str, String sep) {
@@ -2403,13 +2403,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * È¥µô×Ö·û´®strÖĞ×îºó³öÏÖÖ¸¶¨×Ö·ûsepÇ°µÄËùÓĞµÄ×Ö·û, ·µ»ØÖ¸¶¨×Ö·ûsepºÍËüºóÃæµÄ×Ö·û´®.
+     * å»æ‰å­—ç¬¦ä¸²strä¸­æœ€åå‡ºç°æŒ‡å®šå­—ç¬¦sepå‰çš„æ‰€æœ‰çš„å­—ç¬¦, è¿”å›æŒ‡å®šå­—ç¬¦sepå’Œå®ƒåé¢çš„å­—ç¬¦ä¸².
      * </p>
      * 
-     * @param str ĞèÒª´¦ÀíµÄ×Ö·û´®, ²»ÄÜÎªnull
-     * @param sep ÒªÈ¥µôµÄ×Ö·û´®, ²»ÄÜÎªnull
-     * @return È¥µô×Ö·û´®ºóµÄ×Ö·û´®
-     * @deprecated Ê¹ÓÃ {@link #substringAfterLast(String, String)} À´´úÌæ. (ËäÈ»²»°üÀ¨·Ö¸ô·û separator) ·½·¨½«ÔÚCommons Lang 3.0.±»È¡Ïû
+     * @param str éœ€è¦å¤„ç†çš„å­—ç¬¦ä¸², ä¸èƒ½ä¸ºnull
+     * @param sep è¦å»æ‰çš„å­—ç¬¦ä¸², ä¸èƒ½ä¸ºnull
+     * @return å»æ‰å­—ç¬¦ä¸²åçš„å­—ç¬¦ä¸²
+     * @deprecated ä½¿ç”¨ {@link #substringAfterLast(String, String)} æ¥ä»£æ›¿. (è™½ç„¶ä¸åŒ…æ‹¬åˆ†éš”ç¬¦ separator) æ–¹æ³•å°†åœ¨Commons Lang 3.0.è¢«å–æ¶ˆ
      */
     @Deprecated
     public static String getChomp(String str, String sep) {
@@ -2425,13 +2425,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * È¥µô×Ö·û´®strÖĞµÚÒ»¸ö³öÏÖÖ¸¶¨×Ö·ûsepÇ°µÄËùÓĞµÄ×Ö·û, ·µ»Ø×Ö·û´®strÖĞµÚÒ»¸ö×Ö·û´®sepºóÃæµÄ×Ö·û´®.
+     * å»æ‰å­—ç¬¦ä¸²strä¸­ç¬¬ä¸€ä¸ªå‡ºç°æŒ‡å®šå­—ç¬¦sepå‰çš„æ‰€æœ‰çš„å­—ç¬¦, è¿”å›å­—ç¬¦ä¸²strä¸­ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸²sepåé¢çš„å­—ç¬¦ä¸².
      * </p>
      * 
-     * @param str ĞèÒª´¦ÀíµÄ×Ö·û´®, ²»ÄÜÎªnull
-     * @param sep ÒªÈ¥µôµÄ×Ö·û´®, ²»ÄÜÎªnull
-     * @return È¥µô×Ö·û´®ºóµÄ×Ö·û´®
-     * @deprecated Ê¹ÓÃ {@link #substringAfter(String,String)} À´´úÌæ. ·½·¨½«ÔÚCommons Lang 3.0.±»È¡Ïû
+     * @param str éœ€è¦å¤„ç†çš„å­—ç¬¦ä¸², ä¸èƒ½ä¸ºnull
+     * @param sep è¦å»æ‰çš„å­—ç¬¦ä¸², ä¸èƒ½ä¸ºnull
+     * @return å»æ‰å­—ç¬¦ä¸²åçš„å­—ç¬¦ä¸²
+     * @deprecated ä½¿ç”¨ {@link #substringAfter(String,String)} æ¥ä»£æ›¿. æ–¹æ³•å°†åœ¨Commons Lang 3.0.è¢«å–æ¶ˆ
      */
     @Deprecated
     public static String prechomp(String str, String sep) {
@@ -2444,17 +2444,17 @@ public final class StringUtils {
     
     /**
      * <p>
-     * È¥µô×Ö·û´®strÖĞµÚÒ»¸ö³öÏÖÖ¸¶¨×Ö·ûsepºóÃæµÄËùÓĞµÄ×Ö·û ·µ»Ø×Ö·û´®strÖĞµÚÒ»¸ö×Ö·û´®sepÇ°ÃæµÄ×Ö·û´®,°üÀ¨seq×Ö·û´®.
+     * å»æ‰å­—ç¬¦ä¸²strä¸­ç¬¬ä¸€ä¸ªå‡ºç°æŒ‡å®šå­—ç¬¦sepåé¢çš„æ‰€æœ‰çš„å­—ç¬¦ è¿”å›å­—ç¬¦ä¸²strä¸­ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸²sepå‰é¢çš„å­—ç¬¦ä¸²,åŒ…æ‹¬seqå­—ç¬¦ä¸².
      * </p>
      * 
      * <pre>
      * StringUtils.getPrechomp(&quot;accbcabc&quot;, &quot;bc&quot;) = &quot;accbc&quot;
      * </pre>
      * 
-     * @param str ĞèÒª´¦ÀíµÄ×Ö·û´®, ²»ÄÜÎªnull
-     * @param sep ½øĞĞ±È½ÏµÄ×Ö·û´®, ²»ÄÜÎªnull
-     * @return È¥µô×Ö·û´®ºóµÄ×Ö·û´®
-     * @deprecated Ê¹ÓÃ {@link #substringBefore(String,String)} À´´úÌæ (²»°üÀ¨·Ö¸ô·ûseparator). ·½·¨½«ÔÚCommons Lang 3.0.±»È¡Ïû
+     * @param str éœ€è¦å¤„ç†çš„å­—ç¬¦ä¸², ä¸èƒ½ä¸ºnull
+     * @param sep è¿›è¡Œæ¯”è¾ƒçš„å­—ç¬¦ä¸², ä¸èƒ½ä¸ºnull
+     * @return å»æ‰å­—ç¬¦ä¸²åçš„å­—ç¬¦ä¸²
+     * @deprecated ä½¿ç”¨ {@link #substringBefore(String,String)} æ¥ä»£æ›¿ (ä¸åŒ…æ‹¬åˆ†éš”ç¬¦separator). æ–¹æ³•å°†åœ¨Commons Lang 3.0.è¢«å–æ¶ˆ
      */
     @Deprecated
     public static String getPrechomp(String str, String sep) {
@@ -2467,10 +2467,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * È¥µô×Ö·û´®strÄ©¶ËµÄ×Ö·û.
+     * å»æ‰å­—ç¬¦ä¸²stræœ«ç«¯çš„å­—ç¬¦.
      * </p>
      * <p>
-     * Èç¹û×Ö·û´®strÊÇÒÔÕâ<code>\r\n</code>ÆäÖĞÈÎÒâĞÎÊ½µÄ»»ĞĞ, È¥µô»»ĞĞ.
+     * å¦‚æœå­—ç¬¦ä¸²stræ˜¯ä»¥è¿™<code>\r\n</code>å…¶ä¸­ä»»æ„å½¢å¼çš„æ¢è¡Œ, å»æ‰æ¢è¡Œ.
      * </p>
      * 
      * <pre>
@@ -2487,8 +2487,8 @@ public final class StringUtils {
      * StringUtils.chop(&quot;\r\n&quot;)        = &quot;&quot;
      * </pre>
      * 
-     * @param string ĞèÒªÈ¥µô×Ö·ûµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return È¥µôÄ©Î²×Ö·ûµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦å»æ‰å­—ç¬¦çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å»æ‰æœ«å°¾å­—ç¬¦çš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String chop(String string) {
         return org.apache.commons.lang.StringUtils.chop(string);
@@ -2496,12 +2496,12 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Èç¹û×Ö·û´®strµÄ½áÎ²ÊÇ<code>\n</code>¾ÍÈ¥µô<code>\n</code>. Èç¹û<code>\n</code>Ç°ÃæÊÇ<code>\r</code>,Í¬ÑùÈ¥µô<code>\r</code>.
+     * å¦‚æœå­—ç¬¦ä¸²strçš„ç»“å°¾æ˜¯<code>\n</code>å°±å»æ‰<code>\n</code>. å¦‚æœ<code>\n</code>å‰é¢æ˜¯<code>\r</code>,åŒæ ·å»æ‰<code>\r</code>.
      * </p>
      * 
-     * @param str the String to chop a newline from, ²»ÄÜÎªnull
-     * @return È¥µô»»ĞĞµÄ×Ö·û´®
-     * @deprecated Ê¹ÓÃ {@link #chomp(String)} À´´úÌæ. ·½·¨½«ÔÚCommons Lang 3.0.±»È¡Ïû
+     * @param str the String to chop a newline from, ä¸èƒ½ä¸ºnull
+     * @return å»æ‰æ¢è¡Œçš„å­—ç¬¦ä¸²
+     * @deprecated ä½¿ç”¨ {@link #chomp(String)} æ¥ä»£æ›¿. æ–¹æ³•å°†åœ¨Commons Lang 3.0.è¢«å–æ¶ˆ
      */
     @Deprecated
     public static String chopNewline(String str) {
@@ -2522,7 +2522,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¸´ÖÆÒ»¸ö×Ö·û´®Ö¸¶¨µÄ´ÎÊı<code>repeat</code> .
+     * å¤åˆ¶ä¸€ä¸ªå­—ç¬¦ä¸²æŒ‡å®šçš„æ¬¡æ•°<code>repeat</code> .
      * </p>
      * 
      * <pre>
@@ -2534,9 +2534,9 @@ public final class StringUtils {
      * StringUtils.repeat(&quot;a&quot;, -2) = &quot;&quot;
      * </pre>
      * 
-     * @param string Òª¸´ÖÆµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param repeat ×Ö·û´®strÒªÖØ¸´µÄ²ÎÊı,¸ºÊıÎª0
-     * @return ÓÉÔ­À´×Ö·û´®½øĞĞrepeat´ÎÖØĞ´ºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦å¤åˆ¶çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param repeat å­—ç¬¦ä¸²strè¦é‡å¤çš„å‚æ•°,è´Ÿæ•°ä¸º0
+     * @return ç”±åŸæ¥å­—ç¬¦ä¸²è¿›è¡Œrepeatæ¬¡é‡å†™åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String repeat(String string, int repeat) {
         return org.apache.commons.lang.StringUtils.repeat(string, repeat);
@@ -2544,7 +2544,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÖØ¸´Ò»¸ö×Ö·ûpadCharÖ¸¶¨µÄ´ÎÊırepeat .
+     * é‡å¤ä¸€ä¸ªå­—ç¬¦padCharæŒ‡å®šçš„æ¬¡æ•°repeat .
      * </p>
      * 
      * <pre>
@@ -2553,9 +2553,9 @@ public final class StringUtils {
      * StringUtils.padding(-2, 'e') = IndexOutOfBoundsException
      * </pre>
      * 
-     * @param repeat ÒªÖØ¸´µÄ´ÎÊı
-     * @param padChar ÒªÖØ¸´µÄ×Ö·û
-     * @return ÖØ¸´ºóµÄ×Ö·û´®
+     * @param repeat è¦é‡å¤çš„æ¬¡æ•°
+     * @param padChar è¦é‡å¤çš„å­—ç¬¦
+     * @return é‡å¤åçš„å­—ç¬¦ä¸²
      */
     public static String padding(int repeat, char padChar) {
         // be careful of synchronization in this method
@@ -2573,10 +2573,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Îª×Ö·û´®strµÄÓÒ±ßÌí¼Ó(' ').
+     * ä¸ºå­—ç¬¦ä¸²strçš„å³è¾¹æ·»åŠ (' ').
      * </p>
      * <p>
-     * Ìí¼Ó(' ')ºóµÄ×Ö·û´®µÄ³¤¶ÈÎª²ÎÊı<code>size</code>Ö¸¶¨µÄ³¤¶È.
+     * æ·»åŠ (' ')åçš„å­—ç¬¦ä¸²çš„é•¿åº¦ä¸ºå‚æ•°<code>size</code>æŒ‡å®šçš„é•¿åº¦.
      * </p>
      * 
      * <pre>
@@ -2588,9 +2588,9 @@ public final class StringUtils {
      * StringUtils.rightPad(&quot;bat&quot;, -1) = &quot;bat&quot;
      * </pre>
      * 
-     * @param string ÒªÌí¼Ó(' ')µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param size ÒªÌí¼ÓµÄ³¤¶È
-     * @return ÒªÌí¼Ó(' ')µÄºó×Ö·û´®,Èç¹ûÃ»Ìí¼Ó¾Í·µ»ØÔ­×Ö·û´®. <code>null</code>Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦æ·»åŠ (' ')çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param size è¦æ·»åŠ çš„é•¿åº¦
+     * @return è¦æ·»åŠ (' ')çš„åå­—ç¬¦ä¸²,å¦‚æœæ²¡æ·»åŠ å°±è¿”å›åŸå­—ç¬¦ä¸². <code>null</code>å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String rightPad(String string, int size) {
         return org.apache.commons.lang.StringUtils.rightPad(string, size);
@@ -2598,10 +2598,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Îª×Ö·û´®strµÄÓÒ±ßÌí¼ÓÖ¸¶¨µÄ×Ö·ûpadChar.
+     * ä¸ºå­—ç¬¦ä¸²strçš„å³è¾¹æ·»åŠ æŒ‡å®šçš„å­—ç¬¦padChar.
      * </p>
      * <p>
-     * Ìí¼ÓÖ¸¶¨µÄ×Ö·ûºóµÄ×Ö·û´®µÄ³¤¶ÈÎª²ÎÊı<code>size</code>Ö¸¶¨µÄ³¤¶È.
+     * æ·»åŠ æŒ‡å®šçš„å­—ç¬¦åçš„å­—ç¬¦ä¸²çš„é•¿åº¦ä¸ºå‚æ•°<code>size</code>æŒ‡å®šçš„é•¿åº¦.
      * </p>
      * 
      * <pre>
@@ -2613,10 +2613,10 @@ public final class StringUtils {
      * StringUtils.rightPad(&quot;bat&quot;, -1, 'z') = &quot;bat&quot;
      * </pre>
      * 
-     * @param string ÒªÌí¼Ó×Ö·ûµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param size Ìí¼Ó×Ö·ûºó×Ö·û´®µÄ³¤¶È
-     * @param padChar Ìí¼ÓµÄ×Ö·û
-     * @return Ìí¼Ó×Ö·ûºóµÄ×Ö·û´®Èç¹ûÃ»Ìí¼Ó¾Í·µ»ØÔ­×Ö·û´®, <code>null</code>Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦æ·»åŠ å­—ç¬¦çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param size æ·»åŠ å­—ç¬¦åå­—ç¬¦ä¸²çš„é•¿åº¦
+     * @param padChar æ·»åŠ çš„å­—ç¬¦
+     * @return æ·»åŠ å­—ç¬¦åçš„å­—ç¬¦ä¸²å¦‚æœæ²¡æ·»åŠ å°±è¿”å›åŸå­—ç¬¦ä¸², <code>null</code>å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @since 2.0
      */
     public static String rightPad(String string, int size, char padChar) {
@@ -2625,10 +2625,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Îª×Ö·û´®strµÄÓÒ±ßÌí¼ÓÖ¸¶¨µÄ×Ö·û´®padStr.
+     * ä¸ºå­—ç¬¦ä¸²strçš„å³è¾¹æ·»åŠ æŒ‡å®šçš„å­—ç¬¦ä¸²padStr.
      * </p>
      * <p>
-     * Ìí¼ÓÖ¸¶¨µÄ×Ö·û´®padStrºóµÄ×Ö·û´®µÄ³¤¶ÈÎª²ÎÊı<code>size</code>Ö¸¶¨µÄ³¤¶È.
+     * æ·»åŠ æŒ‡å®šçš„å­—ç¬¦ä¸²padStråçš„å­—ç¬¦ä¸²çš„é•¿åº¦ä¸ºå‚æ•°<code>size</code>æŒ‡å®šçš„é•¿åº¦.
      * </p>
      * 
      * <pre>
@@ -2643,10 +2643,10 @@ public final class StringUtils {
      * StringUtils.rightPad(&quot;bat&quot;, 5, &quot;&quot;)    = &quot;bat  &quot;
      * </pre>
      * 
-     * @param string ÒªÌí¼Ó×Ö·û´®µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param size Ìí¼Ó×Ö·û´®ºó×Ö·û´®µÄ³¤¶È
-     * @param padStr ÒªÌí¼ÓµÄ×Ö·û´®, null»ò¿Õ×Ö·û´®µ±×÷(" ")
-     * @return Ìí¼Ó×Ö·û´®ºóµÄ×Ö·û´®,Èç¹ûÃ»Ìí¼Ó¾Í·µ»ØÔ­×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦æ·»åŠ å­—ç¬¦ä¸²çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param size æ·»åŠ å­—ç¬¦ä¸²åå­—ç¬¦ä¸²çš„é•¿åº¦
+     * @param padStr è¦æ·»åŠ çš„å­—ç¬¦ä¸², nullæˆ–ç©ºå­—ç¬¦ä¸²å½“ä½œ(" ")
+     * @return æ·»åŠ å­—ç¬¦ä¸²åçš„å­—ç¬¦ä¸²,å¦‚æœæ²¡æ·»åŠ å°±è¿”å›åŸå­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String rightPad(String string, int size, String padStr) {
         return org.apache.commons.lang.StringUtils.rightPad(string, size, padStr);
@@ -2654,10 +2654,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Îª×Ö·û´®strµÄ×ó±ßÌí¼Ó(' ').
+     * ä¸ºå­—ç¬¦ä¸²strçš„å·¦è¾¹æ·»åŠ (' ').
      * </p>
      * <p>
-     * Ìí¼Ó(' ')ºóµÄ×Ö·û´®µÄ³¤¶ÈÎª²ÎÊı<code>size</code>Ö¸¶¨µÄ³¤¶È.
+     * æ·»åŠ (' ')åçš„å­—ç¬¦ä¸²çš„é•¿åº¦ä¸ºå‚æ•°<code>size</code>æŒ‡å®šçš„é•¿åº¦.
      * </p>
      * 
      * <pre>
@@ -2669,9 +2669,9 @@ public final class StringUtils {
      * StringUtils.leftPad(&quot;bat&quot;, -1) = &quot;bat&quot;
      * </pre>
      * 
-     * @param string ÒªÌí¼Ó(' ')µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param size ÒªÌí¼ÓµÄ³¤¶È
-     * @return ÒªÌí¼Ó(' ')µÄºó×Ö·û´®,Èç¹ûÃ»Ìí¼Ó¾Í·µ»ØÔ­×Ö·û´®, <code>null</code> iÈç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦æ·»åŠ (' ')çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param size è¦æ·»åŠ çš„é•¿åº¦
+     * @return è¦æ·»åŠ (' ')çš„åå­—ç¬¦ä¸²,å¦‚æœæ²¡æ·»åŠ å°±è¿”å›åŸå­—ç¬¦ä¸², <code>null</code> iå¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String leftPad(String string, int size) {
         return org.apache.commons.lang.StringUtils.leftPad(string, size);
@@ -2679,10 +2679,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Îª×Ö·û´®strµÄ×ó±ßÌí¼ÓÖ¸¶¨µÄ×Ö·ûpadChar.
+     * ä¸ºå­—ç¬¦ä¸²strçš„å·¦è¾¹æ·»åŠ æŒ‡å®šçš„å­—ç¬¦padChar.
      * </p>
      * <p>
-     * Ìí¼ÓÖ¸¶¨µÄ×Ö·ûºóµÄ×Ö·û´®µÄ³¤¶ÈÎª²ÎÊı<code>size</code>Ö¸¶¨µÄ³¤¶È.
+     * æ·»åŠ æŒ‡å®šçš„å­—ç¬¦åçš„å­—ç¬¦ä¸²çš„é•¿åº¦ä¸ºå‚æ•°<code>size</code>æŒ‡å®šçš„é•¿åº¦.
      * </p>
      * 
      * <pre>
@@ -2694,10 +2694,10 @@ public final class StringUtils {
      * StringUtils.leftPad(&quot;bat&quot;, -1, 'z') = &quot;bat&quot;
      * </pre>
      * 
-     * @param string ÒªÌí¼Ó×Ö·ûµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param size Ìí¼Ó×Ö·ûºó×Ö·û´®µÄ³¤¶È
-     * @param padChar Ìí¼ÓµÄ×Ö·û
-     * @return Ìí¼Ó×Ö·ûºóµÄ×Ö·û´®,Èç¹ûÃ»Ìí¼Ó¾Í·µ»ØÔ­×Ö·û´®, <code>null</code>Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦æ·»åŠ å­—ç¬¦çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param size æ·»åŠ å­—ç¬¦åå­—ç¬¦ä¸²çš„é•¿åº¦
+     * @param padChar æ·»åŠ çš„å­—ç¬¦
+     * @return æ·»åŠ å­—ç¬¦åçš„å­—ç¬¦ä¸²,å¦‚æœæ²¡æ·»åŠ å°±è¿”å›åŸå­—ç¬¦ä¸², <code>null</code>å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @since 2.0
      */
     public static String leftPad(String string, int size, char padChar) {
@@ -2706,10 +2706,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * Îª×Ö·û´®strµÄ×ó±ßÌí¼ÓÖ¸¶¨µÄ×Ö·û´®padStr.
+     * ä¸ºå­—ç¬¦ä¸²strçš„å·¦è¾¹æ·»åŠ æŒ‡å®šçš„å­—ç¬¦ä¸²padStr.
      * </p>
      * <p>
-     * Ìí¼ÓÖ¸¶¨µÄ×Ö·û´®padStrºóµÄ×Ö·û´®µÄ³¤¶ÈÎª²ÎÊı<code>size</code>Ö¸¶¨µÄ³¤¶È.
+     * æ·»åŠ æŒ‡å®šçš„å­—ç¬¦ä¸²padStråçš„å­—ç¬¦ä¸²çš„é•¿åº¦ä¸ºå‚æ•°<code>size</code>æŒ‡å®šçš„é•¿åº¦.
      * </p>
      * 
      * <pre>
@@ -2724,10 +2724,10 @@ public final class StringUtils {
      * StringUtils.leftPad(&quot;bat&quot;, 5, &quot;&quot;)    = &quot;  bat&quot;
      * </pre>
      * 
-     * @param string ÒªÌí¼Ó×Ö·û´®µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param size Ìí¼Ó×Ö·û´®ºó×Ö·û´®µÄ³¤¶È
-     * @param padStr ÒªÌí¼ÓµÄ×Ö·û´®, null»ò¿Õ×Ö·û´®µ±×÷(" ")
-     * @return Ìí¼Ó×Ö·û´®ºóµÄ×Ö·û´®,Èç¹ûÃ»Ìí¼Ó¾Í·µ»ØÔ­×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦æ·»åŠ å­—ç¬¦ä¸²çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param size æ·»åŠ å­—ç¬¦ä¸²åå­—ç¬¦ä¸²çš„é•¿åº¦
+     * @param padStr è¦æ·»åŠ çš„å­—ç¬¦ä¸², nullæˆ–ç©ºå­—ç¬¦ä¸²å½“ä½œ(" ")
+     * @return æ·»åŠ å­—ç¬¦ä¸²åçš„å­—ç¬¦ä¸²,å¦‚æœæ²¡æ·»åŠ å°±è¿”å›åŸå­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String leftPad(String string, int size, String padStr) {
         return org.apache.commons.lang.StringUtils.leftPad(string, size, padStr);
@@ -2735,13 +2735,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ×Ö·û´®str·Åµ½Ö¸¶¨³¤¶È<code>size</code>µÄÖĞ¼ä, Ô­×Ö·û´®µÄÇ°ºóÓÃ(' ')½øĞĞÌî³ä .
+     * æŠŠå­—ç¬¦ä¸²stræ”¾åˆ°æŒ‡å®šé•¿åº¦<code>size</code>çš„ä¸­é—´, åŸå­—ç¬¦ä¸²çš„å‰åç”¨(' ')è¿›è¡Œå¡«å…… .
      * <p>
      * <p>
-     * Èç¹ûsize²ÎÊıµÄĞ¡ÓÚ×Ö·û´®strµÄ³¤¶È¾ÍÖ±½Ó·µ»Ø×Ö·û´®str. ×Ö·û´®²ÎÊıstrÎª<code>null</code>·µ»Ø<code>null</code>. size²ÎÊıÎª¸ºÊıµ±×÷0.
+     * å¦‚æœsizeå‚æ•°çš„å°äºå­—ç¬¦ä¸²strçš„é•¿åº¦å°±ç›´æ¥è¿”å›å­—ç¬¦ä¸²str. å­—ç¬¦ä¸²å‚æ•°strä¸º<code>null</code>è¿”å›<code>null</code>. sizeå‚æ•°ä¸ºè´Ÿæ•°å½“ä½œ0.
      * </p>
      * <p>
-     * µÈÍ¬ÓÚº¯Êı<code>center(str, size, " ")</code>.
+     * ç­‰åŒäºå‡½æ•°<code>center(str, size, " ")</code>.
      * </p>
      * 
      * <pre>
@@ -2753,9 +2753,9 @@ public final class StringUtils {
      * StringUtils.center(&quot;a&quot;, 4)    = &quot; a  &quot;
      * </pre>
      * 
-     * @param string ĞèÒª·ÅÔÚÖĞ¼äµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param size ĞÂµÄ×Ö·û´®µÄ³¤¶È, ¸ºÊıµ±×÷0
-     * @return ·ÅÔÚÖĞ¼äºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦æ”¾åœ¨ä¸­é—´çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param size æ–°çš„å­—ç¬¦ä¸²çš„é•¿åº¦, è´Ÿæ•°å½“ä½œ0
+     * @return æ”¾åœ¨ä¸­é—´åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String center(String string, int size) {
         return org.apache.commons.lang.StringUtils.center(string, size);
@@ -2763,10 +2763,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ×Ö·û´®str·Åµ½Ö¸¶¨³¤¶È<code>size</code>µÄÖĞ¼ä. Ô­×Ö·û´®µÄÇ°ºóÓÃÖ¸¶¨µÄ×Ö·ûpadChar½øĞĞÌî³ä.
+     * æŠŠå­—ç¬¦ä¸²stræ”¾åˆ°æŒ‡å®šé•¿åº¦<code>size</code>çš„ä¸­é—´. åŸå­—ç¬¦ä¸²çš„å‰åç”¨æŒ‡å®šçš„å­—ç¬¦padCharè¿›è¡Œå¡«å…….
      * </p>
      * <p>
-     * Èç¹ûsize²ÎÊıµÄĞ¡ÓÚ×Ö·û´®strµÄ³¤¶È¾ÍÖ±½Ó·µ»Ø×Ö·û´®str. ×Ö·û´®²ÎÊıstrÎª<code>null</code>·µ»Ø<code>null</code>. size²ÎÊıÎª¸ºÊıµ±×÷0.
+     * å¦‚æœsizeå‚æ•°çš„å°äºå­—ç¬¦ä¸²strçš„é•¿åº¦å°±ç›´æ¥è¿”å›å­—ç¬¦ä¸²str. å­—ç¬¦ä¸²å‚æ•°strä¸º<code>null</code>è¿”å›<code>null</code>. sizeå‚æ•°ä¸ºè´Ÿæ•°å½“ä½œ0.
      * </p>
      * 
      * <pre>
@@ -2779,10 +2779,10 @@ public final class StringUtils {
      * StringUtils.center(&quot;a&quot;, 4, 'y')    = &quot;yayy&quot;
      * </pre>
      * 
-     * @param string ĞèÒª·ÅÔÚÖĞ¼äµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param size ĞÂµÄ×Ö·û´®µÄ³¤¶È, ¸ºÊıµ±×÷0
-     * @param padChar ×Ö·û´®strÁ½±ßÌî³äµÄ×Ö·û
-     * @return ·ÅÔÚÖĞ¼äºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦æ”¾åœ¨ä¸­é—´çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param size æ–°çš„å­—ç¬¦ä¸²çš„é•¿åº¦, è´Ÿæ•°å½“ä½œ0
+     * @param padChar å­—ç¬¦ä¸²strä¸¤è¾¹å¡«å……çš„å­—ç¬¦
+     * @return æ”¾åœ¨ä¸­é—´åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @since 2.0
      */
     public static String center(String string, int size, char padChar) {
@@ -2791,10 +2791,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ×Ö·û´®str·Åµ½Ö¸¶¨³¤¶È<code>size</code>µÄÖĞ¼ä. Ô­×Ö·û´®µÄÇ°ºóÓÃÖ¸¶¨µÄ×Ö·û´®padStr½øĞĞÌî³ä.
+     * æŠŠå­—ç¬¦ä¸²stræ”¾åˆ°æŒ‡å®šé•¿åº¦<code>size</code>çš„ä¸­é—´. åŸå­—ç¬¦ä¸²çš„å‰åç”¨æŒ‡å®šçš„å­—ç¬¦ä¸²padStrè¿›è¡Œå¡«å…….
      * </p>
      * <p>
-     * Èç¹ûsize²ÎÊıµÄĞ¡ÓÚ×Ö·û´®strµÄ³¤¶È¾ÍÖ±½Ó·µ»Ø×Ö·û´®str. ×Ö·û´®²ÎÊıstrÎª<code>null</code>·µ»Ø<code>null</code>. size²ÎÊıÎª¸ºÊıµ±×÷0.
+     * å¦‚æœsizeå‚æ•°çš„å°äºå­—ç¬¦ä¸²strçš„é•¿åº¦å°±ç›´æ¥è¿”å›å­—ç¬¦ä¸²str. å­—ç¬¦ä¸²å‚æ•°strä¸º<code>null</code>è¿”å›<code>null</code>. sizeå‚æ•°ä¸ºè´Ÿæ•°å½“ä½œ0.
      * </p>
      * 
      * <pre>
@@ -2809,10 +2809,10 @@ public final class StringUtils {
      * StringUtils.center(&quot;abc&quot;, 7, &quot;&quot;)   = &quot;  abc  &quot;
      * </pre>
      * 
-     * @param string ĞèÒª·ÅÔÚÖĞ¼äµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param size ĞÂµÄ×Ö·û´®µÄ³¤¶È, ¸ºÊıµ±×÷0
-     * @param padStr ×Ö·û´®strÁ½±ßÌî³äµÄ×Ö·û´®,±ØĞë²»Îªnull»òÕßÊÇ¿Õ°×
-     * @return ·ÅÔÚÖĞ¼äºóµÄ×Ö·û´®, <code>null</code>Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦æ”¾åœ¨ä¸­é—´çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param size æ–°çš„å­—ç¬¦ä¸²çš„é•¿åº¦, è´Ÿæ•°å½“ä½œ0
+     * @param padStr å­—ç¬¦ä¸²strä¸¤è¾¹å¡«å……çš„å­—ç¬¦ä¸²,å¿…é¡»ä¸ä¸ºnullæˆ–è€…æ˜¯ç©ºç™½
+     * @return æ”¾åœ¨ä¸­é—´åçš„å­—ç¬¦ä¸², <code>null</code>å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String center(String string, int size, String padStr) {
         return org.apache.commons.lang.StringUtils.center(string, size, padStr);
@@ -2820,10 +2820,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ×Ö·û´®ÖĞµÄÃ¿¸ö×Ö·û×ª»»Îª´óĞ´{@link String#toUpperCase()}.
+     * æŠŠå­—ç¬¦ä¸²ä¸­çš„æ¯ä¸ªå­—ç¬¦è½¬æ¢ä¸ºå¤§å†™{@link String#toUpperCase()}.
      * </p>
      * <p>
-     * <code>null</code>×Ö·û´®ÊäÈë·µ»Ø<code>null</code>.
+     * <code>null</code>å­—ç¬¦ä¸²è¾“å…¥è¿”å›<code>null</code>.
      * </p>
      * 
      * <pre>
@@ -2832,8 +2832,8 @@ public final class StringUtils {
      * StringUtils.upperCase(&quot;aBc&quot;) = &quot;ABC&quot;
      * </pre>
      * 
-     * @param string ĞèÒª×ª»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ´óĞ´ºóµÄ×Ö·û´®,<code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å¤§å†™åçš„å­—ç¬¦ä¸²,<code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String upperCase(String string) {
         return org.apache.commons.lang.StringUtils.upperCase(string);
@@ -2841,10 +2841,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ×Ö·û´®ÖĞµÄÃ¿¸ö×Ö·û×ª»»ÎªĞ¡Ğ´{@link String#toLowerCase()}.
+     * æŠŠå­—ç¬¦ä¸²ä¸­çš„æ¯ä¸ªå­—ç¬¦è½¬æ¢ä¸ºå°å†™{@link String#toLowerCase()}.
      * </p>
      * <p>
-     * <code>null</code>×Ö·û´®ÊäÈë·µ»Ø<code>null</code>.
+     * <code>null</code>å­—ç¬¦ä¸²è¾“å…¥è¿”å›<code>null</code>.
      * </p>
      * 
      * <pre>
@@ -2853,8 +2853,8 @@ public final class StringUtils {
      * StringUtils.lowerCase(&quot;aBc&quot;) = &quot;abc&quot;
      * </pre>
      * 
-     * @param string ĞèÒª×ª»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return Ğ¡Ğ´ºóµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å°å†™åçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String lowerCase(String string) {
         return org.apache.commons.lang.StringUtils.lowerCase(string);
@@ -2862,10 +2862,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ×Ö·û´®strµÄµÚÒ»¸ö×Ö·û×ª»»Îª´óĞ´µÄ {@link Character#toTitleCase(char)}. ÆäËûµÄ×Ö·û²»»á¸Ä±ä.
+     * æŠŠå­—ç¬¦ä¸²strçš„ç¬¬ä¸€ä¸ªå­—ç¬¦è½¬æ¢ä¸ºå¤§å†™çš„ {@link Character#toTitleCase(char)}. å…¶ä»–çš„å­—ç¬¦ä¸ä¼šæ”¹å˜.
      * </p>
      * <p>
-     * For a word based alorithm, ²Î¿¼{@link WordUtils#capitalize(String)}. <code>null</code>×Ö·û´®ÊäÈë·µ»Ø<code>null</code>.
+     * For a word based alorithm, å‚è€ƒ{@link WordUtils#capitalize(String)}. <code>null</code>å­—ç¬¦ä¸²è¾“å…¥è¿”å›<code>null</code>.
      * </p>
      * 
      * <pre>
@@ -2875,8 +2875,8 @@ public final class StringUtils {
      * StringUtils.capitalize(&quot;cAt&quot;) = &quot;CAt&quot;
      * </pre>
      * 
-     * @param string ĞèÒª´óĞ´Ê××Ö·ûµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ´óĞ´Ê××Ö·ûµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦å¤§å†™é¦–å­—ç¬¦çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å¤§å†™é¦–å­—ç¬¦çš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @see WordUtils#capitalize(String)
      * @see #uncapitalize(String)
      * @since 2.0
@@ -2887,12 +2887,12 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ×Ö·û´®strµÄµÚÒ»¸ö×Ö·û×ª»»Îª´óĞ´µÄ {@link Character#toTitleCase(char)}. ÆäËûµÄ×Ö·û²»»á¸Ä±ä.
+     * æŠŠå­—ç¬¦ä¸²strçš„ç¬¬ä¸€ä¸ªå­—ç¬¦è½¬æ¢ä¸ºå¤§å†™çš„ {@link Character#toTitleCase(char)}. å…¶ä»–çš„å­—ç¬¦ä¸ä¼šæ”¹å˜.
      * </p>
      * 
-     * @param str ĞèÒª¸Ä±äµÄstring, ¿ÉÄÜÎªnull
-     * @return the ´óĞ´ºóµÄstring, ÊäÈënull·µ»Ø<code>null</code>
-     * @deprecated Ê¹ÓÃ±ê×¼µÄÃüÃû {@link #capitalize(String)}. ·½·¨½«ÔÚ Commons Lang 3.0. ±»ÒÆ³ı
+     * @param str éœ€è¦æ”¹å˜çš„string, å¯èƒ½ä¸ºnull
+     * @return the å¤§å†™åçš„string, è¾“å…¥nullè¿”å›<code>null</code>
+     * @deprecated ä½¿ç”¨æ ‡å‡†çš„å‘½å {@link #capitalize(String)}. æ–¹æ³•å°†åœ¨ Commons Lang 3.0. è¢«ç§»é™¤
      */
     @Deprecated
     public static String capitalise(String str) {
@@ -2901,10 +2901,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ×Ö·û´®strµÄµÚÒ»¸ö×Ö·û×ª»»ÎªĞ¡Ğ´µÄ {@link Character#toLowerCase(char)}. ÆäËûµÄ×Ö·û²»»á¸Ä±ä.
+     * æŠŠå­—ç¬¦ä¸²strçš„ç¬¬ä¸€ä¸ªå­—ç¬¦è½¬æ¢ä¸ºå°å†™çš„ {@link Character#toLowerCase(char)}. å…¶ä»–çš„å­—ç¬¦ä¸ä¼šæ”¹å˜.
      * </p>
      * <p>
-     * For a word based alorithm, ²Î¿¼{@link WordUtils#uncapitalize(String)}. <code>null</code>×Ö·û´®ÊäÈë·µ»Ø<code>null</code>.
+     * For a word based alorithm, å‚è€ƒ{@link WordUtils#uncapitalize(String)}. <code>null</code>å­—ç¬¦ä¸²è¾“å…¥è¿”å›<code>null</code>.
      * </p>
      * 
      * <pre>
@@ -2914,8 +2914,8 @@ public final class StringUtils {
      * StringUtils.uncapitalize(&quot;CAT&quot;) = &quot;cAT&quot;
      * </pre>
      * 
-     * @param string ÒªĞ¡Ğ´Ê××Ö·ûµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return Ğ¡Ğ´Ê××Ö·ûµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦å°å†™é¦–å­—ç¬¦çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å°å†™é¦–å­—ç¬¦çš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @see WordUtils#uncapitalize(String)
      * @see #capitalize(String)
      * @since 2.0
@@ -2926,12 +2926,12 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ×Ö·û´®strµÄµÚÒ»¸ö×Ö·û×ª»»ÎªĞ¡Ğ´µÄ {@link Character#toLowerCase(char)}. ÆäËûµÄ×Ö·û²»»á¸Ä±ä.
+     * æŠŠå­—ç¬¦ä¸²strçš„ç¬¬ä¸€ä¸ªå­—ç¬¦è½¬æ¢ä¸ºå°å†™çš„ {@link Character#toLowerCase(char)}. å…¶ä»–çš„å­—ç¬¦ä¸ä¼šæ”¹å˜.
      * </p>
      * 
-     * @param str ÒªĞ¡Ğ´Ê××Ö·ûµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return Ğ¡Ğ´Ê××Ö·ûµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
-     * @deprecated Ê¹ÓÃ±ê×¼µÄÃüÃû {@link #uncapitalize(String)}. ·½·¨½«ÔÚ Commons Lang 3.0. ±»È¡Ïû
+     * @param str è¦å°å†™é¦–å­—ç¬¦çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å°å†™é¦–å­—ç¬¦çš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
+     * @deprecated ä½¿ç”¨æ ‡å‡†çš„å‘½å {@link #uncapitalize(String)}. æ–¹æ³•å°†åœ¨ Commons Lang 3.0. è¢«å–æ¶ˆ
      */
     @Deprecated
     public static String uncapitalise(String str) {
@@ -2940,15 +2940,15 @@ public final class StringUtils {
     
     /**
      * <p>
-     * °Ñ×Ö·û´®strÖĞµÄ×Ö·û½øĞĞ´óĞ¡Ğ´µÄ½»»», ×Ö·û´®ÖĞ´óĞ´µÄ×ª»»ÎªĞ¡Ğ´,Ğ¡Ğ´µÄ×ª»»Îª´óĞ´.
+     * æŠŠå­—ç¬¦ä¸²strä¸­çš„å­—ç¬¦è¿›è¡Œå¤§å°å†™çš„äº¤æ¢, å­—ç¬¦ä¸²ä¸­å¤§å†™çš„è½¬æ¢ä¸ºå°å†™,å°å†™çš„è½¬æ¢ä¸ºå¤§å†™.
      * </p>
      * <ul>
-     * <li>´óĞ´µÄ×Ö·û×ª»»ÎªĞ¡Ğ´</li>
-     * <li>±êÌâ×Ö·û×ª»»ÎªĞ¡Ğ´</li>
-     * <li>Ğ¡Ğ´µÄ×Ö·û×ª»»Îª´óĞ´</li>
+     * <li>å¤§å†™çš„å­—ç¬¦è½¬æ¢ä¸ºå°å†™</li>
+     * <li>æ ‡é¢˜å­—ç¬¦è½¬æ¢ä¸ºå°å†™</li>
+     * <li>å°å†™çš„å­—ç¬¦è½¬æ¢ä¸ºå¤§å†™</li>
      * </ul>
      * <p>
-     * For a word based alorithm, ²Î¿¼{@link WordUtils#swapCase(String)}. <code>null</code>×Ö·û´®ÊäÈë·µ»Ø<code>null</code>.
+     * For a word based alorithm, å‚è€ƒ{@link WordUtils#swapCase(String)}. <code>null</code>å­—ç¬¦ä¸²è¾“å…¥è¿”å›<code>null</code>.
      * </p>
      * 
      * <pre>
@@ -2957,12 +2957,12 @@ public final class StringUtils {
      * StringUtils.swapCase(&quot;The dog has a BONE&quot;) = &quot;tHE DOG HAS A bone&quot;
      * </pre>
      * <p>
-     * ×¢Òâ: Õâ¸ö·½·¨ÔÚ Lang version 2.0. ÓĞËù¸Ä±ä It no longer performs a word based alorithm. Èç¹ûÊ¹ÓÃµÄÊÇASCII, ¾ÍÃ»ÓĞ¸Ä±ä.
-     * ÔÚWordUtilsÖĞÊÇÓĞĞ§µÄ.
+     * æ³¨æ„: è¿™ä¸ªæ–¹æ³•åœ¨ Lang version 2.0. æœ‰æ‰€æ”¹å˜ It no longer performs a word based alorithm. å¦‚æœä½¿ç”¨çš„æ˜¯ASCII, å°±æ²¡æœ‰æ”¹å˜.
+     * åœ¨WordUtilsä¸­æ˜¯æœ‰æ•ˆçš„.
      * </p>
      * 
-     * @param string Òª½øĞĞ´óĞ¡Ğ´×ª»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ×ª»»µÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦è¿›è¡Œå¤§å°å†™è½¬æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return è½¬æ¢çš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String swapCase(String string) {
         return org.apache.commons.lang.StringUtils.swapCase(string);
@@ -2970,10 +2970,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ÕÒ³ö×Ö·û´®strÖĞÆ¥Åä×Ö·û´®subµÄ×ÜÊı.
+     * æ‰¾å‡ºå­—ç¬¦ä¸²strä¸­åŒ¹é…å­—ç¬¦ä¸²subçš„æ€»æ•°.
      * </p>
      * <p>
-     * <code>null</code>×Ö·û´®»ò¿Õ°×("")µÄ×Ö·û´®·µ»Ø<code>0</code>.
+     * <code>null</code>å­—ç¬¦ä¸²æˆ–ç©ºç™½("")çš„å­—ç¬¦ä¸²è¿”å›<code>0</code>.
      * </p>
      * 
      * <pre>
@@ -2986,9 +2986,9 @@ public final class StringUtils {
      * StringUtils.countMatches(&quot;abba&quot;, &quot;xxx&quot;) = 0
      * </pre>
      * 
-     * @param string ĞèÒª¼ì²éµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param sub Æ¥ÅäµÄ×Ó×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ×Ö·û´®strÖĞ³öÏÖ×Ö·û´®subµÄ´ÎÊı, 0 Èç¹ûÊäÈëÁË<code>null</code>
+     * @param string éœ€è¦æ£€æŸ¥çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param sub åŒ¹é…çš„å­å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return å­—ç¬¦ä¸²strä¸­å‡ºç°å­—ç¬¦ä¸²subçš„æ¬¡æ•°, 0 å¦‚æœè¾“å…¥äº†<code>null</code>
      */
     public static int countMatches(String string, String sub) {
         return org.apache.commons.lang.StringUtils.countMatches(string, sub);
@@ -2996,10 +2996,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ì²é×Ö·û´®strÖĞÊÇ·ñÖ»°üº¬ÁËunicodeµÄ×ÖÄ¸.
+     * æ£€æŸ¥å­—ç¬¦ä¸²strä¸­æ˜¯å¦åªåŒ…å«äº†unicodeçš„å­—æ¯.
      * </p>
      * <p>
-     * <code>null</code> ·µ»Ø<code>false</code>. ¿Õ°××Ö·û´®("") ·µ»Ø<code>true</code>.
+     * <code>null</code> è¿”å›<code>false</code>. ç©ºç™½å­—ç¬¦ä¸²("") è¿”å›<code>true</code>.
      * </p>
      * 
      * <pre>
@@ -3011,8 +3011,8 @@ public final class StringUtils {
      * StringUtils.isAlpha(&quot;ab-c&quot;) = false
      * </pre>
      * 
-     * @param string Òª¼ì²éµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return <code>true</code> Èç¹ûÖ»ÓÉ×Ö·û,²¢ÇÒÊäÈë²»Îªnull
+     * @param string è¦æ£€æŸ¥çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return <code>true</code> å¦‚æœåªç”±å­—ç¬¦,å¹¶ä¸”è¾“å…¥ä¸ä¸ºnull
      */
     public static boolean isAlpha(String string) {
         return org.apache.commons.lang.StringUtils.isAlpha(string);
@@ -3020,10 +3020,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ²é¿´×Ö·û´®ÖĞÊÇ·ñÖ»ÓĞunicodeµÄ×ÖÄ¸»òÕßÊÇ¿Õ°×(" ").
+     * æŸ¥çœ‹å­—ç¬¦ä¸²ä¸­æ˜¯å¦åªæœ‰unicodeçš„å­—æ¯æˆ–è€…æ˜¯ç©ºç™½(" ").
      * </p>
      * <p>
-     * <code>null</code>·µ»Ø<code>false</code> ¿Õ°××Ö·û("")·µ»Ø<code>true</code>.
+     * <code>null</code>è¿”å›<code>false</code> ç©ºç™½å­—ç¬¦("")è¿”å›<code>true</code>.
      * </p>
      * 
      * <pre>
@@ -3036,8 +3036,8 @@ public final class StringUtils {
      * StringUtils.isAlphaSpace(&quot;ab-c&quot;) = false
      * </pre>
      * 
-     * @param string Òª¼ì²éµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return <code>true</code> Èç¹ûÖ»ÓÉ×Ö·û»òÕß(" "),¶øÇÒÊäÈë²»Îªnull
+     * @param string è¦æ£€æŸ¥çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return <code>true</code> å¦‚æœåªç”±å­—ç¬¦æˆ–è€…(" "),è€Œä¸”è¾“å…¥ä¸ä¸ºnull
      */
     public static boolean isAlphaSpace(String string) {
         return org.apache.commons.lang.StringUtils.isAlphaSpace(string);
@@ -3045,10 +3045,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ²é¿´×Ö·û´®ÖĞÊÇ·ñÖ»ÓĞunicodeµÄ×ÖÄ¸»òÕßÊı×Ö.
+     * æŸ¥çœ‹å­—ç¬¦ä¸²ä¸­æ˜¯å¦åªæœ‰unicodeçš„å­—æ¯æˆ–è€…æ•°å­—.
      * </p>
      * <p>
-     * <code>null</code>·µ»Ø<code>false</code>. ¿ÕµÄ×Ö·û´®("")·µ»Ø<code>true</code>.
+     * <code>null</code>è¿”å›<code>false</code>. ç©ºçš„å­—ç¬¦ä¸²("")è¿”å›<code>true</code>.
      * </p>
      * 
      * <pre>
@@ -3061,8 +3061,8 @@ public final class StringUtils {
      * StringUtils.isAlphanumeric(&quot;ab-c&quot;) = false
      * </pre>
      * 
-     * @param string Òª¼ì²éµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return <code>true</code>Ö»ÓĞunicodeµÄ×ÖÄ¸»òÕßÊı×Ö,¶øÇÒÊäÈë²»Îªnull
+     * @param string è¦æ£€æŸ¥çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return <code>true</code>åªæœ‰unicodeçš„å­—æ¯æˆ–è€…æ•°å­—,è€Œä¸”è¾“å…¥ä¸ä¸ºnull
      */
     public static boolean isAlphanumeric(String string) {
         return org.apache.commons.lang.StringUtils.isAlphanumeric(string);
@@ -3070,10 +3070,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ²é¿´×Ö·û´®ÖĞÊÇ·ñÖ»ÓĞunicodeµÄ×ÖÄ¸,Êı×Ö »òÕß¿Õ°×(<code>' '</code>).
+     * æŸ¥çœ‹å­—ç¬¦ä¸²ä¸­æ˜¯å¦åªæœ‰unicodeçš„å­—æ¯,æ•°å­— æˆ–è€…ç©ºç™½(<code>' '</code>).
      * </p>
      * <p>
-     * <code>null</code> ·µ»Ø<code>false</code>. ¿ÕµÄ×Ö·û´® ("") ·µ»Ø<code>true</code>.
+     * <code>null</code> è¿”å›<code>false</code>. ç©ºçš„å­—ç¬¦ä¸² ("") è¿”å›<code>true</code>.
      * </p>
      * 
      * <pre>
@@ -3086,8 +3086,8 @@ public final class StringUtils {
      * StringUtils.isAlphanumeric(&quot;ab-c&quot;) = false
      * </pre>
      * 
-     * @param string Òª¼ì²éµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return <code>true</code> Ö»ÓĞunicodeµÄ×ÖÄ¸»òÕßÊı×Ö»òÕß¿Õ°× ¶øÇÒÊäÈë²»Îªnull
+     * @param string è¦æ£€æŸ¥çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return <code>true</code> åªæœ‰unicodeçš„å­—æ¯æˆ–è€…æ•°å­—æˆ–è€…ç©ºç™½ è€Œä¸”è¾“å…¥ä¸ä¸ºnull
      */
     public static boolean isAlphanumericSpace(String string) {
         return org.apache.commons.lang.StringUtils.isAlphanumericSpace(string);
@@ -3095,10 +3095,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ²é¿´×Ö·û´®ÖĞÊÇ·ñÖ»ÓĞunicodeµÄÊı×Ö. Ğ¡Êıµã²»ÈÏÎªÊÇunicodeµÄÊı×Ö.
+     * æŸ¥çœ‹å­—ç¬¦ä¸²ä¸­æ˜¯å¦åªæœ‰unicodeçš„æ•°å­—. å°æ•°ç‚¹ä¸è®¤ä¸ºæ˜¯unicodeçš„æ•°å­—.
      * </p>
      * <p>
-     * <code>null</code> ·µ»Ø <code>false</code>. ¿ÕµÄ×Ö·û´®("") ·µ»Ø <code>true</code>.
+     * <code>null</code> è¿”å› <code>false</code>. ç©ºçš„å­—ç¬¦ä¸²("") è¿”å› <code>true</code>.
      * </p>
      * 
      * <pre>
@@ -3112,8 +3112,8 @@ public final class StringUtils {
      * StringUtils.isNumeric(&quot;12.3&quot;) = false
      * </pre>
      * 
-     * @param string Òª¼ì²éµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return <code>true</code> Ö»ÓĞunicodeµÄÊı×Ö,¶øÇÒÊäÈë²»Îªnull
+     * @param string è¦æ£€æŸ¥çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return <code>true</code> åªæœ‰unicodeçš„æ•°å­—,è€Œä¸”è¾“å…¥ä¸ä¸ºnull
      */
     public static boolean isNumeric(String string) {
         return org.apache.commons.lang.StringUtils.isNumeric(string);
@@ -3121,10 +3121,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ²é¿´×Ö·û´®ÖĞÊÇ·ñÖ»ÓĞunicodeµÄÊı×Ö ºÍ¿Õ°×(<code>' '</code>). Ğ¡Êıµã²»ÈÏÎªÊÇunicodeµÄÊı×Ö.
+     * æŸ¥çœ‹å­—ç¬¦ä¸²ä¸­æ˜¯å¦åªæœ‰unicodeçš„æ•°å­— å’Œç©ºç™½(<code>' '</code>). å°æ•°ç‚¹ä¸è®¤ä¸ºæ˜¯unicodeçš„æ•°å­—.
      * </p>
      * <p>
-     * <code>null</code> ·µ»Ø <code>false</code>. ¿ÕµÄ×Ö·û´®("") ·µ»Ø <code>true</code>.
+     * <code>null</code> è¿”å› <code>false</code>. ç©ºçš„å­—ç¬¦ä¸²("") è¿”å› <code>true</code>.
      * </p>
      * 
      * <pre>
@@ -3138,8 +3138,8 @@ public final class StringUtils {
      * StringUtils.isNumeric(&quot;12.3&quot;) = false
      * </pre>
      * 
-     * @param string Òª¼ì²éµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return <code>true</code> Ö»ÓĞunicodeµÄÊı×Ö»òÕß¿Õ°×,¶øÇÒÊäÈë²»Îªnull
+     * @param string è¦æ£€æŸ¥çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return <code>true</code> åªæœ‰unicodeçš„æ•°å­—æˆ–è€…ç©ºç™½,è€Œä¸”è¾“å…¥ä¸ä¸ºnull
      */
     public static boolean isNumericSpace(String string) {
         return org.apache.commons.lang.StringUtils.isNumericSpace(string);
@@ -3147,10 +3147,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ²é¿´×Ö·û´®ÖĞÊÇ·ñÖ»ÓĞ¿Õ°××Ö·û.
+     * æŸ¥çœ‹å­—ç¬¦ä¸²ä¸­æ˜¯å¦åªæœ‰ç©ºç™½å­—ç¬¦.
      * </p>
      * <p>
-     * <code>null</code> ·µ»Ø <code>false</code>. ¿ÕµÄ×Ö·û´®("") ·µ»Ø <code>true</code>.
+     * <code>null</code> è¿”å› <code>false</code>. ç©ºçš„å­—ç¬¦ä¸²("") è¿”å› <code>true</code>.
      * </p>
      * 
      * <pre>
@@ -3162,8 +3162,8 @@ public final class StringUtils {
      * StringUtils.isWhitespace(&quot;ab-c&quot;) = false
      * </pre>
      * 
-     * @param string Òª¼ì²éµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return <code>true</code> Ö»ÓĞ¿Õ°××Ö·û,²¢ÇÒÊäÈë²»Îªnull
+     * @param string è¦æ£€æŸ¥çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return <code>true</code> åªæœ‰ç©ºç™½å­—ç¬¦,å¹¶ä¸”è¾“å…¥ä¸ä¸ºnull
      * @since 2.0
      */
     public static boolean isWhitespace(String string) {
@@ -3172,7 +3172,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * µ«ÊäÈëµÄ×Ö·û´®ÎªnullÊ±·µ»Ø(""),ÆäËûÇé¿ö·µ»Ø×Ö·û´®±¾Éí .
+     * ä½†è¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnullæ—¶è¿”å›(""),å…¶ä»–æƒ…å†µè¿”å›å­—ç¬¦ä¸²æœ¬èº« .
      * </p>
      * 
      * <pre>
@@ -3182,8 +3182,8 @@ public final class StringUtils {
      * </pre>
      * 
      * @see String#valueOf(Object)
-     * @param string Òª¼ì²éµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ·µ»ØÊäÈëµÄ×Ö·û´®, Èç¹ûÊäÈëÎª<code>null</code>·µ»Ø""
+     * @param string è¦æ£€æŸ¥çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return è¿”å›è¾“å…¥çš„å­—ç¬¦ä¸², å¦‚æœè¾“å…¥ä¸º<code>null</code>è¿”å›""
      */
     public static String defaultString(String string) {
         return org.apache.commons.lang.StringUtils.defaultString(string);
@@ -3191,7 +3191,7 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ì²éÊäÈëµÄ×Ö·û´®ÊÇ·ñÎª<code>null</code>ÊÇ¾Í·µ»ØÖ¸¶¨µÄÄ¬ÈÏÖµdefaultStr, ²»ÊÇ¾Í·µ»Ø×Ö·û´®×Ô¼º±¾Éí
+     * æ£€æŸ¥è¾“å…¥çš„å­—ç¬¦ä¸²æ˜¯å¦ä¸º<code>null</code>æ˜¯å°±è¿”å›æŒ‡å®šçš„é»˜è®¤å€¼defaultStr, ä¸æ˜¯å°±è¿”å›å­—ç¬¦ä¸²è‡ªå·±æœ¬èº«
      * </p>
      * 
      * <pre>
@@ -3201,9 +3201,9 @@ public final class StringUtils {
      * </pre>
      * 
      * @see String#valueOf(Object)
-     * @param string Òª¼ì²éµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param defaultStr Ä¬ÈÏ·µ»ØµÄ×Ö·û´® Èç¹ûÊäÈëÎª<code>null</code>, ¿ÉÄÜÎªnull
-     * @return ²»Îª<code>null</code>ÊÇ·µ»Ø×Ö·û´®str±¾Éí
+     * @param string è¦æ£€æŸ¥çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param defaultStr é»˜è®¤è¿”å›çš„å­—ç¬¦ä¸² å¦‚æœè¾“å…¥ä¸º<code>null</code>, å¯èƒ½ä¸ºnull
+     * @return ä¸ä¸º<code>null</code>æ˜¯è¿”å›å­—ç¬¦ä¸²stræœ¬èº«
      */
     public static String defaultString(String string, String defaultStr) {
         return org.apache.commons.lang.StringUtils.defaultString(string, defaultStr);
@@ -3211,10 +3211,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ×Ö·û´®ÖĞµÄÃ¿¸ö×Ö·û½øĞĞ·´Ğò{@link StringBuffer#reverse()}.
+     * å­—ç¬¦ä¸²ä¸­çš„æ¯ä¸ªå­—ç¬¦è¿›è¡Œååº{@link StringBuffer#reverse()}.
      * </p>
      * <p>
-     * <A code>null</code>·µ»Ø<code>null</code>.
+     * <A code>null</code>è¿”å›<code>null</code>.
      * </p>
      * 
      * <pre>
@@ -3223,8 +3223,8 @@ public final class StringUtils {
      * StringUtils.reverse(&quot;bat&quot;) = &quot;tab&quot;
      * </pre>
      * 
-     * @param string Òª½øĞĞ·´ĞòµÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ·´ĞòµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string è¦è¿›è¡Œååºçš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return ååºçš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      */
     public static String reverse(String string) {
         return org.apache.commons.lang.StringUtils.reverse(string);
@@ -3233,15 +3233,15 @@ public final class StringUtils {
     // -----------------------------------------------------------------------
     /**
      * <p>
-     * ¶ÔÒ»¸ö×Ö·û´®½øĞĞÊ¡ÂÔËõĞ´. ÀıÈç×ª»» "Now is the time for all good men" Îª "Now is the time for..."
+     * å¯¹ä¸€ä¸ªå­—ç¬¦ä¸²è¿›è¡Œçœç•¥ç¼©å†™. ä¾‹å¦‚è½¬æ¢ "Now is the time for all good men" ä¸º "Now is the time for..."
      * </p>
      * <p>
-     * ÌØÊâµÄÇé¿ö:
+     * ç‰¹æ®Šçš„æƒ…å†µ:
      * <ul>
-     * <li>Èç¹û²ÎÊı×Ö·û´®<code>str</code>µÄ³¤¶ÈĞ¡ÓÚ²ÎÊı<code>maxWidth</code> ·µ»Ø×Ö·û´®×Ô¼º±¾Éí.</li>
-     * <li>ËõĞ´µÄĞÎÊ½Îª<code>(substring(str, 0, max-3) + "...")</code>.</li>
-     * <li>Èç¹û²ÎÊı<code>maxWidth</code>Ğ¡ÓÚ<code>4</code>, Å×³öÒì³£ <code>IllegalArgumentException</code>.</li>
-     * <li>ÆäËûÇé¿ö»á·µ»ØÒ»¸ö <code>maxWidth</code>Ö¸¶¨µÄ³¤¶ÈµÄËõĞ´×Ö·û´®.</li>
+     * <li>å¦‚æœå‚æ•°å­—ç¬¦ä¸²<code>str</code>çš„é•¿åº¦å°äºå‚æ•°<code>maxWidth</code> è¿”å›å­—ç¬¦ä¸²è‡ªå·±æœ¬èº«.</li>
+     * <li>ç¼©å†™çš„å½¢å¼ä¸º<code>(substring(str, 0, max-3) + "...")</code>.</li>
+     * <li>å¦‚æœå‚æ•°<code>maxWidth</code>å°äº<code>4</code>, æŠ›å‡ºå¼‚å¸¸ <code>IllegalArgumentException</code>.</li>
+     * <li>å…¶ä»–æƒ…å†µä¼šè¿”å›ä¸€ä¸ª <code>maxWidth</code>æŒ‡å®šçš„é•¿åº¦çš„ç¼©å†™å­—ç¬¦ä¸².</li>
      * </ul>
      * </p>
      * 
@@ -3255,9 +3255,9 @@ public final class StringUtils {
      * StringUtils.abbreviate(&quot;abcdefg&quot;, 3) = IllegalArgumentException
      * </pre>
      * 
-     * @param string ĞèÒª×ª»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param maxWidth ·µ»ØµÄ×Ö·û´®µÄ³¤¶È, ×îÉÙ±ØĞëÎª4
-     * @return ¼òÂÔµÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param maxWidth è¿”å›çš„å­—ç¬¦ä¸²çš„é•¿åº¦, æœ€å°‘å¿…é¡»ä¸º4
+     * @return ç®€ç•¥çš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @since 2.0
      */
     public static String abbreviate(String string, int maxWidth) {
@@ -3266,13 +3266,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¶ÔÒ»¸ö×Ö·û´®½øĞĞÊ¡ÂÔËõĞ´. ÀıÈç×ª»»"Now is the time for all good men"Îª"...is the time for..."
+     * å¯¹ä¸€ä¸ªå­—ç¬¦ä¸²è¿›è¡Œçœç•¥ç¼©å†™. ä¾‹å¦‚è½¬æ¢"Now is the time for all good men"ä¸º"...is the time for..."
      * </p>
      * <p>
-     * ÀàËÆ<code>abbreviate(String, int)</code>, µ«ÊÇÄã¿ÉÒÔÖ¸¶¨×ó±ß×Ö·û´®µÄÆğÊ¼Î»ÖÃ. ×¢Òâ ÒÔ×ó±ß¿ªÊ¼µÄoffsetµÄ×Ö·ûÔÚ½á¹ûÖĞ²»Ò»¶¨ÊÇ×î×ó±ß,
-     * µÚÒ»¸ö×Ö·û¿ÉÄÜÊÇ(...)µ«ÊÇoffsetµÄÎ»ÖÃµÄ×Ö·ûÒ»¶¨»áÔÚ½á¹ûÖĞ.
+     * ç±»ä¼¼<code>abbreviate(String, int)</code>, ä½†æ˜¯ä½ å¯ä»¥æŒ‡å®šå·¦è¾¹å­—ç¬¦ä¸²çš„èµ·å§‹ä½ç½®. æ³¨æ„ ä»¥å·¦è¾¹å¼€å§‹çš„offsetçš„å­—ç¬¦åœ¨ç»“æœä¸­ä¸ä¸€å®šæ˜¯æœ€å·¦è¾¹,
+     * ç¬¬ä¸€ä¸ªå­—ç¬¦å¯èƒ½æ˜¯(...)ä½†æ˜¯offsetçš„ä½ç½®çš„å­—ç¬¦ä¸€å®šä¼šåœ¨ç»“æœä¸­.
      * <p>
-     * ÆäËûÇé¿ö»á·µ»ØÒ»¸ö<code>maxWidth</code>Ö¸¶¨µÄ³¤¶ÈµÄËõĞ´×Ö·û´®.
+     * å…¶ä»–æƒ…å†µä¼šè¿”å›ä¸€ä¸ª<code>maxWidth</code>æŒ‡å®šçš„é•¿åº¦çš„ç¼©å†™å­—ç¬¦ä¸².
      * </p>
      * 
      * <pre>
@@ -3291,10 +3291,10 @@ public final class StringUtils {
      * StringUtils.abbreviate(&quot;abcdefghij&quot;, 5, 6)        = IllegalArgumentException
      * </pre>
      * 
-     * @param string ĞèÒª×ª»»µÄ×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param offset ×ó±ß¿ªÊ¼µÄ×Ö·ûµÄÆ«ÒÆÎ»ÖÃ
-     * @param maxWidth ·µ»ØµÄ½á¹ûµÄ×î´ó³¤¶È, ×îÉÙ±ØĞëÎª 4
-     * @return ËõĞ´µÄ×Ö·û´®, <code>null</code> Èç¹ûÊäÈëµÄ×Ö·û´®Îªnull
+     * @param string éœ€è¦è½¬æ¢çš„å­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param offset å·¦è¾¹å¼€å§‹çš„å­—ç¬¦çš„åç§»ä½ç½®
+     * @param maxWidth è¿”å›çš„ç»“æœçš„æœ€å¤§é•¿åº¦, æœ€å°‘å¿…é¡»ä¸º 4
+     * @return ç¼©å†™çš„å­—ç¬¦ä¸², <code>null</code> å¦‚æœè¾“å…¥çš„å­—ç¬¦ä¸²ä¸ºnull
      * @since 2.0
      */
     public static String abbreviate(String string, int offset, int maxWidth) {
@@ -3303,10 +3303,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ±È½ÏÁ½¸ö×Ö·û´®str1,str2 ·µ»Østr2²»Í¬ÓÚstr1µÄÎ»ÖÃ. (·µ»ØµÚ¶ş¸ö×Ö·û´®str2µÄ´Ó¿ªÊ¼ºÍ µÚÒ»¸ö×Ö·û´®str1²»Í¬µÄÎ»ÖÃµ½Ä©Î²µÄÊ£Óà²¿·Ö.)
+     * æ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²str1,str2 è¿”å›str2ä¸åŒäºstr1çš„ä½ç½®. (è¿”å›ç¬¬äºŒä¸ªå­—ç¬¦ä¸²str2çš„ä»å¼€å§‹å’Œ ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸²str1ä¸åŒçš„ä½ç½®åˆ°æœ«å°¾çš„å‰©ä½™éƒ¨åˆ†.)
      * </p>
      * <p>
-     * ÀıÈç, <code>difference("i am a machine", "i am a robot") -> "robot"</code>.
+     * ä¾‹å¦‚, <code>difference("i am a machine", "i am a robot") -> "robot"</code>.
      * </p>
      * 
      * <pre>
@@ -3320,9 +3320,9 @@ public final class StringUtils {
      * StringUtils.difference(&quot;abcde&quot;, &quot;xyz&quot;) = &quot;xyz&quot;
      * </pre>
      * 
-     * @param str1 µÚÒ»¸ö×Ö·û´®, ¿ÉÄÜÎªnull
-     * @param str2 µÚ¶ş¸ö×Ö·û´®, ¿ÉÄÜÎªnull
-     * @return ·µ»ØµÚ¶ş¸ö×Ö·û´®str2²»Í¬ÓÚµÚÒ»¸ö×Ö·û´®str1µÄ×Ö·û´®; Á½¸ö×Ö·û´®ÏàµÈ¾Í·µ»Ø("")
+     * @param str1 ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @param str2 ç¬¬äºŒä¸ªå­—ç¬¦ä¸², å¯èƒ½ä¸ºnull
+     * @return è¿”å›ç¬¬äºŒä¸ªå­—ç¬¦ä¸²str2ä¸åŒäºç¬¬ä¸€ä¸ªå­—ç¬¦ä¸²str1çš„å­—ç¬¦ä¸²; ä¸¤ä¸ªå­—ç¬¦ä¸²ç›¸ç­‰å°±è¿”å›("")
      * @since 2.0
      */
     public static String difference(String str1, String str2) {
@@ -3331,10 +3331,10 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ±È½ÏÁ½¸ö×Ö·û´®str1,str2 ·µ»ØËûÃÇ¿ªÊ¼²»ÏàÍ¬Ê±µÄÎ»ÖÃ .
+     * æ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²str1,str2 è¿”å›ä»–ä»¬å¼€å§‹ä¸ç›¸åŒæ—¶çš„ä½ç½® .
      * </p>
      * <p>
-     * ÀıÈç, <code>indexOfDifference("i am a machine", "i am a robot") -> 7</code>
+     * ä¾‹å¦‚, <code>indexOfDifference("i am a machine", "i am a robot") -> 7</code>
      * </p>
      * 
      * <pre>
@@ -3348,9 +3348,9 @@ public final class StringUtils {
      * StringUtils.indexOfDifference(&quot;abcde&quot;, &quot;xyz&quot;) = 0
      * </pre>
      * 
-     * @param str1 µÚÒ»¸ö×Ö·û´®,¿ÉÄÜÎªnull
-     * @param str2 µÚ¶ş¸ö×Ö·û´®,¿ÉÄÜÎªnull
-     * @return ×Ö·û´® str2 ºÍ×Ö·û´® str1 ¿ªÊ¼²»Í¬µÄÎ»ÖÃ; -1 ±íÊ¾ËûÃÇÏàµÈ
+     * @param str1 ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸²,å¯èƒ½ä¸ºnull
+     * @param str2 ç¬¬äºŒä¸ªå­—ç¬¦ä¸²,å¯èƒ½ä¸ºnull
+     * @return å­—ç¬¦ä¸² str2 å’Œå­—ç¬¦ä¸² str1 å¼€å§‹ä¸åŒçš„ä½ç½®; -1 è¡¨ç¤ºä»–ä»¬ç›¸ç­‰
      * @since 2.0
      */
     public static int indexOfDifference(String str1, String str2) {
@@ -3359,13 +3359,13 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¼ÆËãÁ½×Ö·û´®Ö®¼äµÄLevenshtein-Distance.
+     * è®¡ç®—ä¸¤å­—ç¬¦ä¸²ä¹‹é—´çš„Levenshtein-Distance.
      * </p>
      * <p>
-     * ÊÇ×Ö·û´®sÒª±ä³É×Ö·û´®tĞèÒª¸Ä¶¯µÄ×Ö·ûµÄ¸ö,Ò»´Î¸Ä¶¯Ò»¸ö×Ö·û (É¾³ı,²åÈë»òÕßÖÃ»»).
+     * æ˜¯å­—ç¬¦ä¸²sè¦å˜æˆå­—ç¬¦ä¸²téœ€è¦æ”¹åŠ¨çš„å­—ç¬¦çš„ä¸ª,ä¸€æ¬¡æ”¹åŠ¨ä¸€ä¸ªå­—ç¬¦ (åˆ é™¤,æ’å…¥æˆ–è€…ç½®æ¢).
      * </p>
      * <p>
-     * Levenshtein distance µÄËã·¨¹æÔò¿ÉÒÔ²Î¿¼ <a href="http://www.merriampark.com/ld.htm">http://www.merriampark.com/ld.htm</a>
+     * Levenshtein distance çš„ç®—æ³•è§„åˆ™å¯ä»¥å‚è€ƒ <a href="http://www.merriampark.com/ld.htm">http://www.merriampark.com/ld.htm</a>
      * </p>
      * 
      * <pre>
@@ -3382,9 +3382,9 @@ public final class StringUtils {
      * StringUtils.getLevenshteinDistance(&quot;hello&quot;, &quot;hallo&quot;)    = 1
      * </pre>
      * 
-     * @param s µÚÒ»¸ö×Ö·û´®, ²»ÄÜÎªnull
-     * @param t µÚ¶ş¸ö×Ö·û´®, ²»ÄÜÎªnull
-     * @return ·µ»ØÒª¸Ä¶¯µÄ×Ö·ûµÄ¸öÊı
+     * @param s ç¬¬ä¸€ä¸ªå­—ç¬¦ä¸², ä¸èƒ½ä¸ºnull
+     * @param t ç¬¬äºŒä¸ªå­—ç¬¦ä¸², ä¸èƒ½ä¸ºnull
+     * @return è¿”å›è¦æ”¹åŠ¨çš„å­—ç¬¦çš„ä¸ªæ•°
      */
     public static int getLevenshteinDistance(String s, String t) {
         return org.apache.commons.lang.StringUtils.getLevenshteinDistance(s, t);
@@ -3392,12 +3392,12 @@ public final class StringUtils {
     
     /**
      * <p>
-     * ¸ù¾İÕıÔò±í´ïÊ½¹ıÂË×Ö·û
+     * æ ¹æ®æ­£åˆ™è¡¨è¾¾å¼è¿‡æ»¤å­—ç¬¦
      * </p>
      * 
-     * @param string ×Ö·û´®
-     * @param regex ÕıÔò±í´ïÊ½
-     * @return ¹ıÂËºóµÄ×Ö·û
+     * @param string å­—ç¬¦ä¸²
+     * @param regex æ­£åˆ™è¡¨è¾¾å¼
+     * @return è¿‡æ»¤åçš„å­—ç¬¦
      */
     public static String filterSpecialChar(String string, String regex) {
         if (string == null) {
@@ -3410,10 +3410,10 @@ public final class StringUtils {
     }
     
     /**
-     * ¸ù¾İÕıÔò±í´ïÊ½,ÅĞ¶ÏÊÇ·ñÆ¥Åä×Ö·û
+     * æ ¹æ®æ­£åˆ™è¡¨è¾¾å¼,åˆ¤æ–­æ˜¯å¦åŒ¹é…å­—ç¬¦
      * 
-     * @param string ×Ö·û´®
-     * @param regex ÕıÔò±í´ïÊ½
+     * @param string å­—ç¬¦ä¸²
+     * @param regex æ­£åˆ™è¡¨è¾¾å¼
      * @return boolean
      */
     public static boolean isMatch(String string, String regex) {
@@ -3426,25 +3426,25 @@ public final class StringUtils {
     }
     
     /**
-     * ´ÓÔ´×Ö·û´®(source)ÖĞÈ¡Ç°len¸ö×Ö·û£¬Èç¹ûlenĞ¡ÓÚÔ´×Ö·û´®µÄ³¤¶È£¬ÔòÔÚ·µ»ØÖµºó¼ÓÉÏ×Ö·û´®concat¡£
+     * ä»æºå­—ç¬¦ä¸²(source)ä¸­å–å‰lenä¸ªå­—ç¬¦ï¼Œå¦‚æœlenå°äºæºå­—ç¬¦ä¸²çš„é•¿åº¦ï¼Œåˆ™åœ¨è¿”å›å€¼ååŠ ä¸Šå­—ç¬¦ä¸²concatã€‚
      * 
      * <pre>
-     * String strSource = &quot;aÖĞ»ªÈËÃñ¹²ºÍ¹ú&quot;;
-     * ProjectUtils.getFixedLengthString(strSource,10,&quot;...&quot;)= &quot;aÖĞ»ªÈËÃñ¹²...&quot;
-     * ProjectUtils.getFixedLengthString(strSource,10,null)= &quot;aÖĞ»ªÈËÃñ¹²&quot;
-     * ProjectUtils.getFixedLengthString(strSource,10,&quot;&quot;)=&quot;aÖĞ»ªÈËÃñ¹²&quot;
-     * ProjectUtils.getFixedLengthString(strSource,10,&quot; &quot;)=&quot;aÖĞ»ªÈËÃñ¹²&quot;
+     * String strSource = &quot;aä¸­åäººæ°‘å…±å’Œå›½&quot;;
+     * ProjectUtils.getFixedLengthString(strSource,10,&quot;...&quot;)= &quot;aä¸­åäººæ°‘å…±...&quot;
+     * ProjectUtils.getFixedLengthString(strSource,10,null)= &quot;aä¸­åäººæ°‘å…±&quot;
+     * ProjectUtils.getFixedLengthString(strSource,10,&quot;&quot;)=&quot;aä¸­åäººæ°‘å…±&quot;
+     * ProjectUtils.getFixedLengthString(strSource,10,&quot; &quot;)=&quot;aä¸­åäººæ°‘å…±&quot;
      * ProjectUtils.getFixedLengthString(strSource,-1,&quot;&quot;)=&quot;&quot;
      * ProjectUtils.getFixedLengthString(strSource,0,&quot;&quot;)=&quot;&quot;
      * ProjectUtils.getFixedLengthString(strSource,0,null)=&quot;&quot;
      * ProjectUtils.getFixedLengthString(strSource,-1,null)=&quot;&quot;
      * </pre>
      * 
-     * @param source Ô´×Ö·û´®ĞÅÏ¢
-     * @param len ĞèÒª½ØÈ¡µÄ×Ö·û¸öÊı
-     * @param concat ĞèÒªÌî²¹µÄ×Ö·û´®
-     * @return ·µ»Ø»ñÈ¡µÄ×Ö·û´®ĞÅÏ¢¡£
-     * @throws UnsupportedEncodingException ²»Ö§³ÖGBK±àÂëÊ±Å×³ö
+     * @param source æºå­—ç¬¦ä¸²ä¿¡æ¯
+     * @param len éœ€è¦æˆªå–çš„å­—ç¬¦ä¸ªæ•°
+     * @param concat éœ€è¦å¡«è¡¥çš„å­—ç¬¦ä¸²
+     * @return è¿”å›è·å–çš„å­—ç¬¦ä¸²ä¿¡æ¯ã€‚
+     * @throws UnsupportedEncodingException ä¸æ”¯æŒGBKç¼–ç æ—¶æŠ›å‡º
      */
     public static String getFixedLengthString(String source, int len, String concat)
         throws UnsupportedEncodingException {
@@ -3468,16 +3468,16 @@ public final class StringUtils {
     }
     
     /**
-     * È¡Ò»¸ö×Ö·û´®µÄ³¤¶È£¨Ò»¸öºº×ÖËãÁ½¸ö×Ö½Ú£©
+     * å–ä¸€ä¸ªå­—ç¬¦ä¸²çš„é•¿åº¦ï¼ˆä¸€ä¸ªæ±‰å­—ç®—ä¸¤ä¸ªå­—èŠ‚ï¼‰
      * 
      * <pre>
-     * ProjectUtils.getStringCharsCount(&quot;abc&quot;) = 3£»
-     * ProjectUtils.getStringCharsCount(&quot;abcºÃ&quot;) = 5£»
-     * ProjectUtils.getStringCharsCount(&quot;ºÃºÜºÃ¼«ºÃ&quot;) = 10£»
+     * ProjectUtils.getStringCharsCount(&quot;abc&quot;) = 3ï¼›
+     * ProjectUtils.getStringCharsCount(&quot;abcå¥½&quot;) = 5ï¼›
+     * ProjectUtils.getStringCharsCount(&quot;å¥½å¾ˆå¥½æå¥½&quot;) = 10ï¼›
      * </pre>
      * 
-     * @param pstrSrc ĞèÒª¼ÆËã³¤¶ÈµÄ×Ö·û´®
-     * @return ×Ö·û´®³¤¶È
+     * @param pstrSrc éœ€è¦è®¡ç®—é•¿åº¦çš„å­—ç¬¦ä¸²
+     * @return å­—ç¬¦ä¸²é•¿åº¦
      */
     public static int getStringCharsCount(String pstrSrc) {
         int iSize = pstrSrc.length();
@@ -3492,10 +3492,10 @@ public final class StringUtils {
     }
     
     /**
-     * ³¤ÕûĞÍÀàĞÍÊı×é×ª»¯ÎªÊı×éµÄ·½·¨
+     * é•¿æ•´å‹ç±»å‹æ•°ç»„è½¬åŒ–ä¸ºæ•°ç»„çš„æ–¹æ³•
      * 
-     * @param lArray ³¤ÕûĞÍÀàĞÍÊı×é
-     * @return ×Ö·û´®
+     * @param lArray é•¿æ•´å‹ç±»å‹æ•°ç»„
+     * @return å­—ç¬¦ä¸²
      */
     public static String toString(long[] lArray) {
         if (lArray == null) {
@@ -3519,10 +3519,10 @@ public final class StringUtils {
     }
     
     /**
-     * ÕûĞÍÀàĞÍÊı×é×ª»¯ÎªÊı×éµÄ·½·¨
+     * æ•´å‹ç±»å‹æ•°ç»„è½¬åŒ–ä¸ºæ•°ç»„çš„æ–¹æ³•
      * 
-     * @param iArray ÕûĞÍÀàĞÍÊı×é
-     * @return String ×Ö·û´®
+     * @param iArray æ•´å‹ç±»å‹æ•°ç»„
+     * @return String å­—ç¬¦ä¸²
      */
     public static String toString(int[] iArray) {
         if (iArray == null) {
@@ -3546,10 +3546,10 @@ public final class StringUtils {
     }
     
     /**
-     * ¶ÌÕûĞÍÀàĞÍÊı×é×ª»¯ÎªÊı×éµÄ·½·¨
+     * çŸ­æ•´å‹ç±»å‹æ•°ç»„è½¬åŒ–ä¸ºæ•°ç»„çš„æ–¹æ³•
      * 
-     * @param sArray ¶ÌÕûĞÍÀàĞÍÊı×é
-     * @return ×Ö·û´®
+     * @param sArray çŸ­æ•´å‹ç±»å‹æ•°ç»„
+     * @return å­—ç¬¦ä¸²
      */
     public static String toString(short[] sArray) {
         if (sArray == null) {
@@ -3573,10 +3573,10 @@ public final class StringUtils {
     }
     
     /**
-     * ×Ö·ûÀàĞÍÊı×é×ª»¯ÎªÊı×éµÄ·½·¨
+     * å­—ç¬¦ç±»å‹æ•°ç»„è½¬åŒ–ä¸ºæ•°ç»„çš„æ–¹æ³•
      * 
-     * @param cArray ×Ö·ûÀàĞÍÊı×é
-     * @return ×Ö·û´®
+     * @param cArray å­—ç¬¦ç±»å‹æ•°ç»„
+     * @return å­—ç¬¦ä¸²
      */
     public static String toString(char[] cArray) {
         if (cArray == null) {
@@ -3600,10 +3600,10 @@ public final class StringUtils {
     }
     
     /**
-     * byteÀàĞÍÊı×é×ª»¯ÎªÊı×éµÄ·½·¨
+     * byteç±»å‹æ•°ç»„è½¬åŒ–ä¸ºæ•°ç»„çš„æ–¹æ³•
      * 
-     * @param bArray byteÀàĞÍÊı×é
-     * @return ×Ö·û´®
+     * @param bArray byteç±»å‹æ•°ç»„
+     * @return å­—ç¬¦ä¸²
      */
     public static String toString(byte[] bArray) {
         if (bArray == null) {
@@ -3627,10 +3627,10 @@ public final class StringUtils {
     }
     
     /**
-     * booleanÀàĞÍÊı×é×ª»¯ÎªÊı×éµÄ·½·¨
+     * booleanç±»å‹æ•°ç»„è½¬åŒ–ä¸ºæ•°ç»„çš„æ–¹æ³•
      * 
-     * @param bArray booleanÀàĞÍÊı×é
-     * @return ×Ö·û´®
+     * @param bArray booleanç±»å‹æ•°ç»„
+     * @return å­—ç¬¦ä¸²
      */
     public static String toString(boolean[] bArray) {
         if (bArray == null) {
@@ -3654,10 +3654,10 @@ public final class StringUtils {
     }
     
     /**
-     * ¸¡µãÀàĞÍÊı×é×ª»¯ÎªÊı×éµÄ·½·¨
+     * æµ®ç‚¹ç±»å‹æ•°ç»„è½¬åŒ–ä¸ºæ•°ç»„çš„æ–¹æ³•
      * 
-     * @param fArray ¸¡µãÀàĞÍÊı×é
-     * @return ×Ö·û´®
+     * @param fArray æµ®ç‚¹ç±»å‹æ•°ç»„
+     * @return å­—ç¬¦ä¸²
      */
     public static String toString(float[] fArray) {
         if (fArray == null) {
@@ -3681,10 +3681,10 @@ public final class StringUtils {
     }
     
     /**
-     * Ë«¾«¶ÈÀàĞÍÊı×é×ª»¯ÎªÊı×éµÄ·½·¨
+     * åŒç²¾åº¦ç±»å‹æ•°ç»„è½¬åŒ–ä¸ºæ•°ç»„çš„æ–¹æ³•
      * 
-     * @param dArray Ë«¾«¶ÈÀàĞÍÊı×é
-     * @return ×Ö·û´®
+     * @param dArray åŒç²¾åº¦ç±»å‹æ•°ç»„
+     * @return å­—ç¬¦ä¸²
      */
     public static String toString(double[] dArray) {
         if (dArray == null) {
@@ -3708,10 +3708,10 @@ public final class StringUtils {
     }
     
     /**
-     * ObjectÀàĞÍÊı×é×ª»¯ÎªÊı×éµÄ·½·¨
+     * Objectç±»å‹æ•°ç»„è½¬åŒ–ä¸ºæ•°ç»„çš„æ–¹æ³•
      * 
-     * @param objArray ObjectÀàĞÍÊı×é
-     * @return ×Ö·û´®
+     * @param objArray Objectç±»å‹æ•°ç»„
+     * @return å­—ç¬¦ä¸²
      */
     public static String toString(Object[] objArray) {
         if (objArray == null) {
@@ -3738,10 +3738,10 @@ public final class StringUtils {
     }
     
     /**
-     * ÊÇ·ñ°üº¬ºº×Ö×Ö·û
+     * æ˜¯å¦åŒ…å«æ±‰å­—å­—ç¬¦
      * 
-     * @param cnStr Ö¸¶¨×Ö·û´®
-     * @return true:ÊÇ false:·ñ
+     * @param cnStr æŒ‡å®šå­—ç¬¦ä¸²
+     * @return true:æ˜¯ false:å¦
      */
     public static boolean isContainChineseCharacter(String cnStr) {
         if (StringUtils.isEmpty(cnStr)) {
@@ -3765,10 +3765,10 @@ public final class StringUtils {
     }
     
     /**
-     * µÃµ½×Ö·û´®µÄ³¤¶È£¬Ò»¸öºº×Ö³¤¶ÈÎª2
+     * å¾—åˆ°å­—ç¬¦ä¸²çš„é•¿åº¦ï¼Œä¸€ä¸ªæ±‰å­—é•¿åº¦ä¸º2
      * 
-     * @param str Ö¸¶¨×Ö·û´®
-     * @return int ×Ö·û´®µÄ³¤¶È
+     * @param str æŒ‡å®šå­—ç¬¦ä¸²
+     * @return int å­—ç¬¦ä¸²çš„é•¿åº¦
      */
     public static int getStringLength(String str) {
         if (StringUtils.isEmpty(str)) {
@@ -3789,13 +3789,13 @@ public final class StringUtils {
     }
     
     /**
-     * Ìæ»»ÌØÊâ×Ö·ûµÄ·½·¨,Ìæ»»<,>ºÍ"ºÅ
+     * æ›¿æ¢ç‰¹æ®Šå­—ç¬¦çš„æ–¹æ³•,æ›¿æ¢<,>å’Œ"å·
      * 
-     * @param strInput ÒªÌæ»»µÄ×Ö·û´®
+     * @param strInput è¦æ›¿æ¢çš„å­—ç¬¦ä¸²
      * @return strOutPut
      */
     public static String replaceIllegalString(String strInput) {
-        // Ìæ»»<>ºÍ"ºÅ
+        // æ›¿æ¢<>å’Œ"å·
         String strOutPut =
             strInput.replaceAll("<", "&lt ").replaceAll(">", "&gt ").replaceAll("\"", "&#34 ").replaceAll("'", "&#39 ");
         return strOutPut;

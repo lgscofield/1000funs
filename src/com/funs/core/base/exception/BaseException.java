@@ -1,16 +1,16 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* �����Ϊ����ǧ����ζ��˾�������ơ�
+* 本软件为深圳千方百味公司开发研制。
 *****************************************************************************/
 package com.funs.core.base.exception;
 
 /**
- * �쳣����
+ * 异常基类
  *
- * @author �ƿ���
+ * @author 黄科林
  * @since jdk6.0
- * @version  2012-12-15 �ƿ���
+ * @version  2012-12-15 黄科林
  */
 public class BaseException extends RuntimeException {
 	
@@ -20,10 +20,10 @@ public class BaseException extends RuntimeException {
 	private static final long serialVersionUID = -4312572936568395900L;
 
 	/**
-     * �쳣���캯��
+     * 异常构造函数
      * 
-     * @param message �쳣������Ϣ
-     * @param throwable ����쳣��
+     * @param message 异常错误消息
+     * @param throwable 引发的异常类
      */
     public BaseException(String message, Throwable throwable) {
         super(message, throwable);

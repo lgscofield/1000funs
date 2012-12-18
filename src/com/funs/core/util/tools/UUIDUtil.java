@@ -1,31 +1,31 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼şÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑĞÖÆ¡£
+* æœ¬è½¯ä»¶ä¸ºæ·±åœ³åƒæ–¹ç™¾å‘³å…¬å¸å¼€å‘ç ”åˆ¶ã€‚
 *****************************************************************************/
 package com.funs.core.util.tools;
 
 import java.util.UUID;
 
 /**
- * UUID¹¤¾ßÀà
+ * UUIDå·¥å…·ç±»
  *
- * @author »Æ¿ÆÁÖ
+ * @author é»„ç§‘æ—
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version  2012-12-16 é»„ç§‘æ—
  */
 public final class UUIDUtil {
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      */
     private UUIDUtil() {
     }
     
     /**
-     * Éú³ÉÒ»¸ö32Î»µÄUUID
+     * ç”Ÿæˆä¸€ä¸ª32ä½çš„UUID
      * 
-     * @return Éú³ÉµÄUUID
+     * @return ç”Ÿæˆçš„UUID
      */
     public static String generateUUID() {
         String strUUID = UUID.randomUUID().toString().replaceAll("-", StringUtils.EMPTY);

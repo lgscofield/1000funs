@@ -1,32 +1,32 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼şÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑĞÖÆ¡£
+* æœ¬è½¯ä»¶ä¸ºæ·±åœ³åƒæ–¹ç™¾å‘³å…¬å¸å¼€å‘ç ”åˆ¶ã€‚
 *****************************************************************************/
 package com.funs.core.base;
 
 /**
- * ¿ò¼Ü³£Á¿Àà
+ * æ¡†æ¶å¸¸é‡ç±»
  * 
- * @author »Æ¿ÆÁÖ
+ * @author é»„ç§‘æ—
  * @since 1.0
- * @version 2012-12-15 »Æ¿ÆÁÖ
+ * @version 2012-12-15 é»„ç§‘æ—
  */
 public class BaseConstant {
 	
 	/**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      */
     private BaseConstant() {
     }
     
     /**
-     * Êı¾İ²Ù×÷±êÖ¾:³É¹¦±êÖ¾
+     * æ•°æ®æ“ä½œæ ‡å¿—:æˆåŠŸæ ‡å¿—
      */
     public final static int OPERTAION_FLAG_SUCCESS = 1;
     
     /**
-     * Êı¾İ²Ù×÷±êÖ¾:Ê§°Ü±êÖ¾
+     * æ•°æ®æ“ä½œæ ‡å¿—:å¤±è´¥æ ‡å¿—
      */
     public final static int OPERTAION_FLAG_FAILURE = 0;
 }

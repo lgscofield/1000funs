@@ -1,7 +1,7 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼şÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑĞÖÆ¡£
+* æœ¬è½¯ä»¶ä¸ºæ·±åœ³åƒæ–¹ç™¾å‘³å…¬å¸å¼€å‘ç ”åˆ¶ã€‚
 *****************************************************************************/
 package com.funs.core.util.tools;
 
@@ -20,41 +20,41 @@ import com.funs.core.base.exception.ModelException;
 import com.funs.core.base.model.BaseVO;
 
 /**
- * class¹¤¾ßÀà
+ * classå·¥å…·ç±»
  *
- * @author »Æ¿ÆÁÖ
+ * @author é»„ç§‘æ—
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version  2012-12-16 é»„ç§‘æ—
  */
 public final class ClassUtil {
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      */
     private ClassUtil() {
     }
     
     /**
-     * ÈÕÖ¾
+     * æ—¥å¿—
      */
     protected final static Logger LOGGER = LoggerFactory.getLogger(ClassUtil.class);
     
     /**
-     * ¼¶ÁªÈ¡µÃclassÖĞµÄÊôĞÔ
+     * çº§è”å–å¾—classä¸­çš„å±æ€§
      * 
      * @param byClass Class
-     * @return ×Ö¶ÎÁĞ±í
+     * @return å­—æ®µåˆ—è¡¨
      */
     public static List<Field> getFieldByClass(Class<?> byClass) {
         return getFieldByClass(byClass, null);
     }
     
     /**
-     * ¼¶ÁªÈ¡µÃclassÖĞµÄÊôĞÔ
+     * çº§è”å–å¾—classä¸­çš„å±æ€§
      * 
-     * @param byClass ´ı²Ù×÷µÄClass
-     * @param classFieldFilter ¹ıÂË×Ö¶Î
-     * @return ×Ö¶ÎÁĞ±í
+     * @param byClass å¾…æ“ä½œçš„Class
+     * @param classFieldFilter è¿‡æ»¤å­—æ®µ
+     * @return å­—æ®µåˆ—è¡¨
      */
     public static List<Field> getFieldByClass(Class<?> byClass, ClassFieldFilter classFieldFilter) {
         List<Field> lstField = new ArrayList<Field>(10);
@@ -75,18 +75,18 @@ public final class ClassUtil {
     }
     
     /**
-     * ¼¶ÁªÈ¡µÃclassÖĞµÄÊôĞÔ
+     * çº§è”å–å¾—classä¸­çš„å±æ€§
      * 
-     * @param byClass ´ı²Ù×÷µÄClass
+     * @param byClass å¾…æ“ä½œçš„Class
      * @param fieldName c
-     * @return ×Ö¶Î
+     * @return å­—æ®µ
      */
     public static Field getFieldByName(Class<?> byClass, String fieldName) {
         Field objResultField = null;
         try {
             objResultField = byClass.getDeclaredField(fieldName);
         } catch (NoSuchFieldException e) {
-            LOGGER.debug(byClass + "ÀàÖĞÕÒ²»µ½×Ö¶Î" + fieldName);
+            LOGGER.debug(byClass + "ç±»ä¸­æ‰¾ä¸åˆ°å­—æ®µ" + fieldName);
         }
         if (objResultField == null) {
             if (byClass.getSuperclass() != Object.class) {
@@ -97,22 +97,22 @@ public final class ClassUtil {
     }
     
     /**
-     * È¡µÃVOµÄTable×¢½âµÄnameÊôĞÔÖµ£¬Ä¬ÈÏÎªVOÀàÃû
+     * å–å¾—VOçš„Tableæ³¨è§£çš„nameå±æ€§å€¼ï¼Œé»˜è®¤ä¸ºVOç±»å
      * 
-     * @param t ÊµÌå¶ÔÏó
-     * @param <T> BaseVOÊµÌå¶ÔÏóÀàĞÍ
-     * @return Table±íÃû
+     * @param t å®ä½“å¯¹è±¡
+     * @param <T> BaseVOå®ä½“å¯¹è±¡ç±»å‹
+     * @return Tableè¡¨å
      */
     public static <T extends BaseVO> String getTableName(T t) {
         return getTableName(t.getClass());
     }
     
     /**
-     * È¡µÃVOµÄTable×¢½âµÄnameÊôĞÔÖµ£¬Ä¬ÈÏÎªVOÀàÃû
+     * å–å¾—VOçš„Tableæ³¨è§£çš„nameå±æ€§å€¼ï¼Œé»˜è®¤ä¸ºVOç±»å
      * 
-     * @param clazz ÊµÌå¶ÔÏóclass
-     * @param <T> BaseVOÊµÌå¶ÔÏóÀàĞÍ
-     * @return Table±íÃû
+     * @param clazz å®ä½“å¯¹è±¡class
+     * @param <T> BaseVOå®ä½“å¯¹è±¡ç±»å‹
+     * @return Tableè¡¨å
      */
     public static <T extends BaseVO> String getTableName(Class<T> clazz) {
         String objResult = null;
@@ -127,22 +127,22 @@ public final class ClassUtil {
     }
     
     /**
-     * È¡µÃVOµÄEntity×¢½âµÄnameÊôĞÔÖµ£¬Ä¬ÈÏÎªVOÀàÃû
+     * å–å¾—VOçš„Entityæ³¨è§£çš„nameå±æ€§å€¼ï¼Œé»˜è®¤ä¸ºVOç±»å
      * 
-     * @param t ÊµÌå¶ÔÏó
-     * @param <T> BaseVOÊµÌå¶ÔÏóÀàĞÍ
-     * @return EntityÊµÌåÃû³Æ
+     * @param t å®ä½“å¯¹è±¡
+     * @param <T> BaseVOå®ä½“å¯¹è±¡ç±»å‹
+     * @return Entityå®ä½“åç§°
      */
     public static <T extends BaseVO> String getEntityName(T t) {
         return getEntityName(t.getClass());
     }
     
     /**
-     * È¡µÃVOµÄEntity×¢½âµÄnameÊôĞÔÖµ£¬Ä¬ÈÏÎªVOÀàÃû
+     * å–å¾—VOçš„Entityæ³¨è§£çš„nameå±æ€§å€¼ï¼Œé»˜è®¤ä¸ºVOç±»å
      * 
-     * @param clazz ÊµÌå¶ÔÏóclass
-     * @param <T> BaseVOÊµÌå¶ÔÏóÀàĞÍ
-     * @return EntityÊµÌåÃû³Æ
+     * @param clazz å®ä½“å¯¹è±¡class
+     * @param <T> BaseVOå®ä½“å¯¹è±¡ç±»å‹
+     * @return Entityå®ä½“åç§°
      */
     public static <T extends BaseVO> String getEntityName(Class<T> clazz) {
         String objResult = null;
@@ -157,22 +157,22 @@ public final class ClassUtil {
     }
     
     /**
-     * È¡µÃVOÖ÷¼üÃû³Æ
+     * å–å¾—VOä¸»é”®åç§°
      * 
-     * @param t ÊµÌå¶ÔÏó
-     * @param <T> BaseVOÊµÌå¶ÔÏóÀàĞÍ
-     * @return Ö÷¼ü
+     * @param t å®ä½“å¯¹è±¡
+     * @param <T> BaseVOå®ä½“å¯¹è±¡ç±»å‹
+     * @return ä¸»é”®
      */
     public static <T extends BaseVO> String getPrimaryKeyName(T t) {
         return getPrimaryKeyName(t.getClass());
     }
     
     /**
-     * È¡µÃVOÖ÷¼üÃû³Æ
+     * å–å¾—VOä¸»é”®åç§°
      * 
-     * @param clazz ÊµÌå¶ÔÏóclass
-     * @param <T> BaseVOÊµÌå¶ÔÏóÀàĞÍ
-     * @return Ö÷¼ü
+     * @param clazz å®ä½“å¯¹è±¡class
+     * @param <T> BaseVOå®ä½“å¯¹è±¡ç±»å‹
+     * @return ä¸»é”®
      */
     public static <T extends BaseVO> String getPrimaryKeyName(Class<T> clazz) {
         Object objResult = null;
@@ -183,7 +183,7 @@ public final class ClassUtil {
                     objField.setAccessible(true);
                     objResult = objField.getName();
                 } catch (SecurityException e) {
-                    throw new ModelException("·´Éä»ñÈ¡Ö÷¼üÊôĞÔÃû³Æ" + objField.getName() + "Ê±³ö´í", e);
+                    throw new ModelException("åå°„è·å–ä¸»é”®å±æ€§åç§°" + objField.getName() + "æ—¶å‡ºé”™", e);
                 }
             }
         }
@@ -191,11 +191,11 @@ public final class ClassUtil {
     }
     
     /**
-     * È¡µÃVOÖ÷¼üµÄÖµ
+     * å–å¾—VOä¸»é”®çš„å€¼
      * 
-     * @param t ÊµÌå¶ÔÏó
-     * @param <T> BaseVOÊµÌå¶ÔÏóÀàĞÍ
-     * @return Ö÷¼ü
+     * @param t å®ä½“å¯¹è±¡
+     * @param <T> BaseVOå®ä½“å¯¹è±¡ç±»å‹
+     * @return ä¸»é”®
      */
     public static <T extends BaseVO> String getPrimaryKeyValue(T t) {
         Object objResult = null;
@@ -206,7 +206,7 @@ public final class ClassUtil {
                     objField.setAccessible(true);
                     objResult = objField.get(t);
                 } catch (IllegalAccessException e) {
-                    throw new ModelException("·´Éä»ñÈ¡Ö÷¼üÊôĞÔ" + objField.getName() + "ÖµÊ±³ö´í", e);
+                    throw new ModelException("åå°„è·å–ä¸»é”®å±æ€§" + objField.getName() + "å€¼æ—¶å‡ºé”™", e);
                 }
             }
         }
