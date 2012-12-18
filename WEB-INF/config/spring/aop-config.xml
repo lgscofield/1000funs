@@ -37,7 +37,7 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut id="transactionOperation" expression="execution(* com.test.ITestTableDAOImpl2.doInsert(..))" />
+		<aop:pointcut id="transactionOperation" expression="execution(* com.funs.*.doInsert(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionOperation" order="2"/>
 	</aop:config>
 </beans>

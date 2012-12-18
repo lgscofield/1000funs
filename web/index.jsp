@@ -11,7 +11,7 @@ function onload(){
 }
 
 function redirectToUI(){
-	window.location = "order/index.html";
+	window.location = "test/index.jsp";
 }
 </script>
 <title>Test 编码测试</title>
