@@ -1,0 +1,21 @@
+1000funs' coding-guide
+
+#目前我以个人观点写了一部分，若大家认为有不妥的地方请提出，咱们重新商定。^_^
+
+默认情况下使用Comtop编码规范，除此之外添加以下内容：
+
+1.任何文件都要在文件最开始部分以注释的方式注明作者，如xml中使用<!-- @author Xingling -->
+
+2.不必为每一个字段和方法添加注释，注释仅在必要时使用。
+
+3.通常，可以使用user作为变量名而不需使用objUser,
+	但若在很近的范围内，有String类型的user和Object的user对象同时存在，则必须使用strUser与objUser对变量命名以便区分。
+
+4.所有文件使用UTF-8编码。
+
+5.sql语句中，关键词使用大写，表名和字段名使用小写，如：INSERT INTO user(user_name,phone) VALUES (#{userName},#{phone},#{email})
+
+6.使用eclipse默认的代码检查设置，所有文件要消除全部警告与错误。
+
+
+

@@ -1,7 +1,7 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼şÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑĞÖÆ¡£
+* æœ¬è½¯ä»¶ä¸ºæ·±åœ³åƒæ–¹ç™¾å‘³å…¬å¸å¼€å‘ç ”åˆ¶ã€‚
 *****************************************************************************/
 package com.funs.core.util.tools;
 
@@ -13,50 +13,50 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ÖĞÎÄºº×ÖÆ´Òôascii×ª»»¹¤¾ßÀà
+ * ä¸­æ–‡æ±‰å­—æ‹¼éŸ³asciiè½¬æ¢å·¥å…·ç±»
  *
- * @author »Æ¿ÆÁÖ
+ * @author é»„ç§‘æ—
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version  2012-12-16 é»„ç§‘æ—
  */
 public final class ChineseUtils {
 	
 
-    /** ´æ·ÅÆ´Òô¼°ÇøÎ»ÂëµÄ¼¯ºÏ */
+    /** å­˜æ”¾æ‹¼éŸ³åŠåŒºä½ç çš„é›†åˆ */
     private static List<Spell> spellList = new ArrayList<Spell>(3500);
     
-    /** ÈÕÖ¾¶ÔÏó */
+    /** æ—¥å¿—å¯¹è±¡ */
     private static final Logger LOGGER = LoggerFactory.getLogger(ChineseUtils.class);
     
     /**
-     * ³õÊ¼»¯¹¹½¨Æ´ÒôºÍasciiÂë¶ÔÓ¦¼¯ºÏ
+     * åˆå§‹åŒ–æ„å»ºæ‹¼éŸ³å’Œasciiç å¯¹åº”é›†åˆ
      */
     static {
         initialize();
     }
     
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      */
     private ChineseUtils() {
     }
     
     /**
-     * ºº×ÖÆ´Òô¼°ASCIIÀà
+     * æ±‰å­—æ‹¼éŸ³åŠASCIIç±»
      */
     static class Spell {
         
-        /** Æ´Òô */
+        /** æ‹¼éŸ³ */
         private String strSpells;
         
-        /** Æ´ÒôasciiÂë */
+        /** æ‹¼éŸ³asciiç  */
         private int iSpellValue;
         
         /**
-         * ºº×Ö¹¹Ôìº¯Êı
+         * æ±‰å­—æ„é€ å‡½æ•°
          * 
-         * @param spells Æ´Òô
-         * @param spellValue Æ´Òô¶ÔÓ¦µÄasciiÂë
+         * @param spells æ‹¼éŸ³
+         * @param spellValue æ‹¼éŸ³å¯¹åº”çš„asciiç 
          */
         public Spell(String spells, int spellValue) {
             this.strSpells = spells;
@@ -64,36 +64,36 @@ public final class ChineseUtils {
         }
         
         /**
-         * »ñµÃÆ´Òô
+         * è·å¾—æ‹¼éŸ³
          * 
-         * @return Æ´Òô
+         * @return æ‹¼éŸ³
          */
         public String getSpells() {
             return strSpells;
         }
         
         /**
-         * ÉèÖÃÆ´Òô
+         * è®¾ç½®æ‹¼éŸ³
          * 
-         * @param spells Æ´Òô
+         * @param spells æ‹¼éŸ³
          */
         public void setSpells(String spells) {
             this.strSpells = spells;
         }
         
         /**
-         * »ñµÃÄÚÈİ
+         * è·å¾—å†…å®¹
          * 
-         * @return ÄÚÈİ
+         * @return å†…å®¹
          */
         public int getSpellValue() {
             return iSpellValue;
         }
         
         /**
-         * ÉèÖÃÄÚÈİ
+         * è®¾ç½®å†…å®¹
          * 
-         * @param spellValue ÄÚÈİ
+         * @param spellValue å†…å®¹
          */
         public void setSpellValue(int spellValue) {
             this.iSpellValue = spellValue;
@@ -101,17 +101,17 @@ public final class ChineseUtils {
     }
     
     /**
-     * ½«Æ´ÒôºÍasciiÂë´æ·Åµ½Æ´Òô¼°ÇøÎ»ÂëµÄ¼¯ºÏÖĞ
+     * å°†æ‹¼éŸ³å’Œasciiç å­˜æ”¾åˆ°æ‹¼éŸ³åŠåŒºä½ç çš„é›†åˆä¸­
      * 
-     * @param spell Æ´Òô
-     * @param ascii asciiÂë
+     * @param spell æ‹¼éŸ³
+     * @param ascii asciiç 
      */
     private static void spellPut(String spell, int ascii) {
         spellList.add(new Spell(spell, ascii));
     }
     
     /**
-     * ³õÊ¼»¯¹¹½¨ºº×ÖÆ´Òô×Ö·û¼¯¼°ASCii
+     * åˆå§‹åŒ–æ„å»ºæ±‰å­—æ‹¼éŸ³å­—ç¬¦é›†åŠASCii
      */
     private static void initialize() {
         spellPut("a", -20319);
@@ -3481,17 +3481,17 @@ public final class ChineseUtils {
     }
     
     /**
-     * »ñµÃµ¥¸öºº×ÖµÄAsciiÂë
+     * è·å¾—å•ä¸ªæ±‰å­—çš„Asciiç 
      * 
-     * @param cn ÖĞÎÄºº×Ö×Ö·û
-     * @return ´íÎó·µ»Ø 0,·ñÔò·µ»ØasciiÂë
+     * @param cn ä¸­æ–‡æ±‰å­—å­—ç¬¦
+     * @return é”™è¯¯è¿”å› 0,å¦åˆ™è¿”å›asciiç 
      */
     public static int getCnAscii(char cn) {
         byte[] byteAscii;
         try {
             byteAscii = (String.valueOf(cn)).getBytes("GBK");
         } catch (UnsupportedEncodingException ex) {
-            LOGGER.error("×ªÂë³öÏÖÒì³£!", ex);
+            LOGGER.error("è½¬ç å‡ºç°å¼‚å¸¸!", ex);
             return 0;
         }
         if (byteAscii == null || byteAscii.length > 2 || byteAscii.length <= 0) {
@@ -3510,10 +3510,10 @@ public final class ChineseUtils {
     }
     
     /**
-     * ¸ù¾İASCIIÂëµ½SpellMapÖĞ²éÕÒ¶ÔÓ¦µÄÆ´Òô
+     * æ ¹æ®ASCIIç åˆ°SpellMapä¸­æŸ¥æ‰¾å¯¹åº”çš„æ‹¼éŸ³
      * 
-     * @param ascii int ×Ö·û¶ÔÓ¦µÄASCII
-     * @return String Æ´Òô,Ê×ÏÈÅĞ¶ÏASCIIÊÇ·ñ>0&<160,Èç¹ûÊÇ·µ»Ø¶ÔÓ¦µÄ×Ö·û, ·ñÔòµ½SpellMapÖĞ²éÕÒ,Èç¹ûÃ»ÓĞÕÒµ½Æ´Òô,Ôò·µ»Ønull,Èç¹ûÕÒµ½Ôò·µ»ØÆ´Òô.
+     * @param ascii int å­—ç¬¦å¯¹åº”çš„ASCII
+     * @return String æ‹¼éŸ³,é¦–å…ˆåˆ¤æ–­ASCIIæ˜¯å¦>0&<160,å¦‚æœæ˜¯è¿”å›å¯¹åº”çš„å­—ç¬¦, å¦åˆ™åˆ°SpellMapä¸­æŸ¥æ‰¾,å¦‚æœæ²¡æœ‰æ‰¾åˆ°æ‹¼éŸ³,åˆ™è¿”å›null,å¦‚æœæ‰¾åˆ°åˆ™è¿”å›æ‹¼éŸ³.
      */
     public static String getSpellByAscii(int ascii) {
         if (ascii > 0 && ascii < 160) {
@@ -3541,10 +3541,10 @@ public final class ChineseUtils {
     }
     
     /**
-     * ·µ»Ø×Ö·û´®µÄÈ«Æ´,½öÖĞÎÄºº×Ö×ª»¯ÎªÈ«Æ´,ÆäËü×Ö·û²»½øĞĞ×ª»»
+     * è¿”å›å­—ç¬¦ä¸²çš„å…¨æ‹¼,ä»…ä¸­æ–‡æ±‰å­—è½¬åŒ–ä¸ºå…¨æ‹¼,å…¶å®ƒå­—ç¬¦ä¸è¿›è¡Œè½¬æ¢
      * 
-     * @param cnStr String °üº¬ÖĞÎÄºº×ÖµÄ×Ö·û´®
-     * @return String ×ª»»³ÉÈ«Æ´ºóµÄ×Ö·û´®
+     * @param cnStr String åŒ…å«ä¸­æ–‡æ±‰å­—çš„å­—ç¬¦ä¸²
+     * @return String è½¬æ¢æˆå…¨æ‹¼åçš„å­—ç¬¦ä¸²
      */
     public static String getFullSpell(String cnStr) {
         if (null == cnStr || "".equals(cnStr.trim())) {
@@ -3569,10 +3569,10 @@ public final class ChineseUtils {
     }
     
     /**
-     * »ñÈ¡ººÓï×Ö·û´®µÄÉùÄ¸×éºÏ£¬Ã¿¸öºº×ÖÈ¡Æ´ÒôµÄµÚÒ»¸ö×Ö·û×é³ÉµÄÒ»¸ö×Ö·û´®. ³ıºº×ÖÒÔÍâµÄ×Ö·û²»½øĞĞ×ª»»
+     * è·å–æ±‰è¯­å­—ç¬¦ä¸²çš„å£°æ¯ç»„åˆï¼Œæ¯ä¸ªæ±‰å­—å–æ‹¼éŸ³çš„ç¬¬ä¸€ä¸ªå­—ç¬¦ç»„æˆçš„ä¸€ä¸ªå­—ç¬¦ä¸². é™¤æ±‰å­—ä»¥å¤–çš„å­—ç¬¦ä¸è¿›è¡Œè½¬æ¢
      * 
-     * @param cnStr ºº×ÖµÄ×Ö·û´®
-     * @return Ã¿¸öºº×ÖÆ´ÒôµÄµÚÒ»¸ö×ÖÄ¸Ëù×é³ÉµÄ×Ö·û´®
+     * @param cnStr æ±‰å­—çš„å­—ç¬¦ä¸²
+     * @return æ¯ä¸ªæ±‰å­—æ‹¼éŸ³çš„ç¬¬ä¸€ä¸ªå­—æ¯æ‰€ç»„æˆçš„å­—ç¬¦ä¸²
      */
     public static String getFirstSpell(String cnStr) {
         if (null == cnStr || "".equals(cnStr.trim())) {
@@ -3606,10 +3606,10 @@ public final class ChineseUtils {
     }
     
     /**
-     * ÒÔ×Ö·û´®µÄĞÎÊ½·µ»Øascii
+     * ä»¥å­—ç¬¦ä¸²çš„å½¢å¼è¿”å›ascii
      * 
-     * @param cnStr String ×Ö·û´®
-     * @return String ×Ö·û´®µÄascii
+     * @param cnStr String å­—ç¬¦ä¸²
+     * @return String å­—ç¬¦ä¸²çš„ascii
      */
     public static String getFullAscii(String cnStr) {
         if (null == cnStr || "".equals(cnStr.trim())) {
@@ -3619,7 +3619,7 @@ public final class ChineseUtils {
         StringBuffer sbReturn = new StringBuffer();
         for (int i = 0, iLen = chCnArs.length; i < iLen; i++) {
             int iAscii = getCnAscii(chCnArs[i]);
-            if (iAscii == 0) { // È¡AsciiÊ±³ö´í
+            if (iAscii == 0) { // å–Asciiæ—¶å‡ºé”™
                 sbReturn.append(chCnArs[i]).append(" ");
             } else {
                 sbReturn.append((Integer.toHexString(iAscii)).toUpperCase()).append(" ");
@@ -3629,10 +3629,10 @@ public final class ChineseUtils {
     }
     
     /**
-     * ÊÇ·ñ°üº¬ºº×Ö×Ö·û
+     * æ˜¯å¦åŒ…å«æ±‰å­—å­—ç¬¦
      * 
-     * @param cnStr Ö¸¶¨×Ö·û´®
-     * @return true:ÊÇ false:·ñ
+     * @param cnStr æŒ‡å®šå­—ç¬¦ä¸²
+     * @return true:æ˜¯ false:å¦
      */
     public static boolean isContainChineseCharacter(String cnStr) {
         if (org.apache.commons.lang.StringUtils.isEmpty(cnStr)) {
@@ -3656,10 +3656,10 @@ public final class ChineseUtils {
     }
     
     /**
-     * µÃµ½×Ö·û´®µÄ³¤¶È£¬Ò»¸öºº×Ö³¤¶ÈÎª2
+     * å¾—åˆ°å­—ç¬¦ä¸²çš„é•¿åº¦ï¼Œä¸€ä¸ªæ±‰å­—é•¿åº¦ä¸º2
      * 
-     * @param str Ö¸¶¨×Ö·û´®
-     * @return int ×Ö·û´®µÄ³¤¶È
+     * @param str æŒ‡å®šå­—ç¬¦ä¸²
+     * @return int å­—ç¬¦ä¸²çš„é•¿åº¦
      */
     public static int getStringLength(String str) {
         if (org.apache.commons.lang.StringUtils.isEmpty(str)) {

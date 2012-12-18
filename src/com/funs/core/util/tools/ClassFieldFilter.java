@@ -1,27 +1,27 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼şÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑĞÖÆ¡£
+* æœ¬è½¯ä»¶ä¸ºæ·±åœ³åƒæ–¹ç™¾å‘³å…¬å¸å¼€å‘ç ”åˆ¶ã€‚
 *****************************************************************************/
 package com.funs.core.util.tools;
 
 import java.lang.reflect.Field;
 
 /**
- * Àà×Ö¶Î¹ıÂË½Ó¿Ú
+ * ç±»å­—æ®µè¿‡æ»¤æ¥å£
  *
- * @author »Æ¿ÆÁÖ
+ * @author é»„ç§‘æ—
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version  2012-12-16 é»„ç§‘æ—
  */
 public interface ClassFieldFilter {
 	
 	/**
-     * ×Ö¶Î¹ıÂË
+     * å­—æ®µè¿‡æ»¤
      * 
-     * @param byClass ´ı²Ù×÷µÄClass
-     * @param field ×Ö¶ÎÃû
-     * @return ÊÇ·ñ¹ıÂË
+     * @param byClass å¾…æ“ä½œçš„Class
+     * @param field å­—æ®µå
+     * @return æ˜¯å¦è¿‡æ»¤
      */
     boolean isFilter(Class<?> byClass, Field field);
 }

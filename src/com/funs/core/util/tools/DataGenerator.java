@@ -27,9 +27,9 @@ public class DataGenerator {
     
     //
     // Usage:
-    // Demo1 : User user = get(User.class);
+    // Demo1 : User user = DataGenerator.get(User.class);
     // Then : user.getId() is 1 and user.getName() is name1
-    // Demo2 : User user = get(User.class,100);
+    // Demo2 : User user = DataGenerator.get(User.class,100);
     // Then : user.getId() is 100 and user.getName() is name100
     //
     public static Object get(Class<? extends Object> clazz, int suffix) {
@@ -96,7 +96,12 @@ public class DataGenerator {
         return getList(clazz, count, 1);
     }
     
+    //
     // Usage:
+    // Demo1 : List<Object> userList = DataGenerator.getList(User.class,100);
+    // Then : userList.size() is 100 and (User)userList.get(0) is an User, and it's name is name1.
+    // Demo2 : User user = get(User.class,100,200);
+    // Then : userList.size() is 100 and (User)userList.get(0) is an User, and it's name is name200.
     //
     public static List<Object> getList(Class<? extends Object> clazz, int count, int suffix) {
         List<Object> result = new LinkedList<Object>();
@@ -109,10 +114,13 @@ public class DataGenerator {
     
     public static void main(String[] args) {
         UserVO user = (UserVO) DataGenerator.get(UserVO.class, 100);
-        System.out.println(user.getEmail());
+        System.out.println("Demo: UserVO user = (UserVO) DataGenerator.get(UserVO.class, 100);");
+        System.out.println("user.getEmail():" + user.getEmail());
+        System.out.println("");
         List<Object> userList = DataGenerator.getList(UserVO.class, 100);
-        System.out.println(userList.size());
-        System.out.println(((UserVO) userList.get(50)).getUserName());
+        System.out.println("Demo: List<Object> userList = DataGenerator.getList(UserVO.class, 100);");
+        System.out.println("userList.getSize():" + userList.size());
+        System.out.println("((UserVO) userList.get(50)).getUserName():" +((UserVO) userList.get(50)).getUserName());
     }
     
 }

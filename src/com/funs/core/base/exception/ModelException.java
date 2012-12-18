@@ -1,24 +1,29 @@
 /******************************************************************************
 * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
 * All Rights Reserved.
-* ±¾Èí¼þÎªÉîÛÚÇ§·½°ÙÎ¶¹«Ë¾¿ª·¢ÑÐÖÆ¡£
+* ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
 *****************************************************************************/
 package com.funs.core.base.exception;
 
 /**
- * Ä£ÐÍÒì³£
+ * Ä£ï¿½ï¿½ï¿½ì³£
  *
- * @author »Æ¿ÆÁÖ
+ * @author ï¿½Æ¿ï¿½ï¿½ï¿½
  * @since jdk6.0
- * @version  2012-12-16 »Æ¿ÆÁÖ
+ * @version  2012-12-16 ï¿½Æ¿ï¿½ï¿½ï¿½
  */
 public class ModelException extends BaseException {
 	
 	/**
-     * Òì³£¹¹Ôì
+	 * 
+	 */
+	private static final long serialVersionUID = 5321852505368443299L;
+
+	/**
+     * ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
      * 
-     * @param message Òì³£ÏûÏ¢
-     * @param throwable Òý·¢µÄÒì³£Àà
+     * @param message ï¿½ì³£ï¿½ï¿½Ï¢
+     * @param throwable ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½
      */
     public ModelException(String message, Throwable throwable) {
         super(message, throwable);
