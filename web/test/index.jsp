@@ -4,17 +4,17 @@
 		<title>The Template Of Jsp</title>
 		<script type="text/javascript" src="/1000funs/dwr/engine.js"></script>
 		<script type="text/javascript" src="/1000funs/dwr/util.js"></script>
-		<script type="text/javascript" src="/1000funs/dwr/interface/UserTest.js"></script>
+		<script type="text/javascript" src="/1000funs/dwr/interface/UserAction.js"></script>
 		<script type="text/javascript">
 			function doInsert () {
-				UserTest.doInsert(function(result){
+				UserAction.doInsert(function(result){
 					document.getElementById("insert_result").innerHTML="succuess:"+result.userName;
 				});
 			}
 
 			function doQuery () {
 				var param = document.getElementById("query_text").value;
-				UserTest.doQuery(param,function(result){
+				UserAction.queryUserByName(param,function(result){
 					document.getElementById("query_result").innerHTML="succuess:"+result;
 				});
 			}
