@@ -25,64 +25,143 @@
 						</form>
 					</div>
 					<div class="span4">
-						<select name="" id="">
-							<option value="" selected>全部</option>
-							<option value="">异常</option>
-							<option value="">正常</option>
-						</select>
+						<div class="btn-group" data-toggle="buttons-radio">
+							<button type="button" class="btn active">全部</button>
+							<button type="button" class="btn ">正常</button>
+							<button type="button" class="btn ">异常</button>
+						</div>
 					</div>
 					<div class="span3">
-						<button class="btn pull-right">撤销</button>
 					</div>
 				</div>
 			</div>
-			<table class="table table-striped">
-				<tr>
-					<th><input type="checkbox" id="selectAll"></th>
-					<th>订单编号</th>
-					<th>下单时间</th>
-					<th>送餐地址</th>
-					<th>联系电话</th>
-					<th>餐点</th>
-					<th>操作</th>
-				</tr>
-				<tr>
-					<td><input type="checkbox"></td>
-					<td>0001</td>
-					<td>10:00</td>
-					<td>香丽二楼</td>
-					<td>15818501051</td>
-					<td>番茄+牛肉</td>
-					<td><input type="button" class="btn" value="异常"></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox"></td>
-					<td>0002</td>
-					<td>10:20</td>
-					<td>景发大厦</td>
-					<td>15818501052</td>
-					<td>榨菜+猪肝+紫菜</td>
-					<td><input type="button" class="btn" value="异常"></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox"></td>
-					<td>0003</td>
-					<td>10:30</td>
-					<td>商报大厦</td>
-					<td>15818501053</td>
-					<td>凉瓜+肉片</td>
-					<td><input type="button" class="btn" value="异常"></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox"></td>
-					<td>0004</td>
-					<td>11:10</td>
-					<td>香丽一楼</td>
-					<td>15818501054</td>
-					<td>茄子+冬瓜</td>
-					<td><input type="button" class="btn" value="异常"></td>
-				</tr>
-			</table>
+			<div class="table-list">
+				<ul>
+					<li>
+						<div class="table-item">
+							<div class="row head">
+								<div class="left order-address-tel">
+									<span class="order-address">深圳市福田区莲花路2075号香丽大厦二楼</span>
+									<span class="order-tel">15818501051</span>
+								</div>
+								<div class="right">
+									<span class="order-price">13.00元 (共8个)</span>
+									<a href="#" class="btn btn-mini order-btn-abnormal"><i class="icon-warning-sign"></i>&nbsp;异常</a>
+								</div>
+							</div>
+							<div class="row body">
+								<div>
+									<span class="order-number">订单号: 10000101</span>
+									<span class="order-time">
+										下单时间: 11:00 
+									</span>
+								</div>
+								<div class="food-collapse">
+									<ul class="food-list">
+										<li>白饭 x2</li>
+										<li>排骨 x1</li>
+										<li>意大利太空有机无毒小白菜 x1</li>
+										<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
+									</ul>
+								</div>
+								<div class="food-expand">
+									<ul class="food-list">
+										<li>白饭 x2</li>
+										<li>排骨 x1</li>
+										<li>意大利太空有机无毒小白菜 x1</li>
+										<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
+										<li>白饭 x2</li>
+										<li>排骨 x1</li>
+										<li>意大利太空有机无毒小白菜 x1</li>
+										<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="table-item">
+							<div class="row head">
+								<div class="left order-address-tel">
+									<span class="order-address">深圳市福田区莲花路2075号香丽大厦二楼</span>
+									<span class="order-tel">15818501051</span>
+								</div>
+								<div class="right">
+									<span class="order-price">13.00元 (共4个)</span>
+									<a href="#" class="btn btn-mini order-btn-abnormal"><i class="icon-warning-sign"></i>&nbsp;异常</a>
+								</div>
+							</div>
+							<div class="row body">
+								<div>
+									<span class="order-number">订单号: 10000101</span>
+									<span class="order-time">
+										下单时间: 11:00 
+									</span>
+								</div>
+								<div class="food-collapse">
+									<ul class="food-list">
+										<li>白饭 x2</li>
+										<li>排骨 x1</li>
+										<li>意大利太空有机无毒小白菜 x1</li>
+										<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
+									</ul>
+								</div>
+								<div class="food-expand">
+									<ul class="food-list">
+										<li>白饭 x2</li>
+										<li>排骨 x1</li>
+										<li>意大利太空有机无毒小白菜 x1</li>
+										<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="table-item abnormal">
+							<div class="row head">
+								<div class="left order-address-tel">
+									<span class="order-address">深圳市福田区莲花路2075号香丽大厦二楼</span>
+									<span class="order-tel">15818501051</span>
+								</div>
+								<div class="right">
+									<span class="order-price">13.00元 (共4个)</span>
+									<a href="#" class="btn btn-mini order-btn-abnormal"><i class="icon-warning-sign"></i>&nbsp;恢复</a>
+								</div>
+							</div>
+							<div class="row body">
+								<div>
+									<span class="order-number">订单号: 10000101</span>
+									<span class="order-time">
+										下单时间: 11:00 
+									</span>
+								</div>
+								<div class="food-collapse">
+									<ul class="food-list">
+										<li>白饭 x2</li>
+										<li>排骨 x1</li>
+										<li>意大利太空有机无毒小白菜 x1</li>
+										<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
+									</ul>
+								</div>
+								<div class="food-expand">
+									<ul class="food-list">
+										<li>白饭 x1</li>
+										<li>排骨 x1</li>
+										<li>小白菜 x1</li>
+										<li>酸甜苦瓜炒荷包蛋 x1</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="table-list-comment">
+				<span class="red">红色</span>表示此订单为异常的订单。
+			</div>
 			<!-- pagination -->
 			<div id="page"></div>
 		</div>
@@ -90,6 +169,7 @@
 		<script type="text/javascript" src="assert/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="assert/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="assert/js/jquery.pagination.js"></script>
+		<script type="text/javascript" src="assert/js/order-tablelist.js"></script>
 		<script type="text/javascript">
 
 			jQuery(function ($) {
@@ -103,12 +183,6 @@
 					refresh: false
 				});
 
-				// 全选
-				$("#selectAll").change(function() {
-					var $this = $(this), 
-						checked = $(this).attr("checked") || false;
-					$this.closest("tr").siblings().find("input[type='checkbox']").attr("checked", checked);
-				});
 			});
 
 		</script>

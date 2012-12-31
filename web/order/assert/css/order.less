@@ -26,7 +26,7 @@ body {
 	padding: 19px 29px 29px;
 	border: 1px solid #e5e5e5;
 	.border-radius(5px);
-	.box-shadow(0 1px 2px rgba(0,0,0,.05))
+	.box-shadow(0 1px 2px rgba(0,0,0,.05));
 }
 .btn.btn-login {
 	width: 120px;
@@ -65,13 +65,27 @@ body {
 	.border-radius(4px);
 	.box-shadow(0 1px 1px rgba(0, 0, 0, .05) inset);
 
-	/*
-	.nav .nav-header {
-		padding: 5px;
-	}*/
+	.nav-list {
+		padding: 0px;
+	}
 
-	.nav-header {
+	li.nav-header {
 		font-size: 14px;
+		margin-top: 0px;
+	}
+
+	> ul > li > a, .nav-header {
+		// border: 1px solid #e5e5e5;
+		border-top: 1px solid #e5e5e5;
+		margin: 0 0 -1px;
+	}
+
+	> ul > li:first-child {
+		border: 0px;
+	}
+
+	> ul > li > a {
+		padding-left: 25px;
 	}
 }
 
@@ -86,7 +100,130 @@ body {
 	}
 }
 
+.table-list {
+	border: 1px solid #E5E5E5;
+	.border-radius(4px);
+	.box-shadow(0 1px 1px rgba(0, 0, 0, .05) inset);
+
+	.table-item {
+		padding: 5px 10px;
+
+		&.expand {
+			// border: 1px solid #E5E5E5;
+			// .border-radius(4px);
+
+			.body {
+				color: #333;
+			}
+		}
+
+		&.abnormal {
+			.order-address, .order-tel {
+				color: #B94A48;
+			}
+		}
+	}
+
+	.row {
+		margin-left: 0px;
+	}
+
+	> ul {
+		padding: 0px;
+		margin: 0px;
+		list-style: none outside none;
+
+		> li {
+			padding: 10px 10px;
+			border-bottom: 1px solid #E5E5E5;
+
+			&:hover  {
+				.order-btn-abnormal {
+					visibility: visible;
+				}
+			}
+		}
+	}
+
+	.head {
+		font-weight: bold;
+		height: 30px;
+		line-height: 30px;
+		color: #000;
+	}
+
+	.order-number {
+		margin-right: 20px;
+	}
+
+	.order-address-tel:hover {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.order-address {
+		margin-right: 20px;
+	}
+
+	.order-tel {
+		color: #468847;
+	}
+
+	.order-price {
+		color: #B94A48;
+	}
+
+	.order-btn-out, .order-btn-abnormal {
+		margin-left: 10px;
+	}
+
+	.order-btn-abnormal {
+		visibility: hidden;
+	}
+
+	.body {
+		color: #999;
+
+		.food-collapse {
+			ul.food-list li {
+				float: left;
+				width: 180px;
+			}
+		}
+
+		.food-expand {
+			display: none;
+			background-color: #F2F2F2;
+		}
+
+		ul.food-list {
+			padding: 0px;
+			margin: 0px;
+			list-style: none inside none;
+
+			li {
+				margin: 5px 0px;
+			}
+		}
+		
+	}
+}
+
+.table-list-comment {
+	padding: 5px 20px;
+}
+
+
 // Font
 .red {
 	color: red;
+}
+
+// Utilities
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
 }

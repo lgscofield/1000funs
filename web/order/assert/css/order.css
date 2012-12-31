@@ -220,14 +220,24 @@ body {
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
-  /*
-	.nav .nav-header {
-		padding: 5px;
-	}*/
-
 }
-.sidebar .nav-header {
+.sidebar .nav-list {
+  padding: 0px;
+}
+.sidebar li.nav-header {
   font-size: 14px;
+  margin-top: 0px;
+}
+.sidebar > ul > li > a,
+.sidebar .nav-header {
+  border-top: 1px solid #e5e5e5;
+  margin: 0 0 -1px;
+}
+.sidebar > ul > li:first-child {
+  border: 0px;
+}
+.sidebar > ul > li > a {
+  padding-left: 25px;
 }
 .container-fixed {
   margin-left: 0px;
@@ -236,8 +246,99 @@ body {
   height: 42px;
 }
 .querybar form {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+}
+.table-list {
+  border: 1px solid #E5E5E5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+.table-list .table-item {
+  padding: 5px 10px;
+}
+.table-list .table-item.expand .body {
+  color: #333;
+}
+.table-list .table-item.abnormal .order-address,
+.table-list .table-item.abnormal .order-tel {
+  color: #B94A48;
+}
+.table-list .row {
+  margin-left: 0px;
+}
+.table-list > ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none outside none;
+}
+.table-list > ul > li {
+  padding: 10px 10px;
+  border-bottom: 1px solid #E5E5E5;
+}
+.table-list > ul > li:hover .order-btn-abnormal {
+  visibility: visible;
+}
+.table-list .head {
+  font-weight: bold;
+  height: 30px;
+  line-height: 30px;
+  color: #000;
+}
+.table-list .order-number {
+  margin-right: 20px;
+}
+.table-list .order-address-tel:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.table-list .order-address {
+  margin-right: 20px;
+}
+.table-list .order-tel {
+  color: #468847;
+}
+.table-list .order-price {
+  color: #B94A48;
+}
+.table-list .order-btn-out,
+.table-list .order-btn-abnormal {
+  margin-left: 10px;
+}
+.table-list .order-btn-abnormal {
+  visibility: hidden;
+}
+.table-list .body {
+  color: #999;
+}
+.table-list .body .food-collapse ul.food-list li {
+  float: left;
+  width: 180px;
+}
+.table-list .body .food-expand {
+  display: none;
+  background-color: #F2F2F2;
+}
+.table-list .body ul.food-list {
+  padding: 0px;
+  margin: 0px;
+  list-style: none inside none;
+}
+.table-list .body ul.food-list li {
+  margin: 5px 0px;
+}
+.table-list-comment {
+  padding: 5px 20px;
 }
 .red {
   color: red;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
 }
