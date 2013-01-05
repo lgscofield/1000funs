@@ -1,0 +1,11 @@
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+    "http://getahead.org/dwr/dwr20.dtd">
+<dwr>
+	<allow>
+		<create creator="new" javascript="UserAction">
+			<param name="class" value="com.funs.user.action.UserAction" />
+		</create>
+		<convert converter="bean" match="com.funs.user.model.*"/>
+	</allow>
+</dwr>

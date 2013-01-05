@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 用户 -->
+<mapper namespace="com.funs.user">
+
+	<!-- 插入一行数据 -->
+	<insert id="insertUser" parameterType="com.funs.user.model.UserVO">
+		INSERT INTO user(user_name,phone,email,register_time,score,quota) VALUES
+		(#{userName},#{phone},#{email},#{registerTime},#{score},#{quota})
+	</insert>
+
+	<!-- 查询该表的总行数 -->
+	<select id="getCount" resultType="int">
+		SELECT COUNT(*) FROM user
+	</select>
+
+	<select id="queryUserByName" parameterType="String"
+		resultType="com.funs.user.model.UserVO">
+		SELECT * FROM user WHERE user_name=#{name}
+	</select>
+
+</mapper>
