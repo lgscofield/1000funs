@@ -6,18 +6,18 @@
 
 	<!-- 插入一行数据 -->
 	<insert id="insertUser" parameterType="com.funs.user.model.UserVO">
-		INSERT INTO user(user_name,phone,email,register_time,score,quota) VALUES
+		INSERT INTO users(user_name,phone,email,register_time,score,quota) VALUES
 		(#{userName},#{phone},#{email},#{registerTime},#{score},#{quota})
 	</insert>
 
 	<!-- 查询该表的总行数 -->
 	<select id="getCount" resultType="int">
-		SELECT COUNT(*) FROM user
+		SELECT COUNT(*) FROM users
 	</select>
 
 	<select id="queryUserByName" parameterType="String"
 		resultType="com.funs.user.model.UserVO">
-		SELECT * FROM user WHERE user_name=#{name}
+		SELECT * FROM users WHERE user_name=#{name}
 	</select>
 
 </mapper>

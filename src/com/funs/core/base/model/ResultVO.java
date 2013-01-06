@@ -6,25 +6,30 @@ package com.funs.core.base.model;
  * @history 2013-1-6 Xingling build
  */
 public class ResultVO extends BaseVO {
-	private boolean result;
+	private boolean success;
 	private String message;
-	
-	public ResultVO(boolean r,String m){
-		result=r;
-		message=m;
+
+	public ResultVO(boolean s, String m) {
+		success = s;
+		message = m;
 	}
-	
-	public ResultVO(){
-		result = true;
+
+	public ResultVO(String m) {
+		success = false;
+		message = m;
+	}
+
+	public ResultVO() {
+		success = true;
 		message = "success";
 	}
 
-	public boolean isResult() {
-		return result;
+	public boolean isSuccess() {
+		return success;
 	}
 
-	public void setResult(boolean result) {
-		this.result = result;
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 
 	public String getMessage() {

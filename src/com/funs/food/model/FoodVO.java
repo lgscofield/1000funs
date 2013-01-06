@@ -25,9 +25,9 @@ public class FoodVO extends BaseVO{
 
 	private String image;
 
-	private int shop_id;
+	private int shopId;
 
-	private int group_id;
+	private int groupId;
 
 	private double originPrice;
 	
@@ -88,23 +88,24 @@ public class FoodVO extends BaseVO{
 	}
 
 
-	public int getShop_id() {
-		return shop_id;
+
+	public int getShopId() {
+		return shopId;
 	}
 
 
-	public void setShop_id(int shop_id) {
-		this.shop_id = shop_id;
+	public void setShopId(int shopId) {
+		this.shopId = shopId;
 	}
 
 
-	public int getGroup_id() {
-		return group_id;
+	public int getGroupId() {
+		return groupId;
 	}
 
 
-	public void setGroup_id(int group_id) {
-		this.group_id = group_id;
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
 	}
 
 

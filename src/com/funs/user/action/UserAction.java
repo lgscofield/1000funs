@@ -9,7 +9,7 @@ import com.funs.user.appservice.UserService;
 import com.funs.user.model.UserVO;
 
 /**
- * @author Xingling Chen
+ * @author Xingling
  * @since JDK1.6
  * @history 2012-12-18 Xingling build
  */

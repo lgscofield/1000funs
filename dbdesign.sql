@@ -29,7 +29,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `1000funs`.`food` ;
 
 CREATE  TABLE IF NOT EXISTS `1000funs`.`food` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `code` VARCHAR(45) NULL ,
   `food_name` VARCHAR(45) NULL ,
   `detail` VARCHAR(400) NULL ,
@@ -40,11 +40,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `1000funs`.`user`
+-- Table `1000funs`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`user` ;
+DROP TABLE IF EXISTS `1000funs`.`users` ;
 
-CREATE  TABLE IF NOT EXISTS `1000funs`.`user` (
+CREATE  TABLE IF NOT EXISTS `1000funs`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `code` VARCHAR(45) NULL ,
   `user_name` VARCHAR(45) NULL ,
@@ -143,7 +143,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `1000funs`.`package` ;
 
 CREATE  TABLE IF NOT EXISTS `1000funs`.`package` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `code` VARCHAR(45) NULL ,
   `shop_id` VARCHAR(45) NULL COMMENT 'necessary' ,
   `package_name` VARCHAR(45) NULL ,
