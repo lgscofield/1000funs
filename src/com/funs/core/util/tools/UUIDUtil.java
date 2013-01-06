@@ -28,7 +28,7 @@ public final class UUIDUtil {
      * @return 生成的UUID
      */
     public static String generateUUID() {
-        String strUUID = UUID.randomUUID().toString().replaceAll("-", StringUtils.EMPTY);
+        String strUUID = UUID.randomUUID().toString().replaceAll("-", StringUtil.EMPTY);
         return strUUID;
     }
 }

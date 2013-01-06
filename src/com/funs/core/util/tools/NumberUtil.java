@@ -16,12 +16,12 @@ import java.text.DecimalFormat;
  * @since jdk6.0
  * @version  2012-12-16 黄科林
  */
-public final class NumberUtils {
+public final class NumberUtil {
 	
 	/**
      * 构造函数
      */
-    private NumberUtils() {
+    private NumberUtil() {
     }
     
     /**
@@ -47,7 +47,7 @@ public final class NumberUtils {
      */
     public static int getIntValue(String string) {
         int iValue = 0;
-        if (StringUtils.isNotEmpty(string)) {
+        if (StringUtil.isNotEmpty(string)) {
             StringBuffer sbBuffer = new StringBuffer();
             char[] chArs = string.toCharArray();
             for (int i = 0; i < chArs.length; i++) {
@@ -62,7 +62,7 @@ public final class NumberUtils {
                     }
                 }
             }
-            if (StringUtils.isNotEmpty(sbBuffer.toString())) {
+            if (StringUtil.isNotEmpty(sbBuffer.toString())) {
                 iValue = Integer.parseInt(sbBuffer.toString());
             }
         }
@@ -114,7 +114,7 @@ public final class NumberUtils {
                     }
                 }
             }
-            if (StringUtils.isNotEmpty(sbBuffer.toString())) {
+            if (StringUtil.isNotEmpty(sbBuffer.toString())) {
                 dValue = Double.parseDouble(sbBuffer.toString());
             }
         }
@@ -184,7 +184,7 @@ public final class NumberUtils {
         if (str == null) {
             return null;
         }
-        if (NumberUtils.isBlank(str)) {
+        if (NumberUtil.isBlank(str)) {
             throw new NumberFormatException("A blank string is not a valid number");
         }
         return new BigDecimal(str);

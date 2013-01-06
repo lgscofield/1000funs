@@ -32,7 +32,7 @@
 		<constructor-arg index="0" ref="sqlSessionFactory" />  
 	</bean>
 	
-	<!-- 订单配置实现类，注入数据源 -->
+	<!-- 订单模块，注入数据源 -->
 	<bean id="OrderDAOImpl" class="com.funs.order.dao.OrderDAO">   
 		<property name="sqlSessionTemplate" ref="sqlSession" />
 	</bean>
@@ -40,12 +40,20 @@
 		<property name="orderDAO" ref="OrderDAOImpl" />
 	</bean>
 	
-	<!-- 用户配置实现类，注入数据源 -->
+	<!-- 用户模块，注入数据源 -->
 	<bean id="UserDAOImpl" class="com.funs.user.dao.UserDAO">   
 		<property name="sqlSessionTemplate" ref="sqlSession" />
 	</bean>
 	<bean id="UserService" class="com.funs.user.appservice.UserService">   
 		<property name="userDAO" ref="UserDAOImpl" />
+	</bean>
+	
+	<!-- 食物模块，注入数据源 -->
+	<bean id="FoodDAOImpl" class="com.funs.food.dao.FoodDAO">   
+		<property name="sqlSessionTemplate" ref="sqlSession" />
+	</bean>
+	<bean id="FoodService" class="com.funs.food.appservice.FoodService">   
+		<property name="foodDAO" ref="FoodDAOImpl" />
 	</bean>
 	
 	

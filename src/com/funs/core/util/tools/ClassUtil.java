@@ -119,7 +119,7 @@ public final class ClassUtil {
         if (clazz.isAnnotationPresent(Table.class)) {
             Table objTableAnnotation = clazz.getAnnotation(Table.class);
             objResult = objTableAnnotation.name();
-            if (StringUtils.isEmpty(objResult)) {
+            if (StringUtil.isEmpty(objResult)) {
                 objResult = clazz.getSimpleName();
             }
         }
@@ -149,7 +149,7 @@ public final class ClassUtil {
         if (clazz.isAnnotationPresent(Entity.class)) {
             Entity objEntityAnnotation = clazz.getAnnotation(Entity.class);
             objResult = objEntityAnnotation.name();
-            if (StringUtils.isEmpty(objResult)) {
+            if (StringUtil.isEmpty(objResult)) {
                 objResult = clazz.getSimpleName();
             }
         }
@@ -187,7 +187,7 @@ public final class ClassUtil {
                 }
             }
         }
-        return objResult != null ? objResult.toString() : StringUtils.EMPTY;
+        return objResult != null ? objResult.toString() : StringUtil.EMPTY;
     }
     
     /**
@@ -210,6 +210,6 @@ public final class ClassUtil {
                 }
             }
         }
-        return objResult != null ? objResult.toString() : StringUtils.EMPTY;
+        return objResult != null ? objResult.toString() : StringUtil.EMPTY;
     }
 }

@@ -13,10 +13,12 @@ DROP TABLE IF EXISTS `1000funs`.`shop` ;
 
 CREATE  TABLE IF NOT EXISTS `1000funs`.`shop` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `number` VARCHAR(45) NULL ,
+  `code` VARCHAR(45) NULL ,
   `shop_name` VARCHAR(45) NULL ,
-  `address` VARCHAR(45) NULL ,
-  `deleted` TINYINT(1) NULL DEFAULT false ,
+  `region_id` INT NULL ,
+  `manager_id` VARCHAR(45) NULL ,
+  `detail_address` VARCHAR(45) NULL ,
+  `deleted` TINYINT(1) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -28,15 +30,11 @@ DROP TABLE IF EXISTS `1000funs`.`food` ;
 
 CREATE  TABLE IF NOT EXISTS `1000funs`.`food` (
   `id` INT NOT NULL ,
-  `number` VARCHAR(45) NULL ,
-  `shop_id` INT NULL COMMENT 'necessary' ,
+  `code` VARCHAR(45) NULL ,
   `food_name` VARCHAR(45) NULL ,
   `detail` VARCHAR(400) NULL ,
   `image` VARCHAR(400) NULL ,
-  `price` DOUBLE NULL ,
-  `stockout` TINYINT(1) NULL COMMENT 'should we move this flag to \\\" spell_item\\\" ?' ,
-  `droped` TINYINT(1) NULL ,
-  `deleted` TINYINT(1) NULL DEFAULT false ,
+  `deleted` TINYINT(1) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -48,13 +46,18 @@ DROP TABLE IF EXISTS `1000funs`.`user` ;
 
 CREATE  TABLE IF NOT EXISTS `1000funs`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT ,
+  `code` VARCHAR(45) NULL ,
   `user_name` VARCHAR(45) NULL ,
   `phone` VARCHAR(45) NULL ,
   `email` VARCHAR(45) NULL ,
-  `register_time` VARCHAR(45) NULL ,
+  `password` VARCHAR(200) NULL ,
   `score` INT NULL ,
   `quota` DOUBLE NULL ,
-  `deleted` TINYINT(1) NULL DEFAULT false ,
+  `default_region_id` INT NULL ,
+  `default_address` VARCHAR(200) NULL ,
+  `register_time` VARCHAR(45) NULL ,
+  `user_type` INT NULL COMMENT '0:consumer\\n1:employee\\n2:manager\\n3:admin' ,
+  `deleted` TINYINT(1) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -66,18 +69,22 @@ DROP TABLE IF EXISTS `1000funs`.`order` ;
 
 CREATE  TABLE IF NOT EXISTS `1000funs`.`order` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `number` VARCHAR(45) NULL ,
+  `code` VARCHAR(45) NULL ,
   `shop_id` INT NULL ,
   `create_time` VARCHAR(45) NULL ,
   `except_time` VARCHAR(45) NULL ,
-  `userId` INT NULL ,
+  `user_id` INT NULL ,
+  `user_remark` VARCHAR(45) NULL COMMENT 'user remark' ,
   `address` VARCHAR(200) NULL ,
-  `remark` VARCHAR(45) NULL ,
-  `status` INT NULL COMMENT '0:new\\n1:dealed\\n2:exception\\n' ,
+  `contact` VARCHAR(45) NULL COMMENT 'who will accept the food.' ,
+  `phone` VARCHAR(45) NULL ,
+  `status` INT NULL COMMENT '0:new\\n1:dealed\\n2:exception\\n3:evaluated\\n' ,
   `manager_id` INT NULL ,
   `manager_remark` VARCHAR(45) NULL ,
-  `evaluated` TINYINT(1) NULL COMMENT 'Is user evaluate this order.' ,
-  `deleted` TINYINT(1) NULL DEFAULT false ,
+  `sender_id` INT NULL ,
+  `payment_type` INT NULL COMMENT '0: cash\\n1: online' ,
+  `total_price` DOUBLE NULL COMMENT 'current total price' ,
+  `deleted` TINYINT(1) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -94,37 +101,20 @@ CREATE  TABLE IF NOT EXISTS `1000funs`.`evaluate` (
   `taste` INT NULL ,
   `service` INT NULL ,
   `detail` VARCHAR(200) NULL ,
+  `evaluate_time` VARCHAR(45) NULL ,
   `deleted` TINYINT(1) NULL DEFAULT false ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `1000funs`.`password`
+-- Table `1000funs`.`food_group`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`password` ;
+DROP TABLE IF EXISTS `1000funs`.`food_group` ;
 
-CREATE  TABLE IF NOT EXISTS `1000funs`.`password` (
+CREATE  TABLE IF NOT EXISTS `1000funs`.`food_group` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `user_id` INT NULL ,
-  `password` VARCHAR(200) NULL ,
-  `create_time` VARCHAR(45) NULL ,
-  `overdue` TINYINT(1) NULL COMMENT 'is overdue . this is for give user the tips: your password has been changed 2 days ago . but , maybe use a table to record this is more benifit .' ,
-  `deleted` TINYINT(1) NULL DEFAULT false ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `1000funs`.`spell_group`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`spell_group` ;
-
-CREATE  TABLE IF NOT EXISTS `1000funs`.`spell_group` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `shop_id` INT NULL ,
-  `spell_group_name` VARCHAR(45) NULL ,
-  `price` DOUBLE NULL ,
+  `group_name` VARCHAR(45) NULL ,
   `image` VARCHAR(200) NULL ,
   `detail` VARCHAR(200) NULL ,
   `deleted` TINYINT(1) NULL DEFAULT false ,
@@ -133,31 +123,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `1000funs`.`spell_item`
+-- Table `1000funs`.`package_group`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`spell_item` ;
+DROP TABLE IF EXISTS `1000funs`.`package_group` ;
 
-CREATE  TABLE IF NOT EXISTS `1000funs`.`spell_item` (
+CREATE  TABLE IF NOT EXISTS `1000funs`.`package_group` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `group_id` INT NULL ,
-  `food_id` INT NULL ,
-  `orderNumber` INT NULL COMMENT 'control the view .' ,
-  `deleted` TINYINT(1) NULL DEFAULT false ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `1000funs`.`suite_group`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`suite_group` ;
-
-CREATE  TABLE IF NOT EXISTS `1000funs`.`suite_group` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `number` VARCHAR(45) NULL ,
-  `shop_id` INT NULL ,
-  `suite_group_name` VARCHAR(45) NULL ,
-  `price` DOUBLE NULL ,
+  `group_name` VARCHAR(45) NULL ,
   `image` VARCHAR(200) NULL ,
   `detail` VARCHAR(200) NULL ,
   `deleted` TINYINT(1) NULL DEFAULT false ,
@@ -166,47 +138,30 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `1000funs`.`suite`
+-- Table `1000funs`.`package`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`suite` ;
+DROP TABLE IF EXISTS `1000funs`.`package` ;
 
-CREATE  TABLE IF NOT EXISTS `1000funs`.`suite` (
+CREATE  TABLE IF NOT EXISTS `1000funs`.`package` (
   `id` INT NOT NULL ,
-  `number` VARCHAR(45) NULL ,
+  `code` VARCHAR(45) NULL ,
   `shop_id` VARCHAR(45) NULL COMMENT 'necessary' ,
-  `suite_name` VARCHAR(45) NULL ,
+  `package_name` VARCHAR(45) NULL ,
   `detail` VARCHAR(400) NULL ,
   `image` VARCHAR(400) NULL ,
-  `price` DOUBLE NULL ,
-  `stockout` TINYINT(1) NULL COMMENT 'should we move this flag to \\\" spell_item\\\" ?' ,
-  `droped` TINYINT(1) NULL ,
-  `delete` TINYINT(1) NULL ,
+  `deleted` TINYINT(1) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `1000funs`.`suite_item`
+-- Table `1000funs`.`package_item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`suite_item` ;
+DROP TABLE IF EXISTS `1000funs`.`package_item` ;
 
-CREATE  TABLE IF NOT EXISTS `1000funs`.`suite_item` (
+CREATE  TABLE IF NOT EXISTS `1000funs`.`package_item` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `group_id` INT NULL ,
-  `suite_id` INT NULL ,
-  `deleted` TINYINT(1) NULL DEFAULT false ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `1000funs`.`suite_food`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`suite_food` ;
-
-CREATE  TABLE IF NOT EXISTS `1000funs`.`suite_food` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `suite_id` INT NULL ,
+  `package_id` INT NULL ,
   `food_id` INT NULL ,
   `deleted` TINYINT(1) NULL DEFAULT false ,
   PRIMARY KEY (`id`) )
@@ -214,34 +169,120 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `1000funs`.`pre_order`
+-- Table `1000funs`.`order_plan`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`pre_order` ;
+DROP TABLE IF EXISTS `1000funs`.`order_plan` ;
 
-CREATE  TABLE IF NOT EXISTS `1000funs`.`pre_order` (
+CREATE  TABLE IF NOT EXISTS `1000funs`.`order_plan` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `number` VARCHAR(20) NULL ,
+  `code` VARCHAR(45) NULL ,
   `shop_id` INT NULL ,
   `user_id` INT NULL ,
   `except_time` VARCHAR(45) NULL ,
-  `remark` VARCHAR(45) NULL ,
+  `user_remark` VARCHAR(45) NULL ,
+  `rule_id` INT NULL COMMENT 'everyday , the matched rules will generate order' ,
   `create_time` VARCHAR(45) NULL ,
-  `deleted` TINYINT(1) NULL DEFAULT false ,
+  `end_time` VARCHAR(45) NULL ,
+  `deleted` TINYINT(1) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `1000funs`.`pre_order_item`
+-- Table `1000funs`.`order_plan_item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`pre_order_item` ;
+DROP TABLE IF EXISTS `1000funs`.`order_plan_item` ;
 
-CREATE  TABLE IF NOT EXISTS `1000funs`.`pre_order_item` (
+CREATE  TABLE IF NOT EXISTS `1000funs`.`order_plan_item` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `pre_order_id` INT NULL ,
-  `item_type` INT NULL COMMENT '0 spell , 1 suite' ,
-  `item_id` INT NULL COMMENT 'itemType and itemId decide which food is the user wanted.' ,
-  `deleted` TINYINT(1) NULL DEFAULT false ,
+  `plan_id` INT NULL ,
+  `item_type` INT NULL COMMENT '0 food , 1 package' ,
+  `item_id` INT NULL COMMENT 'food or package\\\'s id' ,
+  `amount` INT NULL ,
+  `deleted` TINYINT(1) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `1000funs`.`Region`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `1000funs`.`Region` ;
+
+CREATE  TABLE IF NOT EXISTS `1000funs`.`Region` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `code` VARCHAR(45) NULL ,
+  `region_name` VARCHAR(45) NULL ,
+  `parent_id` INT NULL ,
+  `has_children` TINYINT(1) NULL ,
+  `full_path` VARCHAR(200) NULL ,
+  `deleted` TINYINT(1) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `1000funs`.`food_re_shop`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `1000funs`.`food_re_shop` ;
+
+CREATE  TABLE IF NOT EXISTS `1000funs`.`food_re_shop` (
+  `shop_id` INT NOT NULL ,
+  `food_id` INT NOT NULL ,
+  `group_id` INT NULL ,
+  `origin_price` DOUBLE NULL ,
+  `current_price` DOUBLE NULL ,
+  `stock` INT NULL ,
+  `droped` TINYINT(1) NULL ,
+  `deleted` TINYINT(1) NULL ,
+  PRIMARY KEY (`shop_id`, `food_id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `1000funs`.`package_re_shop`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `1000funs`.`package_re_shop` ;
+
+CREATE  TABLE IF NOT EXISTS `1000funs`.`package_re_shop` (
+  `shop_id` INT NOT NULL ,
+  `package_id` INT NOT NULL ,
+  `group_id` INT NULL ,
+  `origin_price` DOUBLE NULL ,
+  `current_price` DOUBLE NULL ,
+  `stock` INT NULL ,
+  `droped` TINYINT(1) NULL ,
+  `deleted` TINYINT(1) NULL ,
+  PRIMARY KEY (`shop_id`, `package_id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `1000funs`.`plan_rule`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `1000funs`.`plan_rule` ;
+
+CREATE  TABLE IF NOT EXISTS `1000funs`.`plan_rule` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `rule_name` VARCHAR(45) NULL ,
+  `detail` VARCHAR(45) NULL ,
+  `deleted` TINYINT(1) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `1000funs`.`order_item`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `1000funs`.`order_item` ;
+
+CREATE  TABLE IF NOT EXISTS `1000funs`.`order_item` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `order_id` INT NULL ,
+  `item_type` INT NULL COMMENT '0 food , 1 package' ,
+  `item_id` INT NULL COMMENT 'food or package\\\'s id' ,
+  `amount` INT NULL ,
+  `deleted` TINYINT(1) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 

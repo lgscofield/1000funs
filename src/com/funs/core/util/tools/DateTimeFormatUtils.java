@@ -102,7 +102,7 @@ public final class DateTimeFormatUtils {
         if (value == null) {
             return "";
         }
-        String strFormatStyle = StringUtils.isEmpty(defaultFormat) ? ISO_DATETIME_FORMAT : defaultFormat;
+        String strFormatStyle = StringUtil.isEmpty(defaultFormat) ? ISO_DATETIME_FORMAT : defaultFormat;
         SimpleDateFormat objSimpleDateFormat = new SimpleDateFormat(strFormatStyle);
         return objSimpleDateFormat.format(value);
     }

@@ -58,6 +58,8 @@ public class DataGenerator {
                             paramValues[i] = fillAsDouble(field, suffix);
                         } else if (paramTypes[i] == int.class || paramTypes[i] == Integer.class) {
                             paramValues[i] = fillAsInt(field, suffix);
+                        }else if (paramTypes[i] == boolean.class || paramTypes[i] == Boolean.class) {
+                            paramValues[i] = fillAsBoolean(field, suffix);
                         }
                     }
                     method.invoke(result, paramValues);
@@ -89,6 +91,10 @@ public class DataGenerator {
     
     private static Integer fillAsInt(String field, int suffix) {
         return suffix;
+    }
+    
+    private static Boolean fillAsBoolean(String field, int suffix) {
+        return false;
     }
     
     public static List<Object> getList(Class<? extends Object> clazz, int count) {

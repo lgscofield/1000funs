@@ -19,14 +19,14 @@ import org.slf4j.LoggerFactory;
  * @since jdk6.0
  * @version  2012-12-16 黄科林
  */
-public final class ChineseUtils {
+public final class ChineseUtil {
 	
 
     /** 存放拼音及区位码的集合 */
     private static List<Spell> spellList = new ArrayList<Spell>(3500);
     
     /** 日志对象 */
-    private static final Logger LOGGER = LoggerFactory.getLogger(ChineseUtils.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChineseUtil.class);
     
     /**
      * 初始化构建拼音和ascii码对应集合
@@ -38,7 +38,7 @@ public final class ChineseUtils {
     /**
      * 构造函数
      */
-    private ChineseUtils() {
+    private ChineseUtil() {
     }
     
     /**

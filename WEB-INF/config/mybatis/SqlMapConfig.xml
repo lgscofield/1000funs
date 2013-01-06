@@ -10,9 +10,10 @@
 		<!-- <mapper resource="com/test/dbconfig/Student.xml" /> -->
 
 		<mapper resource="com/funs/order/dbconfig/OrderSQL.xml" />
-		<mapper resource="com/funs/user/dbconfig/UserSQL.xml" />
+		<mapper resource="com/funs/user/dbconfig/UserSQL.xml" />	<!-- @author Xingling -->
+		<mapper resource="com/funs/food/dbconfig/FoodSQL.xml" />	<!-- @author Xingling -->
 	</mappers>
 
-	<!-- -->
+
 </configuration>
 

@@ -22,7 +22,7 @@ import org.apache.commons.lang.WordUtils;
  * @since jdk6.0
  * @version  2012-12-16 黄科林
  */
-public final class StringUtils {
+public final class StringUtil {
 	
 	/**
      * 空字符串使用常量EMPTY来代表: <code>""</code>.
@@ -62,7 +62,7 @@ public final class StringUtils {
      * 默认的构造方法是为了 JavaBean 的操作。
      * </p>
      */
-    private StringUtils() {
+    private StringUtil() {
     }
     
     /**
@@ -3744,7 +3744,7 @@ public final class StringUtils {
      * @return true:是 false:否
      */
     public static boolean isContainChineseCharacter(String cnStr) {
-        if (StringUtils.isEmpty(cnStr)) {
+        if (StringUtil.isEmpty(cnStr)) {
             return false;
         }
         char[] chArray = cnStr.toCharArray();
@@ -3771,7 +3771,7 @@ public final class StringUtils {
      * @return int 字符串的长度
      */
     public static int getStringLength(String str) {
-        if (StringUtils.isEmpty(str)) {
+        if (StringUtil.isEmpty(str)) {
             return 0;
         }
         int iLen = 0;
@@ -3779,7 +3779,7 @@ public final class StringUtils {
         for (int i = 0; i < chArs.length; i++) {
             char chTemp = chArs[i];
             String strTemp = String.valueOf(chTemp);
-            if (StringUtils.isContainChineseCharacter(strTemp)) {
+            if (StringUtil.isContainChineseCharacter(strTemp)) {
                 iLen += 2;
             } else {
                 iLen++;

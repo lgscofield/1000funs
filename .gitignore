@@ -2,3 +2,5 @@
 .classpath
 .project
 *tmp
+*.log
+*.lst

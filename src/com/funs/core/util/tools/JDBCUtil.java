@@ -15,9 +15,9 @@ import org.apache.commons.logging.LogFactory;
  * @since JDK1.6
  * @history 2011-05-11 Xingling build
  */
-public abstract class JDBCTool {
+public abstract class JDBCUtil {
 
-	private final static Log LOGGER = LogFactory.getLog(JDBCTool.class);
+	private final static Log LOGGER = LogFactory.getLog(JDBCUtil.class);
 
 	final static String driver = "com.mysql.jdbc.Driver";
 

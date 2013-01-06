@@ -5,7 +5,8 @@
 *****************************************************************************/
 package com.funs.core.base.model;
 
-import com.comtop.top.cfg.client.util.JsonCommonUtil;
+import com.funs.core.util.tools.JsonUtil;
+
 
 /**
  * VO基础类
@@ -18,6 +19,6 @@ import com.comtop.top.cfg.client.util.JsonCommonUtil;
 public class BaseVO {
 	
 	public String toString() {
-		return JsonCommonUtil.objectToJson(this);
+		return JsonUtil.objectToJson(this) ;
 	}
 }
