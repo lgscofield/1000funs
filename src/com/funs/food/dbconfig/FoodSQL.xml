@@ -27,7 +27,7 @@
 	<!-- 根据shopId在架的所有Food -->
 	<select id="queryFoodsByShopId" parameterType="int"
 		resultType="com.funs.food.model.FoodVO">
-		SELECT * FROM food f,food_re_shop frs WHERE frs.id=#{shopId} AND f.id=frs.id AND f.deleted=false AND frs.deleted=false
+		SELECT * FROM food f,food_re_shop frs WHERE frs.shop_id=#{shopId} AND f.id=frs.food_id AND f.deleted=false AND frs.deleted=false
 	</select>
 
 

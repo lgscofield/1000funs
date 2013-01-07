@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.funs.food.UnitTest;
-
 public class TestServlet extends HttpServlet{
 	/**
 	 * 
@@ -24,7 +22,6 @@ public class TestServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
-		UnitTest.queryFoods();
+			// this is just a template
 	}
 }

@@ -12,7 +12,7 @@ import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodVO;
 
 /**
- * @author Xingling Chen
+ * @author Xingling
  * @since jdk6.0
  * @version 2012-12-16 Xingling build
  */
@@ -23,6 +23,11 @@ public class FoodDAO extends BaseDAO {
 	}
 	
 	public void insertFoodReShop(FoodVO foodVO){
+		//TODO 为验证事务临时添加
+		int a = 0;
+		int b = 0;
+		int c = a/b;
+		//TODO end
 		this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
 	}
 	

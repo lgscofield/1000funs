@@ -64,12 +64,12 @@
 
 	<!-- 配置TestServlet -->
 	<servlet>
-		<servlet-name>testServlet</servlet-name>
-		<servlet-class>com.test.TestServlet</servlet-class>
+		<servlet-name>FoodTest</servlet-name>
+		<servlet-class>com.funs.food.test.TestServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>testServlet</servlet-name>
-		<url-pattern>/test</url-pattern>
+		<servlet-name>FoodTest</servlet-name>
+		<url-pattern>/test/food/*</url-pattern>
 	</servlet-mapping>
 	
 	
