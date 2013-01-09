@@ -46,13 +46,17 @@ public class FoodAction extends ApplicationObjectSupport {
 	}
 	
 	public ResultVO insertFoodGroup(FoodGroupVO foodGroupVO){
-		return foodService.insertFoodGroup(foodGroupVO); 
+		try{
+			 foodService.insertFoodGroup(foodGroupVO); 
+		}catch(Exception e){
+			LOGGER.info("insertFood 出错："+e);
+			return new ResultVO(e.toString());
+		}
+		return new ResultVO();
 	}
 	
 	public List<FoodVO> queryFoods(){
 		List<FoodVO> result = foodService.queryFoods();
-		//TODO sysout for debug
-		System.out.println("queryFoods:"+result);
 		return result;
 	}
 	

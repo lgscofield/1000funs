@@ -4,7 +4,6 @@
  *****************************************************************************/
 package com.funs.food.dao;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import com.funs.core.base.dao.BaseDAO;
@@ -22,12 +21,11 @@ public class FoodDAO extends BaseDAO {
 		this.sqlSessionTemplate.insert("com.funs.food.insertFood", foodVO);
 	}
 	
+	public int queryIdForFoodVO(FoodVO foodVO) {
+		return this.sqlSessionTemplate.selectOne("com.funs.food.queryIdForFoodVO", foodVO);
+	}
+	
 	public void insertFoodReShop(FoodVO foodVO){
-		//TODO 为验证事务临时添加
-		int a = 0;
-		int b = 0;
-		int c = a/b;
-		//TODO end
 		this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
 	}
 	
@@ -36,12 +34,12 @@ public class FoodDAO extends BaseDAO {
 	}
 	
 	public List<FoodVO> queryFoodsByShopId(int shopId){
-		List<Object> lstObjects =  this.sqlSessionTemplate.selectList("com.funs.food.queryFoodsByShopId", shopId);
-		List<FoodVO> result = new LinkedList<FoodVO>();
-		for(Object o:lstObjects){
-			result.add((FoodVO)o);
-		}
+		List<FoodVO> result =  this.sqlSessionTemplate.selectList("com.funs.food.queryFoodsByShopId", shopId);
 		return result;
+	}
+	
+	public int queryCountOfFood(){
+		return this.sqlSessionTemplate.selectOne("com.funs.food.queryCountOfFood");
 	}
 	
 }

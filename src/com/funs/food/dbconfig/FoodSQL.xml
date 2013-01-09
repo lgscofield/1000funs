@@ -29,11 +29,17 @@
 		resultType="com.funs.food.model.FoodVO">
 		SELECT * FROM food f,food_re_shop frs WHERE frs.shop_id=#{shopId} AND f.id=frs.food_id AND f.deleted=false AND frs.deleted=false
 	</select>
+	
+	<!-- 根据shopId在架的所有Food -->
+	<select id="queryIdForFoodVO" parameterType="com.funs.food.model.FoodVO"
+		resultType="int">
+		SELECT id FROM food WHERE food.code=#{code} AND food.food_name=#{foodName} AND food.deleted=false
+	</select>
 
 
 	<!-- 查询food表的总行数 -->
-	<select id="getCount" resultType="int">
-		SELECT COUNT(*) FROM food
+	<select id="queryCountOfFood" resultType="int">
+		SELECT COUNT(*) FROM food where deleted=false
 	</select>
 	
 </mapper>
