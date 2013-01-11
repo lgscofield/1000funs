@@ -12,6 +12,7 @@
 		<mapper resource="com/funs/order/dbconfig/OrderSQL.xml" />
 		<mapper resource="com/funs/user/dbconfig/UserSQL.xml" />	<!-- @author Xingling -->
 		<mapper resource="com/funs/food/dbconfig/FoodSQL.xml" />	<!-- @author Xingling -->
+		<mapper resource="com/funs/address/dbconfig/AddressSQL.xml" />	<!-- @author Xingling -->
 	</mappers>
 
 

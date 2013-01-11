@@ -5,8 +5,8 @@ import org.springframework.context.support.ApplicationObjectSupport;
 
 import com.funs.core.springmvc.ApplicationContextInitor;
 import com.funs.core.util.tools.DataGenerator;
-import com.funs.user.appservice.UserService;
 import com.funs.user.model.UserVO;
+import com.funs.user.service.UserService;
 
 /**
  * @author Xingling

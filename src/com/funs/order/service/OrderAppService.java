@@ -3,7 +3,7 @@
 * All Rights Reserved.
 * 本软件为深圳千方百味公司开发研制。
 *****************************************************************************/
-package com.funs.order.appservice;
+package com.funs.order.service;
 
 import com.funs.order.dao.OrderDAO;
 

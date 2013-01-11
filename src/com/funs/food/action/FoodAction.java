@@ -13,9 +13,9 @@ import org.springframework.context.support.ApplicationObjectSupport;
 
 import com.funs.core.base.model.ResultVO;
 import com.funs.core.springmvc.ApplicationContextInitor;
-import com.funs.food.appservice.FoodService;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodVO;
+import com.funs.food.service.FoodService;
 
 /**
  * @author Xingling
@@ -35,6 +35,10 @@ public class FoodAction extends ApplicationObjectSupport {
 		foodService = (FoodService)context.getBean("FoodService");
 	}
 	
+	/**
+	 * 增加食物（同时指定到店铺）
+	 * @param foodVO
+	 */
 	public ResultVO insertFood(FoodVO foodVO){
 		try{
 			foodService.insertFood(foodVO);
@@ -45,6 +49,10 @@ public class FoodAction extends ApplicationObjectSupport {
 		return new ResultVO();
 	}
 	
+	/**
+	 * 增加食物分组
+	 * @param foodGroupVO
+	 */
 	public ResultVO insertFoodGroup(FoodGroupVO foodGroupVO){
 		try{
 			 foodService.insertFoodGroup(foodGroupVO); 
@@ -55,6 +63,10 @@ public class FoodAction extends ApplicationObjectSupport {
 		return new ResultVO();
 	}
 	
+	/**
+	 * 查询所有在架食物
+	 * @return List<FoodVO>
+	 */
 	public List<FoodVO> queryFoods(){
 		List<FoodVO> result = foodService.queryFoods();
 		return result;

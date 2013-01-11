@@ -36,7 +36,7 @@
 	<bean id="OrderDAOImpl" class="com.funs.order.dao.OrderDAO">   
 		<property name="sqlSessionTemplate" ref="sqlSession" />
 	</bean>
-	<bean id="OrderService" class="com.funs.order.appservice.OrderAppService">   
+	<bean id="OrderService" class="com.funs.order.service.OrderAppService">   
 		<property name="orderDAO" ref="OrderDAOImpl" />
 	</bean>
 	
@@ -44,7 +44,7 @@
 	<bean id="UserDAOImpl" class="com.funs.user.dao.UserDAO">   
 		<property name="sqlSessionTemplate" ref="sqlSession" />
 	</bean>
-	<bean id="UserService" class="com.funs.user.appservice.UserService">   
+	<bean id="UserService" class="com.funs.user.service.UserService">   
 		<property name="userDAO" ref="UserDAOImpl" />
 	</bean>
 	
@@ -52,8 +52,16 @@
 	<bean id="FoodDAOImpl" class="com.funs.food.dao.FoodDAO">   
 		<property name="sqlSessionTemplate" ref="sqlSession" />
 	</bean>
-	<bean id="FoodService" class="com.funs.food.appservice.FoodService">   
+	<bean id="FoodService" class="com.funs.food.service.FoodService">   
 		<property name="foodDAO" ref="FoodDAOImpl" />
+	</bean>
+	
+	<!-- 地址模块，注入数据源 -->
+	<bean id="AddressDAOImpl" class="com.funs.address.dao.AddressDAO">   
+		<property name="sqlSessionTemplate" ref="sqlSession" />
+	</bean>
+	<bean id="AddressService" class="com.funs.address.service.AddressService">   
+		<property name="addressDAO" ref="AddressDAOImpl" />
 	</bean>
 	
 	

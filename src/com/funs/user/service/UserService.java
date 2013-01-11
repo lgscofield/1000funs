@@ -2,7 +2,7 @@
  * Copyright (C) 2012 ShenZhen 1000funs Information Technology Co.,Ltd
  * All Rights Reserved.
  *****************************************************************************/
-package com.funs.user.appservice;
+package com.funs.user.service;
 
 import com.funs.user.dao.UserDAO;
 import com.funs.user.model.UserVO;
