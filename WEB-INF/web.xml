@@ -72,5 +72,14 @@
 		<url-pattern>/test/food/*</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 配置TestServlet -->
+	<servlet>
+		<servlet-name>AddressTest</servlet-name>
+		<servlet-class>com.funs.address.test.TestServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddressTest</servlet-name>
+		<url-pattern>/test/address/*</url-pattern>
+	</servlet-mapping>
 	
 </web-app>
