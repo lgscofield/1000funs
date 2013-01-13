@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ApplicationObjectSupport;
 
+import com.funs.address.model.AddressVO;
 import com.funs.address.model.RegionVO;
 import com.funs.address.service.AddressService;
 import com.funs.core.springmvc.ApplicationContextInitor;
@@ -33,12 +34,27 @@ public class AddressAction extends ApplicationObjectSupport {
 		addressService = (AddressService)context.getBean("AddressService");
 	}
 	
+	/**
+	 * 查询子区域
+	 * @param currentRegionId
+	 * @return List<RegionVO>
+	 */
 	public List<RegionVO> queryChildRegion(int currentRegionId){
 		List<RegionVO> result = null;
 		try{
 			result = addressService.queryChildRegion(currentRegionId);
 		}catch(Exception e){
-			LOGGER.info("queryChildRegion 出错："+e);
+			LOGGER.error("queryChildRegion 出错："+e);
+		}
+		return result;
+	}
+	
+	public List<AddressVO> queryAddress(){
+		List<AddressVO> result = null;
+		try{
+			result = null;
+		}catch(Exception e){
+			LOGGER.error("queryAddress 出错："+e);
 		}
 		return result;
 	}
