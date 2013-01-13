@@ -1,10 +1,5 @@
-*.class
-.classpath
-.project
-*tmp
-*.log
-*.lst
-.DS_Store
-*.session
 
-target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+.settings/
+WEB-INF/classes/
+target/
+*.log
