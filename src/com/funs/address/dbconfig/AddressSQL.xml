@@ -7,7 +7,7 @@
 <mapper namespace="com.funs.address">
 
 
-	<!-- 根据shopId在架的所有Food -->
+	<!-- 根据当前区域id查询下一级子区域 -->
 	<select id="queryChildRegionById" parameterType="int"
 		resultType="com.funs.address.model.RegionVO">
 		SELECT * FROM region WHERE parent_id=#{currentRegionId} AND deleted=false
