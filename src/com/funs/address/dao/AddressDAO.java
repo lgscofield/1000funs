@@ -6,6 +6,7 @@ package com.funs.address.dao;
 
 import java.util.List;
 
+import com.funs.address.model.AddressVO;
 import com.funs.address.model.RegionVO;
 import com.funs.core.base.dao.BaseDAO;
 
@@ -18,5 +19,9 @@ public class AddressDAO extends BaseDAO {
 
 	public List<RegionVO> queryChildRegionById(int currentRegionId) {
 		return this.sqlSessionTemplate.selectList("com.funs.address.queryChildRegionById", currentRegionId);
+	}
+	
+	public List<AddressVO> queryAddress(int currentRegionId,String userInput){
+		return this.sqlSessionTemplate.selectList("com.funs.address.queryAddress",currentRegionId);
 	}
 }
