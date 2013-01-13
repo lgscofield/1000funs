@@ -35,8 +35,8 @@ public class AddressService {
 		return addressDAO;
 	}
 
-	public void setAddressDAO(AddressDAO foodDAO) {
-		this.addressDAO = foodDAO;
+	public void setAddressDAO(AddressDAO addressDAO) {
+		this.addressDAO = addressDAO;
 	}
 
 }
