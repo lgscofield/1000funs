@@ -31,12 +31,12 @@ public class AddressService {
 		return addressDAO.queryChildRegionById(currentRegionId);
 	}
 
-	public AddressDAO getFoodDAO() {
+	public AddressDAO getAddressDAO() {
 		return addressDAO;
 	}
 
-	public void setFoodDAO(AddressDAO foodDAO) {
-		this.addressDAO = foodDAO;
+	public void setAddressDAO(AddressDAO addressDAO) {
+		this.addressDAO = addressDAO;
 	}
 
 }
