@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.funs.address.dao.AddressDAO;
+import com.funs.address.model.AddressVO;
 import com.funs.address.model.RegionVO;
 
 /**
@@ -24,11 +25,21 @@ public class AddressService {
 	private AddressDAO addressDAO;
 	
 	/**
-	 * 增加食物（不指定店铺）
-	 * @param regionVO
+	 * 查询子区域
+	 * @param currentRegionId
+	 * @return 查询结果
 	 */
 	public List<RegionVO> queryChildRegion(int currentRegionId) {
 		return addressDAO.queryChildRegionById(currentRegionId);
+	}
+	
+	/**
+	 * 根据用户输入的关键字查询包含该关键字的AddressVO集合
+	 * @param currentRegionId
+	 * @return 查询结果
+	 */
+	public List<AddressVO> queryAddress(int currentRegionId,String userInput) {
+		return addressDAO.queryAddress(currentRegionId,userInput);
 	}
 
 	public AddressDAO getAddressDAO() {

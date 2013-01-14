@@ -49,10 +49,10 @@ public class AddressAction extends ApplicationObjectSupport {
 		return result;
 	}
 	
-	public List<AddressVO> queryAddress(){
+	public List<AddressVO> queryAddress(String currentRegionId,String userInput){
 		List<AddressVO> result = null;
 		try{
-			result = null;
+			result = addressService.queryAddress(Integer.valueOf(currentRegionId), userInput);
 		}catch(Exception e){
 			LOGGER.error("queryAddress 出错："+e);
 		}
