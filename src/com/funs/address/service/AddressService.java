@@ -41,6 +41,15 @@ public class AddressService {
 	public List<AddressVO> queryAddress(int currentRegionId,String userInput) {
 		return addressDAO.queryAddress(currentRegionId,userInput);
 	}
+	
+	public void addTempAddress(String tempAddress ,String phone){
+		AddressVO tempAddressVO = new AddressVO();
+		tempAddressVO.setFullName(tempAddress);
+		//TODO getCurrentUser'id and ip,and convert time
+		tempAddressVO.setUserId(1);
+		tempAddressVO.setInputTime(String.valueOf(System.currentTimeMillis()));
+		addressDAO.addTempAddress(tempAddressVO);
+	}
 
 	public AddressDAO getAddressDAO() {
 		return addressDAO;
@@ -49,5 +58,5 @@ public class AddressService {
 	public void setAddressDAO(AddressDAO addressDAO) {
 		this.addressDAO = addressDAO;
 	}
-
+	
 }

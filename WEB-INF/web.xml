@@ -82,4 +82,14 @@
 		<url-pattern>/test/address/*</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 配置TestServlet -->
+	<servlet>
+		<servlet-name>OrderTest</servlet-name>
+		<servlet-class>com.funs.order.test.TestServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OrderTest</servlet-name>
+		<url-pattern>/test/order/*</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

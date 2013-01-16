@@ -4,7 +4,9 @@
  *****************************************************************************/
 package com.funs.address.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.funs.address.model.AddressVO;
 import com.funs.address.model.RegionVO;
@@ -22,6 +24,13 @@ public class AddressDAO extends BaseDAO {
 	}
 	
 	public List<AddressVO> queryAddress(int currentRegionId,String userInput){
-		return this.sqlSessionTemplate.selectList("com.funs.address.queryAddress",currentRegionId);
+		Map<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("currentRegionId",currentRegionId);
+		paramMap.put("userInput", userInput);
+		return this.sqlSessionTemplate.selectList("com.funs.address.queryAddress",paramMap);
+	}
+	
+	public void addTempAddress(AddressVO tempAddressVO){
+		 this.sqlSessionTemplate.insert("com.funs.address.addTempAddress",tempAddressVO);
 	}
 }

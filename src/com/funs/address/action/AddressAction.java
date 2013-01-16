@@ -14,6 +14,7 @@ import org.springframework.context.support.ApplicationObjectSupport;
 import com.funs.address.model.AddressVO;
 import com.funs.address.model.RegionVO;
 import com.funs.address.service.AddressService;
+import com.funs.core.base.model.ResultVO;
 import com.funs.core.springmvc.ApplicationContextInitor;
 
 /**
@@ -49,14 +50,24 @@ public class AddressAction extends ApplicationObjectSupport {
 		return result;
 	}
 	
-	public List<AddressVO> queryAddress(String currentRegionId,String userInput){
+	public List<AddressVO> queryAddress(int currentRegionId,String userInput){
 		List<AddressVO> result = null;
 		try{
-			result = addressService.queryAddress(Integer.valueOf(currentRegionId), userInput);
+			result = addressService.queryAddress(currentRegionId, userInput);
 		}catch(Exception e){
 			LOGGER.error("queryAddress 出错："+e);
 		}
 		return result;
+	}
+	
+	public ResultVO addTempAddress(String tempAddress ,String phone){
+		try{
+			addressService.addTempAddress(tempAddress,phone);
+		}catch(Exception e){
+			LOGGER.error("addTempAddress 出错："+e);
+			return new ResultVO(false,"增加建议送餐地址时出现异常");
+		}
+		return new ResultVO();
 	}
 	
 }
