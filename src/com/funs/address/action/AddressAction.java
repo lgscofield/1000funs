@@ -18,6 +18,8 @@ import com.funs.core.base.model.ResultVO;
 import com.funs.core.springmvc.ApplicationContextInitor;
 
 /**
+ * Address模块，处理区域、地址等信息
+ * 
  * @author Xingling
  * @since JDK1.6
  * @history 2012-12-18 Xingling build
@@ -36,9 +38,9 @@ public class AddressAction extends ApplicationObjectSupport {
 	}
 	
 	/**
-	 * 查询子区域
+	 * 根据当前区域Id查询子区域
 	 * @param currentRegionId
-	 * @return List<RegionVO>
+	 * @return 所有子区域
 	 */
 	public List<RegionVO> queryChildRegion(int currentRegionId){
 		List<RegionVO> result = null;
@@ -50,6 +52,12 @@ public class AddressAction extends ApplicationObjectSupport {
 		return result;
 	}
 	
+	/**
+	 * 根据用户输出文本，以及当前区域id，查询包含该文本的零散送餐地址
+	 * @param currentRegionId
+	 * @param userInput
+	 * @return 所有符合条件的地址
+	 */
 	public List<AddressVO> queryAddress(int currentRegionId,String userInput){
 		List<AddressVO> result = null;
 		try{
@@ -60,6 +68,12 @@ public class AddressAction extends ApplicationObjectSupport {
 		return result;
 	}
 	
+	/**
+	 * 将用户输入的建议送餐地址添加到临时记录中，以供业务参考
+	 * @param tempAddress
+	 * @param phone
+	 * @return 执行结果
+	 */
 	public ResultVO addTempAddress(String tempAddress ,String phone){
 		try{
 			addressService.addTempAddress(tempAddress,phone);

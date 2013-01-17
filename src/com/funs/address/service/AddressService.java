@@ -25,7 +25,7 @@ public class AddressService {
 	private AddressDAO addressDAO;
 	
 	/**
-	 * 查询子区域
+	 * 根据用户输入的关键字查询包含该关键字的AddressVO集合
 	 * @param currentRegionId
 	 * @return 查询结果
 	 */
@@ -33,15 +33,23 @@ public class AddressService {
 		return addressDAO.queryChildRegionById(currentRegionId);
 	}
 	
+
 	/**
-	 * 根据用户输入的关键字查询包含该关键字的AddressVO集合
+	 * 根据用户输出文本，以及当前区域id，查询包含该文本的零散送餐地址
 	 * @param currentRegionId
-	 * @return 查询结果
+	 * @param userInput
+	 * @return 所有符合条件的地址
 	 */
 	public List<AddressVO> queryAddress(int currentRegionId,String userInput) {
 		return addressDAO.queryAddress(currentRegionId,userInput);
 	}
 	
+	/**
+	 * 将用户输入的建议送餐地址添加到临时记录中，以供业务参考
+	 * @param tempAddress
+	 * @param phone
+	 * @return 执行结果
+	 */
 	public void addTempAddress(String tempAddress ,String phone){
 		AddressVO tempAddressVO = new AddressVO();
 		tempAddressVO.setFullName(tempAddress);
