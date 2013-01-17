@@ -12,13 +12,14 @@ import org.slf4j.LoggerFactory;
 import com.funs.address.dao.AddressDAO;
 import com.funs.address.model.AddressVO;
 import com.funs.address.model.RegionVO;
+import com.funs.core.base.service.BaseService;
 
 /**
  * @author Xingling
  * @since jdk6.0
  * @version 2012-12-16 Xingling build
  */
-public class AddressService {
+public class AddressService extends BaseService{
 
 	final static Logger LOGGER = LoggerFactory.getLogger(AddressService.class);
 

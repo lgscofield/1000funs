@@ -7,6 +7,7 @@ package com.funs.order.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.funs.core.base.service.BaseService;
 import com.funs.order.dao.OrderDAO;
 import com.funs.order.model.OrderVO;
 
@@ -15,7 +16,7 @@ import com.funs.order.model.OrderVO;
  * @since jdk6.0
  * @version 2012-12-16 Xingling build
  */
-public class OrderService {
+public class OrderService extends BaseService {
 
 	final static Logger LOGGER = LoggerFactory.getLogger(OrderService.class);
 

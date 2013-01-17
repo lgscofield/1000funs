@@ -4,6 +4,8 @@
  *****************************************************************************/
 package com.funs.address.model;
 
+import com.funs.core.base.model.BaseVO;
+
 /**
  * AddressVO与RegionVO的区别是，Address包含了详细地址，而Region只是区域，如：香丽大厦、中投大厦。
  * 
@@ -11,7 +13,7 @@ package com.funs.address.model;
  * @since JDK1.6
  * @history 2013-01-13 Xingling build
  */
-public class AddressVO {
+public class AddressVO extends BaseVO{
 	private int id;
 	private String shortName;
 	private String fullName;
