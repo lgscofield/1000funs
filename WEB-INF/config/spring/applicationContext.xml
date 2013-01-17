@@ -36,7 +36,7 @@
 	<bean id="OrderDAOImpl" class="com.funs.order.dao.OrderDAO">   
 		<property name="sqlSessionTemplate" ref="sqlSession" />
 	</bean>
-	<bean id="OrderService" class="com.funs.order.service.OrderAppService">   
+	<bean id="OrderService" class="com.funs.order.service.OrderService">   
 		<property name="orderDAO" ref="OrderDAOImpl" />
 	</bean>
 	
@@ -63,20 +63,6 @@
 	<bean id="AddressService" class="com.funs.address.service.AddressService">   
 		<property name="addressDAO" ref="AddressDAOImpl" />
 	</bean>
-	
-	
-	<!-- 配置实现类，注入数据源 -->  
-	<!--
-	<bean id="ITestTableDAOImpl" class="com.test.ITestTableDAOImpl2">   
-		<property name="session" ref="sqlSession" />
-	</bean>  
-	 -->
-	<!--  配置service类，注入上面的实现类 -->  
-	<!--
-	<bean id="ITestTableDAOService" class="com.test.ITestTableDAOService2">   
-		<property name="testImpl" ref="ITestTableDAOImpl" />
-	</bean>
-	 -->
 	
 	<!-- AOP和事务配置  -->
 	<import resource="aop-config.xml"/>

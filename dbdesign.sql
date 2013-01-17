@@ -63,11 +63,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `1000funs`.`order`
+-- Table `1000funs`.`orders`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`order` ;
+DROP TABLE IF EXISTS `1000funs`.`orders` ;
 
-CREATE  TABLE IF NOT EXISTS `1000funs`.`order` (
+CREATE  TABLE IF NOT EXISTS `1000funs`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `code` VARCHAR(45) NULL ,
   `shop_id` INT NULL ,
@@ -78,7 +78,7 @@ CREATE  TABLE IF NOT EXISTS `1000funs`.`order` (
   `address` VARCHAR(200) NULL ,
   `contact` VARCHAR(45) NULL COMMENT 'who will accept the food.' ,
   `phone` VARCHAR(45) NULL ,
-  `status` INT NULL COMMENT '0:new\\n1:dealed\\n2:exception\\n3:evaluated\\n' ,
+  `order_status` INT NULL COMMENT '0:new\\n1:dealed\\n2:exception\\n3:evaluated\\n' ,
   `manager_id` INT NULL ,
   `manager_remark` VARCHAR(45) NULL ,
   `sender_id` INT NULL ,
@@ -145,7 +145,6 @@ DROP TABLE IF EXISTS `1000funs`.`package` ;
 CREATE  TABLE IF NOT EXISTS `1000funs`.`package` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `code` VARCHAR(45) NULL ,
-  `shop_id` VARCHAR(45) NULL COMMENT 'necessary' ,
   `package_name` VARCHAR(45) NULL ,
   `detail` VARCHAR(400) NULL ,
   `image` VARCHAR(400) NULL ,
@@ -205,15 +204,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `1000funs`.`Region`
+-- Table `1000funs`.`region`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`Region` ;
+DROP TABLE IF EXISTS `1000funs`.`region` ;
 
-CREATE  TABLE IF NOT EXISTS `1000funs`.`Region` (
+CREATE  TABLE IF NOT EXISTS `1000funs`.`region` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `code` VARCHAR(45) NULL ,
   `region_name` VARCHAR(45) NULL ,
   `parent_id` INT NULL ,
+  `image` VARCHAR(400) NULL ,
   `has_children` TINYINT(1) NULL ,
   `full_path` VARCHAR(200) NULL ,
   `deleted` TINYINT(1) NULL ,
@@ -283,6 +283,43 @@ CREATE  TABLE IF NOT EXISTS `1000funs`.`order_item` (
   `item_id` INT NULL COMMENT 'food or package\\\'s id' ,
   `amount` INT NULL ,
   `deleted` TINYINT(1) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `1000funs`.`address`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `1000funs`.`address` ;
+
+CREATE  TABLE IF NOT EXISTS `1000funs`.`address` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `short_name` VARCHAR(45) NULL ,
+  `full_name` VARCHAR(45) NULL ,
+  `image` VARCHAR(400) NULL ,
+  `user_ip` VARCHAR(45) NULL ,
+  `user_id` INT NULL ,
+  `input_time` VARCHAR(45) NULL ,
+  `deleted` TINYINT(1) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `1000funs`.`temp_address`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `1000funs`.`temp_address` ;
+
+CREATE  TABLE IF NOT EXISTS `1000funs`.`temp_address` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `short_name` VARCHAR(45) NULL ,
+  `full_name` VARCHAR(45) NULL ,
+  `image` VARCHAR(400) NULL ,
+  `user_ip` VARCHAR(45) NULL ,
+  `user_id` INT NULL ,
+  `input_time` VARCHAR(45) NULL ,
+  `deleted` TINYINT(1) NULL ,
+  `temp_addresscol` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 

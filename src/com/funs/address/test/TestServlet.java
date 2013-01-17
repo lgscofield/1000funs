@@ -9,16 +9,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.funs.address.action.AddressAction;
+import com.funs.address.model.AddressVO;
 import com.funs.address.model.RegionVO;
+import com.funs.core.base.model.ResultVO;
 
 public class TestServlet extends HttpServlet {
 
 	static AddressAction action = new AddressAction();
 
-	public static void queryChildRegion() {
-		int currentRegionId = 1;
+	public static void queryChildRegion(int currentRegionId) {
 		List<RegionVO> result = action.queryChildRegion(currentRegionId);
-		System.out.println(result.get(0).getFullPath());
+		for (RegionVO test : result) {
+			System.out.println(test.getFullPath());
+		}
+	}
+
+	public static void queryAddress(int currentAddressId, String context) {
+		List<AddressVO> result = action.queryAddress(currentAddressId, context);
+		for (AddressVO test : result) {
+			System.out.println(test.getFullName());
+		}
+	}
+	
+
+	public static void addTempAddress(String tempAddress ,String phone){
+		ResultVO result = action.addTempAddress(tempAddress, phone);
+		System.out.println(result.isSuccess());
 	}
 
 	private static final long serialVersionUID = 2399166345711874635L;
@@ -32,9 +48,12 @@ public class TestServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		if(req.getRequestURI().contains("queryChildRegion")){
-			queryChildRegion();
-		}else if(req.getRequestURI().contains("insertFood")){
+		if (req.getRequestURI().contains("queryChildRegion")) {
+			queryChildRegion(1);
+		} else if (req.getRequestURI().contains("queryAddress")) {
+			queryAddress(1, "景秀");
+		} else if (req.getRequestURI().contains("addTempAddress")) {
+			addTempAddress("景秀小学","13611112222");
 		}
 	}
 }
