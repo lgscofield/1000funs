@@ -5,11 +5,6 @@
 *****************************************************************************/
 package com.funs.core.base.action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.directwebremoting.WebContext;
-import org.directwebremoting.WebContextFactory;
 import org.springframework.context.support.ApplicationObjectSupport;
 
 /**
@@ -20,6 +15,5 @@ import org.springframework.context.support.ApplicationObjectSupport;
  * @version  2012-12-15 黄科林
  */
 public class BaseAction extends ApplicationObjectSupport {
-	
 	
 }

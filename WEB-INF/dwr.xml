@@ -6,9 +6,9 @@
 
 <dwr>
 	<allow>
-		<create creator="new" javascript="UserAction">
-			<param name="class" value="com.funs.user.action.UserAction" />
+		<create creator="new" javascript="DWRTestAction">
+			<param name="class" value="com.test.DWRTestAction" />
 		</create>
-		<convert converter="bean" match="com.funs.user.model.*"/>
+		<convert converter="bean" match="com.test.DWRTestAction"/>
 	</allow>
 </dwr>
