@@ -80,7 +80,7 @@
 			<div class="center">
 				<ul class="thumbnails">
 				  <li>
-				    <a href="#" class="thumbnail">
+				    <a href="/1000funs/web/client/ChooseFood.jsp" class="thumbnail">
 				      <img src="img/region.jpg" style="width: 100px; height: 100px;" class="img-circle">
 				    </a>
 				  </li>
@@ -140,6 +140,6 @@
 		    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
 		    <button class="btn btn-primary">提交</button>
 		  </div>
-</div>
+		</div>
 	</body>
 </html>
