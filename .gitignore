@@ -4,3 +4,5 @@ WEB-INF/classes/
 target/
 *.log
 *.DS_Store
+
+*.class
