@@ -5,4 +5,7 @@ WEB-INF/classes/
 target/
 *.log
 *.DS_Store
+session/
+work/
+
 
