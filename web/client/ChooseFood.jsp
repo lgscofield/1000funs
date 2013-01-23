@@ -26,6 +26,23 @@
 		</style>
 		<script type="text/javascript">
 
+			//加一
+			function plus(id){
+				var val = $('#'+id).val();
+				if(val==''){
+					val=0;
+				}
+				$('#'+id).val(parseInt(val)+1);
+			}
+			
+			//减一
+			function reduce(id){
+				var val = $('#'+id).val();
+				if(val==''||val==1){
+					return;
+				}
+				$('#'+id).val(parseInt(val)-1);
+			}
 		</script>
 	</head>
 	<body>
@@ -59,6 +76,13 @@
 					</div>
 			    </div>
 			    <div class="span4">
+			    	<label>
+			    		共
+			    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
+			    		<input class="span1" id="personNO" type="text" value="1">
+						<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
+			    		人用餐
+			    	</label>
 			    </div>
 			</div>
 		</div>
