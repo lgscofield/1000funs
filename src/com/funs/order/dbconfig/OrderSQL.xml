@@ -13,4 +13,11 @@
 		(#{code},#{shopId},#{createTime},#{exceptTime},#{userId},#{userRemark},#{address},#{contact},#{phone},#{orderStatus},#{managerId},#{managerRemark},#{senderId},#{paymentType},#{totalPrice},false)
 	</insert>
 
+	<!-- 根据userId查询用户未评价的订单 order_status=1表示订单状态：已处理-->
+	<select id="queryUnEvaluateOrder" parameterType="int"
+		resultType="com.funs.order.model.OrderVO">
+		SELECT * FROM orders o WHERE
+		o.user_id=#{userId} AND o.order_status=1 AND o.deleted=false 
+	</select>
+
 </mapper>

@@ -4,6 +4,8 @@
  *****************************************************************************/
 package com.funs.order.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +38,15 @@ public class OrderService extends BaseService {
 
 	public void setOrderDAO(OrderDAO orderDAO) {
 		this.orderDAO = orderDAO;
+	}
+	
+	/**
+	 * 根据用户id查询未处理订单
+	 * @param userId
+	 * @return 未处理的订单对象集合
+	 */
+	public List<OrderVO> queryUnEvaluateOrder(int userId){
+		return orderDAO.queryUnEvaluateOrder(userId);
 	}
 	
 }
