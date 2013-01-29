@@ -4,6 +4,8 @@
  *****************************************************************************/
 package com.funs.order.dao;
 
+import java.util.List;
+
 import com.funs.core.base.dao.BaseDAO;
 import com.funs.order.model.OrderVO;
 
@@ -20,6 +22,16 @@ public class OrderDAO extends BaseDAO {
 	 */
 	public void insertOrder(OrderVO orderVO) {
 		this.sqlSessionTemplate.insert("com.funs.order.insertOrder", orderVO);
+	}
+	
+	/**
+	 * 根据用户id查询未处理订单
+	 * @param userId
+	 * @return 未处理的订单对象集合
+	 */
+	public List<OrderVO> queryUnEvaluateOrder(int userId){
+		List<OrderVO> result =  this.sqlSessionTemplate.selectList("com.funs.order.queryUnEvaluateOrder", userId);
+		return result;
 	}
 	
 }

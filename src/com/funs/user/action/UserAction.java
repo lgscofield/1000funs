@@ -1,5 +1,7 @@
 package com.funs.user.action;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ApplicationObjectSupport;
 
@@ -33,5 +35,10 @@ public class UserAction extends ApplicationObjectSupport {
 
 	public UserVO queryUserByName(String name) {
 		return userService.doQuery(name);
+	}
+	
+	public UserVO getCurrentUser(HttpServletRequest request){
+		//TODO 需要在登陆完成时设置值
+		return (UserVO)request.getSession().getAttribute("current_user");
 	}
 }

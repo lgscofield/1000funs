@@ -4,6 +4,8 @@
  *****************************************************************************/
 package com.funs.order.action;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -45,6 +47,20 @@ public class OrderAction extends BaseAction {
 			return new ResultVO("提交订单时后台出现错误"+e);
 		}
 		return new ResultVO();
+	}
+	
+	/**
+	 * 根据用户id查询未处理订单
+	 * @param userId
+	 * @return 未处理的订单对象集合
+	 */
+	public List<OrderVO> queryUnEvaluateOrder(int userId){
+		try{
+			return orderService.queryUnEvaluateOrder(userId);
+		}catch(Exception e){
+			LOGGER.error("queryUnEvaluateOrder 出错："+e);
+			return null;
+		}
 	}
 	
 }
