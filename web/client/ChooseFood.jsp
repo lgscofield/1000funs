@@ -7,6 +7,11 @@
 		<script type="text/javascript" src="../js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
 		<style type="text/css">
+		
+			body {
+				font-family: "Microsoft Yahei", SimSun, Tahoma, Helvetica, Arial, sans-serif;
+			}
+			
 			.tab{
 				height: 80px; 
 				text-align: center;
@@ -15,13 +20,34 @@
 			}
 			
 			.active{
-				background-color: #bbd8e9;
+				background-color: #0088cc;
 				color: white;
 			}
 			
 			.notActive{
 				background-color: #f7f7f9;
 				color: black;
+			}
+			
+			.plate{
+				border: 1px solid rgba(0, 0, 0, 0.3);
+				width: 300px;
+				margin-bottom: 10px;
+			}
+			
+			.plate_title{
+				text-align: center;
+				font-size: 18px;
+				height: 30px; 
+				padding-top: 7px;
+			}
+			
+			.plate_bottom{
+				border-top: 1px solid rgba(0, 0, 0, 0.3); 
+			}
+			
+			.input_num{
+				width: 11px;
 			}
 		</style>
 		<script type="text/javascript">
@@ -79,10 +105,136 @@
 			    	<label>
 			    		共
 			    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
-			    		<input class="span1" id="personNO" type="text" value="1">
+			    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
 						<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
 			    		人用餐
 			    	</label>
+			    	<div class="plate">
+			    		<div class="plate_title active">
+			    			餐盘一
+			    		</div>
+			    		<div class="plate_content">
+			    			<table class="table table-condensed table-hover" style="margin-bottom: 0px;">
+			    				<tr>
+			    					<td>宫保鸡丁</td>
+			    					<td>
+			    						7元X
+							    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
+							    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
+										<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
+										份
+			    					</td>
+			    				</tr>
+			    				<tr>
+			    					<td>米饭</td>
+			    					<td>
+			    						7元X
+							    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
+							    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
+										<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
+										份
+			    					</td>
+			    				</tr>
+			    				<tr>
+			    					<td>酸辣排骨</td>
+			    					<td>
+			    						7元X
+							    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
+							    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
+										<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
+										份
+			    					</td>
+			    				</tr>
+							</table>
+			    		</div>
+			    		<div class="plate_bottom">
+			    			合计    21元
+			    		</div>
+			    	</div>
+			    	<div class="plate">
+			    		<div class="plate_title notActive">
+			    			餐盘二
+			    		</div>
+			    		<div class="plate_content">
+			    			<table class="table table-condensed table-hover" style="margin-bottom: 0px;">
+			    				<tr>
+			    					<td>宫保鸡丁</td>
+			    					<td>
+			    						7元X
+							    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
+							    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
+										<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
+										份
+			    					</td>
+			    				</tr>
+			    				<tr>
+			    					<td>米饭</td>
+			    					<td>
+			    						7元X
+							    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
+							    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
+										<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
+										份
+			    					</td>
+			    				</tr>
+			    				<tr>
+			    					<td>酸辣排骨</td>
+			    					<td>
+			    						7元X
+							    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
+							    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
+										<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
+										份
+			    					</td>
+			    				</tr>
+							</table>
+			    		</div>
+			    		<div class="plate_bottom">
+			    			合计    21元
+			    		</div>
+			    	</div>
+			    	<div class="plate">
+			    		<div class="plate_title notActive">
+			    			餐盘三
+			    		</div>
+			    		<div class="plate_content">
+			    			<table class="table table-condensed table-hover" style="margin-bottom: 0px;">
+			    				<tr>
+			    					<td>宫保鸡丁</td>
+			    					<td>
+			    						7元X
+							    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
+							    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
+										<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
+										份
+			    					</td>
+			    				</tr>
+			    				<tr>
+			    					<td>米饭</td>
+			    					<td>
+			    						7元X
+							    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
+							    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
+										<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
+										份
+			    					</td>
+			    				</tr>
+			    				<tr>
+			    					<td>酸辣排骨</td>
+			    					<td>
+			    						7元X
+							    		<a href="#" onclick="plus('personNO');"><i class="icon-plus"></i></a>
+							    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
+										<a href="#" onclick="reduce('personNO');"><i class="icon-minus"></i></a>
+										份
+			    					</td>
+			    				</tr>
+							</table>
+			    		</div>
+			    		<div class="plate_bottom">
+			    			合计    21元
+			    		</div>
+			    	</div>
 			    </div>
 			</div>
 		</div>
