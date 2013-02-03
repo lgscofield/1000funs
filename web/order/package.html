@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf8">
+		<meta charset="utf-8">
 		<title>餐点管理-配餐模式</title>
 		<link rel="stylesheet" href="assert/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assert/css/order.css">
@@ -13,84 +13,86 @@
 		</style>
 	</head>
 	<body>
-		<div class="span10 container-fixed">
-			<div class="querybar">
-				<div class="row">
-					<div class="span3">
-					</div>
-					<div class="span4">
-					</div>
-					<div class="span3">
-						<a class="btn" href="#dialog-add-category" data-toggle="modal"><i class="icon-plus"></i>添加分类</a>
-						<a class="btn pull-right" href="#dialog-add-package" data-toggle="modal"><i class="icon-plus"></i>添加套餐</a>
+		<div class="row-fluid container-fixed">
+			<div class="span12">
+				<div class="querybar">
+					<div class="row-fluid">
+						<div class="span6">
+						</div>
+						<div class="span3">
+						</div>
+						<div class="span3">
+							<a class="btn" href="#dialog-add-category" data-toggle="modal"><i class="icon-plus"></i>添加分类</a>
+							<a class="btn" href="#dialog-add-package" data-toggle="modal"><i class="icon-plus"></i>添加套餐</a>
+						</div>
 					</div>
 				</div>
+				<div class="category">
+					<ul>
+						<li>
+							<label class="checkbox"><input type="checkbox" value="">25元区</label>
+						</li>
+						<li>
+							<label class="checkbox"><input type="checkbox">20元区</label>
+						</li>
+						<li>
+							<label class="checkbox"><input type="checkbox">18元区</label>
+						</li>
+						<li>
+							<label class="checkbox"><input type="checkbox">15元区</label>
+						</li>
+					</ul>
+				</div>
+				<table class="foods-area">
+					<tr>
+						<td class="food-area-head">25元区</td>
+						<td>
+							<ul class="food-area-list">
+								<li><img src="assert/img/taochan2.jpg" alt=""></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""></li>
+								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td class="food-area-head">20元区</td>
+						<td>
+							<ul class="food-area-list">
+								<li><img src="assert/img/taochan1.jpg" alt=""></li>
+								<li><img src="assert/img/taochan1.jpg" alt=""></li>
+								<li><img src="assert/img/taochan1.jpg" alt=""></li>
+								<li><img src="assert/img/taochan1.jpg" alt=""></li>
+								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td class="food-area-head">18元区</td>
+						<td>
+							<ul class="food-area-list">
+								<li><img src="assert/img/taochan3.jpg" alt=""></li>
+								<li><img src="assert/img/taochan3.jpg" alt=""></li>
+								<li><img src="assert/img/taochan3.jpg" alt=""></li>
+								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td class="food-area-head">15元区</td>
+						<td>
+							<ul class="food-area-list">
+								<li><img src="assert/img/plus.png" alt="" class="food-add"></li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			
 			</div>
-			<div class="category">
-				<ul>
-					<li>
-						<label class="checkbox"><input type="checkbox" value="">25元区</label>
-					</li>
-					<li>
-						<label class="checkbox"><input type="checkbox">20元区</label>
-					</li>
-					<li>
-						<label class="checkbox"><input type="checkbox">18元区</label>
-					</li>
-					<li>
-						<label class="checkbox"><input type="checkbox">15元区</label>
-					</li>
-				</ul>
-			</div>
-			<table class="foods-area">
-				<tr>
-					<td class="food-area-head">25元区</td>
-					<td>
-						<ul class="food-area-list">
-							<li><img src="assert/img/taochan2.jpg" alt=""></li>
-							<li><img src="assert/img/taochan2.jpg" alt=""></li>
-							<li><img src="assert/img/taochan2.jpg" alt=""></li>
-							<li><img src="assert/img/taochan2.jpg" alt=""></li>
-							<li><img src="assert/img/taochan2.jpg" alt=""></li>
-							<li><img src="assert/img/taochan2.jpg" alt=""></li>
-							<li><img src="assert/img/taochan2.jpg" alt=""></li>
-							<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
-						</ul>
-					</td>
-				</tr>
-				<tr>
-					<td class="food-area-head">20元区</td>
-					<td>
-						<ul class="food-area-list">
-							<li><img src="assert/img/taochan1.jpg" alt=""></li>
-							<li><img src="assert/img/taochan1.jpg" alt=""></li>
-							<li><img src="assert/img/taochan1.jpg" alt=""></li>
-							<li><img src="assert/img/taochan1.jpg" alt=""></li>
-							<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
-						</ul>
-					</td>
-				</tr>
-				<tr>
-					<td class="food-area-head">18元区</td>
-					<td>
-						<ul class="food-area-list">
-							<li><img src="assert/img/taochan3.jpg" alt=""></li>
-							<li><img src="assert/img/taochan3.jpg" alt=""></li>
-							<li><img src="assert/img/taochan3.jpg" alt=""></li>
-							<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
-						</ul>
-					</td>
-				</tr>
-				<tr>
-					<td class="food-area-head">15元区</td>
-					<td>
-						<ul class="food-area-list">
-							<li><img src="assert/img/plus.png" alt="" class="food-add"></li>
-						</ul>
-					</td>
-				</tr>
-			</table>
-
 		</div><!--/ end of container -->
 
 		<!-- 添加分类窗口 -->
@@ -128,14 +130,16 @@
 			</div>
 		</div><!--/ end of 添加分类 -->
 
-		<!-- 添加食物窗口 -->
+		<!-- 添加套餐窗口 -->
 		<div id="dialog-add-package" class="modal hide fade">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h3>添加套餐</h3>
 			</div>
 			<div class="modal-body">
-				<form action="" class="form-horizontal addfood-form">
+
+				<!-- Step 1 -->
+				<form action="" class="form-horizontal addfood-form" id="form-add-package-step1">
 					<div class="control-group">
 						<div class="control-label">
 							<img src="assert/img/taochan3.jpg" class="addfood-photo img-rounded" id="addfood-photo" alt="">
@@ -177,26 +181,141 @@
 							<textarea name="" rows="3" ></textarea>
 						</div>
 					</div>
-					<div class="control-group control-group-mini control-group-left">
-						<label for="" class="control-label">食物</label>
-						<div class="controls food-to-add">
-							<ul class="food-area-list">
-								<li><img src="assert/img/mifan.jpg" alt=""></li>
-								<li><img src="assert/img/chaixin.jpg" alt=""></li>
-								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
-							</ul>
-						</div>
-					</div>
 
 					<div class="pull-right">
 						<label class="checkbox inline"><input type="checkbox" value="">缺货标记</label>
 						<label class="checkbox inline"><input type="checkbox" value="">下架</label>
 					</div>
-				</form>
+				</form><!--/ end of Step 1 -->
+
+				<!-- step 2 -->
+				<form action="" class="form-horizontal hide" id="form-add-package-step2">
+					<table class="foods-area add-package">
+						<tr>
+							<td class="food-area-head">25元区</td>
+							<td>
+								<ul class="food-area-list">
+									<li>
+										<label>
+											<img src="assert/img/taochan2.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan2.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan2.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan2.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan2.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan2.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan2.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td class="food-area-head">20元区</td>
+							<td>
+								<ul class="food-area-list">
+									<li>
+										<label>
+											<img src="assert/img/taochan1.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan1.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan1.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan1.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td class="food-area-head">18元区</td>
+							<td>
+								<ul class="food-area-list">
+									<li>
+										<label>
+											<img src="assert/img/taochan3.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan3.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+									<li>
+										<label>
+											<img src="assert/img/taochan3.jpg" alt="">
+											<input type="checkbox" value=""/>
+										</label>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+
+					
+				</form><!--/ end of Step 2 -->
+
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn btn-primary">保存</a>
-				<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
+
+				<div class="control-group control-group-small control-group-left add-package hide" id="modal-footer-food-select">
+					<label for="" class="control-label">已添加</label>
+					<div class="controls food-to-add">
+						<ul class="food-area-list">
+							<li><img src="assert/img/mifan.jpg" alt=""></li>
+							<li><img src="assert/img/chaixin.jpg" alt=""></li>
+						</ul>
+					</div>
+				</div>
+
+				<a href="#" class="btn hide" id="btn_prev" aria-hidden="true">上一步</a>
+				<a href="#" class="btn btn-primary next" id="btn_done">下一步</a>
 			</div>
 		</div><!--/ end of 添加食物 -->
 
@@ -225,6 +344,35 @@
 					$("#addfood-photo-tips").removeClass("hide");
 				}, function () {
 					$("#addfood-photo-tips").addClass("hide");
+				});
+
+
+				// 添加套餐,保存&下一步
+				$("#btn_done").click(function() {
+					var $this = $(this), 
+						$prev = $("#btn_prev");
+					if($this.hasClass("next")) { // next
+						$this.html("保存").removeClass("next");
+						$prev.removeClass("hide");
+
+						$("#form-add-package-step1").addClass("hide");
+						$("#form-add-package-step2").removeClass("hide");
+						$("#dialog-add-package").addClass("dialog-select-food");
+						$("#modal-footer-food-select").removeClass("hide");
+						
+					}
+				});
+
+				// 上一步
+				$("#btn_prev").click(function() {
+					var $next = $("#btn_done");
+					$next.html("下一步").addClass("next");
+					$(this).addClass("hide");
+
+					$("#form-add-package-step2").addClass("hide");
+					$("#form-add-package-step1").removeClass("hide");
+					$("#dialog-add-package").removeClass("dialog-select-food");
+					$("#modal-footer-food-select").addClass("hide");
 				});
 
 			});
