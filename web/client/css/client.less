@@ -1,0 +1,95 @@
+
+@import "mixins.less";
+
+@border-color: #E3E3E3;
+
+.active{
+	background-color: #0088cc;
+	color: white;
+}
+
+.notActive{
+	background-color: #f7f7f9;
+	color: black;
+}
+
+.plate{
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	width: 280px;
+	margin-bottom: 10px;
+}
+
+.plate_title{
+	text-align: center;
+	font-size: 18px;
+	height: 30px; 
+	padding-top: 7px;
+}
+
+.plate_bottom{
+	border-top: 1px solid rgba(0, 0, 0, 0.3); 
+}
+
+.input_num{
+	width: 11px;
+}
+
+
+
+.submit-order-main {
+	// margin: 0px 25px;
+	border: 1px solid @border-color;
+	.border-radius(4px);
+	.box-shadow(0 1px 1px rgba(0, 0, 0, .05) inset);
+
+	.row {
+		// margin-left: 0px;
+	}
+}
+
+.submit-order-title {
+	font-size: 20px;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid @border-color;
+}
+
+.food-dishs {
+	border-bottom: 1px solid @border-color;
+	padding: 10px 0px;
+
+	ul.plates {
+		padding: 0 0 0 20px;
+		margin: 0px 0px 0px 20px;
+		list-style: none inside none;
+
+		li {
+			display: inline-block;
+			.ie7-inline-block();
+			margin-right: 20px;
+		}
+	}
+}
+
+.order-total {
+	border-bottom: 1px solid @border-color;
+	height: 50px;
+	line-height: 50px;
+
+	.total-amount {
+		font-weight: bold;
+	}
+
+	.preferential {
+		margin: 15px;
+		color: #1C86EE;
+	}
+
+	.actual-payment {
+		font-size:30px;
+	}
+}
+
+.user-info-form {
+	margin: 10px 0px;
+}
