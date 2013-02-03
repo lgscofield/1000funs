@@ -18,17 +18,12 @@
 		<!-- <mapper resource="com/test/dbconfig/Student.xml" /> -->
 
 		<mapper resource="com/funs/order/dbconfig/OrderSQL.xml" />
-<<<<<<< HEAD
 		<mapper resource="com/funs/login/dbconfig/LoginSQL.xml" />
 		<mapper resource="com/funs/packages/dbconfig/PackageSQL.xml" />
 		<mapper resource="com/funs/user/dbconfig/UserSQL.xml" />	<!-- @author Xingling -->
 		<mapper resource="com/funs/food/dbconfig/FoodSQL.xml" />	<!-- @author Xingling -->
 		<mapper resource="com/funs/address/dbconfig/AddressSQL.xml" />	<!-- @author Xingling -->
-=======
-		<mapper resource="com/funs/user/dbconfig/UserSQL.xml" />
-		<mapper resource="com/funs/food/dbconfig/FoodSQL.xml" />
-		<mapper resource="com/funs/address/dbconfig/AddressSQL.xml" />
->>>>>>> origin
+
 	</mappers>
 
 

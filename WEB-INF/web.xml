@@ -84,7 +84,6 @@
 	
 	<!-- 配置TestServlet -->
 	<servlet>
-<<<<<<< HEAD
 		<servlet-name>LoginTest</servlet-name>
 		<servlet-class>com.funs.login.test.TestLoginServlet</servlet-class>
 	</servlet>
@@ -101,14 +100,14 @@
 	<servlet-mapping>
 		<servlet-name>PackageTest</servlet-name>
 		<url-pattern>/test/packages/*</url-pattern>
-=======
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>OrderTest</servlet-name>
 		<servlet-class>com.funs.order.test.TestServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>OrderTest</servlet-name>
 		<url-pattern>/test/order/*</url-pattern>
->>>>>>> origin
 	</servlet-mapping>
 	
 </web-app>
