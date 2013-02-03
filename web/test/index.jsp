@@ -1,37 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <html>
 	<head>
-		<title>The Template Of Jsp</title>
+		<title>The Test Of DWR</title>
 		<script type="text/javascript" src="/1000funs/dwr/engine.js"></script>
 		<script type="text/javascript" src="/1000funs/dwr/util.js"></script>
-		<script type="text/javascript" src="/1000funs/dwr/interface/UserAction.js"></script>
+		<script type="text/javascript" src="/1000funs/dwr/interface/DWRTestAction.js"></script>
 		<script type="text/javascript">
-			function doInsert () {
-				UserAction.doInsert(function(result){
-					document.getElementById("insert_result").innerHTML="succuess:"+result.userName;
-				});
-			}
 
-			function doQuery () {
-				var param = document.getElementById("query_text").value;
-				UserAction.queryUserByName(param,function(result){
-					document.getElementById("query_result").innerHTML="succuess:"+result;
+			function sessionTest(){
+				var param = document.getElementById("sessiontest_text").value;
+				DWRTestAction.testSession(param,function(result){
+					document.getElementById("sessiontest_result").innerHTML="succuess:"+result;
 				});
 			}
 
 		</script>
 	</head>
 	<body>
-		<div>The Test Of 1000funs - User</div>
+		<div>The Test Of DWR</div>
 		<hr/>
-		<input type="text" id="insert_text" value="" />
-		<input type="button" id="insert_button" value="insert a random user" onclick="doInsert();"/>
-		<span id="insert_result"> doInsert result </span>
-		<hr/>
-		<input type="text" id="query_text" value="" />
-		<input type="button" id="query_button" value="query an user by name" onclick="doQuery();"/>
-		<span id="query_result"> doQuery result </span>
-
-
+		<input type="text" id="sessiontest_text" value="" />
+		<input type="button" id="sessiontest_button" value="query an user by name" onclick="sessionTest();"/>
+		<span id="sessiontest_result"> sessionTest result </span>
 	</body>
 </html>

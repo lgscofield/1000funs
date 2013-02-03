@@ -3,15 +3,15 @@
 * All Rights Reserved.
 * 本软件为深圳千方百味公司开发研制。
 *****************************************************************************/
-package com.funs.core.base.facade;
+package com.funs.core.base.service;
 
 /**
- * Facade基类
+ * appservice基类
  *
  * @author 黄科林
  * @since jdk6.0
- * @version  2012-12-16 黄科林
+ * @version  2012-12-15 黄科林
  */
-public class BaseFacade {
+public class BaseService {
 
 }

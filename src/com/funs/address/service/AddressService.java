@@ -10,25 +10,54 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.funs.address.dao.AddressDAO;
+import com.funs.address.model.AddressVO;
 import com.funs.address.model.RegionVO;
+import com.funs.core.base.service.BaseService;
 
 /**
  * @author Xingling
  * @since jdk6.0
  * @version 2012-12-16 Xingling build
  */
-public class AddressService {
+public class AddressService extends BaseService{
 
 	final static Logger LOGGER = LoggerFactory.getLogger(AddressService.class);
 
 	private AddressDAO addressDAO;
 	
 	/**
-	 * 增加食物（不指定店铺）
-	 * @param regionVO
+	 * 根据用户输入的关键字查询包含该关键字的AddressVO集合
+	 * @param currentRegionId
+	 * @return 查询结果
 	 */
 	public List<RegionVO> queryChildRegion(int currentRegionId) {
 		return addressDAO.queryChildRegionById(currentRegionId);
+	}
+	
+
+	/**
+	 * 根据用户输出文本，以及当前区域id，查询包含该文本的零散送餐地址
+	 * @param currentRegionId
+	 * @param userInput
+	 * @return 所有符合条件的地址
+	 */
+	public List<AddressVO> queryAddress(int currentRegionId,String userInput) {
+		return addressDAO.queryAddress(currentRegionId,userInput);
+	}
+	
+	/**
+	 * 将用户输入的建议送餐地址添加到临时记录中，以供业务参考
+	 * @param tempAddress
+	 * @param phone
+	 * @return 执行结果
+	 */
+	public void addTempAddress(String tempAddress ,String phone){
+		AddressVO tempAddressVO = new AddressVO();
+		tempAddressVO.setFullName(tempAddress);
+		//TODO getCurrentUser'id and ip,and convert time
+		tempAddressVO.setUserId(1);
+		tempAddressVO.setInputTime(String.valueOf(System.currentTimeMillis()));
+		addressDAO.addTempAddress(tempAddressVO);
 	}
 
 	public AddressDAO getAddressDAO() {
@@ -38,5 +67,5 @@ public class AddressService {
 	public void setAddressDAO(AddressDAO addressDAO) {
 		this.addressDAO = addressDAO;
 	}
-
+	
 }

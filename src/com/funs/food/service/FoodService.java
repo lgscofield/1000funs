@@ -9,6 +9,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.funs.core.base.service.BaseService;
 import com.funs.core.util.tools.CodeGenerator;
 import com.funs.food.dao.FoodDAO;
 import com.funs.food.model.FoodGroupVO;
@@ -19,7 +20,7 @@ import com.funs.food.model.FoodVO;
  * @since jdk6.0
  * @version 2012-12-16 Xingling build
  */
-public class FoodService {
+public class FoodService extends BaseService{
 
 	final static Logger LOGGER = LoggerFactory.getLogger(FoodService.class);
 

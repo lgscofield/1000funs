@@ -36,7 +36,7 @@
 	<bean id="OrderDAOImpl" class="com.funs.order.dao.OrderDAO">   
 		<property name="sqlSessionTemplate" ref="sqlSession" />
 	</bean>
-	<bean id="OrderService" class="com.funs.order.service.OrderAppService">   
+	<bean id="OrderService" class="com.funs.order.service.OrderService">   
 		<property name="orderDAO" ref="OrderDAOImpl" />
 	</bean>
 	
@@ -64,6 +64,7 @@
 		<property name="addressDAO" ref="AddressDAOImpl" />
 	</bean>
 	
+<<<<<<< HEAD
 	<!-- 登录模块，注入数据源 -->
 	<bean id="LoginService" class="com.funs.login.service.LoginService">   
 		<property name="userDAO" ref="UserDAOImpl" />
@@ -91,6 +92,8 @@
 	</bean>
 	 -->
 	
+=======
+>>>>>>> origin
 	<!-- AOP和事务配置  -->
 	<import resource="aop-config.xml"/>
 	

@@ -5,6 +5,8 @@
 *****************************************************************************/
 package com.funs.core.base.action;
 
+import org.springframework.context.support.ApplicationObjectSupport;
+
 /**
  * action基类
  * 
@@ -12,6 +14,6 @@ package com.funs.core.base.action;
  * @since jdk6.0
  * @version  2012-12-15 黄科林
  */
-public class BaseAction {
-
+public class BaseAction extends ApplicationObjectSupport {
+	
 }

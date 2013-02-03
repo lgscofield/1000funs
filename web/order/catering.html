@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf8">
+		<meta charset="utf-8">
 		<title>餐点管理-配餐模式</title>
 		<link rel="stylesheet" href="assert/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assert/css/order.css">
@@ -13,96 +13,98 @@
 		</style>
 	</head>
 	<body>
-		<div class="span10 container-fixed">
-			<div class="querybar">
-				<div class="row">
-					<div class="span3">
-					</div>
-					<div class="span4">
-					</div>
-					<div class="span3">
-						<a class="btn" href="#dialog-add-category" data-toggle="modal"><i class="icon-plus"></i>添加分类</a>
-						<a class="btn pull-right" href="#dialog-add-food" data-toggle="modal"><i class="icon-plus"></i>添加食物</a>
+		<div class="row-fluid container-fixed">
+			<div class="span12">
+				<div class="querybar">
+					<div class="row-fluid">
+						<div class="span3">
+						</div>
+						<div class="span6">
+						</div>
+						<div class="span3">
+							<a class="btn" href="#dialog-add-category" data-toggle="modal"><i class="icon-plus"></i>添加分类</a>
+							<a class="btn" href="#dialog-add-food" data-toggle="modal"><i class="icon-plus"></i>添加食物</a>
+						</div>
 					</div>
 				</div>
+				<div class="category">
+					<ul>
+						<li>
+							<label class="checkbox"><input type="checkbox" value="">10元区</label>
+						</li>
+						<li>
+							<label class="checkbox"><input type="checkbox">9元区</label>
+						</li>
+						<li>
+							<label class="checkbox"><input type="checkbox">8元区</label>
+						</li>
+						<li>
+							<label class="checkbox"><input type="checkbox">7元区</label>
+						</li>
+						<li>
+							<label class="checkbox"><input type="checkbox">6元区</label>
+						</li>
+						<li>
+							<label class="checkbox"><input type="checkbox">例汤区</label>
+						</li>
+						<li>
+							<label class="checkbox"><input type="checkbox">小吃</label>
+						</li>
+						<li>
+							<label class="checkbox"><input type="checkbox">饮品</label>
+						</li>
+					</ul>
+				</div>
+				<table class="foods-area">
+					<tr>
+						<td class="food-area-head">10元区</td>
+						<td>
+							<ul class="food-area-list">
+								<li><img src="assert/img/paigu.jpg" alt=""></li>
+								<li><img src="assert/img/paigu.jpg" alt=""></li>
+								<li><img src="assert/img/paigu.jpg" alt=""></li>
+								<li><img src="assert/img/paigu.jpg" alt=""></li>
+								<li><img src="assert/img/paigu.jpg" alt=""></li>
+								<li><img src="assert/img/paigu.jpg" alt=""></li>
+								<li><img src="assert/img/paigu.jpg" alt=""></li>
+								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td class="food-area-head">9元区</td>
+						<td>
+							<ul class="food-area-list">
+								<li><img src="assert/img/chaixin.jpg" alt=""></li>
+								<li><img src="assert/img/chaixin.jpg" alt=""></li>
+								<li><img src="assert/img/chaixin.jpg" alt=""></li>
+								<li><img src="assert/img/chaixin.jpg" alt=""></li>
+								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td class="food-area-head">8元区</td>
+						<td>
+							<ul class="food-area-list">
+								<li><img src="assert/img/kuguachaodang.jpg" alt=""></li>
+								<li><img src="assert/img/kuguachaodang.jpg" alt=""></li>
+								<li><img src="assert/img/kuguachaodang.jpg" alt=""></li>
+								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td class="food-area-head">7元区</td>
+						<td>
+							<ul class="food-area-list">
+								<li><img src="assert/img/plus.png" alt="" class="food-add"></li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			
 			</div>
-			<div class="category">
-				<ul>
-					<li>
-						<label class="checkbox"><input type="checkbox" value="">10元区</label>
-					</li>
-					<li>
-						<label class="checkbox"><input type="checkbox">9元区</label>
-					</li>
-					<li>
-						<label class="checkbox"><input type="checkbox">8元区</label>
-					</li>
-					<li>
-						<label class="checkbox"><input type="checkbox">7元区</label>
-					</li>
-					<li>
-						<label class="checkbox"><input type="checkbox">6元区</label>
-					</li>
-					<li>
-						<label class="checkbox"><input type="checkbox">例汤区</label>
-					</li>
-					<li>
-						<label class="checkbox"><input type="checkbox">小吃</label>
-					</li>
-					<li>
-						<label class="checkbox"><input type="checkbox">饮品</label>
-					</li>
-				</ul>
-			</div>
-			<table class="foods-area">
-				<tr>
-					<td class="food-area-head">10元区</td>
-					<td>
-						<ul class="food-area-list">
-							<li><img src="assert/img/paigu.jpg" alt=""></li>
-							<li><img src="assert/img/paigu.jpg" alt=""></li>
-							<li><img src="assert/img/paigu.jpg" alt=""></li>
-							<li><img src="assert/img/paigu.jpg" alt=""></li>
-							<li><img src="assert/img/paigu.jpg" alt=""></li>
-							<li><img src="assert/img/paigu.jpg" alt=""></li>
-							<li><img src="assert/img/paigu.jpg" alt=""></li>
-							<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
-						</ul>
-					</td>
-				</tr>
-				<tr>
-					<td class="food-area-head">9元区</td>
-					<td>
-						<ul class="food-area-list">
-							<li><img src="assert/img/chaixin.jpg" alt=""></li>
-							<li><img src="assert/img/chaixin.jpg" alt=""></li>
-							<li><img src="assert/img/chaixin.jpg" alt=""></li>
-							<li><img src="assert/img/chaixin.jpg" alt=""></li>
-							<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
-						</ul>
-					</td>
-				</tr>
-				<tr>
-					<td class="food-area-head">8元区</td>
-					<td>
-						<ul class="food-area-list">
-							<li><img src="assert/img/kuguachaodang.jpg" alt=""></li>
-							<li><img src="assert/img/kuguachaodang.jpg" alt=""></li>
-							<li><img src="assert/img/kuguachaodang.jpg" alt=""></li>
-							<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
-						</ul>
-					</td>
-				</tr>
-				<tr>
-					<td class="food-area-head">7元区</td>
-					<td>
-						<ul class="food-area-list">
-							<li><img src="assert/img/plus.png" alt="" class="food-add"></li>
-						</ul>
-					</td>
-				</tr>
-			</table>
-
 		</div><!--/ end of container -->
 
 		<!-- 添加分类窗口 -->

@@ -9,8 +9,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ApplicationObjectSupport;
 
+import com.funs.core.base.action.BaseAction;
 import com.funs.core.base.model.ResultVO;
 import com.funs.core.springmvc.ApplicationContextInitor;
 import com.funs.food.model.FoodGroupVO;
@@ -22,7 +22,7 @@ import com.funs.food.service.FoodService;
  * @since JDK1.6
  * @history 2012-12-18 Xingling build
  */
-public class FoodAction extends ApplicationObjectSupport {
+public class FoodAction extends BaseAction {
 	
 	final static Logger LOGGER = LoggerFactory.getLogger(FoodService.class);
 	
