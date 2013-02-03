@@ -10,7 +10,7 @@ import java.util.Calendar;
 public class CodeGenerator {
 
 	public enum TYPE {
-		FOOD("F"), SHOP("S"), USER("U");
+		FOOD("F"), SHOP("S"), USER("U"),PACKAGE("P");
 
 		private TYPE(String type) {
 			value = type;

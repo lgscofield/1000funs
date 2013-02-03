@@ -16,18 +16,30 @@ import com.funs.core.util.tools.DataGenerator;
 public class UserVO extends BaseVO{
 
 	private int id;
+	
+	private String code;
 
 	private String userName;
+	
+	private String password;
 
 	private String phone;
 
 	private String email;
 
 	private String registerTime;
+	
+	private int defaultRegionId;
+	
+	private String defaultAddress;
+	
+	private int userType;
 
 	private int score;
 
 	private double quota;
+	
+	private boolean deleted;
 
 	public int getId() {
 		return id;
@@ -37,12 +49,40 @@ public class UserVO extends BaseVO{
 		this.id = id;
 	}
 
+	/**
+	 * @return the code
+	 */
+	public String getCode() {
+		return code;
+	}
+
+	/**
+	 * @param code the code to set
+	 */
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getPhone() {
@@ -83,6 +123,62 @@ public class UserVO extends BaseVO{
 
 	public void setQuota(double quota) {
 		this.quota = quota;
+	}
+	
+	/**
+	 * @return the defaultRegionId
+	 */
+	public int getDefaultRegionId() {
+		return defaultRegionId;
+	}
+
+	/**
+	 * @param defaultRegionId the defaultRegionId to set
+	 */
+	public void setDefaultRegionId(int defaultRegionId) {
+		this.defaultRegionId = defaultRegionId;
+	}
+
+	/**
+	 * @return the defaultAddress
+	 */
+	public String getDefaultAddress() {
+		return defaultAddress;
+	}
+
+	/**
+	 * @param defaultAddress the defaultAddress to set
+	 */
+	public void setDefaultAddress(String defaultAddress) {
+		this.defaultAddress = defaultAddress;
+	}
+
+	/**
+	 * @return the userType
+	 */
+	public int getUserType() {
+		return userType;
+	}
+
+	/**
+	 * @param userType the userType to set
+	 */
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
+
+	/**
+	 * @return the deleted
+	 */
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	/**
+	 * @param deleted the deleted to set
+	 */
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 	
 	public static void main(String[] args) {

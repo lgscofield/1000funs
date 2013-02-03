@@ -39,5 +39,13 @@ public class ResultVO extends BaseVO {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public String toString(){
+		StringBuffer sb = new StringBuffer(128);
+		sb.append("ResultVO=\n");
+		sb.append("    success:"+success+"\n");
+		sb.append("    message:"+message);
+		return sb.toString();
+	}
 
 }

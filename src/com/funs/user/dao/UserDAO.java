@@ -22,4 +22,8 @@ public class UserDAO extends BaseDAO {
 		return (UserVO)this.sqlSessionTemplate.selectOne("com.funs.user.queryUserByName",name);
 	}
 	
+	public UserVO queryUserByCodeOrEmailOrPhone(String account){
+		return (UserVO)this.sqlSessionTemplate.selectOne("com.funs.user.queryUserByNameOrEmailOrPhone",account);
+	}
+	
 }

@@ -6,8 +6,10 @@
 
 	<!-- 插入一行数据 -->
 	<insert id="insertUser" parameterType="com.funs.user.model.UserVO">
-		INSERT INTO users(user_name,phone,email,register_time,score,quota) VALUES
-		(#{userName},#{phone},#{email},#{registerTime},#{score},#{quota})
+		INSERT INTO users(code,user_name,phone,email,password,register_time,score,
+			quota,default_region_id,default_address,user_type,deleted) VALUES
+		(#{code},#{userName},#{phone},#{email},#{password},#{registerTime},#{score},
+			#{quota},#{defaultRegionId},#{defaultAddress},#{userType},false)
 	</insert>
 
 	<!-- 查询该表的总行数 -->
@@ -18,6 +20,11 @@
 	<select id="queryUserByName" parameterType="String"
 		resultType="com.funs.user.model.UserVO">
 		SELECT * FROM users WHERE user_name=#{name}
+	</select>
+	
+	<select id="queryUserByNameOrEmailOrPhone" parameterType="String"
+		resultType="com.funs.user.model.UserVO">
+		SELECT * FROM users WHERE code=#{account} or email=#{account} or phone=#{account}
 	</select>
 
 </mapper>

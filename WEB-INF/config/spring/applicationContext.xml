@@ -64,6 +64,19 @@
 		<property name="addressDAO" ref="AddressDAOImpl" />
 	</bean>
 	
+	<!-- 登录模块，注入数据源 -->
+	<bean id="LoginService" class="com.funs.login.service.LoginService">   
+		<property name="userDAO" ref="UserDAOImpl" />
+	</bean>
+	
+	<!-- 套餐模块，注入数据源 -->
+	<bean id="PackageDAOImpl" class="com.funs.packages.dao.PackageDAO">   
+		<property name="sqlSessionTemplate" ref="sqlSession" />
+	</bean>
+	<bean id="PackageService" class="com.funs.packages.service.PackageService">   
+		<property name="packageDAO" ref="PackageDAOImpl" />
+	</bean>
+	
 	
 	<!-- 配置实现类，注入数据源 -->  
 	<!--

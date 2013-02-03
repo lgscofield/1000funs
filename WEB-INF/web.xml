@@ -82,4 +82,24 @@
 		<url-pattern>/test/address/*</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 配置TestServlet -->
+	<servlet>
+		<servlet-name>LoginTest</servlet-name>
+		<servlet-class>com.funs.login.test.TestLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginTest</servlet-name>
+		<url-pattern>/test/login/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 配置TestPackageServlet -->
+	<servlet>
+		<servlet-name>PackageTest</servlet-name>
+		<servlet-class>com.funs.packages.test.TestPackageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PackageTest</servlet-name>
+		<url-pattern>/test/packages/*</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
