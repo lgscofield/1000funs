@@ -9,6 +9,7 @@
 		<style type="text/css">
 			body{
 				background: url("img/bg.jpg") no-repeat;
+				font-family: "Microsoft Yahei", SimSun, Tahoma, Helvetica, Arial, sans-serif;
 			}
 			
 			.logo{
