@@ -1,4 +1,4 @@
-.active {
+.plate .active {
   background-color: #0088cc;
   color: white;
 }
@@ -70,4 +70,58 @@
 }
 .user-info-form {
   margin: 10px 0px;
+}
+.main-staticbar-fixed {
+  margin-top: 20px;
+}
+.uc-sidebar {
+  border: 1px solid #bbb;
+  padding: 0 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.uc-avatar-title {
+  height: 28px;
+  line-height: 28px;
+  background: #049cdb;
+  font-weight: bold;
+  padding-left: 5px;
+  margin: 0px -5px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 5px 5px 0px 0px;
+  border-radius: 5px 5px 0px 0px;
+}
+.uc-avater-img {
+  margin: 5px 0px;
+  text-align: center;
+}
+.uc-avater-img img {
+  display: inline;
+}
+.uc-avater-name {
+  text-align: center;
+}
+.uc-usertitle ul,
+.uc-menubar ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none outside none;
+}
+.uc-usertitle ul li,
+.uc-menubar ul li {
+  text-align: center;
+}
+.uc-usertitle {
+  margin: 5px 0px;
+  padding: 0px 0px 10px;
+  border-top: 2px solid #bbbbbb;
+  border-bottom: 2px solid #bbbbbb;
+}
+.uc-usertitle ul li {
+  height: 30px;
+  line-height: 30px;
+}
+.uc-menubar {
+  padding: 0px 0px 10px;
 }

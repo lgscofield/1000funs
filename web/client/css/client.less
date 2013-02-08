@@ -3,7 +3,7 @@
 
 @border-color: #E3E3E3;
 
-.active{
+.plate .active{
 	background-color: #0088cc;
 	color: white;
 }
@@ -92,4 +92,71 @@
 
 .user-info-form {
 	margin: 10px 0px;
+}
+
+// ---------- User Center -------
+
+@uc-sidebar-border-color: #bbb;
+
+.main-staticbar-fixed {
+	margin-top: 20px;
+}
+
+.uc-sidebar {
+	border: 1px solid #bbb;
+	padding: 0 5px;
+	.border-radius(5px);
+}
+
+.uc-avatar-title {
+	height: 28px;
+	line-height: 28px;
+	background: #049cdb;
+	font-weight: bold;
+	padding-left: 5px;
+	margin: 0px -5px;
+
+	.border-radius(5px 5px 0px 0px);
+}
+
+.uc-avater-img {
+	margin: 5px 0px;
+	text-align: center;
+
+	img {
+		display: inline;
+	}
+}
+
+.uc-avater-name {
+	text-align: center;
+}
+
+.uc-usertitle, .uc-menubar {
+	ul {
+		padding: 0px;
+		margin: 0px;
+		list-style: none outside none;
+
+		li {
+			text-align: center;
+		}
+	}
+}
+
+.uc-usertitle {
+	margin: 5px 0px;
+	padding: 0px 0px 10px;
+	border-top: 2px solid @uc-sidebar-border-color;
+	border-bottom: 2px solid @uc-sidebar-border-color;
+
+	ul li {
+		height: 30px;
+		line-height: 30px;
+	}
+}
+
+.uc-menubar {
+	// height: 250px;
+	padding: 0px 0px 10px;
 }
