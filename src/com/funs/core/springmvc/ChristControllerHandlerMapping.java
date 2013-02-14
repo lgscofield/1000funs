@@ -118,7 +118,7 @@ public class ChristControllerHandlerMapping extends AbstractControllerUrlHandler
     private String getMoudleName(String packageName) {
         StringBuffer sbResult = new StringBuffer(256);
         if (packageName != null) {
-            if (packageName.indexOf("com.comtop") != -1) {
+            if (packageName.indexOf("com.funs") != -1) {
                 String[] strPackageNamesStrings = packageName.split("\\.");
                 if (strPackageNamesStrings.length > 3) {
                     for (int i = 2; i < strPackageNamesStrings.length - 1; i++) {

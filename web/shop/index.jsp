@@ -68,11 +68,11 @@
 					<div class="sidebar">
 						<ul class="nav nav-list">
 							<li class="nav-header">订单管理</li>
-							<li class="active"><a href="todo.jsp">未处理</a></li>
-							<li><a href="history.jsp">已处理</a></li>
+							<li class="active"><a href="${webRoot}/shop/todo.ac">未处理</a></li>
+							<li><a href="${webRoot}/shop/history.ac">已处理</a></li>
 							<li class="nav-header">餐点管理</li>
-							<li><a href="catering.jsp">配餐模式</a></li>
-							<li><a href="package.jsp">套餐模式</a></li>
+							<li><a href="${webRoot}/shop/catering.ac">配餐模式</a></li>
+							<li><a href="${webRoot}/shop/package.ac">套餐模式</a></li>
 							<li class="nav-header">店铺管理</li>
 							<li><a href="#">基本信息</a></li>
 							<li class="nav-header">评价管理</li>
