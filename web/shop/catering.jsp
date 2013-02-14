@@ -31,81 +31,30 @@
 				</div>
 				<div class="category">
 					<ul>
+						<c:forEach items="${foodMaps}" var="foodMap">
 						<li>
-							<label class="checkbox"><input type="checkbox" value="">10元区</label>
+							<label class="checkbox"><input type="checkbox">${foodMap.key}</label>
 						</li>
-						<li>
-							<label class="checkbox"><input type="checkbox">9元区</label>
-						</li>
-						<li>
-							<label class="checkbox"><input type="checkbox">8元区</label>
-						</li>
-						<li>
-							<label class="checkbox"><input type="checkbox">7元区</label>
-						</li>
-						<li>
-							<label class="checkbox"><input type="checkbox">6元区</label>
-						</li>
-						<li>
-							<label class="checkbox"><input type="checkbox">例汤区</label>
-						</li>
-						<li>
-							<label class="checkbox"><input type="checkbox">小吃</label>
-						</li>
-						<li>
-							<label class="checkbox"><input type="checkbox">饮品</label>
-						</li>
+						</c:forEach>
 					</ul>
 				</div>
+				
 				<table class="foods-area">
+					<c:forEach items="${foodMaps}" var="foodMap">
 					<tr>
-						<td class="food-area-head">10元区</td>
+						<td class="food-area-head">${foodMap.key}</td>
 						<td>
 							<ul class="food-area-list">
-								<li><img src="${webRoot}/web/img/paigu.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/paigu.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/paigu.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/paigu.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/paigu.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/paigu.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/paigu.jpg" alt=""></li>
+								<c:forEach items="${foodMap.value }" var="food">
+								<li><img src="${webRoot}/${food.image}" alt=""></li>
+								</c:forEach>
 								<li><img src="${webRoot}/web/img/plus.png" class="food-add" alt=""></li>
 							</ul>
 						</td>
 					</tr>
-					<tr>
-						<td class="food-area-head">9元区</td>
-						<td>
-							<ul class="food-area-list">
-								<li><img src="${webRoot}/web/img/chaixin.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/chaixin.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/chaixin.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/chaixin.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/plus.png" class="food-add" alt=""></li>
-							</ul>
-						</td>
-					</tr>
-					<tr>
-						<td class="food-area-head">8元区</td>
-						<td>
-							<ul class="food-area-list">
-								<li><img src="${webRoot}/web/img/kuguachaodang.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/kuguachaodang.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/kuguachaodang.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/plus.png" class="food-add" alt=""></li>
-							</ul>
-						</td>
-					</tr>
-					<tr>
-						<td class="food-area-head">7元区</td>
-						<td>
-							<ul class="food-area-list">
-								<li><img src="${webRoot}/web/img/plus.png" alt="" class="food-add"></li>
-							</ul>
-						</td>
-					</tr>
+					</c:forEach>
 				</table>
-			
+				
 			</div>
 		</div><!--/ end of container -->
 

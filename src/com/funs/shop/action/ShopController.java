@@ -1,7 +1,15 @@
 package com.funs.shop.action;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.funs.food.model.FoodVO;
+import com.funs.shop.service.ShopService;
 
 
 /**
@@ -11,35 +19,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
+@RequestMapping("/shop")
 public class ShopController {
+	
+	@Autowired
+	private ShopService shopService;
 
 	/**
 	 * 
 	 * @return
 	 */
-	@RequestMapping("/shop.ac")
+	@RequestMapping("")
 	public String toIndex() {
-		System.out.println(" RequestMapping :: /shop ");
 		return "shop/index"; 
 	}
 	
 	
-	@RequestMapping("/shop/todo.ac")
+	@RequestMapping("/todo")
 	public String toToodo() {
+//		List<OrderVO> list = shopService.queryOrderList();
 		return "shop/todo";
 	}
 	
-	@RequestMapping("/shop/history.ac")
+	@RequestMapping("/history")
 	public String toHistory() {
 		return "shop/history";
 	}
 	
-	@RequestMapping("/shop/catering.ac")
-	public String toCatering() {
+	@RequestMapping("/catering")
+	public String toCatering(Model model) {
+		Map<String, List<FoodVO>> foodMaps = shopService.queryFoods();
+		model.addAttribute("foodMaps", foodMaps);
 		return "shop/catering";
 	}
 	
-	@RequestMapping("/shop/package.ac")
+	@RequestMapping("/package")
 	public String toPackage() {
 		return "shop/package";
 	}
