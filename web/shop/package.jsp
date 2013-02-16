@@ -31,67 +31,27 @@
 				</div>
 				<div class="category">
 					<ul>
+						<c:forEach items="${packageMaps}" var="packageMap">
 						<li>
-							<label class="checkbox"><input type="checkbox" value="">25元区</label>
+							<label class="checkbox"><input type="checkbox">${packageMap.key}</label>
 						</li>
-						<li>
-							<label class="checkbox"><input type="checkbox">20元区</label>
-						</li>
-						<li>
-							<label class="checkbox"><input type="checkbox">18元区</label>
-						</li>
-						<li>
-							<label class="checkbox"><input type="checkbox">15元区</label>
-						</li>
+						</c:forEach>
 					</ul>
 				</div>
 				<table class="foods-area">
-					<tr>
-						<td class="food-area-head">25元区</td>
+					 <c:forEach items="${packageMaps}" var="packageMap">
+					 <tr>
+						<td class="food-area-head">${packageMap.key}</td>
 						<td>
 							<ul class="food-area-list">
-								<li><img src="${webRoot}/web/img/taochan2.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan2.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan2.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan2.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan2.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan2.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan2.jpg" alt=""></li>
+								<c:forEach items="${packageMap.value}" var="packageVO">
+								<li><img src="${webRoot}/${packageVO.image}" alt="${packageVO.packageName}"></li>
+								</c:forEach>
 								<li><img src="${webRoot}/web/img/plus.png" class="food-add" alt=""></li>
 							</ul>
 						</td>
-					</tr>
-					<tr>
-						<td class="food-area-head">20元区</td>
-						<td>
-							<ul class="food-area-list">
-								<li><img src="${webRoot}/web/img/taochan1.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan1.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan1.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan1.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/plus.png" class="food-add" alt=""></li>
-							</ul>
-						</td>
-					</tr>
-					<tr>
-						<td class="food-area-head">18元区</td>
-						<td>
-							<ul class="food-area-list">
-								<li><img src="${webRoot}/web/img/taochan3.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan3.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/taochan3.jpg" alt=""></li>
-								<li><img src="${webRoot}/web/img/plus.png" class="food-add" alt=""></li>
-							</ul>
-						</td>
-					</tr>
-					<tr>
-						<td class="food-area-head">15元区</td>
-						<td>
-							<ul class="food-area-list">
-								<li><img src="${webRoot}/web/img/plus.png" alt="" class="food-add"></li>
-							</ul>
-						</td>
-					</tr>
+					 </tr>
+					 </c:forEach>
 				</table>
 			
 			</div>

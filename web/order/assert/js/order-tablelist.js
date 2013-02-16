@@ -5,7 +5,7 @@
  * @return {[type]}   [description]
  */
 jQuery(function ($) {
-	$(".table-list .order-address-tel").click(function (e) {
+	$(".table-list .link").click(function (e) {
 		var $this = $(this), 
 			$tableItem = $this.closest("div.table-item"), 
 			expand = $tableItem.hasClass("expand");

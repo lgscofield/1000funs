@@ -46,12 +46,12 @@
 						<li>
 							<div class="table-item">
 								<div class="row-fluid head">
-									<div class="left order-address-tel">
-										<span class="order-address">深圳市福田区莲花路2075号香丽大厦二楼</span>
-										<span class="order-tel">15818501051</span>
+									<div class="pull-left link left-panel">
+										<span class="">深圳市福田区莲花路2075号香丽大厦二楼</span>
+										<span class="forestgreen">15818501051</span>
 									</div>
-									<div class="right">
-										<span class="order-price">13.00元 (共8个)</span>
+									<div class="pull-right left-panel">
+										<span class="brown">13.00元 (共8个)</span>
 										<a href="#" class="btn btn-mini order-btn-out"><i class="icon-print"></i>&nbsp;出单</a>
 									</div>
 								</div>
@@ -89,12 +89,12 @@
 						<li>
 							<div class="table-item">
 								<div class="row-fluid head">
-									<div class="left order-address-tel">
-										<span class="order-address">深圳市福田区莲花路2075号香丽大厦二楼</span>
-										<span class="order-tel">15818501051</span>
+									<div class="pull-left link left-panel">
+										<span class="">深圳市福田区莲花路2075号香丽大厦二楼</span>
+										<span class="forestgreen">15818501051</span>
 									</div>
-									<div class="right">
-										<span class="order-price">13.00元 (共4个)</span>
+									<div class="pull-right left-panel">
+										<span class="brown">13.00元 (共4个)</span>
 										<a href="#" class="btn btn-mini order-btn-out"><i class="icon-print"></i>&nbsp;出单</a>
 									</div>
 								</div>
@@ -128,12 +128,12 @@
 						<li>
 							<div class="table-item">
 								<div class="row-fluid head">
-									<div class="left order-address-tel">
-										<span class="order-address">深圳市福田区莲花路2075号香丽大厦二楼</span>
-										<span class="order-tel">15818501051</span>
+									<div class="pull-left link left-panel">
+										<span class="">深圳市福田区莲花路2075号香丽大厦二楼</span>
+										<span class="forestgreen">15818501051</span>
 									</div>
-									<div class="right">
-										<span class="order-price">13.00元 (共4个)</span>
+									<div class="pull-right left-panel">
+										<span class="brown">13.00元 (共4个)</span>
 										<a href="#" class="btn btn-mini order-btn-out"><i class="icon-print"></i>&nbsp;出单</a>
 									</div>
 								</div>

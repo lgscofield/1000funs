@@ -269,9 +269,9 @@ body {
 .table-list .table-item.expand .body {
   color: #333;
 }
-.table-list .table-item.abnormal .order-address,
-.table-list .table-item.abnormal .order-tel {
-  color: #B94A48;
+.table-list .table-item.abnormal .head,
+.table-list .table-item.abnormal .forestgreen {
+  color: #A52A2A;
 }
 .table-list .row {
   margin-left: 0px;
@@ -294,21 +294,15 @@ body {
   line-height: 30px;
   color: #000;
 }
-.table-list .order-number {
-  margin-right: 20px;
-}
-.table-list .order-address-tel:hover {
+.table-list .link:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-.table-list .order-address {
+.table-list .left-panel span {
   margin-right: 20px;
 }
-.table-list .order-tel {
-  color: #468847;
-}
-.table-list .order-price {
-  color: #B94A48;
+.table-list .left-panel span:last-child {
+  margin-right: 0px;
 }
 .table-list .order-btn-out,
 .table-list .order-btn-abnormal {
@@ -464,9 +458,9 @@ ul.food-area-list > li .food-add {
 .red {
   color: red;
 }
-.left {
-  float: left;
+.forestgreen {
+  color: #228B22;
 }
-.right {
-  float: right;
+.brown {
+  color: #A52A2A;
 }

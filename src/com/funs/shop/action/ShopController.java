@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.funs.food.model.FoodVO;
+import com.funs.packages.model.PackageVO;
 import com.funs.shop.service.ShopService;
 
 
@@ -54,7 +55,9 @@ public class ShopController {
 	}
 	
 	@RequestMapping("/package")
-	public String toPackage() {
+	public String toPackage(Model model) {
+		Map<String, List<PackageVO>> packageMaps = shopService.queryPackages();
+		model.addAttribute("packageMaps", packageMaps);
 		return "shop/package";
 	}
 	

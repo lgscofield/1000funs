@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodVO;
 import com.funs.order.model.OrderVO;
+import com.funs.packages.model.PackageVO;
 
 /**
  * 店铺管理Service
@@ -96,6 +97,38 @@ public class ShopService {
 		for(int i = 0; i < amount; i++) {
 			vo = new FoodVO();
 			vo.setFoodName(name);
+			vo.setImage(img);
+			list.add(vo);
+		}
+		return list;
+	}
+	
+	/**
+	 * 套餐页面的所有套餐列表
+	 * @return
+	 */
+	public Map<String, List<PackageVO>> queryPackages() {
+		Map<String, List<PackageVO>> res = new LinkedHashMap<String, List<PackageVO>>();
+		res.put("25元区", generatePackageList("猪扒套餐", "web/img/taochan2.jpg", 7));
+		res.put("20元区", generatePackageList("菜心套餐", "web/img/taochan1.jpg", 5));
+		res.put("18元区", generatePackageList("鸭腿套餐", "web/img/taochan3.jpg", 3));
+		res.put("15元区", generatePackageList("", "", 0));
+		return res;
+	}
+	
+	/**
+	 * 生成套餐列表,测试代码
+	 * @param name
+	 * @param img
+	 * @param amount
+	 * @return
+	 */
+	private List<PackageVO> generatePackageList(String name, String img, int amount) {
+		List<PackageVO> list = new ArrayList<PackageVO>();
+		PackageVO vo;
+		for(int i = 0; i < amount; i++) {
+			vo = new PackageVO();
+			vo.setPackageName(name);
 			vo.setImage(img);
 			list.add(vo);
 		}
