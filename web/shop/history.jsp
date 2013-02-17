@@ -179,7 +179,7 @@
 			jQuery(function ($) {
 
 				$("#page").pagination({
-					class: "pagination-right", 
+					className: "pagination-right", 
 					page: 1, 
 					count: 10, 
 					callback: function (current_page, new_page) {

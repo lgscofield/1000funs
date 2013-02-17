@@ -58,7 +58,7 @@
 		// build body
 		var result = 
 			Template.body
-				.replace("${class}", opts.class)
+				.replace("${className}", opts.className)
 				.replace("${itemList}", itemList.join(""));
 
 		return result;
@@ -73,7 +73,7 @@
 	function buildItem(clazz, text) {
 		var result =  
 			Template.item
-				.replace("${class}", clazz)
+				.replace("${className}", clazz)
 				.replace(/\${text}/g, text);
 
 		return result;
@@ -179,14 +179,14 @@
 	var Template = {
 		
 		body: '\
-				<div class="pagination ${class}">\
+				<div class="pagination ${className}">\
 					<ul>\
 						${itemList}\
 					</ul>\
 				</div>\
 				', 
 
-		item: '<li><a href="#" class="${class}" idx="${text}">${text}</a></li>'
+		item: '<li><a href="#" class="${className}" idx="${text}">${text}</a></li>'
 	};
 
 	/**
@@ -198,7 +198,7 @@
 		count: 1, 				// require. total page count
 		callback: $.noop(), 	// require. callbak when click
 		num: 5, 				// how many number shows
-		class: "", 				// additional class name
+		className: "", 				// additional class name
 		refresh: true, 			// whether refresh when page no changes. Typically, this value set false when using ajax.
 		title: {				// title of the previous btn & next btn.
 			prev: "«", 

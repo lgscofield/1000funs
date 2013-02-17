@@ -166,15 +166,6 @@
 
 			jQuery(function ($) {
 
-				$("#page").pagination({
-					class: "pagination-right", 
-					page: 1, 
-					count: 10, 
-					callback: function (current_page, new_page) {
-					}, 
-					refresh: false
-				});
-
 				$(".food-add").click(function () {
 					$("#dialog-add-food").modal();
 				});
