@@ -269,9 +269,9 @@ body {
 .table-list .table-item.expand .body {
   color: #333;
 }
-.table-list .table-item.abnormal .order-address,
-.table-list .table-item.abnormal .order-tel {
-  color: #B94A48;
+.table-list .table-item.abnormal .head,
+.table-list .table-item.abnormal .forestgreen {
+  color: #A52A2A;
 }
 .table-list .row {
   margin-left: 0px;
@@ -399,7 +399,6 @@ ul.food-area-list > li {
   margin: 10px 0px 10px 15px;
 }
 ul.food-area-list > li > img {
-  width: 100px;
   height: 100px;
 }
 ul.food-area-list > li .food-add {
@@ -464,10 +463,3 @@ ul.food-area-list > li .food-add {
 .brown {
   color: #A52A2A;
 }
-/*.left {
-	float: left;
-}
-
-.right {
-	float: right;
-}*/
