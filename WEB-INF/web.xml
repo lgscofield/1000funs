@@ -42,10 +42,12 @@
 		<url-pattern>*.ac</url-pattern>
 		<!-- <url-pattern>/</url-pattern> -->
 	</servlet-mapping>
+	<!-- 
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
 		<url-pattern>/dwr/*</url-pattern>
 	</servlet-mapping>
+	 -->
 	
 	<!-- 配置DWR Servlet -->
 	<servlet>
