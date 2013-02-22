@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.funs.food.model.FoodVO;
 import com.funs.packages.model.PackageVO;
+import com.funs.shop.model.OrderViewVO;
 import com.funs.shop.service.ShopService;
 
 
@@ -37,13 +38,17 @@ public class ShopController {
 	
 	
 	@RequestMapping("/todo")
-	public String toToodo() {
-//		List<OrderVO> list = shopService.queryOrderList();
+	public String toToodo(Model model) {
+		List<OrderViewVO> list = shopService.queryOrderList();
+		model.addAttribute("orderList", list);
 		return "shop/todo";
 	}
 	
 	@RequestMapping("/history")
-	public String toHistory() {
+	public String toHistory(Model model) {
+		List<OrderViewVO> list = shopService.queryOrderList();
+		list.get(list.size()-1).setOrderStatus(2); //异常
+		model.addAttribute("orderList", list);
 		return "shop/history";
 	}
 	

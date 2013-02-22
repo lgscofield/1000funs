@@ -358,9 +358,30 @@ body {
 .table-list .body {
   color: #999;
 }
-.table-list .body .food-collapse ul.food-list li {
-  float: left;
-  width: 180px;
+.table-list .body .food-collapse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /*ul.food-list {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+
+				li {
+					float: left;
+					// width: 180px;
+					margin-right: 20px;
+				}
+			}*/
+
+}
+.table-list .body .food-collapse .food-list {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.table-list .body .food-collapse .food-list span {
+  margin-right: 20px;
 }
 .table-list .body .food-expand {
   display: none;

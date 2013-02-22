@@ -38,130 +38,50 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="table-list">
 					<ul>
+						<c:forEach items="${orderList}" var="order" >
 						<li>
-							<div class="table-item">
+							<div class="table-item <c:if test="${order.orderStatus == 2 }">abnormal</c:if>">
 								<div class="row-fluid head">
 									<div class="pull-left link left-panel">
-										<span class="">深圳市福田区莲花路2075号香丽大厦二楼</span>
-										<span class="forestgreen">15818501051</span>
+										<span class="">${order.address }</span>
+										<span class="forestgreen">${order.phone }</span>
 									</div>
 									<div class="pull-right">
-										<span class="brown">13.00元 (共8个)</span>
+										<span class="brown">${order.totalPrice }元 (共${order.totalAmount }个)</span>
 										<a href="#" class="btn btn-mini order-btn-abnormal"><i class="icon-warning-sign"></i>&nbsp;异常</a>
 									</div>
 								</div>
 								<div class="row-fluid body">
 									<div>
-										<span class="order-number">订单号: 10000101</span>
+										<span class="order-number">订单号: ${order.id }</span>
 										<span class="order-time">
-											下单时间: 11:00 
+											下单时间: ${order.createTime }
 										</span>
 									</div>
 									<div class="food-collapse">
-										<ul class="food-list">
-											<li>白饭 x2</li>
-											<li>排骨 x1</li>
-											<li>意大利太空有机无毒小白菜 x1</li>
-											<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
-										</ul>
+										<p class="food-list">
+											<c:forEach items="${order.foodList}" var="food">
+											<span>${food }</span>
+											</c:forEach>
+										</p>
 									</div>
 									<div class="food-expand">
 										<ul class="food-list">
-											<li>白饭 x2</li>
-											<li>排骨 x1</li>
-											<li>意大利太空有机无毒小白菜 x1</li>
-											<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
-											<li>白饭 x2</li>
-											<li>排骨 x1</li>
-											<li>意大利太空有机无毒小白菜 x1</li>
-											<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
+											<c:forEach items="${order.foodList}" var="food">
+											<li>${food }</li>
+											</c:forEach>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class="table-item">
-								<div class="row-fluid head">
-									<div class="pull-left link left-panel">
-										<span class="">深圳市福田区莲花路2075号香丽大厦二楼</span>
-										<span class="forestgreen">15818501051</span>
-									</div>
-									<div class="pull-right">
-										<span class="brown">13.00元 (共4个)</span>
-										<a href="#" class="btn btn-mini order-btn-abnormal"><i class="icon-warning-sign"></i>&nbsp;异常</a>
-									</div>
-								</div>
-								<div class="row-fluid body">
-									<div>
-										<span class="order-number">订单号: 10000101</span>
-										<span class="order-time">
-											下单时间: 11:00 
-										</span>
-									</div>
-									<div class="food-collapse">
-										<ul class="food-list">
-											<li>白饭 x2</li>
-											<li>排骨 x1</li>
-											<li>意大利太空有机无毒小白菜 x1</li>
-											<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
-										</ul>
-									</div>
-									<div class="food-expand">
-										<ul class="food-list">
-											<li>白饭 x2</li>
-											<li>排骨 x1</li>
-											<li>意大利太空有机无毒小白菜 x1</li>
-											<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="table-item abnormal">
-								<div class="row-fluid head">
-									<div class="pull-left link left-panel">
-										<span class="">深圳市福田区莲花路2075号香丽大厦二楼</span>
-										<span class="forestgreen">15818501051</span>
-									</div>
-									<div class="pull-right">
-										<span class="brown">13.00元 (共4个)</span>
-										<a href="#" class="btn btn-mini order-btn-abnormal"><i class="icon-warning-sign"></i>&nbsp;恢复</a>
-									</div>
-								</div>
-								<div class="row-fluid body">
-									<div>
-										<span class="order-number">订单号: 10000101</span>
-										<span class="order-time">
-											下单时间: 11:00 
-										</span>
-									</div>
-									<div class="food-collapse">
-										<ul class="food-list">
-											<li>白饭 x2</li>
-											<li>排骨 x1</li>
-											<li>意大利太空有机无毒小白菜 x1</li>
-											<li>酸酸甜甜的苦瓜炒傻不拉饥的荷包蛋 x2</li>
-										</ul>
-									</div>
-									<div class="food-expand">
-										<ul class="food-list">
-											<li>白饭 x1</li>
-											<li>排骨 x1</li>
-											<li>小白菜 x1</li>
-											<li>酸甜苦瓜炒荷包蛋 x1</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li></li>
-						<li></li>
+						</c:forEach>
 					</ul>
 				</div>
+				
 				<div class="table-list-comment">
 					<span class="red">红色</span>表示此订单为异常的订单。
 				</div>

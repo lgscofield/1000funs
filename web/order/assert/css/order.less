@@ -196,9 +196,31 @@ body {
 		color: #999;
 
 		.food-collapse {
-			ul.food-list li {
-				float: left;
-				width: 180px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
+			/*ul.food-list {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+
+				li {
+					float: left;
+					// width: 180px;
+					margin-right: 20px;
+				}
+			}*/
+
+			// p
+			.food-list {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+
+				span {
+					margin-right: 20px;
+				}
 			}
 		}
 

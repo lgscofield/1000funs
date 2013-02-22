@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodVO;
-import com.funs.order.model.OrderVO;
 import com.funs.packages.model.PackageVO;
+import com.funs.shop.model.OrderViewFoodVO;
+import com.funs.shop.model.OrderViewVO;
 
 /**
  * 店铺管理Service
@@ -24,17 +26,88 @@ public class ShopService {
 	 * 查询订单列表
 	 * @return
 	 */
-	public List<OrderVO> queryOrderList() {
-		List<OrderVO> list = new ArrayList<OrderVO>();
+	public List<OrderViewVO> queryOrderList() {
+		List<OrderViewVO> list = new ArrayList<OrderViewVO>();
 		
-		OrderVO vo = new OrderVO();
-		vo.setAddress("深圳市福田区莲花路2075号香丽大厦二楼");
-		vo.setPhone("15818501051");
-		vo.setTotalPrice(13.0);
+		int id = 10000101;
+		String address = "深圳市福田区莲花路2075号香丽大厦二楼", 
+				phone = "15818501051";
+		double price = 20.0;
+		
+		OrderViewVO vo = new OrderViewVO();
+		vo.setId(id);
+		vo.setAddress(address);
+		vo.setPhone(phone);
+		vo.setTotalPrice(price);
+		vo.setExceptTime("11:50");
+		vo.setCreateTime("9:50");
+		vo.setFoodList(generateOrderViewFoods(11));
+		list.add(vo);
+		
+		vo = new OrderViewVO();
+		vo.setId(++id);
+		vo.setAddress(address);
+		vo.setPhone(phone);
+		vo.setTotalPrice(price -= 3);
+		vo.setExceptTime("12:30");
+		vo.setCreateTime("11:50");
+		vo.setFoodList(generateOrderViewFoods(8));
+		list.add(vo);
+		
+		vo = new OrderViewVO();
+		vo.setId(++id);
+		vo.setAddress(address);
+		vo.setPhone(phone);
+		vo.setTotalPrice(price -= 3);
+		vo.setExceptTime("11:30");
+		vo.setCreateTime("9:30");
+		vo.setFoodList(generateOrderViewFoods(5));
+		list.add(vo);
 		
 		
 		System.out.println("[ShopService] queryOrderList !");
 		return list;
+	}
+	
+	private List<OrderViewFoodVO> generateOrderViewFoods(int amount) {
+		List<OrderViewFoodVO> all = allOrderFoods(), ret;
+		if(amount > all.size()) {
+			return all;
+		} else {
+			ret = new ArrayList<OrderViewFoodVO>(amount);
+			Random rd = new Random();
+			int i = 0;
+			while(i++ < amount) {
+				ret.add(all.remove(rd.nextInt(all.size())));
+			}
+		}
+		return ret;
+	}
+	
+	/**
+	 * 订单上所有可用的食物.
+	 * @return
+	 */
+	private List<OrderViewFoodVO> allOrderFoods() {
+		List<OrderViewFoodVO> foods = new ArrayList<OrderViewFoodVO>();
+		Random rd = new Random();
+		foods.add(new OrderViewFoodVO("煎羊扒配羅勒青醬汁", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("蠔豉髮菜花生燜豬腳", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("菠菜蕃茄千層粉", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("蠔油鮑魚西生菜", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("西蘭花雙菇炒紅腰紅", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("蠔油菇絲蟹柳扒節瓜甫", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("萝卜牛腩", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("清蒸鲈鱼", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("西兰花炒鲜鱿", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("猪扒", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("青瓜炒猪肝", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("铁板茄子", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("蕃茄蛋", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("麻婆豆腐", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("菜心", 1 + rd.nextInt(3)));
+		foods.add(new OrderViewFoodVO("正宗湖南手撕包菜", 1 + rd.nextInt(3)));
+		return foods;
 	}
 	
 	/**
