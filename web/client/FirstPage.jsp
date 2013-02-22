@@ -65,14 +65,24 @@
 				}
 				});
 			}
+
+		//打开注册窗口
+		function openFindPassword(){
+			window.open('/1000funs/web/client/FindPassword.jsp','findPassword');
+		}
+
+		//打开注册窗口
+		function openRegister(){
+			window.open('/1000funs/web/client/register.jsp','register');
+		}
 		</script>
 	</head>
 	<body style="overflow-x: hidden">
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<ul class="nav pull-right">
-					<li><a href="#">登录</a></li>
-					<li><a href="#">注册</a></li>
+					<li><a href="#login" data-toggle="modal">登录</a></li>
+					<li><a href="#register" data-toggle="modal">注册</a></li>
 				</ul>
 			</div>
 		</div>
@@ -140,6 +150,59 @@
 		  <div class="modal-footer">
 		    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
 		    <button class="btn btn-primary">提交</button>
+		  </div>
+		</div>
+		
+		<div id="register" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 400px;">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h2 id="myModalLabel">免费注册</h2>
+		  </div>
+		  <div class="modal-body">
+		    <form class="form-sign">
+			  <fieldset>
+			    <label>用户名</label>
+			    <input type="text" class="input-block-level">
+				<label>密码</label>
+			    <input type="text" class="input-block-level">
+			    <label>确认密码</label>
+			    <input type="text" class="input-block-level">
+			    <label>电子邮箱</label>
+			    <input type="text" class="input-block-level">
+			    <label class="checkbox">
+      				<input type="checkbox"> 我同意使用<a href="#">条款和协议</a>
+    			</label>
+			  </fieldset>
+			</form>
+		  </div>
+		  <div class="modal-footer">
+		    <button class="btn btn-primary">提交</button>
+		  </div>
+		</div>
+		
+		<div id="login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 400px;">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h2 id="myModalLabel">会员登录</h2>
+		  </div>
+		  <div class="modal-body">
+		    <form class="form-sign">
+			  <fieldset>
+			    <label>用户名/Email/手机号</label>
+			    <input type="text" class="input-block-level">
+				<label>密码</label>
+			    <input type="text" class="input-block-level">
+			    <label class="checkbox">
+      				<input type="checkbox"> 10天内免登录
+      				<div style="float: right;">
+      					<a href="#" onclick="openFindPassword();">忘记密码</a>|<a href="#" onclick="openRegister();">注册账号</a>
+      				</div>
+    			</label>
+			  </fieldset>
+			</form>
+		  </div>
+		  <div class="modal-footer">
+		    <button class="btn btn-primary">登录</button>
 		  </div>
 		</div>
 	</body>
