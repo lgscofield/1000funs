@@ -6,6 +6,8 @@ package com.funs.order.action;
 
 import java.util.List;
 
+import org.directwebremoting.annotations.RemoteMethod;
+import org.directwebremoting.annotations.RemoteProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -21,6 +23,7 @@ import com.funs.order.service.OrderService;
  * @since JDK1.6
  * @history 2012-12-18 Xingling build
  */
+@RemoteProxy
 public class OrderAction extends BaseAction {
 	
 	final static Logger LOGGER = LoggerFactory.getLogger(OrderAction.class);
@@ -54,6 +57,7 @@ public class OrderAction extends BaseAction {
 	 * @param userId
 	 * @return 未处理的订单对象集合
 	 */
+	@RemoteMethod
 	public List<OrderVO> queryUnEvaluateOrder(int userId){
 		try{
 			return orderService.queryUnEvaluateOrder(userId);

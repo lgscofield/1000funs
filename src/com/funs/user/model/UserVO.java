@@ -33,6 +33,14 @@ public class UserVO extends BaseVO{
 	
 	private String defaultAddress;
 	
+	/**
+	 * User Type 
+	 * 
+	 * 0:consumer
+	 * 1:employee
+	 * 2:manager
+	 * 3:admin
+	 */
 	private int userType;
 
 	private int score;
