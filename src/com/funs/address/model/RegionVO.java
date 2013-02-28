@@ -19,6 +19,7 @@ public class RegionVO extends BaseVO {
 	private int parentId;
 	private boolean hasChildren;
 	private String fullPath;
+	private String image;
 
 	public int getId() {
 		return id;
@@ -66,6 +67,14 @@ public class RegionVO extends BaseVO {
 
 	public void setFullPath(String fullPath) {
 		this.fullPath = fullPath;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

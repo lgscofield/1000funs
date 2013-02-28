@@ -5,6 +5,8 @@
 *****************************************************************************/
 package com.funs.core.base.model;
 
+import org.directwebremoting.annotations.DataTransferObject;
+
 import com.funs.core.util.tools.JsonUtil;
 
 
@@ -16,6 +18,7 @@ import com.funs.core.util.tools.JsonUtil;
  * @version  2012-12-15 
  * 
  */
+@DataTransferObject
 public class BaseVO {
 	
 	public String toString() {

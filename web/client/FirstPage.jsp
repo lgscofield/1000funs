@@ -6,6 +6,8 @@
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="../js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/1000funs/dwr/engine.js"></script>
+		<script type="text/javascript" src="/1000funs/dwr/interface/AddressAction.js"></script>
 		<style type="text/css">
 			body{
 				background: url("img/bg.jpg") no-repeat;
@@ -47,12 +49,17 @@
 			.addAddress{
 				background-color: white;
 			}
+			
+			.text_center{
+				text-align: center;
+			}
 		</style>
 		<script type="text/javascript">
 
 		$(function(){
 			initEvent();
-			});
+			initRegion();
+		});
 
 		function initEvent(){
 			$("#keyword").keyup(function(){
@@ -65,6 +72,26 @@
 				}
 				});
 			}
+
+		//初始化区域
+		function initRegion(){
+			AddressAction.queryChildRegion(-1,function(data){
+				for(var i=0;i<data.length;++i){
+					createRegion(data[i]);
+				}
+			});
+		}
+
+		//创建一个区域
+		function createRegion(obj){
+			var chooseURL = '/1000funs/web/client/ChooseFood.jsp';
+			var objLi = $('<li>').append(
+						$('<a>').attr('href',chooseURL+'?regionId='+obj.id).attr('class','thumbnail text_center').append(
+							$('<img>').attr('src',obj.image).css('width','100px').css('height','100px').attr('class','img-circle')
+						).append($('<div>').html(obj.regionName))
+					);
+			$('#region_box').append(objLi);
+		}
 
 		//打开注册窗口
 		function openFindPassword(){
@@ -89,32 +116,7 @@
 		<div>
 			<div class="logo"></div>
 			<div class="center">
-				<ul class="thumbnails">
-				  <li>
-				    <a href="/1000funs/web/client/ChooseFood.jsp" class="thumbnail">
-				      <img src="img/region.jpg" style="width: 100px; height: 100px;" class="img-circle">
-				    </a>
-				  </li>
-				  <li>
-				    <a href="#" class="thumbnail">
-				      <img src="img/region.jpg" style="width: 100px; height: 100px;" class="img-circle">
-				    </a>
-				  </li>
-				  <li>
-				    <a href="#" class="thumbnail">
-				      <img src="img/region.jpg" style="width: 100px; height: 100px;" class="img-circle">
-				    </a>
-				  </li>
-				  <li>
-				    <a href="#" class="thumbnail">
-				      <img src="img/region.jpg" style="width: 100px; height: 100px;" class="img-circle">
-				    </a>
-				  </li>
-				  <li>
-				    <a href="#" class="thumbnail">
-				      <img src="img/region.jpg" style="width: 100px; height: 100px;" class="img-circle">
-				    </a>
-				  </li>
+				<ul id="region_box" class="thumbnails">
 				</ul>
 			</div>
 			<div class="bottom" align="center">

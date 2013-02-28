@@ -6,6 +6,8 @@ package com.funs.address.action;
 
 import java.util.List;
 
+import org.directwebremoting.annotations.RemoteMethod;
+import org.directwebremoting.annotations.RemoteProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -24,6 +26,7 @@ import com.funs.core.springmvc.ApplicationContextInitor;
  * @since JDK1.6
  * @history 2012-12-18 Xingling build
  */
+@RemoteProxy
 public class AddressAction extends BaseAction {
 	
 	final static Logger LOGGER = LoggerFactory.getLogger(AddressAction.class);
@@ -42,6 +45,7 @@ public class AddressAction extends BaseAction {
 	 * @param currentRegionId
 	 * @return 所有子区域
 	 */
+	@RemoteMethod
 	public List<RegionVO> queryChildRegion(int currentRegionId){
 		List<RegionVO> result = null;
 		try{
