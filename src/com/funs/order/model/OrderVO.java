@@ -13,6 +13,12 @@ import com.funs.core.base.model.BaseVO;
  * @history 2013-01-06 Xingling build
  */
 public class OrderVO extends BaseVO {
+	
+	public static final int ORDER_STATUS_NEW = 0;
+	public static final int ORDER_STATUS_DEALED = 1;
+	public static final int ORDER_STATUS_EXCEPTION = 2;
+	public static final int ORDER_STATUS_EVALUATED = 3;
+	
 	private int id;
 	private String code;
 	private int shopId;

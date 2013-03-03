@@ -5,6 +5,7 @@
 package com.funs.order.action;
 
 import java.util.List;
+import java.util.Map;
 
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
@@ -15,7 +16,9 @@ import org.springframework.context.ApplicationContext;
 import com.funs.core.base.action.BaseAction;
 import com.funs.core.base.model.ResultVO;
 import com.funs.core.springmvc.ApplicationContextInitor;
+import com.funs.order.model.OrderItemVO;
 import com.funs.order.model.OrderVO;
+import com.funs.order.model.OrderVOWithFood;
 import com.funs.order.service.OrderService;
 
 /**
@@ -67,4 +70,19 @@ public class OrderAction extends BaseAction {
 		}
 	}
 	
+	/**
+	 * 根据条件查询订单列表
+	 * @param map 查询条件
+	 * @return
+	 */
+	@RemoteMethod
+	public List<OrderVOWithFood> queryNewOrdersWithFood(Map<String, String> map) {
+		// 当前用户ID, 店铺ID, 应该可以在全局进行查找, 这里暂时写死.
+		String currUserId = "3", currShopId = "1";
+		map.put("userId", currUserId);
+		map.put("shopId", currShopId);
+		map.put("itemType", OrderItemVO.ITEM_TYPE_FOOD+"");
+		map.put("orderStatus", OrderVO.ORDER_STATUS_NEW+"");
+		return orderService.queryOrdersWithFood(map);
+	}
 }

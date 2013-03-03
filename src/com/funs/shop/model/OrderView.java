@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.funs.core.base.model.BaseVO;
 
-public class OrderViewVO extends BaseVO {
+public class OrderView extends BaseVO {
 	
 	/**
 	 * 订单号
@@ -46,7 +46,7 @@ public class OrderViewVO extends BaseVO {
 	/**
 	 * 食物列表
 	 */
-	private List<OrderViewFoodVO> foodList;
+	private List<OrderFoodView> foodList;
 	
 	/**
 	 * 订单状态: 0:new 1:dealed 2:exception 3:evaluated
@@ -114,11 +114,11 @@ public class OrderViewVO extends BaseVO {
 		this.exceptTime = exceptTime;
 	}
 
-	public List<OrderViewFoodVO> getFoodList() {
+	public List<OrderFoodView> getFoodList() {
 		return foodList;
 	}
 
-	public void setFoodList(List<OrderViewFoodVO> foodList) {
+	public void setFoodList(List<OrderFoodView> foodList) {
 		this.foodList = foodList;
 	}
 

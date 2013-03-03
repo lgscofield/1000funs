@@ -85,6 +85,9 @@
 	<logger name="java.sql.Statement" level="DEBUG" additivity="false">
 		<appender-ref ref="SqlLogLogger" />
 	</logger>
+	<logger name="org.apache.ibatis.logging.slf4j" level="TRACE">
+		<appender-ref ref="StdoutLogger" />
+	</logger>
 	<!-- hibernate 日志配置 -->
 	<logger name="org.hibernate" level="WARN" additivity="false">
 		<appender-ref ref="SqlLogLogger" />

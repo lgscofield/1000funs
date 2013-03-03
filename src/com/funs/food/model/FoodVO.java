@@ -5,6 +5,8 @@
 
 package com.funs.food.model;
 
+import org.directwebremoting.annotations.DataTransferObject;
+
 import com.funs.core.base.model.BaseVO;
 import com.funs.core.util.tools.DataGenerator;
 
@@ -13,6 +15,7 @@ import com.funs.core.util.tools.DataGenerator;
  * @since JDK1.6
  * @history 2013-01-06 Xingling build
  */
+@DataTransferObject
 public class FoodVO extends BaseVO{
 
 	private int id;

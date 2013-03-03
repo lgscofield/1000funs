@@ -5,6 +5,7 @@
 package com.funs.order.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import com.funs.core.base.service.BaseService;
 import com.funs.order.dao.OrderDAO;
 import com.funs.order.model.OrderVO;
+import com.funs.order.model.OrderVOWithFood;
 
 /**
  * @author Xingling
@@ -47,6 +49,15 @@ public class OrderService extends BaseService {
 	 */
 	public List<OrderVO> queryUnEvaluateOrder(int userId){
 		return orderDAO.queryUnEvaluateOrder(userId);
+	}
+	
+	/**
+	 * 根据条件查询订单列表
+	 * @param map 查询条件
+	 * @return
+	 */
+	public List<OrderVOWithFood> queryOrdersWithFood(Map<String, String> map) {
+		return orderDAO.queryOrdersWithFood(map);
 	}
 	
 }

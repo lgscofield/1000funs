@@ -17,7 +17,35 @@
 	<select id="queryUnEvaluateOrder" parameterType="int"
 		resultType="com.funs.order.model.OrderVO">
 		SELECT * FROM orders o WHERE
-		o.user_id=#{userId} AND o.order_status=1 AND o.deleted=false 
+		o.user_id=#{userId} AND o.order_status=0 AND o.deleted=false 
+	</select>
+	
+	<select id="queryOrdersWithFood" parameterType="Map" resultType="com.funs.order.model.OrderVOWithFood">
+		select o.*, i.id as food_id, i.amount as amount, f.food_name, f.image as food_image
+		from order_item i, orders o, food f
+		where i.deleted = false and o.deleted = false and f.deleted = false
+		  and o.id = i.order_id and i.item_id = f.id
+		  and i.item_type = #{itemType}  
+		  and o.shop_id = #{shopId} and o.user_id = #{userId}
+		  and o.order_status = #{orderStatus}
+		  <if test="keyWord != null">
+		  	and concat(o.address,o.contact,o.phone) like #{keyWord}
+		  </if>
+		order by o.id
 	</select>
 
+	<select id="queryOrdersWithFood_0" parameterType="Map" resultType="com.funs.order.model.OrderVOWithFood">
+		select o.*, i.id as food_id, i.amount as amount, f.food_name, f.image as food_image
+		from order_item i, orders o, food f
+		where i.deleted = false and o.deleted = false and f.deleted = false
+		  and o.id = i.order_id and i.item_id = f.id
+		  and i.item_type = 0
+		  and o.shop_id = 1 and o.user_id = 3
+		  and o.order_status = 0
+		  <if test="keyWord != null">
+		  	and concat(o.address,o.contact,o.phone) like #{keyWord}
+		  </if>
+		order by o.id
+	</select>
+	
 </mapper>

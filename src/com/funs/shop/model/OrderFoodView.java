@@ -2,7 +2,7 @@ package com.funs.shop.model;
 
 import com.funs.core.base.model.BaseVO;
 
-public class OrderViewFoodVO extends BaseVO {
+public class OrderFoodView extends BaseVO {
 	
 	/**
 	 * 食物名称
@@ -14,10 +14,10 @@ public class OrderViewFoodVO extends BaseVO {
 	 */
 	private int amount;
 
-	public OrderViewFoodVO() {
+	public OrderFoodView() {
 	}
 
-	public OrderViewFoodVO(String food, int amount) {
+	public OrderFoodView(String food, int amount) {
 		this.food = food;
 		this.amount = amount;
 	}

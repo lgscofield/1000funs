@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodVO;
 import com.funs.packages.model.PackageVO;
-import com.funs.shop.model.OrderViewFoodVO;
-import com.funs.shop.model.OrderViewVO;
+import com.funs.shop.model.OrderFoodView;
+import com.funs.shop.model.OrderView;
 
 /**
  * 店铺管理Service
@@ -26,15 +26,15 @@ public class ShopService {
 	 * 查询订单列表
 	 * @return
 	 */
-	public List<OrderViewVO> queryOrderList() {
-		List<OrderViewVO> list = new ArrayList<OrderViewVO>();
+	public List<OrderView> queryOrderList() {
+		List<OrderView> list = new ArrayList<OrderView>();
 		
 		int id = 10000101;
 		String address = "深圳市福田区莲花路2075号香丽大厦二楼", 
 				phone = "15818501051";
 		double price = 20.0;
 		
-		OrderViewVO vo = new OrderViewVO();
+		OrderView vo = new OrderView();
 		vo.setId(id);
 		vo.setAddress(address);
 		vo.setPhone(phone);
@@ -44,7 +44,7 @@ public class ShopService {
 		vo.setFoodList(generateOrderViewFoods(11));
 		list.add(vo);
 		
-		vo = new OrderViewVO();
+		vo = new OrderView();
 		vo.setId(++id);
 		vo.setAddress(address);
 		vo.setPhone(phone);
@@ -54,7 +54,7 @@ public class ShopService {
 		vo.setFoodList(generateOrderViewFoods(8));
 		list.add(vo);
 		
-		vo = new OrderViewVO();
+		vo = new OrderView();
 		vo.setId(++id);
 		vo.setAddress(address);
 		vo.setPhone(phone);
@@ -69,12 +69,12 @@ public class ShopService {
 		return list;
 	}
 	
-	private List<OrderViewFoodVO> generateOrderViewFoods(int amount) {
-		List<OrderViewFoodVO> all = allOrderFoods(), ret;
+	private List<OrderFoodView> generateOrderViewFoods(int amount) {
+		List<OrderFoodView> all = allOrderFoods(), ret;
 		if(amount > all.size()) {
 			return all;
 		} else {
-			ret = new ArrayList<OrderViewFoodVO>(amount);
+			ret = new ArrayList<OrderFoodView>(amount);
 			Random rd = new Random();
 			int i = 0;
 			while(i++ < amount) {
@@ -88,25 +88,25 @@ public class ShopService {
 	 * 订单上所有可用的食物.
 	 * @return
 	 */
-	private List<OrderViewFoodVO> allOrderFoods() {
-		List<OrderViewFoodVO> foods = new ArrayList<OrderViewFoodVO>();
+	private List<OrderFoodView> allOrderFoods() {
+		List<OrderFoodView> foods = new ArrayList<OrderFoodView>();
 		Random rd = new Random();
-		foods.add(new OrderViewFoodVO("煎羊扒配羅勒青醬汁", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("蠔豉髮菜花生燜豬腳", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("菠菜蕃茄千層粉", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("蠔油鮑魚西生菜", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("西蘭花雙菇炒紅腰紅", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("蠔油菇絲蟹柳扒節瓜甫", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("萝卜牛腩", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("清蒸鲈鱼", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("西兰花炒鲜鱿", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("猪扒", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("青瓜炒猪肝", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("铁板茄子", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("蕃茄蛋", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("麻婆豆腐", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("菜心", 1 + rd.nextInt(3)));
-		foods.add(new OrderViewFoodVO("正宗湖南手撕包菜", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("煎羊扒配羅勒青醬汁", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("蠔豉髮菜花生燜豬腳", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("菠菜蕃茄千層粉", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("蠔油鮑魚西生菜", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("西蘭花雙菇炒紅腰紅", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("蠔油菇絲蟹柳扒節瓜甫", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("萝卜牛腩", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("清蒸鲈鱼", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("西兰花炒鲜鱿", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("猪扒", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("青瓜炒猪肝", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("铁板茄子", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("蕃茄蛋", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("麻婆豆腐", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("菜心", 1 + rd.nextInt(3)));
+		foods.add(new OrderFoodView("正宗湖南手撕包菜", 1 + rd.nextInt(3)));
 		return foods;
 	}
 	

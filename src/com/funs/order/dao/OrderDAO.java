@@ -5,9 +5,11 @@
 package com.funs.order.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.funs.core.base.dao.BaseDAO;
 import com.funs.order.model.OrderVO;
+import com.funs.order.model.OrderVOWithFood;
 
 /**
  * @author Xingling
@@ -31,6 +33,16 @@ public class OrderDAO extends BaseDAO {
 	 */
 	public List<OrderVO> queryUnEvaluateOrder(int userId){
 		List<OrderVO> result =  this.sqlSessionTemplate.selectList("com.funs.order.queryUnEvaluateOrder", userId);
+		return result;
+	}
+
+	/**
+	 * 根据条件查询订单列表
+	 * @param map 查询条件
+	 * @return
+	 */
+	public List<OrderVOWithFood> queryOrdersWithFood(Map<String, String> map) {
+		List<OrderVOWithFood> result = this.sqlSessionTemplate.selectList("com.funs.order.queryOrdersWithFood", map);
 		return result;
 	}
 	
