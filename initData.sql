@@ -108,3 +108,10 @@ INSERT INTO `1000funs`.`order_item` (`order_id`, `item_type`, `item_id`, `amount
 INSERT INTO `1000funs`.`order_item` (`order_id`, `item_type`, `item_id`, `amount`, `deleted`) VALUES ('6', '0', '5', '1', false);
 INSERT INTO `1000funs`.`order_item` (`order_id`, `item_type`, `item_id`, `amount`, `deleted`) VALUES ('6', '0', '3', '1', false);
 INSERT INTO `1000funs`.`order_item` (`order_id`, `item_type`, `item_id`, `amount`, `deleted`) VALUES ('6', '0', '2', '1', false);
+
+
+INSERT INTO `region` (`id`,`code`,`region_name`,`parent_id`,`image`,`has_children`,`full_path`,`deleted`) VALUES (1,'1','香丽大厦',-1,'img/region.jpg',NULL,NULL,0);
+INSERT INTO `region` (`id`,`code`,`region_name`,`parent_id`,`image`,`has_children`,`full_path`,`deleted`) VALUES (2,'2','妇儿大厦',-1,'img/region.jpg',NULL,NULL,0);
+INSERT INTO `region` (`id`,`code`,`region_name`,`parent_id`,`image`,`has_children`,`full_path`,`deleted`) VALUES (3,'3','妇女大厦',-1,'img/region.jpg',NULL,NULL,0);
+INSERT INTO `region` (`id`,`code`,`region_name`,`parent_id`,`image`,`has_children`,`full_path`,`deleted`) VALUES (4,'4','少女大厦',-1,'img/region.jpg',NULL,NULL,0);
+INSERT INTO `region` (`id`,`code`,`region_name`,`parent_id`,`image`,`has_children`,`full_path`,`deleted`) VALUES (5,'5','悍妇大厦',-1,'img/region.jpg',NULL,NULL,0);
