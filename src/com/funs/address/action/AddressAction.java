@@ -62,6 +62,7 @@ public class AddressAction extends BaseAction {
 	 * @param userInput
 	 * @return 所有符合条件的地址
 	 */
+	@RemoteMethod
 	public List<AddressVO> queryAddress(int currentRegionId,String userInput){
 		List<AddressVO> result = null;
 		try{

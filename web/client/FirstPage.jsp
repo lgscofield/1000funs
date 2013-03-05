@@ -102,6 +102,16 @@
 		function openRegister(){
 			window.open('/1000funs/web/client/register.jsp','register');
 		}
+
+		//查询地址
+		function queryAddress(){
+			var keyword = $('#keyword').val();
+			if(keyword!=null){
+				AddressAction.queryAddress(-1,keyword,function(data){
+					console.log(data);
+				});
+			}
+		}
 		</script>
 	</head>
 	<body style="overflow-x: hidden">
@@ -126,7 +136,7 @@
 				</table>
 				<div class="input-prepend" align="center">
 					<span class="add-on"><i class="icon-search"></i></span>
-					<input class="span4" id="keyword" type="text" placeholder="输入地址查找">
+					<input class="span4" id="keyword" type="text" placeholder="输入地址查找" onchange="queryAddress();">
 				</div>
 				<div id="alert" class="alert" style="display: none; cursor: pointer;">
 				  <button type="button" class="close" data-dismiss="alert">&times;</button>

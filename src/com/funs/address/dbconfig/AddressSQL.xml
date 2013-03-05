@@ -14,7 +14,7 @@
 	
 	<!-- 根据用户输入的关键字查询包含该关键字的AddressVO集合 -->
 	<select id="queryAddress" parameterType="Map" resultType="com.funs.address.model.AddressVO">
-		SELECT * FROM address WHERE full_name LIKE CONCAT('%','${userInput}','%') AND deleted=false
+		SELECT * FROM address WHERE (short_name like CONCAT('%','${userInput}','%') or full_name LIKE CONCAT('%','${userInput}','%')) AND deleted=false
 	</select>
 	
 	<!-- 添加用户输入的建议送餐地址 -->
