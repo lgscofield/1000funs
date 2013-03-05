@@ -54,7 +54,7 @@ public class AddressService extends BaseService{
 		AddressVO tempAddressVO = new AddressVO();
 		tempAddressVO.setFullName(tempAddress);
 		//TODO getCurrentUser'id and ip,and convert time
-		tempAddressVO.setUserId(1);
+		tempAddressVO.setPhone(phone);
 		tempAddressVO.setInputTime(String.valueOf(System.currentTimeMillis()));
 		addressDAO.addTempAddress(tempAddressVO);
 	}

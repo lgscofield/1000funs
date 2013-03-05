@@ -18,7 +18,7 @@ public class AddressVO extends BaseVO{
 	private String shortName;
 	private String fullName;
 	private String image;
-	private String userIp;
+	private String phone;
 	private int userId;
 	private String inputTime;
 
@@ -54,12 +54,12 @@ public class AddressVO extends BaseVO{
 		this.image = image;
 	}
 
-	public String getUserIp() {
-		return userIp;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setUserIp(String userIp) {
-		this.userIp = userIp;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public int getUserId() {
