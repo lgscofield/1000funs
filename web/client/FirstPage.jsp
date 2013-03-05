@@ -55,23 +55,10 @@
 			}
 		</style>
 		<script type="text/javascript">
-
+		var chooseURL = '/1000funs/web/client/ChooseFood.jsp';
 		$(function(){
-			initEvent();
 			initRegion();
 		});
-
-		function initEvent(){
-			$("#keyword").keyup(function(){
-				if($("#keyword").val()=='a'){
-					$("#list").show();
-					$("#alert").hide();
-				}else if($("#keyword").val()!=''){
-					$("#alert").show();
-					$("#list").hide();
-				}
-				});
-			}
 
 		//初始化区域
 		function initRegion(){
@@ -84,13 +71,29 @@
 
 		//创建一个区域
 		function createRegion(obj){
-			var chooseURL = '/1000funs/web/client/ChooseFood.jsp';
 			var objLi = $('<li>').append(
 						$('<a>').attr('href',chooseURL+'?regionId='+obj.id).attr('class','thumbnail text_center').append(
 							$('<img>').attr('src',obj.image).css('width','100px').css('height','100px').attr('class','img-circle')
 						).append($('<div>').html(obj.regionName))
 					);
 			$('#region_box').append(objLi);
+		}
+
+		//创建一个地址
+		function createAddress(obj){
+			var objTr = $('<tr>').append(
+							$('<td>').attr('id',obj.id).html(obj.fullName).css('cursor','pointer').click(function(){
+								window.location.href = chooseURL+'?addressId='+obj.id;
+							})
+						);
+			$('#list').append(objTr);
+		}
+
+		//添加临时地址
+		function addTempAddress(){
+			AddressAction.addTempAddress($('#tempAddress'),$('#phone'),function(data){
+				console.log(data);
+			});
 		}
 
 		//打开注册窗口
@@ -106,10 +109,22 @@
 		//查询地址
 		function queryAddress(){
 			var keyword = $('#keyword').val();
-			if(keyword!=null){
-				AddressAction.queryAddress(-1,keyword,function(data){
-					console.log(data);
+			if(keyword!=''){
+				AddressAction.queryAddressTest(keyword,function(data){
+					if(data.length==0){
+						$("#alert").show();
+						$("#list").hide();
+					}else{
+						$("#list").children().remove();
+						$("#list").show();
+						$("#alert").hide();
+						for(var i=0;i<data.length;++i){
+							createAddress(data[i]);
+						}
+					}
 				});
+			}else{
+				$("#list").hide();
 			}
 		}
 		</script>
@@ -131,12 +146,10 @@
 			</div>
 			<div class="bottom" align="center">
 				<table id="list" class="table table-hover list">
-					<tr><td>景秀中学</td></tr>
-					<tr><td>景新花园</td></tr>
 				</table>
 				<div class="input-prepend" align="center">
 					<span class="add-on"><i class="icon-search"></i></span>
-					<input class="span4" id="keyword" type="text" placeholder="输入地址查找" onchange="queryAddress();">
+					<input class="span4" id="keyword" type="text" placeholder="输入地址查找" onkeyup="queryAddress();">
 				</div>
 				<div id="alert" class="alert" style="display: none; cursor: pointer;">
 				  <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -153,15 +166,15 @@
 		  <div class="modal-body">
 		    <form>
 			  <fieldset>
-			     <input type="text" class="span6" placeholder="请输入地址">
+			     <input id="tempAddress" type="text" class="span6" placeholder="请输入地址">
 			     <br>
-			     <input type="text" placeholder="请输入手机">
+			     <input id="phone" type="text" placeholder="请输入手机">
 			  </fieldset>
 			</form>
 		  </div>
 		  <div class="modal-footer">
 		    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-		    <button class="btn btn-primary">提交</button>
+		    <button class="btn btn-primary" onclick="addTempAddress();" aria-hidden="true">提交</button>
 		  </div>
 		</div>
 		

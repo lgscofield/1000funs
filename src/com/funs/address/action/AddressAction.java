@@ -4,6 +4,7 @@
  *****************************************************************************/
 package com.funs.address.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.directwebremoting.annotations.RemoteMethod;
@@ -57,18 +58,38 @@ public class AddressAction extends BaseAction {
 	}
 	
 	/**
-	 * 根据用户输出文本，以及当前区域id，查询包含该文本的零散送餐地址
-	 * @param currentRegionId
+	 * 根据用户输出文本，查询包含该文本的零散送餐地址
 	 * @param userInput
 	 * @return 所有符合条件的地址
 	 */
 	@RemoteMethod
-	public List<AddressVO> queryAddress(int currentRegionId,String userInput){
+	public List<AddressVO> queryAddress(String userInput){
 		List<AddressVO> result = null;
 		try{
-			result = addressService.queryAddress(currentRegionId, userInput);
+			result = addressService.queryAddress(userInput);
 		}catch(Exception e){
 			LOGGER.error("queryAddress 出错："+e);
+		}
+		return result;
+	}
+	
+	/**
+	 * 根据用户输出文本，查询包含该文本的零散送餐地址
+	 * @param userInput
+	 * @return 所有符合条件的地址
+	 */
+	@RemoteMethod
+	public List<AddressVO> queryAddressTest(String userInput){
+		List<AddressVO> result = new ArrayList<AddressVO>();
+		if(userInput.equals("福田")){
+			AddressVO vo1 = new AddressVO();
+			vo1.setId(1);
+			vo1.setFullName("福田区景秀中学");
+			AddressVO vo2 = new AddressVO();
+			vo2.setId(2);
+			vo2.setFullName("福田区景新花园");
+			result.add(vo1);
+			result.add(vo2);
 		}
 		return result;
 	}
@@ -79,6 +100,7 @@ public class AddressAction extends BaseAction {
 	 * @param phone
 	 * @return 执行结果
 	 */
+	@RemoteMethod
 	public ResultVO addTempAddress(String tempAddress ,String phone){
 		try{
 			addressService.addTempAddress(tempAddress,phone);

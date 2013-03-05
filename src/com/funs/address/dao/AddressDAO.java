@@ -29,14 +29,12 @@ public class AddressDAO extends BaseDAO {
 	}
 	
 	/**
-	 * 根据用户输出文本，以及当前区域id，查询包含该文本的零散送餐地址
-	 * @param currentRegionId
+	 * 根据用户输出文本，查询包含该文本的零散送餐地址
 	 * @param userInput
 	 * @return 所有符合条件的地址
 	 */
-	public List<AddressVO> queryAddress(int currentRegionId,String userInput){
+	public List<AddressVO> queryAddress(String userInput){
 		Map<String,Object> paramMap = new HashMap<String,Object>();
-		paramMap.put("currentRegionId",currentRegionId);
 		paramMap.put("userInput", userInput);
 		return this.sqlSessionTemplate.selectList("com.funs.address.queryAddress",paramMap);
 	}

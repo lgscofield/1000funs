@@ -33,8 +33,8 @@ public class TestServlet extends HttpServlet {
 		}
 	}
 
-	public static void queryAddress(int currentAddressId, String context) {
-		List<AddressVO> result = action.queryAddress(currentAddressId, context);
+	public static void queryAddress(String context) {
+		List<AddressVO> result = action.queryAddress(context);
 		for (AddressVO test : result) {
 			System.out.println(test.getFullName());
 		}
@@ -60,7 +60,7 @@ public class TestServlet extends HttpServlet {
 		if (req.getRequestURI().contains("queryChildRegion")) {
 			queryChildRegion(1);
 		} else if (req.getRequestURI().contains("queryAddress")) {
-			queryAddress(1, "景秀");
+			queryAddress("景秀");
 		} else if (req.getRequestURI().contains("addTempAddress")) {
 			addTempAddress("景秀小学","13611112222");
 		}
