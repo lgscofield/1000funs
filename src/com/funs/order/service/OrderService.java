@@ -5,13 +5,13 @@
 package com.funs.order.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.funs.core.base.service.BaseService;
 import com.funs.order.dao.OrderDAO;
+import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
 import com.funs.order.model.OrderVOWithFood;
 
@@ -56,8 +56,25 @@ public class OrderService extends BaseService {
 	 * @param map 查询条件
 	 * @return
 	 */
-	public List<OrderVOWithFood> queryOrdersWithFood(Map<String, String> map) {
-		return orderDAO.queryOrdersWithFood(map);
+	public List<OrderVOWithFood> queryOrdersWithFood(OrderQueryCondition params) {
+		return orderDAO.queryOrdersWithFood(params);
 	}
 	
+	/**
+	 * 根据条件查询订单列表,分页方式
+	 * @param map 查询条件
+	 * @return
+	 */
+	public List<OrderVOWithFood> queryOrdersWithFoodByPage(OrderQueryCondition params) {
+		return orderDAO.queryOrdersWithFoodByPage(params);
+	}
+	
+	/**
+	 * 根据条件查询订单列表的数量
+	 * @param params
+	 * @return
+	 */
+	public int queryOrdersCount(OrderQueryCondition params) {
+		return orderDAO.queryOrdersCount(params);
+	}
 }

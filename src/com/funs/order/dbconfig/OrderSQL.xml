@@ -20,32 +20,58 @@
 		o.user_id=#{userId} AND o.order_status=0 AND o.deleted=false 
 	</select>
 	
-	<select id="queryOrdersWithFood" parameterType="Map" resultType="com.funs.order.model.OrderVOWithFood">
+	<!-- 根据shopId查询某个店铺的订单列表(连同食物一起查出来)
+		TODO: 下面几个SQL也要改. 这里应该不区分item_type，不管自选还是套餐，应该都要查出来.
+	 -->
+	<select id="queryOrdersWithFood" parameterType="com.funs.order.model.OrderQueryCondition" resultType="com.funs.order.model.OrderVOWithFood">
 		select o.*, i.id as food_id, i.amount as amount, f.food_name, f.image as food_image
 		from order_item i, orders o, food f
 		where i.deleted = false and o.deleted = false and f.deleted = false
 		  and o.id = i.order_id and i.item_id = f.id
-		  and i.item_type = #{itemType}  
-		  and o.shop_id = #{shopId} and o.user_id = #{userId}
-		  and o.order_status = #{orderStatus}
-		  <if test="keyWord != null">
-		  	and concat(o.address,o.contact,o.phone) like #{keyWord}
-		  </if>
-		order by o.id
-	</select>
-
-	<select id="queryOrdersWithFood_0" parameterType="Map" resultType="com.funs.order.model.OrderVOWithFood">
-		select o.*, i.id as food_id, i.amount as amount, f.food_name, f.image as food_image
-		from order_item i, orders o, food f
-		where i.deleted = false and o.deleted = false and f.deleted = false
-		  and o.id = i.order_id and i.item_id = f.id
-		  and i.item_type = 0
-		  and o.shop_id = 1 and o.user_id = 3
-		  and o.order_status = 0
-		  <if test="keyWord != null">
+		  <!-- and i.item_type = #{itemType}  --> 
+		  and o.shop_id = #{shopId} <!-- and o.user_id = #{userId}  -->
+		  and o.order_status in
+		  <foreach collection="orderStatusList" item="item" index="index" open="(" close=")" separator=",">
+		  	#{item}
+		  </foreach>
+		  <if test="keyword != null">
 		  	and concat(o.address,o.contact,o.phone) like #{keyWord}
 		  </if>
 		order by o.id
 	</select>
 	
+	<!-- 根据shopId查询某个店铺的待处理的订单列表总数 -->
+	<select id="queryOrdersCount" parameterType="com.funs.order.model.OrderQueryCondition" resultType="int">
+		select count(0) 
+		  from orders 
+		 where deleted = false and shop_id = #{shopId} <!-- and user_id = #{userId}  -->
+		   and order_status in 
+		   	  <foreach collection="orderStatusList" item="item" index="index" open="(" close=")" separator=",">
+			  	#{item}
+			  </foreach>
+	</select>
+	
+	<!-- 根据shopId查询某个店铺的订单列表(分页查询)(连同食物一起查出来) -->
+	<select id="queryOrdersWithFoodByPage" parameterType="com.funs.order.model.OrderQueryCondition" resultType="com.funs.order.model.OrderVOWithFood">
+		select o.*, i.id as food_id, i.amount as amount, f.food_name, f.image as food_image
+		from order_item i, 
+		     (select * from orders 
+		     	where deleted = false 
+		     		and shop_id = #{shopId} <!-- and user_id = #{userId} -->
+			     	 and order_status in
+					  <foreach collection="orderStatusList" item="item" index="index" open="(" close=")" separator=",">
+					  	#{item}
+					  </foreach>
+		     	limit #{pageFrom}, #{pageSize}
+		     ) o, 
+		     food f
+		where i.deleted = false and f.deleted = false
+		  and o.id = i.order_id and i.item_id = f.id
+		  <!-- and i.item_type = #{itemType} -->
+		  <if test="keyword != null">
+		  	and concat(o.address,o.contact,o.phone) like #{keyWord}
+		  </if>
+		order by o.id
+	</select>
+
 </mapper>

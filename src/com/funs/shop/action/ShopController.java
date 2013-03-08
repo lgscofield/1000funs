@@ -49,9 +49,7 @@ public class ShopController {
 	@RequestMapping("/todo")
 	public String toToodo(Model model, @ModelAttribute QueryForm queryForm) {
 		
-		System.out.println(">>>>>>>>>>>>>>>>>>>>\n"+queryForm+"\n<<<<<<<<<<<<<<<<<<");
-		
-		Map<String, String> condition = new HashMap<String, String>();
+		Map<String, Object> condition = new HashMap<String, Object>();
 		List<OrderVOWithFood> list0 = orderAction.queryNewOrdersWithFood(condition);
 		List<OrderView> list = transferOrderVOToView(list0);
 		model.addAttribute("orderList", list);
@@ -59,10 +57,24 @@ public class ShopController {
 	}
 	
 	@RequestMapping("/history")
-	public String toHistory(Model model) {
-		List<OrderView> list = shopService.queryOrderList();
-		list.get(list.size()-1).setOrderStatus(2); //异常
+	public String toHistory(Model model, @ModelAttribute QueryForm queryForm) {
+		
+		if(queryForm == null) {
+			print("go into history. queryForm = null");
+			queryForm = new QueryForm();
+		}
+		if(queryForm.getPageNo() == 0) queryForm.setPageNo(1);
+		if(queryForm.getPageSize() == 0) queryForm.setPageSize(4);
+		
+		Map<String, Object> condition = new HashMap<String, Object>();
+		
+		int count = orderAction.queryHistoryOrdersCount(condition);
+		queryForm.setRecordCount(count);
+		
+		List<OrderVOWithFood> list0 = orderAction.queryHistoryOrdersWithFoodByPage(condition, queryForm.getPageNo(), queryForm.getPageSize());
+		List<OrderView> list = transferOrderVOToView(list0);
 		model.addAttribute("orderList", list);
+		
 		return "shop/history";
 	}
 	
@@ -112,5 +124,10 @@ public class ShopController {
 		}
 		ret.add(view); //add the last one
 		return ret;
+	}
+	
+	
+	private <T> void print(T msg) {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>\n"+msg.toString()+"\n<<<<<<<<<<<<<<<<<<");
 	}
 }

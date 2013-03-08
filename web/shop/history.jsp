@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ include file="/web/inc/header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -18,14 +20,13 @@
 		<div class="row-fluid container-fixed">
 			<div class="span12">
 				<div class="querybar">
+					<form:form method="post" modelAttribute="queryForm" cssClass="form-search">
 					<div class="row-fluid">
 						<div class="span4">
-							<form action="" class="form-search">
-								<div class="input-prepend">
-									<button type="submit" class="btn"><i class="icon-search"></i></button>
-									<input type="text" class="search-query search-query-width" placeholder="search" >
-								</div>
-							</form>
+							<div class="input-prepend">
+								<button type="submit" class="btn"><i class="icon-search"></i></button>
+								<input type="text" class="search-query search-query-width" placeholder="search" >
+							</div>
 						</div>
 						<div class="span4">
 							<div class="btn-group" data-toggle="buttons-radio">
@@ -37,6 +38,11 @@
 						<div class="span4">
 						</div>
 					</div>
+					
+					<form:hidden path="pageNo"/>
+					<form:hidden path="pageSize"/>
+					<form:hidden path="pageCount"/>
+					</form:form>
 				</div>
 				
 				<div class="table-list">
@@ -100,9 +106,11 @@
 
 				$("#page").pagination({
 					className: "pagination-right", 
-					page: 1, 
-					count: 10, 
+					page: $("#pageNo").val(), 
+					count: $("#pageCount").val(), 
 					callback: function (current_page, new_page) {
+						$("#pageNo").val(new_page);
+						$("#queryForm").submit();
 					}, 
 					refresh: false
 				});

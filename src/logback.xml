@@ -7,7 +7,7 @@
 	<contextName>1000funs</contextName>
 	<!--<consolePlugin port="4321"/>-->
 	<jmxConfigurator />
-	<substitutionProperty name="logs.dir" value="logback\log" />
+	<substitutionProperty name="logs.dir" value="d:/temp/log" />
 	<timestamp key="byDate" datePattern="yyyyMMdd"/>
 	
 	<appender name="StdoutLogger" class="ch.qos.logback.core.ConsoleAppender">
