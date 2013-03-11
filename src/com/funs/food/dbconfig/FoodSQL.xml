@@ -24,10 +24,21 @@
 		(#{groupName},#{detail},#{image},false)
 	</insert>
 
-	<!-- 根据shopId在架的所有Food -->
+	<!-- 根据shopId在架的所有单品-->
 	<select id="queryFoodsByShopId" parameterType="int"
 		resultType="com.funs.food.model.FoodVO">
-		SELECT * FROM food f,food_re_shop frs WHERE frs.shop_id=#{shopId} AND f.id=frs.food_id AND f.deleted=false AND frs.droped=false AND frs.deleted=false
+		SELECT f.id,f.food_name,
+		f.image,frs.origin_price,
+		frs.current_price,frs.group_id,
+		fg.group_name
+		FROM food f,food_re_shop frs,food_group fg 
+		WHERE frs.shop_id=#{shopId} 
+		AND f.id=frs.food_id 
+		AND frs.group_id = fg.id 
+		AND f.type=1 
+		AND f.deleted=false 
+		AND frs.droped=false 
+		AND frs.deleted=false
 	</select>
 	
 	<!-- 为FoodVO查询id -->

@@ -19,8 +19,8 @@
 	
 	<!-- 添加用户输入的建议送餐地址 -->
 	<select id="addTempAddress" parameterType="com.funs.address.model.AddressVO">
-		INSERT INTO temp_address(short_name,full_name,image,phone,user_id,input_time,deleted) VALUES
-		(#{shortName},#{fullName},#{image},#{phone},#{userId},#{inputTime},false)
+		INSERT INTO temp_address(short_name,full_name,image,phone,user_ip,input_time,deleted) VALUES
+		(#{shortName},#{fullName},#{image},#{phone},#{userIp},#{inputTime},false)
 	</select>
 	
 </mapper>

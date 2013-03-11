@@ -28,6 +28,8 @@ public class FoodVO extends BaseVO{
 	private int shopId;
 
 	private int groupId;
+	
+	private String groupName;
 
 	private double originPrice;
 	
@@ -153,5 +155,17 @@ public class FoodVO extends BaseVO{
 		FoodVO food = (FoodVO)DataGenerator.get(FoodVO.class);
 		System.out.println(food.toString());
 	}
+
+
+	public String getGroupName() {
+		return groupName;
+	}
+
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+	
+	
 
 }

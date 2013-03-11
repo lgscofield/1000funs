@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <html>
-	<head>
-		<meta charset="utf-8">
+	<head>	
 		<title>首页</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="../js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
@@ -44,6 +45,7 @@
 				margin-bottom: 0px;
 				background-color: white;
 				display: none;
+				position: absolute;
 			}
 			
 			.addAddress{
@@ -91,8 +93,8 @@
 
 		//添加临时地址
 		function addTempAddress(){
-			AddressAction.addTempAddress($('#tempAddress'),$('#phone'),function(data){
-				console.log(data);
+			AddressAction.addTempAddress($('#tempAddress').val(),$('#phone').val(),function(data){
+				$('#addAddress').modal('hide');
 			});
 		}
 
@@ -110,7 +112,7 @@
 		function queryAddress(){
 			var keyword = $('#keyword').val();
 			if(keyword!=''){
-				AddressAction.queryAddressTest(keyword,function(data){
+				AddressAction.queryAddress(keyword,function(data){
 					if(data.length==0){
 						$("#alert").show();
 						$("#list").hide();
@@ -121,6 +123,7 @@
 						for(var i=0;i<data.length;++i){
 							createAddress(data[i]);
 						}
+						$('#list').css('top','-'+$('#list').css('height'));
 					}
 				});
 			}else{
@@ -174,7 +177,7 @@
 		  </div>
 		  <div class="modal-footer">
 		    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-		    <button class="btn btn-primary" onclick="addTempAddress();" aria-hidden="true">提交</button>
+		    <button class="btn btn-primary" onclick="addTempAddress();">提交</button>
 		  </div>
 		</div>
 		

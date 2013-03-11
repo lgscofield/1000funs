@@ -4,8 +4,11 @@
  *****************************************************************************/
 package com.funs.address.action;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
@@ -69,27 +72,6 @@ public class AddressAction extends BaseAction {
 			result = addressService.queryAddress(userInput);
 		}catch(Exception e){
 			LOGGER.error("queryAddress 出错："+e);
-		}
-		return result;
-	}
-	
-	/**
-	 * 根据用户输出文本，查询包含该文本的零散送餐地址
-	 * @param userInput
-	 * @return 所有符合条件的地址
-	 */
-	@RemoteMethod
-	public List<AddressVO> queryAddressTest(String userInput){
-		List<AddressVO> result = new ArrayList<AddressVO>();
-		if(userInput.equals("福田")){
-			AddressVO vo1 = new AddressVO();
-			vo1.setId(1);
-			vo1.setFullName("福田区景秀中学");
-			AddressVO vo2 = new AddressVO();
-			vo2.setId(2);
-			vo2.setFullName("福田区景新花园");
-			result.add(vo1);
-			result.add(vo2);
 		}
 		return result;
 	}

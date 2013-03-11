@@ -6,6 +6,8 @@ package com.funs.food.action;
 
 import java.util.List;
 
+import org.directwebremoting.annotations.RemoteMethod;
+import org.directwebremoting.annotations.RemoteProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -22,6 +24,7 @@ import com.funs.food.service.FoodService;
  * @since JDK1.6
  * @history 2012-12-18 Xingling build
  */
+@RemoteProxy
 public class FoodAction extends BaseAction {
 	
 	final static Logger LOGGER = LoggerFactory.getLogger(FoodService.class);
@@ -64,9 +67,10 @@ public class FoodAction extends BaseAction {
 	}
 	
 	/**
-	 * 查询所有在架食物
+	 * 查询所有在架食物单品
 	 * @return List<FoodVO>
 	 */
+	@RemoteMethod
 	public List<FoodVO> queryFoods(){
 		List<FoodVO> result = foodService.queryFoods();
 		return result;

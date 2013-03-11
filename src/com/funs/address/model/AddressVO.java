@@ -19,7 +19,7 @@ public class AddressVO extends BaseVO{
 	private String fullName;
 	private String image;
 	private String phone;
-	private int userId;
+	private String userIp;
 	private String inputTime;
 
 	public int getId() {
@@ -62,12 +62,12 @@ public class AddressVO extends BaseVO{
 		this.phone = phone;
 	}
 
-	public int getUserId() {
-		return userId;
+	public String getUserIp() {
+		return userIp;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserIp(String userIp) {
+		this.userIp = userIp;
 	}
 
 	public String getInputTime() {

@@ -27,7 +27,18 @@
 	<!-- 根据shopId在架的所有Package -->
 	<select id="queryPackagesByShopId" parameterType="int"
 		resultType="com.funs.packages.model.PackageVO">
-		SELECT * FROM package p,package_re_shop prs WHERE prs.shop_id=#{shopId} AND p.id=prs.package_id AND p.deleted=false AND prs.droped=false AND prs.deleted=false
+		SELECT f.id,f.food_name packageName,
+		f.image,frs.origin_price,
+		frs.current_price,frs.group_id,
+		fg.group_name
+		FROM food f,food_re_shop frs,food_group fg 
+		WHERE frs.shop_id=#{shopId} 
+		AND f.id=frs.food_id 
+		AND frs.group_id = fg.id 
+		AND f.type=2
+		AND f.deleted=false 
+		AND frs.droped=false 
+		AND frs.deleted=false
 	</select>
 	
 	<!-- 为PackageVO查询id -->

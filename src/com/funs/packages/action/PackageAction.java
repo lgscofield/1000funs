@@ -7,6 +7,8 @@ package com.funs.packages.action;
 
 import java.util.List;
 
+import org.directwebremoting.annotations.RemoteMethod;
+import org.directwebremoting.annotations.RemoteProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -25,6 +27,7 @@ import com.funs.packages.service.PackageService;
  * @since jdk6.0
  * @version  2013-1-13 黄科林
  */
+@RemoteProxy
 public class PackageAction extends ApplicationObjectSupport{
 	
 	final static Logger LOGGER = LoggerFactory.getLogger(PackageAction.class);
@@ -70,6 +73,7 @@ public class PackageAction extends ApplicationObjectSupport{
 	 * 查询所有在架套餐
 	 * @return List<PackageVO>
 	 */
+	@RemoteMethod
 	public List<PackageVO> queryPackages(){
 		List<PackageVO> result = packageService.queryPackages();
 		return result;

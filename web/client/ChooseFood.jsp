@@ -6,6 +6,9 @@
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="../js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/1000funs/dwr/engine.js"></script>
+		<script type="text/javascript" src="/1000funs/dwr/interface/FoodAction.js"></script>
+		<script type="text/javascript" src="/1000funs/dwr/interface/PackageAction.js"></script>
 		<style type="text/css">
 		
 			body {
@@ -105,6 +108,8 @@
 
 			$(function(){
 				$('#personNO').val(plateCount);
+				queryFoods();
+				queryPackages();
 			});
 
 			//激活单品
@@ -200,6 +205,64 @@
 				$('.plate').fold();
 				this.parent().unfold();
 			}
+
+			//查询食物单品
+			function queryFoods(){
+				FoodAction.queryFoods(function(data){
+					for(var i=0;i<data.length;++i){
+						createFood(data[i]);
+					}
+				});
+			}
+
+			//查询套餐
+			function queryPackages(){
+				PackageAction.queryPackages(function(data){
+					for(var i=0;i<data.length;++i){
+						createPackage(data[i]);
+					}
+				});
+			}
+
+			//创建一个食物单品
+			function createFood(vo){
+				var obj=$('<li>').append(
+						$('<img>').attr('id','food_'+vo.id).attr('src','../img/'+vo.image)
+						);
+				if($('#ul_'+vo.groupId).length==1){//已存在分区
+					$('#ul_'+vo.groupId).append(obj);
+				}else{//未存在分区
+					$('#single').append(
+							$('<tr>').append(
+									$('<td>').attr('class','food-area-head').html(vo.groupName)
+									).append(
+									$('<td>').append(
+											$('<ul>').attr('id','ul_'+vo.groupId).attr('class','food-area-list').append(obj)
+											)
+									)
+							);
+				}
+			}
+
+			//创建一个套餐
+			function createPackage(vo){
+				var obj=$('<li>').append(
+						$('<img>').attr('id','package_'+vo.id).attr('src','../img/'+vo.image)
+						);
+				if($('#ul_'+vo.groupId).length==1){//已存在分区
+					$('#ul_'+vo.groupId).append(obj);
+				}else{//未存在分区
+					$('#package').append(
+							$('<tr>').append(
+									$('<td>').attr('class','food-area-head').html(vo.groupName)
+									).append(
+									$('<td>').append(
+											$('<ul>').attr('id','ul_'+vo.groupId).attr('class','food-area-list').append(obj)
+											)
+									)
+							);
+				}
+			}
 		</script>
 	</head>
 	<body>
@@ -230,94 +293,8 @@
 					</div>
 					<div>
 						<table id="single" class="foods-area">
-							<tr>
-								<td class="food-area-head">7元区</td>
-								<td>
-									<ul class="food-area-list">
-										<li><img src="../img/paigu.jpg" alt=""></li>
-										<li><img src="../img/paigu.jpg" alt=""></li>
-										<li><img src="../img/paigu.jpg" alt=""></li>
-										<li><img src="../img/paigu.jpg" alt=""></li>
-										<li><img src="../img/paigu.jpg" alt=""></li>
-										<li><img src="../img/paigu.jpg" alt=""></li>
-										<li><img src="../img/paigu.jpg" alt=""></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td class="food-area-head">6元区</td>
-								<td>
-									<ul class="food-area-list">
-										<li><img src="../img/chaixin.jpg" alt=""></li>
-										<li><img src="../img/chaixin.jpg" alt=""></li>
-										<li><img src="../img/chaixin.jpg" alt=""></li>
-										<li><img src="../img/chaixin.jpg" alt=""></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td class="food-area-head">5元区</td>
-								<td>
-									<ul class="food-area-list">
-										<li><img src="../img/kuguachaodang.jpg" alt=""></li>
-										<li><img src="../img/kuguachaodang.jpg" alt=""></li>
-										<li><img src="../img/kuguachaodang.jpg" alt=""></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td class="food-area-head">主食</td>
-								<td>
-									<ul class="food-area-list">
-										<li><img src="../img/mifan.jpg" alt=""></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td class="food-area-head">汤类</td>
-								<td>
-									<ul class="food-area-list">
-										<li><img src="../img/mifan.jpg" alt=""></li>
-									</ul>
-								</td>
-							</tr>
 						</table>
 						<table id="package" class="foods-area" style="display: none;">
-							<tr>
-								<td class="food-area-head">7元区</td>
-								<td>
-									<ul class="food-area-list">
-										<li><img src="../img/taochan1.jpg" alt=""></li>
-										<li><img src="../img/taochan1.jpg" alt=""></li>
-										<li><img src="../img/taochan1.jpg" alt=""></li>
-										<li><img src="../img/taochan1.jpg" alt=""></li>
-										<li><img src="../img/taochan1.jpg" alt=""></li>
-										<li><img src="../img/taochan1.jpg" alt=""></li>
-										<li><img src="../img/taochan1.jpg" alt=""></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td class="food-area-head">6元区</td>
-								<td>
-									<ul class="food-area-list">
-										<li><img src="../img/taochan2.jpg" alt=""></li>
-										<li><img src="../img/taochan2.jpg" alt=""></li>
-										<li><img src="../img/taochan2.jpg" alt=""></li>
-										<li><img src="../img/taochan2.jpg" alt=""></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td class="food-area-head">5元区</td>
-								<td>
-									<ul class="food-area-list">
-										<li><img src="../img/taochan3.jpg" alt=""></li>
-										<li><img src="../img/taochan3.jpg" alt=""></li>
-										<li><img src="../img/taochan3.jpg" alt=""></li>
-									</ul>
-								</td>
-							</tr>
 						</table>
 					</div>
 			    </div>
