@@ -34,6 +34,7 @@ CREATE  TABLE IF NOT EXISTS `1000funs`.`food` (
   `food_name` VARCHAR(45) NULL ,
   `detail` VARCHAR(400) NULL ,
   `image` VARCHAR(400) NULL ,
+  `type` INT NULL COMMENT '1 food , 2 package' ,
   `deleted` TINYINT(1) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -71,8 +72,8 @@ CREATE  TABLE IF NOT EXISTS `1000funs`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `code` VARCHAR(45) NULL ,
   `shop_id` INT NULL ,
-  `create_time` DATETIME NULL ,
-  `except_time` DATETIME NULL ,
+  `create_time` VARCHAR(45) NULL ,
+  `except_time` VARCHAR(45) NULL ,
   `user_id` INT NULL ,
   `user_remark` VARCHAR(45) NULL COMMENT 'user remark' ,
   `address` VARCHAR(200) NULL ,
@@ -117,40 +118,11 @@ CREATE  TABLE IF NOT EXISTS `1000funs`.`food_group` (
   `group_name` VARCHAR(45) NULL ,
   `image` VARCHAR(200) NULL ,
   `detail` VARCHAR(200) NULL ,
+  `type` INT NULL COMMENT '1 food , 2 package' ,
   `deleted` TINYINT(1) NULL DEFAULT false ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `1000funs`.`package_group`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`package_group` ;
-
-CREATE  TABLE IF NOT EXISTS `1000funs`.`package_group` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `group_name` VARCHAR(45) NULL ,
-  `image` VARCHAR(200) NULL ,
-  `detail` VARCHAR(200) NULL ,
-  `deleted` TINYINT(1) NULL DEFAULT false ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `1000funs`.`package`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`package` ;
-
-CREATE  TABLE IF NOT EXISTS `1000funs`.`package` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `code` VARCHAR(45) NULL ,
-  `package_name` VARCHAR(45) NULL ,
-  `detail` VARCHAR(400) NULL ,
-  `image` VARCHAR(400) NULL ,
-  `deleted` TINYINT(1) NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -240,24 +212,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `1000funs`.`package_re_shop`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `1000funs`.`package_re_shop` ;
-
-CREATE  TABLE IF NOT EXISTS `1000funs`.`package_re_shop` (
-  `shop_id` INT NOT NULL ,
-  `package_id` INT NOT NULL ,
-  `group_id` INT NULL ,
-  `origin_price` DOUBLE NULL ,
-  `current_price` DOUBLE NULL ,
-  `stock` INT NULL ,
-  `droped` TINYINT(1) NULL ,
-  `deleted` TINYINT(1) NULL ,
-  PRIMARY KEY (`shop_id`, `package_id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `1000funs`.`plan_rule`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `1000funs`.`plan_rule` ;
@@ -279,7 +233,6 @@ DROP TABLE IF EXISTS `1000funs`.`order_item` ;
 CREATE  TABLE IF NOT EXISTS `1000funs`.`order_item` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `order_id` INT NULL ,
-  `item_type` INT NULL COMMENT '0 food , 1 package' ,
   `item_id` INT NULL COMMENT 'food or package\\\'s id' ,
   `amount` INT NULL ,
   `deleted` TINYINT(1) NULL ,
