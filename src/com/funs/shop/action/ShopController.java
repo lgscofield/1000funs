@@ -92,6 +92,12 @@ public class ShopController {
 		return "shop/package";
 	}
 	
+	@RequestMapping("/save/group")
+	public boolean saveGroup() {
+		
+		return true;
+	}
+	
 	/**
 	 * 将List<OrderVOWithFood>转换为List<OrderViewVO>
 	 * @param list

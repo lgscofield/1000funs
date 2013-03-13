@@ -65,30 +65,9 @@
 				<h3>添加分类</h3>
 			</div>
 			<div class="modal-body">
-				<!-- 
-				<form action="" class="form-horizontal">
-					<div class="control-group">
-						<label for="category" class="control-label">分类</label>
-						<div class="controls">
-							<input id="category" type="text" style="width:178px;">
-						</div>
-					</div>
-					<div class="control-group">
-						<label for="price" class="control-label">价格</label>
-						<div class="controls">
-							<div class="input-prepend input-append">
-								<span class="add-on">&yen;</span>
-								<input id="price" type="text" class="span2">
-								<span class="add-on">元</span>
-							</div>
-						</div>
-					</div>
-				</form>
-				-->
-
 				<form action="" class="form-horizontal form-dialog">
 					<div class="control-label">
-							<img src="${webRoot}/web/img/kuguachaodang.jpg" class="addfood-photo img-rounded" id="addfood-photo" alt="">
+							<div class="addfood-photo-wrapper"><img src="${webRoot}/web/img/kuguachaodang.jpg" class="addfood-photo img-rounded" alt=""></div>
 							<div class="img-tips hide" id="addfood-photo-tips">点击上传图片</div>
 						</div>
 						<div class="controls controls-clear-right">
@@ -188,7 +167,7 @@
 					$("#dialog-add-food").modal();
 				});
 
-				$("#addfood-photo").hover(function () {
+				$(".addfood-photo-wrapper").hover(function () {
 					$("#addfood-photo-tips").removeClass("hide");
 				}, function () {
 					$("#addfood-photo-tips").addClass("hide");
