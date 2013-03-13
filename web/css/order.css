@@ -475,10 +475,17 @@ ul.food-area-list > li .food-add {
 .form-dialog {
   padding: 10px 25px;
 }
+.form-dialog .addfood-photo-wrapper,
 .form-dialog .addfood-photo {
   width: 160px;
   height: 160px;
   cursor: pointer;
+}
+.form-dialog .addfood-photo-wrapper {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 .form-dialog .img-tips {
   font-size: 17px;
