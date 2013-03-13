@@ -65,6 +65,7 @@
 				<h3>添加分类</h3>
 			</div>
 			<div class="modal-body">
+				<!-- 
 				<form action="" class="form-horizontal">
 					<div class="control-group">
 						<label for="category" class="control-label">分类</label>
@@ -74,9 +75,6 @@
 					</div>
 					<div class="control-group">
 						<label for="price" class="control-label">价格</label>
-						<!-- <div class="controls">
-							<input id="category" type="text">
-						</div> -->
 						<div class="controls">
 							<div class="input-prepend input-append">
 								<span class="add-on">&yen;</span>
@@ -86,6 +84,26 @@
 						</div>
 					</div>
 				</form>
+				-->
+
+				<form action="" class="form-horizontal form-dialog">
+					<div class="control-label">
+							<img src="${webRoot}/web/img/kuguachaodang.jpg" class="addfood-photo img-rounded" id="addfood-photo" alt="">
+							<div class="img-tips hide" id="addfood-photo-tips">点击上传图片</div>
+						</div>
+						<div class="controls controls-clear-right">
+							<div class="control-group control-group-small">
+								<label for="" class="control-label">分类</label>
+								<div class="controls"><input type="text"></div>
+							</div>
+							<div class="control-group control-group-small">
+								<label for="" class="control-label">描述</label>
+								<div class="controls"><textarea name="" rows="4" ></textarea></div>
+							</div>
+						</div>
+					</form>
+				</form>
+
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn btn-primary">保存</a>
@@ -100,13 +118,13 @@
 				<h3>添加食物</h3>
 			</div>
 			<div class="modal-body">
-				<form action="" class="form-horizontal addfood-form">
+				<form action="" class="form-horizontal form-dialog">
 					<div class="control-group">
 						<div class="control-label">
 							<img src="${webRoot}/web/img/kuguachaodang.jpg" class="addfood-photo img-rounded" id="addfood-photo" alt="">
 							<div class="img-tips hide" id="addfood-photo-tips">点击上传图片</div>
 						</div>
-						<div class="controls controls-addfood">
+						<div class="controls controls-clear-right">
 							<div class="control-group control-group-small">
 								<label for="" class="control-label">名称</label>
 								<div class="controls"><input type="text"></div>
