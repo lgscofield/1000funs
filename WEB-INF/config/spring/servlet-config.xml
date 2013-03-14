@@ -45,4 +45,7 @@
 	</bean>
 	<!-- no required. for those aren't managed by spring -->
 	<dwr:configuration />
+	
+	<!-- File Upload -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 </beans>
