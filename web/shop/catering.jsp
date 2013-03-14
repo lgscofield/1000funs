@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ include file="/web/inc/header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -65,27 +67,29 @@
 				<h3>添加分类</h3>
 			</div>
 			<div class="modal-body">
-				<form action="" class="form-horizontal form-dialog">
+				<form id="groupForm" name="groupForm" action="${webRoot}/shop/save/group.ac" method="post" class="form-horizontal form-dialog" enctype="multipart/form-data">
 					<div class="control-label">
-							<div class="addfood-photo-wrapper"><img src="${webRoot}/web/img/kuguachaodang.jpg" class="addfood-photo img-rounded" alt=""></div>
-							<div class="img-tips hide" id="addfood-photo-tips">点击上传图片</div>
+						<div class="addfood-photo-wrapper">
+							<img src="${webRoot}/web/img/kuguachaodang1.jpg" class="addfood-photo img-rounded" alt="">
 						</div>
-						<div class="controls controls-clear-right">
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">分类</label>
-								<div class="controls"><input type="text"></div>
-							</div>
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">描述</label>
-								<div class="controls"><textarea name="" rows="4" ></textarea></div>
-							</div>
+						<div class="img-tips hide">点击上传图片</div>
+						<input type="file" name="file" class="hide">
+					</div>
+					<div class="controls controls-clear-right">
+						<div class="control-group control-group-small">
+							<label for="" class="control-label">分类</label>
+							<div class="controls"><input type="text" name="groupName"></div>
 						</div>
-					</form>
+						<div class="control-group control-group-small">
+							<label for="" class="control-label">描述</label>
+							<div class="controls"><textarea name="detail" rows="4" ></textarea></div>
+						</div>
+					</div>
+					<input type="hidden" name="type" value="1"/>
 				</form>
-
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn btn-primary">保存</a>
+				<a href="#" class="btn btn-primary" id="save_group">保存</a>
 				<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
 			</div>
 		</div><!--/ end of 添加分类 -->
@@ -101,7 +105,7 @@
 					<div class="control-group">
 						<div class="control-label">
 							<img src="${webRoot}/web/img/kuguachaodang.jpg" class="addfood-photo img-rounded" id="addfood-photo" alt="">
-							<div class="img-tips hide" id="addfood-photo-tips">点击上传图片</div>
+							<div class="img-tips hide">点击上传图片</div>
 						</div>
 						<div class="controls controls-clear-right">
 							<div class="control-group control-group-small">
@@ -168,11 +172,36 @@
 				});
 
 				$(".addfood-photo-wrapper").hover(function () {
-					$("#addfood-photo-tips").removeClass("hide");
+					$(this).siblings(".img-tips").removeClass("hide");
 				}, function () {
-					$("#addfood-photo-tips").addClass("hide");
+					$(this).siblings(".img-tips").addClass("hide");
+				})
+				.click(function() {
+					$(this).siblings("input[type='file']").click();
 				});
+				
+				$("#save_group").click(function() {
+					$("#groupForm").submit();
+				});
+				
+				imagePreview();
 			});
+			
+			/**
+			 * html5 图片预览
+			 */
+			function imagePreview() {
+				$("input[type='file']").change(function() {
+					var $this = $(this), 
+						img = this.files[0], 
+						reader = new FileReader();
+					
+					reader.onload = function(evt) {
+						$this.prevAll(".addfood-photo-wrapper").children().attr("src", evt.target.result);
+					}
+					reader.readAsDataURL(img);
+				});
+			}
 
 		</script>
 	</body>

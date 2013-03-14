@@ -12,6 +12,10 @@ public class FoodGroupVO extends BaseVO {
 	private String groupName;
 	private String image;
 	private String detail;
+	/**
+	 * 类型: 1-food; 2-package
+	 */
+	private int type;
 
 	public int getId() {
 		return id;
@@ -43,6 +47,14 @@ public class FoodGroupVO extends BaseVO {
 
 	public void setDetail(String detail) {
 		this.detail = detail;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 }

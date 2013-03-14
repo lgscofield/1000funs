@@ -17,6 +17,9 @@ import com.funs.core.util.tools.DataGenerator;
  */
 @DataTransferObject
 public class FoodVO extends BaseVO{
+	
+	public static final int TYPE_FOOD = 1;
+	public static final int TYPE_PACKAGE = 2;
 
 	private int id;
 
@@ -42,6 +45,10 @@ public class FoodVO extends BaseVO{
 	
 	private boolean droped;
 	
+	/**
+	 * 类型: 1-food; 2-package
+	 */
+	private int type;
 	
 	public int getId() {
 		return id;
@@ -167,6 +174,16 @@ public class FoodVO extends BaseVO{
 
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
+	}
+
+
+	public int getType() {
+		return type;
+	}
+
+
+	public void setType(int type) {
+		this.type = type;
 	}
 	
 	

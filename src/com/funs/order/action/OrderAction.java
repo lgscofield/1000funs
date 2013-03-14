@@ -16,7 +16,6 @@ import org.springframework.context.ApplicationContext;
 import com.funs.core.base.action.BaseAction;
 import com.funs.core.base.model.ResultVO;
 import com.funs.core.springmvc.ApplicationContextInitor;
-import com.funs.order.model.OrderItemVO;
 import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
 import com.funs.order.model.OrderVOWithFood;
@@ -88,7 +87,7 @@ public class OrderAction extends BaseAction {
 		OrderQueryCondition param = new OrderQueryCondition();
 		param.setUserId(currUserId);
 		param.setShopId(currShopId);
-		param.setItemType(OrderItemVO.ITEM_TYPE_FOOD);
+//		param.setItemType(OrderItemVO.ITEM_TYPE_FOOD);
 		param.addStatus(OrderVO.ORDER_STATUS_NEW);
 		
 		
@@ -112,7 +111,7 @@ public class OrderAction extends BaseAction {
 		param.setPageSize(pageSize);
 		param.setUserId(currUserId);
 		param.setShopId(currShopId);
-		param.setItemType(OrderItemVO.ITEM_TYPE_FOOD);
+//		param.setItemType(OrderItemVO.ITEM_TYPE_FOOD);
 		param.addStatus(OrderVO.ORDER_STATUS_DEALED, OrderVO.ORDER_STATUS_EVALUATED, OrderVO.ORDER_STATUS_EXCEPTION);
 		
 		return orderService.queryOrdersWithFoodByPage(param);

@@ -10,11 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.funs.food.model.FoodVO;
 import com.funs.order.action.OrderAction;
 import com.funs.order.model.OrderVOWithFood;
 import com.funs.packages.model.PackageVO;
+import com.funs.shop.model.GroupForm;
 import com.funs.shop.model.OrderFoodView;
 import com.funs.shop.model.OrderView;
 import com.funs.shop.model.QueryForm;
@@ -92,10 +96,11 @@ public class ShopController {
 		return "shop/package";
 	}
 	
-	@RequestMapping("/save/group")
-	public boolean saveGroup() {
-		
-		return true;
+	@RequestMapping(value="/save/group", method=RequestMethod.POST)
+	public String saveGroup(@RequestParam MultipartFile file, @ModelAttribute GroupForm groupForm, Model model) {
+		print(file.getOriginalFilename());
+		print(groupForm);
+		return "redirect:/shop/catering.ac";
 	}
 	
 	/**
