@@ -8,12 +8,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.funs.food.action.FoodAction;
+import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodVO;
 import com.funs.order.action.OrderAction;
 import com.funs.order.model.OrderVOWithFood;
@@ -23,6 +27,7 @@ import com.funs.shop.model.OrderFoodView;
 import com.funs.shop.model.OrderView;
 import com.funs.shop.model.QueryForm;
 import com.funs.shop.service.ShopService;
+import com.funs.shop.util.ShopUtil;
 
 
 /**
@@ -40,6 +45,9 @@ public class ShopController {
 	
 	@Autowired
 	private OrderAction orderAction;
+	
+	@Autowired
+	private FoodAction foodAction;
 
 	/**
 	 * 
@@ -98,9 +106,30 @@ public class ShopController {
 	
 	@RequestMapping(value="/save/group", method=RequestMethod.POST)
 	public String saveGroup(@RequestParam MultipartFile file, @ModelAttribute GroupForm groupForm, Model model) {
-		print(file.getOriginalFilename());
-		print(groupForm);
+		
+		// save the image file to upload directory
+		String imageName = "";
+		try {
+			imageName = ShopUtil.saveImage(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(imageName.equals("")) {
+			throw new IllegalStateException("add group fail!");
+		}
+		
+		// save vo to db
+		FoodGroupVO vo = new FoodGroupVO();
+		transferGroupFormToFoodGroupVO(groupForm, vo);
+		vo.setImage(imageName);
+		foodAction.insertFoodGroup(vo);
+		
 		return "redirect:/shop/catering.ac";
+	}
+	
+	@ExceptionHandler
+	public @ResponseBody String handle(Exception e) {
+		return e.getMessage();
 	}
 	
 	/**
@@ -137,6 +166,16 @@ public class ShopController {
 		return ret;
 	}
 	
+	/**
+	 * 将GroupForm 转化为 FoodGroupVO
+	 * @param form
+	 * @param vo
+	 */
+	private void transferGroupFormToFoodGroupVO(GroupForm form, FoodGroupVO vo) {
+		vo.setGroupName(form.getGroupName());
+		vo.setDetail(form.getDetail());
+		vo.setType(form.getType());
+	}
 	
 	private <T> void print(T msg) {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>\n"+msg.toString()+"\n<<<<<<<<<<<<<<<<<<");

@@ -20,8 +20,8 @@
 	
 	<!-- 插入Food_Group信息-->
 	<insert id="insertFoodGroup" parameterType="com.funs.food.model.FoodGroupVO">
-		INSERT INTO food_group(group_name,image,detail,deleted) VALUES
-		(#{groupName},#{detail},#{image},false)
+		INSERT INTO food_group(group_name,image,detail,type,deleted) VALUES
+		(#{groupName},#{detail},#{image},#{type},false)
 	</insert>
 
 	<!-- 根据shopId在架的所有单品-->
