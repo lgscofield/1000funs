@@ -27,7 +27,6 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/mybatis-spring-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/mysql-connector-java-5.1.22.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/oro-2.0.7.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/servlet-api-2.5.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/slf4j-api-1.7.2.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/spring-aop-3.2.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/spring-aspects-3.2.0.RELEASE.jar"/>
@@ -51,5 +50,6 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/xalan-2.5.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/xml-apis-1.0.b2.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/dwr-3.0.0-rc3-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="D:/Tomcat 6.0/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
