@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ include file="/web/inc/header.jsp" %>
 <html>
 	<head>	
 		<title>首页</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-		<script type="text/javascript" src="../js/jquery-1.8.0.js"></script>
-		<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/1000funs/dwr/engine.js"></script>
-		<script type="text/javascript" src="/1000funs/dwr/interface/AddressAction.js"></script>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="${webRoot}/web/bootstrap/css/bootstrap.min.css">
+		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/interface/AddressAction.js"></script>
 		<style type="text/css">
 			body{
-				background: url("img/bg.jpg") no-repeat;
+				background: url("${webRoot}/web/client/img/bg.jpg") no-repeat;
 				font-family: "Microsoft Yahei", SimSun, Tahoma, Helvetica, Arial, sans-serif;
 			}
 			
 			.logo{
-				background: url("img/logo.png") center bottom no-repeat;
+				background: url("${webRoot}/web/client/img/logo.png") center bottom no-repeat;
 				height: 150px;
 			}
 			
@@ -57,7 +57,7 @@
 			}
 		</style>
 		<script type="text/javascript">
-		var chooseURL = '/1000funs/web/client/ChooseFood.jsp';
+		var chooseURL = '${webRoot}/web/client/ChooseFood.jsp';
 		$(function(){
 			initRegion();
 		});
@@ -75,7 +75,7 @@
 		function createRegion(obj){
 			var objLi = $('<li>').append(
 						$('<a>').attr('href',chooseURL+'?regionId='+obj.id).attr('class','thumbnail text_center').append(
-							$('<img>').attr('src',obj.image).css('width','100px').css('height','100px').attr('class','img-circle')
+							$('<img>').attr('src','${webRoot}'+obj.image).css('width','100px').css('height','100px').attr('class','img-circle')
 						).append($('<div>').html(obj.regionName))
 					);
 			$('#region_box').append(objLi);
@@ -100,12 +100,12 @@
 
 		//打开注册窗口
 		function openFindPassword(){
-			window.open('/1000funs/web/client/FindPassword.jsp','findPassword');
+			window.open('${webRoot}/web/client/FindPassword.jsp','findPassword');
 		}
 
 		//打开注册窗口
 		function openRegister(){
-			window.open('/1000funs/web/client/register.jsp','register');
+			window.open('${webRoot}/web/client/register.jsp','register');
 		}
 
 		//查询地址

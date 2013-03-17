@@ -7,7 +7,7 @@
 	<display-name>1000funs</display-name>
 	
 	<welcome-file-list>
-		<welcome-file>/web/test/index.jsp</welcome-file>
+		<welcome-file>/web/client/FirstPage.jsp</welcome-file>
 	</welcome-file-list>
 	
 	<!-- spring的监听以及配置文件加载信息 -->
