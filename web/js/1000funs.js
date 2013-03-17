@@ -31,3 +31,20 @@ function setParam(url, name, value) {
 			return (url + '&' + name + '=' + value);
 	}
 }
+
+/**
+ * html5 图片预览
+ * @param $fileInput file文件上传框
+ * @param $imageToRender 预览的图片对象
+ */
+function imagePreview($fileInput, $imageToRender) {
+	$fileInput.change(function() {
+		var img = this.files[0], 
+			reader = new FileReader();
+		
+		reader.onload = function(evt) {
+			$imageToRender.attr("src", evt.target.result);
+		}
+		reader.readAsDataURL(img);
+	});
+}

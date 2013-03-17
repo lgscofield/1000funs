@@ -70,10 +70,10 @@
 				<form id="groupForm" name="groupForm" action="${webRoot}/shop/save/group.ac" method="post" class="form-horizontal form-dialog" enctype="multipart/form-data">
 					<div class="control-label">
 						<div class="addfood-photo-wrapper">
-							<img src="${webRoot}/web/img/kuguachaodang1.jpg" class="addfood-photo img-rounded" alt="">
+							<img src="${webRoot}/web/img/kuguachaodang1.jpg" id="group-preview" class="addfood-photo img-rounded" alt="">
 						</div>
 						<div class="img-tips hide">点击上传图片</div>
-						<input type="file" name="file" class="hide">
+						<input type="file" id="group-upload" name="file" class="hide">
 					</div>
 					<div class="controls controls-clear-right">
 						<div class="control-group control-group-small">
@@ -163,6 +163,7 @@
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/js/jquery.pagination.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/js/1000funs.js"></script>
 		<script type="text/javascript">
 
 			jQuery(function ($) {
@@ -184,24 +185,9 @@
 					$("#groupForm").submit();
 				});
 				
-				imagePreview();
+				imagePreview($("#group-upload"), $("#group-preview"));
 			});
 			
-			/**
-			 * html5 图片预览
-			 */
-			function imagePreview() {
-				$("input[type='file']").change(function() {
-					var $this = $(this), 
-						img = this.files[0], 
-						reader = new FileReader();
-					
-					reader.onload = function(evt) {
-						$this.prevAll(".addfood-photo-wrapper").children().attr("src", evt.target.result);
-					}
-					reader.readAsDataURL(img);
-				});
-			}
 
 		</script>
 	</body>

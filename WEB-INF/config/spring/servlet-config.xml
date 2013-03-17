@@ -9,13 +9,15 @@
 		     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 		     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		     http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
-        	 
+    
 	<!-- SpringMVC配置 -->
 	<bean class="com.funs.core.springmvc.ChristControllerHandlerMapping" />
 	<!-- 把标记了@Controller注解的类转换为bean -->
 	<!-- 这句暂时留着做个例子，实质上是没有这个类的 -->
 	<context:component-scan base-package="com.funs.*" />
-	 
+	
+	<!-- <mvc:resources mapping="/" location="/" /> -->
+    <!-- <mvc:annotation-driven /> -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	<bean id="viewNameTranslator" class="com.funs.core.springmvc.ChristRequestToViewNameTranslator"/>
 
@@ -25,7 +27,6 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
-	<!-- <mvc:resources mapping="/" location="/" /> -->
 	
 	<!-- dwr -->
 	<!-- define controller -->
@@ -48,4 +49,5 @@
 	
 	<!-- File Upload -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+	
 </beans>

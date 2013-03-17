@@ -1,5 +1,7 @@
 package com.funs.food.model;
 
+import org.directwebremoting.annotations.DataTransferObject;
+
 import com.funs.core.base.model.BaseVO;
 
 /**
@@ -7,6 +9,7 @@ import com.funs.core.base.model.BaseVO;
  * @since JDK1.6
  * @history 2013-1-6 Xingling build
  */
+@DataTransferObject
 public class FoodGroupVO extends BaseVO {
 	private int id;
 	private String groupName;

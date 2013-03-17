@@ -10,18 +10,18 @@ INSERT INTO `1000funs`.`users` (`id`, `user_name`, `phone`, `email`, `password`,
 INSERT INTO `1000funs`.`users` (`id`, `user_name`, `phone`, `email`, `password`,  `default_region_id`, `user_type`, `default_address`) VALUES ('5', '路人丙', '13511211311', 'bin@163.com', 'hello','1','0', '深圳市福田区景田区香梅北武警大厦');
 
 
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('1', '25元区', '/web/img/taochan2.jpg', '25元区;高级货', 2, false);
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('2', '20元区', '/img/taochan1.jpg', '20元区;', 2, false);
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('3', '18元区', '/web/img/taochan3.jpg', '18元区;', 2, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('1', '10元区', '/web/img/taochan2.jpg', '10元区', 1, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('2', '9元区', '/img/taochan1.jpg', '9元区;', 1, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('3', '8元区', '/web/img/taochan3.jpg', '8元区;', 1, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('4', '7元区', '/web/img/taochan3.jpg', '7元区;', 1, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('5', '6元区', '/web/img/taochan3.jpg', '6元区;', 1, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('6', '例汤区', '/web/img/taochan3.jpg', '例汤区;', 1, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('7', '小吃', '/web/img/taochan3.jpg', '小吃;', 1, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('8', '饮品', '/web/img/taochan3.jpg', '饮品;', 1, false);
 
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('4', '10元区', '/web/img/taochan2.jpg', '10元区', 1, false);
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('5', '9元区', '/img/taochan1.jpg', '9元区;', 1, false);
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('6', '8元区', '/web/img/taochan3.jpg', '8元区;', 1, false);
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('7', '7元区', '/web/img/taochan3.jpg', '7元区;', 1, false);
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('8', '6元区', '/web/img/taochan3.jpg', '6元区;', 1, false);
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('9', '例汤区', '/web/img/taochan3.jpg', '例汤区;', 1, false);
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('10', '小吃', '/web/img/taochan3.jpg', '小吃;', 1, false);
-INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('11', '饮品', '/web/img/taochan3.jpg', '饮品;', 1, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('9', '25元区', '/web/img/taochan2.jpg', '25元区;高级货', 2, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('10', '20元区', '/img/taochan1.jpg', '20元区;', 2, false);
+INSERT INTO `1000funs`.`food_group` (`id`, `group_name`, `image`, `detail`, `type`, `deleted`) VALUES ('11', '18元区', '/web/img/taochan3.jpg', '18元区;', 2, false);
 
 
 INSERT INTO `1000funs`.`food` (`id`, `food_name`, `detail`, `image`, `type`, `deleted`) VALUES ('1', '圆椒排骨', '圆椒排骨', '/web/img/paigu.jpg', 1, false);
@@ -38,6 +38,22 @@ INSERT INTO `1000funs`.`food` (`id`, `food_name`, `detail`, `image`, `type`, `de
 INSERT INTO `1000funs`.`food` (`id`, `food_name`, `detail`, `image`, `type`, `deleted`) VALUES ('12', '菠菜蕃茄千層粉', '菠菜蕃茄千層粉', '/web/img/paigu.jpg', 1, false);
 INSERT INTO `1000funs`.`food` (`id`, `food_name`, `detail`, `image`, `type`, `deleted`) VALUES ('13', '蠔油鮑魚西生菜', '蠔油鮑魚西生菜', '/web/img/paigu.jpg', 1, false);
 
+INSERT INTO `1000funs`.`food` (`id`, `food_name`, `detail`, `image`, `type`, `deleted`) VALUES ('14', '香汁排骨套餐', '香汁排骨套餐', '/web/img/taochan1.jpg', 2, false);
+INSERT INTO `1000funs`.`food` (`id`, `food_name`, `detail`, `image`, `type`, `deleted`) VALUES ('15', '七里香肥牛套餐', '七里香肥牛套餐', '/web/img/taochan2.jpg', 2, false);
+INSERT INTO `1000funs`.`food` (`id`, `food_name`, `detail`, `image`, `type`, `deleted`) VALUES ('16', '酱汁鸭腿套餐', '酱汁鸭腿套餐', '/web/img/taochan3.jpg', 2, false);
+
+
+INSERT INTO `1000funs`.`package_item` (`package_id`, `food_id`, `deleted`) VALUES (14, 1, false);
+INSERT INTO `1000funs`.`package_item` (`package_id`, `food_id`, `deleted`) VALUES (14, 3, false);
+INSERT INTO `1000funs`.`package_item` (`package_id`, `food_id`, `deleted`) VALUES (14, 11, false);
+INSERT INTO `1000funs`.`package_item` (`package_id`, `food_id`, `deleted`) VALUES (15, 5, false);
+INSERT INTO `1000funs`.`package_item` (`package_id`, `food_id`, `deleted`) VALUES (15, 6, false);
+INSERT INTO `1000funs`.`package_item` (`package_id`, `food_id`, `deleted`) VALUES (15, 10, false);
+INSERT INTO `1000funs`.`package_item` (`package_id`, `food_id`, `deleted`) VALUES (15, 12, false);
+INSERT INTO `1000funs`.`package_item` (`package_id`, `food_id`, `deleted`) VALUES (16, 2, false);
+INSERT INTO `1000funs`.`package_item` (`package_id`, `food_id`, `deleted`) VALUES (16, 4, false);
+INSERT INTO `1000funs`.`package_item` (`package_id`, `food_id`, `deleted`) VALUES (16, 9, false);
+
 
 INSERT INTO `1000funs`.`food_re_shop` (`shop_id`, `food_id`, `group_id`, `origin_price`, `current_price`, `stock`, `droped`, `deleted`) VALUES ('1', '1', '1', '10', '10', '10', false, false);
 INSERT INTO `1000funs`.`food_re_shop` (`shop_id`, `food_id`, `group_id`, `origin_price`, `current_price`, `stock`, `droped`, `deleted`) VALUES ('1', '2', '1', '10', '10', '10', false, false);
@@ -52,6 +68,10 @@ INSERT INTO `1000funs`.`food_re_shop` (`shop_id`, `food_id`, `group_id`, `origin
 INSERT INTO `1000funs`.`food_re_shop` (`shop_id`, `food_id`, `group_id`, `origin_price`, `current_price`, `stock`, `droped`, `deleted`) VALUES ('1', '11', '3', '8', '8', '10', false, false);
 INSERT INTO `1000funs`.`food_re_shop` (`shop_id`, `food_id`, `group_id`, `origin_price`, `current_price`, `stock`, `droped`, `deleted`) VALUES ('1', '12', '4', '7', '7', '10', false, false);
 INSERT INTO `1000funs`.`food_re_shop` (`shop_id`, `food_id`, `group_id`, `origin_price`, `current_price`, `stock`, `droped`, `deleted`) VALUES ('1', '13', '5', '6', '6', '10', false, false);
+
+INSERT INTO `1000funs`.`food_re_shop` (`shop_id`, `food_id`, `group_id`, `origin_price`, `current_price`, `stock`, `droped`, `deleted`) VALUES ('1', '14', '9', '25', '25', '10', false, false);
+INSERT INTO `1000funs`.`food_re_shop` (`shop_id`, `food_id`, `group_id`, `origin_price`, `current_price`, `stock`, `droped`, `deleted`) VALUES ('1', '15', '9', '25', '25', '10', false, false);
+INSERT INTO `1000funs`.`food_re_shop` (`shop_id`, `food_id`, `group_id`, `origin_price`, `current_price`, `stock`, `droped`, `deleted`) VALUES ('1', '16', '10', '20', '20', '10', false, false);
 
 
 INSERT INTO `1000funs`.`orders` (`id`, `shop_id`, `create_time`, `except_time`, `user_id`, `address`, `contact`, `phone`, `order_status`, `total_price`, `deleted`) VALUES ('1', '1', '2013-02-27 09:30:00', '2013-02-27 11:30:00', '3', '深圳市福田区莲花路2075号香丽大厦二楼', '路人甲', '13669877898', '0', '15', false);
