@@ -4,10 +4,14 @@
  *****************************************************************************/
 package com.funs.food.dao;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.funs.core.base.dao.BaseDAO;
 import com.funs.food.model.FoodGroupVO;
+import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
 
 /**
@@ -42,4 +46,21 @@ public class FoodDAO extends BaseDAO {
 		return this.sqlSessionTemplate.selectOne("com.funs.food.queryCountOfFood");
 	}
 	
+	public Map<String, List<FoodVO>> queryAllGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+		List<FoodVO> foods = this.sqlSessionTemplate.selectList("com.funs.food.queryAllGroupAndFoods", foodQueryCondition);
+		Map<String, List<FoodVO>> result = new LinkedHashMap<String, List<FoodVO>>();
+		for(FoodVO food : foods) {
+			String groupName = food.getGroupName();
+			if(result.get(groupName) == null) 
+				result.put(groupName, new ArrayList<FoodVO>());
+			if(food.getId() != 0) 
+				result.get(groupName).add(food);
+		}
+		return result;
+	}
+	
+	public List<FoodGroupVO> queryGroups(int type) {
+		List<FoodGroupVO> result = this.sqlSessionTemplate.selectList("com.funs.food.queryGroups", type);
+		return result;
+	}
 }

@@ -5,6 +5,7 @@
 package com.funs.food.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import com.funs.core.base.service.BaseService;
 import com.funs.core.util.tools.CodeGenerator;
 import com.funs.food.dao.FoodDAO;
 import com.funs.food.model.FoodGroupVO;
+import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
 
 /**
@@ -77,6 +79,14 @@ public class FoodService extends BaseService{
 		// TODO get current shopId, then query it's foods. transiently, use default value : 1
 		int shopId = 1;
 		return foodDAO.queryFoodsByShopId(shopId);
+	}
+	
+	public Map<String, List<FoodVO>> queryAllGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+		return foodDAO.queryAllGroupAndFoods(foodQueryCondition);
+	}
+	
+	public List<FoodGroupVO> queryGroups(int type) {
+		return foodDAO.queryGroups(type);
 	}
 
 	public FoodDAO getFoodDAO() {

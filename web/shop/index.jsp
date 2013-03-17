@@ -100,7 +100,7 @@
 				})
 
 				// 选中第一个.
-				.eq(4).click();
+				.eq(5).click();
 
 				initHeight();
 

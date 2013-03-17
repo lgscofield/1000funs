@@ -21,7 +21,7 @@
 	<!-- 插入Food_Group信息-->
 	<insert id="insertFoodGroup" parameterType="com.funs.food.model.FoodGroupVO">
 		INSERT INTO food_group(group_name,image,detail,type,deleted) VALUES
-		(#{groupName},#{detail},#{image},#{type},false)
+		(#{groupName},#{image},#{detail},#{type},false)
 	</insert>
 
 	<!-- 根据shopId在架的所有单品-->
@@ -51,6 +51,51 @@
 	<!-- 查询food表的总行数 -->
 	<select id="q" resultType="int">
 		SELECT COUNT(*) FROM food where deleted=false
+	</select>
+	
+	<!-- 查询所有的分组及食物 -->
+	<select id="queryAllGroupAndFoods" parameterType="com.funs.food.model.FoodQueryCondition"
+		resultType="com.funs.food.model.FoodVO">
+		<!--  -->
+		select 
+		    t.*, g.id group_id, g.group_name
+		from
+		    (select 
+		        f.*, fs.group_id gid, fs.origin_price, fs.current_price, fs.stock
+		    from
+		        food_re_shop fs
+		    join food f ON (fs.food_id = f.id)
+		    where
+		        fs.deleted = false and f.deleted = false and shop_id = #{shopId} and f.type = #{type} and fs.droped = false) t
+		        right join
+		    food_group g ON (t.gid = g.id)
+		where
+		    g.type = #{type}
+		order by g.group_name desc
+		
+		
+		<!-- 
+		select 
+		    f.*,
+		    fs.group_id,
+		    g.group_name, 
+		    fs.origin_price,
+		    fs.current_price,
+		    fs.stock
+		from
+		    food_re_shop fs 
+		    join food f ON (fs.food_id = f.id)
+		    join food_group g ON (fs.group_id = g.id)
+		where
+		    fs.deleted = false and f.deleted = false and g.deleted = false
+		    and shop_id = #{shopId} and f.type = #{type} and g.type = #{type}
+		order by g.group_name
+		 -->
+	</select>
+	
+	<!-- 根据类型(套餐还是配餐)查询所有分组信息 -->
+	<select id="queryGroups" parameterType="int" resultType="com.funs.food.model.FoodGroupVO">
+		select * from food_group g where g.deleted = false and g.type = #{type} order by g.group_name
 	</select>
 	
 </mapper>

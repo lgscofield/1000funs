@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,15 +19,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.funs.food.action.FoodAction;
 import com.funs.food.model.FoodGroupVO;
+import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
 import com.funs.order.action.OrderAction;
 import com.funs.order.model.OrderVOWithFood;
-import com.funs.packages.model.PackageVO;
 import com.funs.shop.model.GroupForm;
 import com.funs.shop.model.OrderFoodView;
 import com.funs.shop.model.OrderView;
 import com.funs.shop.model.QueryForm;
-import com.funs.shop.service.ShopService;
 import com.funs.shop.util.ShopUtil;
 
 
@@ -39,9 +39,6 @@ import com.funs.shop.util.ShopUtil;
 @Controller
 @RequestMapping("/shop")
 public class ShopController {
-	
-	@Autowired
-	private ShopService shopService;
 	
 	@Autowired
 	private OrderAction orderAction;
@@ -92,14 +89,18 @@ public class ShopController {
 	
 	@RequestMapping("/catering")
 	public String toCatering(Model model) {
-		Map<String, List<FoodVO>> foodMaps = shopService.queryFoods();
+		int shopId = 1;
+		FoodQueryCondition foodQueryCondition = new FoodQueryCondition(shopId, FoodVO.TYPE_FOOD);
+		Map<String, List<FoodVO>> foodMaps = foodAction.queryAllGroupAndFoods(foodQueryCondition);
 		model.addAttribute("foodMaps", foodMaps);
 		return "shop/catering";
 	}
 	
 	@RequestMapping("/package")
 	public String toPackage(Model model) {
-		Map<String, List<PackageVO>> packageMaps = shopService.queryPackages();
+		int shopId = 1;
+		FoodQueryCondition foodQueryCondition = new FoodQueryCondition(shopId, FoodVO.TYPE_PACKAGE);
+		Map<String, List<FoodVO>> packageMaps = foodAction.queryAllGroupAndFoods(foodQueryCondition);
 		model.addAttribute("packageMaps", packageMaps);
 		return "shop/package";
 	}
@@ -124,8 +125,18 @@ public class ShopController {
 		vo.setImage(imageName);
 		foodAction.insertFoodGroup(vo);
 		
-		return "redirect:/shop/catering.ac";
+		//redirect
+		String redirect = "redirect:/shop/" + 
+				(groupForm.getType() == FoodVO.TYPE_FOOD ? "catering.ac" : "package.ac");
+		return redirect;
 	}
+	
+//	@RequestMapping(value="/query/group/{type}", method=RequestMethod.GET, produces="application/json")
+//	public @ResponseBody List<FoodGroupVO> queryGroup(@PathVariable int type) {
+//		List<FoodGroupVO> list = foodAction.queryGroups(type);
+//		System.out.println(list);
+//		return list;
+//	}
 	
 	@ExceptionHandler
 	public @ResponseBody String handle(Exception e) {
