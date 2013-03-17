@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+<%@ include file="/web/inc/header.jsp" %>
 <html>
 	<head>
-		<meta charset="utf-8">
 		<title>选择食物</title>
-		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-		<script type="text/javascript" src="../js/jquery-1.8.0.js"></script>
-		<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/1000funs/dwr/engine.js"></script>
-		<script type="text/javascript" src="/1000funs/dwr/interface/FoodAction.js"></script>
-		<script type="text/javascript" src="/1000funs/dwr/interface/PackageAction.js"></script>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="${webRoot}/web/bootstrap/css/bootstrap.min.css">
+		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/interface/FoodAction.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/interface/PackageAction.js"></script>
 		<style type="text/css">
 		
 			body {
@@ -229,7 +230,7 @@
 				var obj=$('<li>').attr('id','food_'+vo.id).attr('title',vo.foodName).click(function(){
 					console.log(vo);
 				}).append(
-						$('<img>').attr('src','../img/'+vo.image)
+						$('<img>').attr('src','${webRoot}'+vo.image)
 						);
 				if($('#ul_'+vo.groupId).length==1){//已存在分区
 					$('#ul_'+vo.groupId).append(obj);
@@ -249,7 +250,7 @@
 			//创建一个套餐
 			function createPackage(vo){
 				var obj=$('<li>').append(
-						$('<img>').attr('id','package_'+vo.id).attr('src','../img/'+vo.image)
+						$('<img>').attr('id','package_'+vo.id).attr('src','${webRoot}'+vo.image)
 						);
 				if($('#ul_'+vo.groupId).length==1){//已存在分区
 					$('#ul_'+vo.groupId).append(obj);
