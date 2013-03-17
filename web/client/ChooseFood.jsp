@@ -226,8 +226,10 @@
 
 			//创建一个食物单品
 			function createFood(vo){
-				var obj=$('<li>').append(
-						$('<img>').attr('id','food_'+vo.id).attr('src','../img/'+vo.image)
+				var obj=$('<li>').attr('id','food_'+vo.id).attr('title',vo.foodName).click(function(){
+					console.log(vo);
+				}).append(
+						$('<img>').attr('src','../img/'+vo.image)
 						);
 				if($('#ul_'+vo.groupId).length==1){//已存在分区
 					$('#ul_'+vo.groupId).append(obj);
