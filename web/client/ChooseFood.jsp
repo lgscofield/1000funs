@@ -4,10 +4,10 @@
 <html>
 	<head>
 		<title>选择食物</title>
-		<meta charset="utf-8">
 		<link rel="stylesheet" href="${webRoot}/web/bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/js/1000funs.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/interface/FoodAction.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/interface/PackageAction.js"></script>
@@ -110,9 +110,19 @@
 
 			$(function(){
 				$('#personNO').val(plateCount);
+				initPosition();
 				queryFoods();
 				queryPackages();
 			});
+
+			//初始化当前地址
+			function initPosition(){
+				if(getParam(window.location.href,'regionId')){
+					$('#position').html(decodeURI(getParam(window.location.href,'regionName')));
+				}else{
+					$('#position').html(decodeURI(getParam(window.location.href,'addressName')));
+				}
+			}
 
 			//激活单品
 			function activateSingle(){
@@ -279,7 +289,7 @@
 			</div>
 		</div>
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 10px;">
-			香丽大厦
+			<span id="position"></span>
 			<a href="/1000funs/web/client/FirstPage.jsp">[修改地址]</a>
 		</div>
 		<div class="container-fluid">

@@ -4,7 +4,6 @@
 <html>
 	<head>	
 		<title>首页</title>
-		<meta charset="utf-8">
 		<link rel="stylesheet" href="${webRoot}/web/bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
@@ -75,7 +74,7 @@
 		//创建一个区域
 		function createRegion(obj){
 			var objLi = $('<li>').append(
-						$('<a>').attr('href',chooseURL+'?regionId='+obj.id).attr('class','thumbnail text_center').append(
+						$('<a>').attr('href',encodeURI(chooseURL+'?regionId='+obj.id+'&regionName='+obj.regionName)).attr('class','thumbnail text_center').append(
 							$('<img>').attr('src','${webRoot}'+obj.image).css('width','100px').css('height','100px').attr('class','img-circle')
 						).append($('<div>').html(obj.regionName))
 					);
@@ -86,7 +85,7 @@
 		function createAddress(obj){
 			var objTr = $('<tr>').append(
 							$('<td>').attr('id',obj.id).html(obj.fullName).css('cursor','pointer').click(function(){
-								window.location.href = chooseURL+'?addressId='+obj.id;
+								window.location.href = chooseURL+'?addressId='+obj.id+'&addressName='+obj.shortName;
 							})
 						);
 			$('#list').append(objTr);
