@@ -74,7 +74,7 @@
 							<li><a href="${webRoot}/shop/catering.ac">配餐模式</a></li>
 							<li><a href="${webRoot}/shop/package.ac">套餐模式</a></li>
 							<li class="nav-header">店铺管理</li>
-							<li><a href="#">基本信息</a></li>
+							<li><a href="${webRoot}/web/shop/test.jsp">基本信息</a></li>
 							<li class="nav-header">评价管理</li>
 							<li><a href="#">查看评价</a></li>
 						</ul>
@@ -100,7 +100,7 @@
 				})
 
 				// 选中第一个.
-				.eq(5).click();
+				.eq(7).click();
 
 				initHeight();
 
