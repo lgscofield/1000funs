@@ -20,6 +20,17 @@ public class FoodGroupVO extends BaseVO {
 	 */
 	private int type;
 
+	public FoodGroupVO() {
+	}
+
+	public FoodGroupVO(int id, String groupName, String image, String detail, int type) {
+		this.id = id;
+		this.groupName = groupName;
+		this.image = image;
+		this.detail = detail;
+		this.type = type;
+	}
+
 	public int getId() {
 		return id;
 	}

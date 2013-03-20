@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -131,12 +132,28 @@ public class ShopController {
 		return redirect;
 	}
 	
-//	@RequestMapping(value="/query/group/{type}", method=RequestMethod.GET, produces="application/json")
-//	public @ResponseBody List<FoodGroupVO> queryGroup(@PathVariable int type) {
-//		List<FoodGroupVO> list = foodAction.queryGroups(type);
-//		System.out.println(list);
-//		return list;
-//	}
+	
+	
+	
+	@RequestMapping(value="/query/group/{type}", method=RequestMethod.GET)
+	public @ResponseBody List<FoodGroupVO> queryGroup(@PathVariable int type) {
+		List<FoodGroupVO> list = foodAction.queryGroups(type);
+		System.out.println(list);
+		return list;
+	}
+	
+	@RequestMapping("/query/test")
+	public @ResponseBody FoodGroupVO queryTest() {
+		
+		print(" queryTest ");
+		ObjectMapper mapper = new ObjectMapper();
+		print( mapper );
+		
+		return new FoodGroupVO(1, "groupName", "image", "detail", 1);
+	}
+	
+	
+	
 	
 	@ExceptionHandler
 	public @ResponseBody String handle(Exception e) {

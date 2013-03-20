@@ -14,6 +14,7 @@
 		    <div id="msg-content"><strong>Warning!</strong> Best check yo self, you're not looking too good.</div>
 	    </div>
 	    
+		<p>queryTest: <input type="button" value="queryTest" class="btn" id="queryTest"/> </p>
 		<p>Test Spring MVC HttpMessageConverter(json)<input type="button" value="get json" class="btn" id="get-json"/> </p>
 		<p>Test Spring MVC HttpMessageConverter(json) query2<input type="button" value="get json" class="btn" id="get-json2"/> </p>
 		
@@ -21,6 +22,19 @@
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			jQuery(function($) {
+
+				$("#queryTest").click(function() {
+					var url = "${webRoot}/shop/query/test.do";
+					$.getJSON(url, function(json) {
+						showSuccess("<strong>Well done!</strong> data: " + JSON.stringify(json));
+					})
+					.fail(function(xhr) {
+						showError("<strong>Error!</strong> " + xhr.responseText);
+					});
+					
+				});
+				
+				
 				$("#get-json").click(function() {
 					/*
 					$.get("${webRoot}/shop/query/group/1.ac", function(data) {
@@ -54,10 +68,6 @@
 						showError("<strong>Error!</strong> " + e);
 					});
 				});
-
-
-				//showSuccess("<strong>Well done!</strong> You successfully read this important alert message. ");
-				//showError("<strong>Oh shit!</strong> It seem's something wrong. ");
 			});
 
 			function showSuccess(html) {

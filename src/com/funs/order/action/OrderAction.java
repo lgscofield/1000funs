@@ -12,6 +12,7 @@ import org.directwebremoting.annotations.RemoteProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
 
 import com.funs.core.base.action.BaseAction;
 import com.funs.core.base.model.ResultVO;
@@ -26,6 +27,7 @@ import com.funs.order.service.OrderService;
  * @since JDK1.6
  * @history 2012-12-18 Xingling build
  */
+@Controller
 @RemoteProxy
 public class OrderAction extends BaseAction {
 
