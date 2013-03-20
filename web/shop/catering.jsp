@@ -67,10 +67,10 @@
 				<h3>添加分类</h3>
 			</div>
 			<div class="modal-body">
-				<form id="groupForm" name="groupForm" action="${webRoot}/shop/save/group.ac" method="post" class="form-horizontal form-dialog" enctype="multipart/form-data">
+				<form id="groupForm" name="groupForm" action="${webRoot}/shop/save/group" method="post" class="form-horizontal form-dialog" enctype="multipart/form-data">
 					<div class="control-label">
 						<div class="addfood-photo-wrapper">
-							<img src="${webRoot}/web/img/kuguachaodang1.jpg" id="group-preview" class="addfood-photo img-rounded" alt="">
+							<img src="" id="group-preview" class="addfood-photo img-rounded" alt="">
 						</div>
 						<div class="img-tips hide">点击上传图片</div>
 						<input type="file" id="group-upload" name="file" class="hide">
