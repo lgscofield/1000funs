@@ -10,31 +10,40 @@
 		     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		     http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
     
+	<context:component-scan base-package="com.funs.*" />
+    <mvc:annotation-driven />
+	<mvc:resources mapping="/web/**" location="/web/" />
+    
+	
 	<!-- SpringMVC配置 -->
 	<bean class="com.funs.core.springmvc.ChristControllerHandlerMapping" />
-	<!-- 把标记了@Controller注解的类转换为bean -->
-	<!-- 这句暂时留着做个例子，实质上是没有这个类的 -->
-	<context:component-scan base-package="com.funs.*" />
-	
-	<!-- <mvc:resources mapping="/" location="/" /> -->
-    <!-- <mvc:annotation-driven /> -->
-	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	<bean id="viewNameTranslator" class="com.funs.core.springmvc.ChristRequestToViewNameTranslator"/>
-
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" /> -->
+	
 	<!-- 默认JSP处理 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/web/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
+	<!-- File Upload -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 	
-	<!-- dwr -->
+	
+	<!-- DWR
+	==================================================================== -->
 	<!-- define controller -->
 	<dwr:controller id="dwrController" debug="true" />
+	
 	<!-- scan sping context -->
-	<!-- <dwr:annotation-config id="dwrAnnotationConfig" /> -->
+	<dwr:annotation-config id="dwrAnnotationConfig" />
+	
 	<!-- scan classpath -->
 	<dwr:annotation-scan base-package="com.funs.*" scanDataTransferObject="true" scanRemoteProxy="true" />
+	
+	<!-- no required. for those aren't managed by spring -->
+	<dwr:configuration />
+	
 	<!-- mapping -->
  	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
     	<property name="alwaysUseFullPath" value="true"/>
@@ -44,10 +53,7 @@
 	    	</props>
     	</property>
 	</bean>
-	<!-- no required. for those aren't managed by spring -->
-	<dwr:configuration />
+	<!-- <dwr:url-mapping /> -->
 	
-	<!-- File Upload -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 	
 </beans>

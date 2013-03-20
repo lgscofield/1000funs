@@ -198,6 +198,7 @@
 			<version>1.4.5</version>
 		</dependency>
 		
+		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
