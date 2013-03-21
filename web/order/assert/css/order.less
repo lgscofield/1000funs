@@ -116,6 +116,12 @@ body {
 	.border-radius(4px);
 	.box-shadow(0 1px 1px rgba(0, 0, 0, .05) inset);
 
+	ul {
+		padding: 0px;
+		margin: 0px;
+		list-style: none outside none;
+	}
+
 	.table-item {
 		padding: 5px 10px;
 
@@ -129,9 +135,6 @@ body {
 		}
 
 		&.abnormal {
-			// .order-address, .order-tel {
-			// 	color: #B94A48;
-			// }
 			.head, .forestgreen {
 				.brown()
 			}
@@ -144,9 +147,6 @@ body {
 	}
 
 	> ul {
-		padding: 0px;
-		margin: 0px;
-		list-style: none outside none;
 
 		> li {
 			padding: 10px 10px;
@@ -200,18 +200,6 @@ body {
 			text-overflow: ellipsis;
 			white-space: nowrap;
 
-			/*ul.food-list {
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-
-				li {
-					float: left;
-					// width: 180px;
-					margin-right: 20px;
-				}
-			}*/
-
 			// p
 			.food-list {
 				overflow: hidden;
@@ -226,18 +214,37 @@ body {
 
 		.food-expand {
 			display: none;
-			background-color: #F2F2F2;
 		}
 
-		ul.food-list {
-			padding: 0px;
-			margin: 0px;
-			list-style: none inside none;
+		ul.plate-list {
+			// margin-top: 10px;
 
-			li {
-				margin: 5px 0px;
+			> li {
+				display: inline-block;
+				.ie7-inline-block();
+				margin-right: 10px;
+				margin-top: 10px;
+				border: 1px solid #E5E5E5;
+				vertical-align: top;
+				width: 200px;
+				.border-radius(4px);
+				padding: 5px;
+
+				ul.food-list {
+					li {
+						// margin: 2px 0px;
+						margin-right: 20px;
+						span {
+							float: right;
+							margin-right: -20px;
+						}
+					}
+				}
+				
 			}
 		}
+
+
 		
 	}
 }

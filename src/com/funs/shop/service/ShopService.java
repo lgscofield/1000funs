@@ -41,7 +41,7 @@ public class ShopService {
 		vo.setTotalPrice(price);
 		vo.setExceptTime("11:50");
 		vo.setCreateTime("9:50");
-		vo.setFoodList(generateOrderViewFoods(11));
+//		vo.setFoodList(generateOrderViewFoods(11));
 		list.add(vo);
 		
 		vo = new OrderView();
@@ -51,7 +51,7 @@ public class ShopService {
 		vo.setTotalPrice(price -= 3);
 		vo.setExceptTime("12:30");
 		vo.setCreateTime("11:50");
-		vo.setFoodList(generateOrderViewFoods(8));
+//		vo.setFoodList(generateOrderViewFoods(8));
 		list.add(vo);
 		
 		vo = new OrderView();
@@ -61,7 +61,7 @@ public class ShopService {
 		vo.setTotalPrice(price -= 3);
 		vo.setExceptTime("11:30");
 		vo.setCreateTime("9:30");
-		vo.setFoodList(generateOrderViewFoods(5));
+//		vo.setFoodList(generateOrderViewFoods(5));
 		list.add(vo);
 		
 		

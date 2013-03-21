@@ -5,6 +5,8 @@
  * @return {[type]}   [description]
  */
 jQuery(function ($) {
+
+
 	$(".table-list .link").click(function (e) {
 		var $this = $(this), 
 			$tableItem = $this.closest("div.table-item"), 
@@ -21,5 +23,8 @@ jQuery(function ($) {
 			});
 		}
 	});
+
+
+	$(".table-list > ul > li:odd").css("background-color", "#F2F2F2");
 });
 

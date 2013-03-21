@@ -167,11 +167,16 @@ public class ShopController {
 	 */
 	private List<OrderView> transferOrderVOToView(List<OrderVOWithFood> list) {
 		List<OrderView> ret = new ArrayList<OrderView>();
-		int oldOrderId = 0;
+		int oldOrderId = 0, oldPlate = 0;
 		OrderView view = null;
+		List<List<OrderFoodView>> plateList = null;
+		List<OrderFoodView> foodList = null;
 		for(OrderVOWithFood vo : list) {
 			if(oldOrderId != vo.getId()) { // new
+				//reset
 				oldOrderId = vo.getId();
+				oldPlate = 0;
+				
 				if(view != null) ret.add(view); //add the prior one
 				view = new OrderView();
 				view.setId(vo.getId());
@@ -182,13 +187,21 @@ public class ShopController {
 				view.setOrderStatus(vo.getOrderStatus());
 				view.setPhone(vo.getPhone());
 				view.setTotalPrice(vo.getTotalPrice());
-				List<OrderFoodView> foodList = new ArrayList<OrderFoodView>();
-				view.setFoodList(foodList);
+				
+				plateList = new ArrayList<List<OrderFoodView>>();
+				view.setPlateList(plateList);
 			}
+			
+			if(oldPlate != vo.getPlate()) {
+				oldPlate = vo.getPlate();
+				foodList = new ArrayList<OrderFoodView>();
+				plateList.add(foodList);
+			}
+			
 			OrderFoodView foodView = new OrderFoodView();
 			foodView.setFood(vo.getFoodName());
 			foodView.setAmount(vo.getAmount());
-			view.getFoodList().add(foodView);
+			foodList.add(foodView);
 		}
 		ret.add(view); //add the last one
 		return ret;

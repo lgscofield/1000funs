@@ -44,9 +44,9 @@ public class OrderView extends BaseVO {
 	private String exceptTime;
 	
 	/**
-	 * 食物列表
+	 * 餐盘列表
 	 */
-	private List<OrderFoodView> foodList;
+	private List<List<OrderFoodView>> plateList;
 	
 	/**
 	 * 订单状态: 0:new 1:dealed 2:exception 3:evaluated
@@ -93,9 +93,25 @@ public class OrderView extends BaseVO {
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	
+	/**
+	 * 获取餐盘总数
+	 * @return
+	 */
+	public int getPlateAmout() {
+		return this.plateList.size();
+	}
 
+	/**
+	 * 获取食品总数
+	 * @return
+	 */
 	public int getTotalAmount() {
-		return this.foodList.size();
+		int count = 0;
+		for(List<OrderFoodView> list : plateList) {
+			count += list.size();
+		}
+		return count;
 	}
 
 	public String getCreateTime() {
@@ -114,12 +130,12 @@ public class OrderView extends BaseVO {
 		this.exceptTime = exceptTime;
 	}
 
-	public List<OrderFoodView> getFoodList() {
-		return foodList;
+	public List<List<OrderFoodView>> getPlateList() {
+		return plateList;
 	}
 
-	public void setFoodList(List<OrderFoodView> foodList) {
-		this.foodList = foodList;
+	public void setPlateList(List<List<OrderFoodView>> plateList) {
+		this.plateList = plateList;
 	}
 
 	public int getOrderStatus() {
