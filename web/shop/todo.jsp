@@ -56,6 +56,7 @@
 				
 				<div class="table-list">
 					<ul>
+						<%-- 
 						<c:forEach items="${orderList}" var="order" >
 						<li>
 							<div class="table-item">
@@ -94,11 +95,60 @@
 							</div>
 						</li>
 						</c:forEach>
+						--%>
+						
+						<c:forEach items="${orderList}" var="order" >
+						<li>
+							<div class="table-item">
+								<div class="row-fluid head">
+									<div class="pull-left link left-panel">
+										<span class="">${order.address}</span>
+										<span class="forestgreen">${order.phone}</span>
+									</div>
+									<div class="pull-right">
+										<span class="brown">${order.totalPrice}元 (共${order.totalAmount}个)</span>
+										<a href="#" class="btn btn-mini order-btn-out"><i class="icon-print"></i>&nbsp;出单</a>
+									</div>
+								</div>
+								<div class="row-fluid body">
+									<div class="left-panel">
+										<span class="order-number">订单号: ${order.id }</span>
+										<span class="order-time">
+											预计送达时间: ${order.exceptTime } (下单时间: ${order.createTime })
+										</span>
+									</div>
+									<div class="food-collapse">
+										<p class="food-list">
+										<c:forEach items="${order.plateList }" var="foodList" varStatus="status">
+											<span>餐盘${status.count }:</span>
+											<c:forEach items="${foodList }" var="food">
+											<span>${food }</span>
+											</c:forEach>
+										</c:forEach>
+										</p>
+									</div>
+									<div class="food-expand">
+										<ul class="plate-list">
+										<c:forEach items="${order.plateList }" var="foodList">
+											<li>
+												<ul class="food-list">
+												<c:forEach items="${foodList }" var="food">
+													<li><span>x${food.amount }</span>${food.food } </li>
+												</c:forEach>
+												</ul>
+											</li>
+										</c:forEach>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						</c:forEach>
 					</ul>
 				</div>
 				
 				<!-- pagination -->
-				<div id="page"></div>
+				<!-- <div id="page"></div> -->
 			</div>
 		</div>
 

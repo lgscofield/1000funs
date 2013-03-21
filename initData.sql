@@ -89,70 +89,70 @@ INSERT INTO `1000funs`.`orders` (`id`, `shop_id`, `create_time`, `except_time`, 
 INSERT INTO `1000funs`.`orders` (`id`, `shop_id`, `create_time`, `except_time`, `user_id`, `address`, `contact`, `phone`, `order_status`, `total_price`, `deleted`) VALUES ('12', '1', '2013-02-14 10:10:00', '2013-02-14 10:50:00', '3', '深圳市福田区莲花路2075号香丽大厦二楼', '路人甲', '13669877898', '1', '17', false);
 
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('1', '1', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('1', '2', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('1', '3', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('1', '4', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('1', '5', '3', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('1', '6', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('1', '7', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('1', '1', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('1', '2', '2', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('1', '3', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('1', '4', '1', 3, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('1', '5', '3', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('1', '6', '1', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('1', '7', '1', 3, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('2', '9', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('2', '8', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('2', '2', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('2', '4', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('2', '9', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('2', '8', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('2', '2', '2', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('2', '4', '1', 1, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('3', '10', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('3', '11', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('3', '12', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('3', '9', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('3', '5', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('3', '10', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('3', '11', '2', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('3', '12', '2', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('3', '9', '1', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('3', '5', '1', 1, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('4', '10', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('4', '11', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('4', '12', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('4', '10', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('4', '11', '2', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('4', '12', '1', 1, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('5', '1', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('5', '11', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('5', '12', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('5', '10', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('5', '5', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('5', '1', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('5', '11', '2', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('5', '12', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('5', '10', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('5', '5', '1', 2, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('6', '10', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('6', '11', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('6', '12', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('6', '4', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('6', '5', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('6', '3', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('6', '2', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('6', '10', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('6', '11', '2', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('6', '12', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('6', '4', '1', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('6', '5', '1', 3, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('6', '3', '2', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('6', '2', '1', 3, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('7', '5', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('7', '6', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('7', '1', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('7', '3', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('7', '2', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('7', '4', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('7', '5', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('7', '6', '2', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('7', '1', '1', 3, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('7', '3', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('7', '2', '1', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('7', '4', '1', 1, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('8', '6', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('8', '2', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('8', '6', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('8', '2', '1', 1, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('9', '9', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('9', '5', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('9', '6', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('9', '2', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('9', '9', '2', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('9', '5', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('9', '6', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('9', '2', '1', 1, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('10', '6', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('10', '1', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('10', '1', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('10', '1', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('10', '1', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('10', '1', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('10', '6', '2', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('10', '1', '1', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('10', '1', '1', 2, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('10', '1', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('10', '1', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('10', '1', '1', 1, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('11', '11', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('11', '12', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('11', '13', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('11', '11', '2', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('11', '12', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('11', '13', '1', 1, false);
 
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('12', '6', '2', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('12', '5', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('12', '3', '1', false);
-INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `deleted`) VALUES ('12', '9', '1', false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('12', '6', '2', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('12', '5', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('12', '3', '1', 1, false);
+INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('12', '9', '1', 1, false);

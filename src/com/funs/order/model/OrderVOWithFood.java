@@ -12,6 +12,8 @@ public class OrderVOWithFood extends OrderVO {
 	private String foodImage;
 	
 	private int amount;
+	
+	private int plate;
 
 	public int getFoodId() {
 		return foodId;
@@ -44,4 +46,13 @@ public class OrderVOWithFood extends OrderVO {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+
+	public int getPlate() {
+		return plate;
+	}
+
+	public void setPlate(int plate) {
+		this.plate = plate;
+	}
+	
 }

@@ -24,5 +24,7 @@ jQuery(function ($) {
 			});
 		}
 	});
+
+	$(".table-list > ul > li:odd").css("background-color", "#F2F2F2");
 });
 

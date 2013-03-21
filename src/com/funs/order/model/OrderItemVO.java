@@ -11,6 +11,8 @@ public class OrderItemVO extends BaseVO {
 	private int itemId;
 
 	private int amount;
+	
+	private int plate;
 
 	private int deleted;
 
@@ -44,6 +46,14 @@ public class OrderItemVO extends BaseVO {
 
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+	
+	public int getPlate() {
+		return plate;
+	}
+
+	public void setPlate(int plate) {
+		this.plate = plate;
 	}
 
 	public int getDeleted() {

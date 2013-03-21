@@ -307,6 +307,11 @@ body {
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
 }
+.table-list ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none outside none;
+}
 .table-list .table-item {
   padding: 5px 10px;
 }
@@ -319,11 +324,6 @@ body {
 }
 .table-list .row {
   margin-left: 0px;
-}
-.table-list > ul {
-  padding: 0px;
-  margin: 0px;
-  list-style: none outside none;
 }
 .table-list > ul > li {
   padding: 10px 10px;
@@ -362,18 +362,6 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  /*ul.food-list {
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-
-				li {
-					float: left;
-					// width: 180px;
-					margin-right: 20px;
-				}
-			}*/
-
 }
 .table-list .body .food-collapse .food-list {
   overflow: hidden;
@@ -385,15 +373,27 @@ body {
 }
 .table-list .body .food-expand {
   display: none;
-  background-color: #F2F2F2;
 }
-.table-list .body ul.food-list {
-  padding: 0px;
-  margin: 0px;
-  list-style: none inside none;
+.table-list .body ul.plate-list > li {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  margin-right: 10px;
+  margin-top: 10px;
+  border: 1px solid #E5E5E5;
+  vertical-align: top;
+  width: 200px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 5px;
 }
-.table-list .body ul.food-list li {
-  margin: 5px 0px;
+.table-list .body ul.plate-list > li ul.food-list li {
+  margin-right: 20px;
+}
+.table-list .body ul.plate-list > li ul.food-list li span {
+  float: right;
+  margin-right: -20px;
 }
 .table-list-comment {
   padding: 5px 20px;

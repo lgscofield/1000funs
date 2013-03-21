@@ -235,6 +235,7 @@ CREATE  TABLE IF NOT EXISTS `1000funs`.`order_item` (
   `order_id` INT NULL ,
   `item_id` INT NULL COMMENT 'food or package\\\'s id' ,
   `amount` INT NULL ,
+  `plate` INT NULL DEFAULT 1 ,
   `deleted` TINYINT(1) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;

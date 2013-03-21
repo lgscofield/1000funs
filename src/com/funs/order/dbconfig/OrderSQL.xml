@@ -24,7 +24,7 @@
 		TODO: 下面几个SQL也要改. 这里应该不区分item_type，不管自选还是套餐，应该都要查出来.
 	 -->
 	<select id="queryOrdersWithFood" parameterType="com.funs.order.model.OrderQueryCondition" resultType="com.funs.order.model.OrderVOWithFood">
-		select o.*, i.id as food_id, i.amount as amount, f.food_name, f.image as food_image
+		select o.*, i.id as food_id, i.amount as amount, i.plate, f.food_name, f.image as food_image
 		from order_item i, orders o, food f
 		where i.deleted = false and o.deleted = false and f.deleted = false
 		  and o.id = i.order_id and i.item_id = f.id
@@ -37,7 +37,7 @@
 		  <if test="keyword != null">
 		  	and concat(o.address,o.contact,o.phone) like #{keyWord}
 		  </if>
-		order by o.id
+		order by o.id, i.plate, f.food_name
 	</select>
 	
 	<!-- 根据shopId查询某个店铺的待处理的订单列表总数 -->
@@ -53,7 +53,7 @@
 	
 	<!-- 根据shopId查询某个店铺的订单列表(分页查询)(连同食物一起查出来) -->
 	<select id="queryOrdersWithFoodByPage" parameterType="com.funs.order.model.OrderQueryCondition" resultType="com.funs.order.model.OrderVOWithFood">
-		select o.*, i.id as food_id, i.amount as amount, f.food_name, f.image as food_image
+		select o.*, i.id as food_id, i.amount as amount, i.plate, f.food_name, f.image as food_image
 		from order_item i, 
 		     (select * from orders 
 		     	where deleted = false 
@@ -71,7 +71,7 @@
 		  <if test="keyword != null">
 		  	and concat(o.address,o.contact,o.phone) like #{keyWord}
 		  </if>
-		order by o.id
+		order by o.id, i.plate, f.food_name
 	</select>
 
 </mapper>
