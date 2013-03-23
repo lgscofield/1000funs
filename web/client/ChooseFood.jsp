@@ -60,6 +60,7 @@
 			
 			.input_num{
 				width: 11px;
+				margin-bottom: 0px;
 			}
 			
 			.total{
@@ -98,6 +99,7 @@
 			ul.food-area-list > li {
 				float: left;
 				margin: 10px 0px 10px 15px;
+				cursor: pointer;
 			}
 			ul.food-area-list > li > img {
 				width: 100px;
@@ -107,6 +109,8 @@
 		<script type="text/javascript">
 
 			var plateCount=1;//餐盘数量
+			//订单
+			var order={foodList:[]};
 
 			$(function(){
 				$('#personNO').val(plateCount);
@@ -148,10 +152,6 @@
 			jQuery.fn.plus = function(){
 				var input = this.next();
 				var val = input.val();
-				if(val==5){
-					$('#alert-over-max-num').show();
-					return;
-				}
 				if(val==''){
 					val=0;
 				}
@@ -164,19 +164,22 @@
 				var input = this.prev();
 				var val = input.val();
 				if(val==''||val==1){
-					return;
+					return false;
 				}
 				input.val(parseInt(val)-1);
+				return true;
 			}
 
 			//添加餐盘
-			function addPlate(){
+			function addPlate(obj){
 				if(plateCount==5){
+					$('#alert-over-max-num').show();
 					return;
 				}
+				obj.plus();
 				plateCount++;
 				$('#plate-list').append(
-					$('<div>').attr('class','plate').attr('id','plate'+plateCount).append(
+					$('<div>').attr('class','plate').attr('id',plateCount).append(
 						$('<div>').attr('class','plate_title notActive').html('餐盘'+plateCount).click(function(){
 							$(this).activatePlate();
 						})
@@ -184,9 +187,71 @@
 						$('<div>').attr('class','plate_content')
 						.append('<table class="table table-condensed table-hover" style="margin-bottom: 0px;"></table>')
 					).append(
-						$('<div>').attr('class','plate_bottom').html('合计    21元').css('display','none')
+						$('<div>').attr('class','plate_bottom').css('display','none')
 					)
 				);
+			}
+
+			//向餐盘添加食物
+			function putFoodToPlateBox(vo){
+				var plateId = $('#plate-area').find('.active').parent().attr('id');
+				if(getFoodFromOrder(vo.id,plateId)){//餐盘中已经有该食物
+					$('#'+vo.id+'_'+plateId+'amount').val(parseInt($('#'+vo.id+'_'+plateId+'amount').val())+1);
+					return;
+				}
+				var name = vo.foodName?vo.foodName:vo.packageName;
+				var food = $('<tr>').append($('<td style="width:50%">').html(name))
+									.append($('<td>').html(vo.currentPrice+'元    X'))
+									.append($('<td>').append(
+													$('<a>').attr('href','#').click(function(){
+														$(this).plus();
+														putFoodToOrder(vo);
+													}).html("<i class='icon-plus'></i>")
+											).append(
+													$('<input>').attr('id',vo.id+'_'+plateId+'amount').attr('class','input_num').attr('type','text').attr('value',1)
+											).append(
+													$('<a>').attr('href','#').click(function(){
+														if($(this).reduce()){
+															deleteFoodFromOrder(vo.id,plateId);
+														}
+													}).html("<i class='icon-minus'></i>")
+											).append($('<span>').html('份')));
+				$('#plate-area').find('.active').next().children().append(food);
+			}
+
+			//向订单添加食物
+			function putFoodToOrder(vo){
+				var plateId = $('#plate-area').find('.active').parent().attr('id');
+				var foodVO = getFoodFromOrder(vo.id,plateId);
+				if(foodVO==null){
+					foodVO = {};
+					foodVO.id = vo.id;
+					foodVO.price = vo.currentPrice;
+					foodVO.plate = plateId;
+					foodVO.amount = 1;
+					order.foodList.push(foodVO);
+				}else{
+					foodVO.amount++;
+				}
+				updateOrderTotal();
+				updatePlateTotal(plateId);
+			}
+
+			//从订单中去除一份食物
+			function deleteFoodFromOrder(foodId,plateId){
+				getFoodFromOrder(foodId,plateId).amount--;
+				updateOrderTotal();
+				updatePlateTotal(plateId);
+			}
+
+			//从订单中获取食物
+			function getFoodFromOrder(foodId,plateId){
+				for(var i=0;i<order.foodList.length;++i){
+					if(order.foodList[i].id==foodId&&order.foodList[i].plate==plateId){
+						return order.foodList[i];
+					}
+				}
+				return null;
 			}
 
 			//删除餐盘
@@ -231,22 +296,25 @@
 			function queryPackages(){
 				PackageAction.queryPackages(function(data){
 					for(var i=0;i<data.length;++i){
-						createPackage(data[i]);
+						createFood(data[i]);
 					}
 				});
 			}
 
-			//创建一个食物单品
+			//创建一个食物
 			function createFood(vo){
-				var obj=$('<li>').attr('id','food_'+vo.id).attr('title',vo.foodName).click(function(){
-					console.log(vo);
+				var name = vo.foodName?vo.foodName:vo.packageName;
+				var $area = vo.foodName?$('#single'):$('#package');
+				var obj=$('<li>').attr('id','food_'+vo.id).attr('title',name).click(function(){
+					putFoodToPlateBox(vo);
+					putFoodToOrder(vo);
 				}).append(
 						$('<img>').attr('src','${webRoot}'+vo.image)
 						);
 				if($('#ul_'+vo.groupId).length==1){//已存在分区
 					$('#ul_'+vo.groupId).append(obj);
 				}else{//未存在分区
-					$('#single').append(
+					$area.append(
 							$('<tr>').append(
 									$('<td>').attr('class','food-area-head').html(vo.groupName)
 									).append(
@@ -258,24 +326,25 @@
 				}
 			}
 
-			//创建一个套餐
-			function createPackage(vo){
-				var obj=$('<li>').append(
-						$('<img>').attr('id','package_'+vo.id).attr('src','${webRoot}'+vo.image)
-						);
-				if($('#ul_'+vo.groupId).length==1){//已存在分区
-					$('#ul_'+vo.groupId).append(obj);
-				}else{//未存在分区
-					$('#package').append(
-							$('<tr>').append(
-									$('<td>').attr('class','food-area-head').html(vo.groupName)
-									).append(
-									$('<td>').append(
-											$('<ul>').attr('id','ul_'+vo.groupId).attr('class','food-area-list').append(obj)
-											)
-									)
-							);
+			//计算并更新订单总价
+			function updateOrderTotal(){
+				var total=0;
+				for(var i=0;i<order.foodList.length;++i){
+					total+=order.foodList[i].price*order.foodList[i].amount;
 				}
+				order.total_price = total;
+				$('#total').html('总价   '+total+'元');
+			}
+
+			//计算并更新餐盘总价
+			function updatePlateTotal(plateId){
+				var total=0;
+				for(var i=0;i<order.foodList.length;++i){
+					if(order.foodList[i].plate==plateId){
+						total+=order.foodList[i].price*order.foodList[i].amount;
+					}
+				}
+				$('#'+plateId).children('.plate_bottom').html('总价   '+total+'元');
 			}
 		</script>
 	</head>
@@ -316,7 +385,7 @@
 			    	<div id="plate-area" class="plate-area">
 				    	<label>
 				    		共
-				    		<a href="#" onclick="$(this).plus();addPlate();"><i class="icon-plus"></i></a>
+				    		<a href="#" onclick="addPlate($(this));"><i class="icon-plus"></i></a>
 				    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;" disabled="disabled">
 							<a href="#" onclick="$(this).reduce();reducePlate();"><i class="icon-minus"></i></a>
 				    		人用餐
@@ -326,51 +395,19 @@
 							</div>
 				    	</label>
 				    	<div id="plate-list">
-					    	<div id="plate_1" class="plate">
+					    	<div id=1 class="plate">
 					    		<div class="plate_title active" onclick="$(this).activatePlate();">
 					    			餐盘1
 					    		</div>
 					    		<div class="plate_content">
 					    			<table class="table table-condensed table-hover" style="margin-bottom: 0px;">
-					    				<tr>
-					    					<td>宫保鸡丁</td>
-					    					<td>
-					    						7元X
-									    		<a href="#" onclick="$(this).plus();"><i class="icon-plus"></i></a>
-									    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
-												<a href="#" onclick="$(this).reduce();"><i class="icon-minus"></i></a>
-												份
-					    					</td>
-					    				</tr>
-					    				<tr>
-					    					<td>米饭</td>
-					    					<td>
-					    						7元X
-									    		<a href="#" onclick="$(this).plus();"><i class="icon-plus"></i></a>
-									    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
-												<a href="#" onclick="$(this).reduce();"><i class="icon-minus"></i></a>
-												份
-					    					</td>
-					    				</tr>
-					    				<tr>
-					    					<td>酸辣排骨</td>
-					    					<td>
-					    						7元X
-									    		<a href="#" onclick="$(this).plus();"><i class="icon-plus"></i></a>
-									    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;">
-												<a href="#" onclick="$(this).reduce();"><i class="icon-minus"></i></a>
-												份
-					    					</td>
-					    				</tr>
 									</table>
 					    		</div>
 					    		<div class="plate_bottom">
-					    			合计    21元
 					    		</div>
 					    	</div>
 					    </div>
-				    	<div class="total">
-				    		合计    21元
+				    	<div id="total" class="total">
 				    	</div>
 						<button class="btn btn-large btn-primary ok" type="button">确定</button>
 					</div>
