@@ -346,7 +346,7 @@ ul.food-area-list {
 
 
 // dialog
-.controls-addfood {
+.controls-clear-right {
 	.control-group {
 		&:after {
 			clear: right;
@@ -354,13 +354,18 @@ ul.food-area-list {
 	}
 }
 
-.addfood-form {
+.form-dialog {
 	padding: 10px 25px;
 
-	.addfood-photo {
+	.addfood-photo-wrapper, .addfood-photo {
 		width: 160px;
 		height: 160px;
 		cursor: pointer;
+	}
+
+	.addfood-photo-wrapper {
+		.border-radius(6px);
+		border: 1px solid #ccc;
 	}
 
 	.img-tips {
@@ -378,6 +383,7 @@ ul.food-area-list {
 		}
 	}
 }
+
 
 .control-group {
 

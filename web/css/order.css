@@ -469,18 +469,25 @@ ul.food-area-list > li > img {
 ul.food-area-list > li .food-add {
   cursor: pointer;
 }
-.controls-addfood .control-group:after {
+.controls-clear-right .control-group:after {
   clear: right;
 }
-.addfood-form {
+.form-dialog {
   padding: 10px 25px;
 }
-.addfood-form .addfood-photo {
+.form-dialog .addfood-photo-wrapper,
+.form-dialog .addfood-photo {
   width: 160px;
   height: 160px;
   cursor: pointer;
 }
-.addfood-form .img-tips {
+.form-dialog .addfood-photo-wrapper {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.form-dialog .img-tips {
   font-size: 17px;
   font-weight: bold;
   text-align: center;
@@ -488,7 +495,7 @@ ul.food-area-list > li .food-add {
   margin: -90px 30px 0px;
   cursor: pointer;
 }
-.addfood-form .addfood-describe textarea {
+.form-dialog .addfood-describe textarea {
   width: 415px;
 }
 .control-group.control-group-small .control-label {
