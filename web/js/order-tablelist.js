@@ -5,9 +5,10 @@
  * @return {[type]}   [description]
  */
 jQuery(function ($) {
-	$(".table-list .link").click(function (e) {
+	$(".table-list > ul > li").click(function (e) {
 		var $this = $(this), 
-			$tableItem = $this.closest("div.table-item"), 
+			// $tableItem = $this.closest("div.table-item"), 
+			$tableItem = $("div.table-item", $this), 
 			expand = $tableItem.hasClass("expand");
 
 		if(!expand) {

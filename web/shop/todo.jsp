@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ include file="/web/inc/header.jsp" %>
@@ -56,47 +57,6 @@
 				
 				<div class="table-list">
 					<ul>
-						<%-- 
-						<c:forEach items="${orderList}" var="order" >
-						<li>
-							<div class="table-item">
-								<div class="row-fluid head">
-									<div class="pull-left link left-panel">
-										<span class="">${order.address}</span>
-										<span class="forestgreen">${order.phone}</span>
-									</div>
-									<div class="pull-right left-panel">
-										<span class="brown">${order.totalPrice}元 (共${order.totalAmount}个)</span>
-										<a href="#" class="btn btn-mini order-btn-out"><i class="icon-print"></i>&nbsp;出单</a>
-									</div>
-								</div>
-								<div class="row-fluid body">
-									<div>
-										<span class="order-number">订单号: ${order.id }</span>
-										<span class="order-time">
-											预计送达时间: ${order.exceptTime } (下单时间: ${order.createTime })
-										</span>
-									</div>
-									<div class="food-collapse">
-										<p class="food-list">
-										<c:forEach items="${order.foodList}" var="food">
-											<span>${food }</span>
-										</c:forEach>
-										</p>
-									</div>
-									<div class="food-expand">
-										<ul class="food-list">
-										<c:forEach items="${order.foodList}" var="food">
-											<li>${food }</li>
-										</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
-						</c:forEach>
-						--%>
-						
 						<c:forEach items="${orderList}" var="order" >
 						<li>
 							<div class="table-item">
@@ -144,11 +104,17 @@
 							</div>
 						</li>
 						</c:forEach>
+						
+						<c:if test="${fn:length(orderList) < 1}"><!-- empty -->
+						<li>
+							<div class="table-item center">
+								本列表暂无记录
+							</div>
+						</li>
+						</c:if>
 					</ul>
-				</div>
+				</div><!--/ end of table-list -->
 				
-				<!-- pagination -->
-				<!-- <div id="page"></div> -->
 			</div>
 		</div>
 
@@ -172,18 +138,15 @@
 			}
 
 			function initEvent() {
-				$("#page").pagination({
-					className: "pagination-right", 
-					page: 1, 
-					count: 10, 
-					callback: function (current_page, new_page) {
-					}, 
-					refresh: false
-				});
 
 				$(".btn-group").buttonGroup().change(function(e) {
 					$("#overtime").val(this.val());
 					$("#queryForm").submit();
+				});
+				
+				$(".order-btn-out").click(function() {
+					console.log('出单');
+					return false;
 				});
 			}
 

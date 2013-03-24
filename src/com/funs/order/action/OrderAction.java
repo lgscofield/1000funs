@@ -82,18 +82,17 @@ public class OrderAction extends BaseAction {
 	 * @return
 	 */
 	@RemoteMethod
-	public List<OrderVOWithFood> queryNewOrdersWithFood(Map<String, Object> map) {
+	public List<OrderVOWithFood> queryNewOrdersWithFood(OrderQueryCondition queryCondition) {
 		// 当前用户ID, 店铺ID, 应该可以在全局进行查找, 这里暂时写死.
 		int currUserId = 3, currShopId = 1;
 		
-		OrderQueryCondition param = new OrderQueryCondition();
-		param.setUserId(currUserId);
-		param.setShopId(currShopId);
+		queryCondition.setUserId(currUserId);
+		queryCondition.setShopId(currShopId);
 //		param.setItemType(OrderItemVO.ITEM_TYPE_FOOD);
-		param.addStatus(OrderVO.ORDER_STATUS_NEW);
+		queryCondition.addStatus(OrderVO.ORDER_STATUS_NEW);
 		
 		
-		return orderService.queryOrdersWithFood(param);
+		return orderService.queryOrdersWithFood(queryCondition);
 	}
 
 	/**
@@ -104,19 +103,18 @@ public class OrderAction extends BaseAction {
 	 * @return
 	 */
 	public List<OrderVOWithFood> queryHistoryOrdersWithFoodByPage(
-			Map<String, Object> map, int pageNo, int pageSize) {
+			OrderQueryCondition queryCondition, int pageNo, int pageSize) {
 		// 当前用户ID, 店铺ID, 应该可以在全局进行查找, 这里暂时写死.
 		int currUserId = 3, currShopId = 1;
 		
-		OrderQueryCondition param = new OrderQueryCondition();
-		param.setPageNo(pageNo);
-		param.setPageSize(pageSize);
-		param.setUserId(currUserId);
-		param.setShopId(currShopId);
+		queryCondition.setPageNo(pageNo);
+		queryCondition.setPageSize(pageSize);
+		queryCondition.setUserId(currUserId);
+		queryCondition.setShopId(currShopId);
 //		param.setItemType(OrderItemVO.ITEM_TYPE_FOOD);
-		param.addStatus(OrderVO.ORDER_STATUS_DEALED, OrderVO.ORDER_STATUS_EVALUATED, OrderVO.ORDER_STATUS_EXCEPTION);
+//		queryCondition.addStatus(OrderVO.ORDER_STATUS_DEALED, OrderVO.ORDER_STATUS_EVALUATED, OrderVO.ORDER_STATUS_EXCEPTION);
 		
-		return orderService.queryOrdersWithFoodByPage(param);
+		return orderService.queryOrdersWithFoodByPage(queryCondition);
 	}
 	
 	/**
@@ -124,12 +122,11 @@ public class OrderAction extends BaseAction {
 	 * @param map
 	 * @return
 	 */
-	public int queryHistoryOrdersCount(Map<String, Object> map) {
+	public int queryHistoryOrdersCount(OrderQueryCondition queryCondition) {
 		// 当前用户ID, 店铺ID, 应该可以在全局进行查找, 这里暂时写死.
 		int currShopId = 1;
-		OrderQueryCondition param = new OrderQueryCondition();
-		param.setShopId(currShopId);
-		param.addStatus(OrderVO.ORDER_STATUS_DEALED, OrderVO.ORDER_STATUS_EVALUATED, OrderVO.ORDER_STATUS_EXCEPTION);
-		return orderService.queryOrdersCount(param);
+		queryCondition.setShopId(currShopId);
+//		queryCondition.addStatus(OrderVO.ORDER_STATUS_DEALED, OrderVO.ORDER_STATUS_EVALUATED, OrderVO.ORDER_STATUS_EXCEPTION);
+		return orderService.queryOrdersCount(queryCondition);
 	}
 }

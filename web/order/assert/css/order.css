@@ -528,3 +528,6 @@ ul.food-area-list > li .food-add {
 .brown {
   color: #A52A2A;
 }
+.center {
+  text-align: center;
+}

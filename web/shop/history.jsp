@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ include file="/web/inc/header.jsp" %>
@@ -25,14 +26,15 @@
 						<div class="span4">
 							<div class="input-prepend">
 								<button type="submit" class="btn"><i class="icon-search"></i></button>
-								<input type="text" class="search-query search-query-width" placeholder="search" >
+								<!-- <input type="text" class="search-query search-query-width" placeholder="search" > -->
+								<form:input path="keyword" cssClass="search-query search-query-width" placeholder="search"/>
 							</div>
 						</div>
 						<div class="span4">
 							<div class="btn-group" data-toggle="buttons-radio">
-								<button type="button" class="btn active">全部</button>
-								<button type="button" class="btn ">正常</button>
-								<button type="button" class="btn ">异常</button>
+								<button type="button" class="btn " value="1,2,3">全部</button>
+								<button type="button" class="btn " value="1,3">正常</button>
+								<button type="button" class="btn " value="2">异常</button>
 							</div>
 						</div>
 						<div class="span4">
@@ -42,6 +44,7 @@
 					<form:hidden path="pageNo"/>
 					<form:hidden path="pageSize"/>
 					<form:hidden path="pageCount"/>
+					<form:hidden path="orderStatus"/>
 					</form:form>
 				</div>
 				
@@ -69,22 +72,39 @@
 									</div>
 									<div class="food-collapse">
 										<p class="food-list">
-											<c:forEach items="${order.foodList}" var="food">
+										<c:forEach items="${order.plateList }" var="foodList" varStatus="status">
+											<span>餐盘${status.count }:</span>
+											<c:forEach items="${foodList }" var="food">
 											<span>${food }</span>
 											</c:forEach>
+										</c:forEach>
 										</p>
 									</div>
 									<div class="food-expand">
-										<ul class="food-list">
-											<c:forEach items="${order.foodList}" var="food">
-											<li>${food }</li>
-											</c:forEach>
+										<ul class="plate-list">
+										<c:forEach items="${order.plateList }" var="foodList">
+											<li>
+												<ul class="food-list">
+												<c:forEach items="${foodList }" var="food">
+													<li><span>x${food.amount }</span>${food.food } </li>
+												</c:forEach>
+												</ul>
+											</li>
+										</c:forEach>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</li>
 						</c:forEach>
+						
+						<c:if test="${fn:length(orderList) < 1}"><!-- empty -->
+						<li>
+							<div class="table-item center">
+								本列表暂无记录
+							</div>
+						</li>
+						</c:if>
 					</ul>
 				</div>
 				
@@ -99,11 +119,22 @@
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/js/jquery.pagination.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/js/jquery.bootstrap.extension.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/js/order-tablelist.js"></script>
 		<script type="text/javascript">
 
 			jQuery(function ($) {
-
+				init();
+				initEvent();
+			});
+			
+			function init() {
+				// button group init
+				var status = $("#orderStatus").val();
+				$(".btn-group > button[value='"+status+"']").addClass("active");
+			}
+			
+			function initEvent() {
 				$("#page").pagination({
 					className: "pagination-right", 
 					page: $("#pageNo").val(), 
@@ -114,8 +145,12 @@
 					}, 
 					refresh: false
 				});
-
-			});
+				
+				$(".btn-group").buttonGroup().change(function(e) {
+					$("#orderStatus").val(this.val());
+					$("#queryForm").submit();
+				});
+			}
 
 		</script>
 	</body>
