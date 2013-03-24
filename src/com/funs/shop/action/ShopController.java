@@ -1,11 +1,11 @@
 package com.funs.shop.action;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +23,8 @@ import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
 import com.funs.order.action.OrderAction;
+import com.funs.order.model.OrderQueryCondition;
+import com.funs.order.model.OrderVO;
 import com.funs.order.model.OrderVOWithFood;
 import com.funs.shop.model.GroupForm;
 import com.funs.shop.model.OrderFoodView;
@@ -59,9 +61,12 @@ public class ShopController {
 	@RequestMapping("/todo")
 	public String toToodo(Model model, @ModelAttribute QueryForm queryForm) {
 		
-		Map<String, Object> condition = new HashMap<String, Object>();
+		OrderQueryCondition condition = new OrderQueryCondition();
+		BeanUtils.copyProperties(queryForm, condition);
+		
 		List<OrderVOWithFood> list0 = orderAction.queryNewOrdersWithFood(condition);
 		List<OrderView> list = transferOrderVOToView(list0);
+		
 		model.addAttribute("orderList", list);
 		return "shop/todo";
 	}
@@ -75,8 +80,13 @@ public class ShopController {
 		}
 		if(queryForm.getPageNo() == 0) queryForm.setPageNo(1);
 		if(queryForm.getPageSize() == 0) queryForm.setPageSize(4);
+		if(queryForm.getOrderStatus() == null) queryForm.setOrderStatus(
+				OrderVO.ORDER_STATUS_DEALED+","+
+					OrderVO.ORDER_STATUS_EXCEPTION+","+
+						OrderVO.ORDER_STATUS_EVALUATED);
 		
-		Map<String, Object> condition = new HashMap<String, Object>();
+		OrderQueryCondition condition = new OrderQueryCondition();
+		BeanUtils.copyProperties(queryForm, condition);
 		
 		int count = orderAction.queryHistoryOrdersCount(condition);
 		queryForm.setRecordCount(count);
@@ -203,7 +213,9 @@ public class ShopController {
 			foodView.setAmount(vo.getAmount());
 			foodList.add(foodView);
 		}
-		ret.add(view); //add the last one
+		if(view != null) { //add the last one
+			ret.add(view); 
+		}
 		return ret;
 	}
 	

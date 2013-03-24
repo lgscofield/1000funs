@@ -1,5 +1,8 @@
 package com.funs.shop.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class QueryForm {
 
 	private int pageNo;
@@ -7,6 +10,7 @@ public class QueryForm {
 	private int recordCount;
 	private String keyword;
 	private int overtime;
+	private String orderStatus;
 
 	public int getPageNo() {
 		return pageNo;
@@ -42,10 +46,26 @@ public class QueryForm {
 	public void setOvertime(int overtime) {
 		this.overtime = overtime;
 	}
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+	public List<Integer> getOrderStatusList() {
+		List<Integer> ret = new ArrayList<Integer>();
+		if(this.orderStatus == null) return ret;
+		String[] status = this.orderStatus.split(",");
+		for(String item : status) {
+			ret.add(Integer.parseInt(item));
+		}
+		return ret;
+	}
 	@Override
 	public String toString() {
 		return "QueryForm [pageNo=" + pageNo + ", pageSize=" + pageSize
 				+ ", recordCount" + recordCount + ", keyword=" + keyword 
-				+ ", overtime=" + overtime + "]";
+				+ ", overtime=" + overtime + ", orderStatus=" + orderStatus
+				+ "]";
 	}
 }

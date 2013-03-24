@@ -35,7 +35,7 @@
 		  	#{item}
 		  </foreach>
 		  <if test="keyword != null">
-		  	and concat(o.address,o.contact,o.phone) like #{keyWord}
+		  	and concat(o.address,o.contact,o.phone) like concat('%',#{keyword},'%')
 		  </if>
 		order by o.id, i.plate, f.food_name
 	</select>
@@ -69,7 +69,7 @@
 		  and o.id = i.order_id and i.item_id = f.id
 		  <!-- and i.item_type = #{itemType} -->
 		  <if test="keyword != null">
-		  	and concat(o.address,o.contact,o.phone) like #{keyWord}
+		  	and concat(o.address,o.contact,o.phone) like concat('%',#{keyword},'%')
 		  </if>
 		order by o.id, i.plate, f.food_name
 	</select>
