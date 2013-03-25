@@ -27,6 +27,14 @@ public class OrderDAO extends BaseDAO {
 	}
 	
 	/**
+	 * 更新Order的状态
+	 * @param orderVO
+	 */
+	public int updateOrderStatus(OrderVO orderVO) {
+		return this.sqlSessionTemplate.update("com.funs.order.updateOrderStatus", orderVO);
+	}
+	
+	/**
 	 * 根据用户id查询未处理订单
 	 * @param userId
 	 * @return 未处理的订单对象集合

@@ -14,6 +14,8 @@ public class OrderVOWithFood extends OrderVO {
 	private int amount;
 	
 	private int plate;
+	
+	private double price;
 
 	public int getFoodId() {
 		return foodId;
@@ -54,5 +56,12 @@ public class OrderVOWithFood extends OrderVO {
 	public void setPlate(int plate) {
 		this.plate = plate;
 	}
-	
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 }

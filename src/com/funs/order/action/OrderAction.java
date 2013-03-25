@@ -5,7 +5,6 @@
 package com.funs.order.action;
 
 import java.util.List;
-import java.util.Map;
 
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
@@ -73,6 +72,14 @@ public class OrderAction extends BaseAction {
 			return null;
 		}
 	}
+	
+	/**
+	 * 更新Order的状态
+	 * @param orderVO
+	 */
+	public int updateOrderStatus(OrderVO orderVO) {
+		return orderService.updateOrderStatus(orderVO);
+	}
 
 	/**
 	 * 根据条件查询订单列表
@@ -111,8 +118,6 @@ public class OrderAction extends BaseAction {
 		queryCondition.setPageSize(pageSize);
 		queryCondition.setUserId(currUserId);
 		queryCondition.setShopId(currShopId);
-//		param.setItemType(OrderItemVO.ITEM_TYPE_FOOD);
-//		queryCondition.addStatus(OrderVO.ORDER_STATUS_DEALED, OrderVO.ORDER_STATUS_EVALUATED, OrderVO.ORDER_STATUS_EXCEPTION);
 		
 		return orderService.queryOrdersWithFoodByPage(queryCondition);
 	}
@@ -126,7 +131,6 @@ public class OrderAction extends BaseAction {
 		// 当前用户ID, 店铺ID, 应该可以在全局进行查找, 这里暂时写死.
 		int currShopId = 1;
 		queryCondition.setShopId(currShopId);
-//		queryCondition.addStatus(OrderVO.ORDER_STATUS_DEALED, OrderVO.ORDER_STATUS_EVALUATED, OrderVO.ORDER_STATUS_EXCEPTION);
 		return orderService.queryOrdersCount(queryCondition);
 	}
 }

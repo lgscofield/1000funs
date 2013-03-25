@@ -58,7 +58,7 @@
 				<div class="table-list">
 					<ul>
 						<c:forEach items="${orderList}" var="order" >
-						<li>
+						<li id="order_item_${order.id }">
 							<div class="table-item">
 								<div class="row-fluid head">
 									<div class="pull-left link left-panel">
@@ -66,8 +66,8 @@
 										<span class="forestgreen">${order.phone}</span>
 									</div>
 									<div class="pull-right">
-										<span class="brown">${order.totalPrice}元 (共${order.totalAmount}个)</span>
-										<a href="#" class="btn btn-mini order-btn-out"><i class="icon-print"></i>&nbsp;出单</a>
+										<span class="brown">${order.totalPrice}元</span>
+										<a href="#" class="btn btn-mini order-btn-out" value="${order.id }"><i class="icon-print"></i>&nbsp;出单</a>
 									</div>
 								</div>
 								<div class="row-fluid body">
@@ -79,22 +79,23 @@
 									</div>
 									<div class="food-collapse">
 										<p class="food-list">
-										<c:forEach items="${order.plateList }" var="foodList" varStatus="status">
-											<span>餐盘${status.count }:</span>
-											<c:forEach items="${foodList }" var="food">
-											<span>${food }</span>
+										<c:forEach items="${order.plateList }" var="plate">
+											<span>餐盘${plate.no }:</span>
+											<c:forEach items="${plate.foodList }" var="food">
+											<span>${food.food } x${food.amount }</span>
 											</c:forEach>
 										</c:forEach>
 										</p>
 									</div>
 									<div class="food-expand">
 										<ul class="plate-list">
-										<c:forEach items="${order.plateList }" var="foodList">
+										<c:forEach items="${order.plateList }" var="plate">
 											<li>
 												<ul class="food-list">
-												<c:forEach items="${foodList }" var="food">
+													<c:forEach items="${plate.foodList }" var="food">
 													<li><span>x${food.amount }</span>${food.food } </li>
-												</c:forEach>
+													</c:forEach>
+													<li><span class="price">￥${plate.price }</span></li>
 												</ul>
 											</li>
 										</c:forEach>
@@ -144,9 +145,45 @@
 					$("#queryForm").submit();
 				});
 				
+				//出单
 				$(".order-btn-out").click(function() {
-					console.log('出单');
+					orderOut($(this).attr("value"));
 					return false;
+				});
+				
+				//是否自动出单
+				$("#auto_checkbox").change(function() {
+					if($(this).is(":checked")) { //自动出单
+						// 自动出单这个功能必须往后台一张公共表写入配置信息，
+						// 后台读到"是否自动出单",从而在后台自动处理.
+					} else { //不自动
+						
+					}
+				});
+			}
+			
+			// 出单
+			function orderOut(id) {
+				var ret = updateOrders(id); // 更新状态
+				if(ret) { // 打印订单
+					
+				}
+			}
+			
+			// 更新订单状态
+			function updateOrders(id) {
+				$.ajax({
+					type: "put", 
+					url: "${webRoot}/shop/order/"+id+"?status=1"
+				})
+				.done(function(data) {
+					if(data == true) {
+						$("#order_item_"+id).slideUp();
+						return true;
+					} else {
+						alert("出单失败");
+						return false;
+					}
 				});
 			}
 

@@ -15,12 +15,34 @@
 	    </div>
 	    
 		<p>queryTest: <input type="button" value="queryTest" class="btn" id="queryTest"/> </p>
-		<p>Test Spring MVC HttpMessageConverter(json)<input type="button" value="get json" class="btn" id="get-json"/> </p>
-		<p>Test Spring MVC HttpMessageConverter(json) query2<input type="button" value="get json" class="btn" id="get-json2"/> </p>
+		<p>
+			update order status. id:<input type="text" id="order_id" class="input-small" value=""/> 
+			status:<input type="text" id="order_status" class="input-small" value=""/> 
+			<button id="update_order_status" value="" class="btn">updateOrderStatus</button>
+		</p>
 		
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
+
+			function showSuccess(html) {
+				showMsg(html, "alert-success");
+			}
+	
+			function showError(html) {
+				showMsg(html, "alert-error");
+			}
+	
+			function showMsg(html, className) {
+				$("#msg-content").html(html);
+				$("#msg").addClass(className).removeClass("hide")
+					.fadeIn(400)
+					.delay(2000)
+					.fadeOut(800, function() {
+						$(this).removeClass(className).addClass("hide");
+					});
+			}
+			
 			jQuery(function($) {
 
 				$("#queryTest").click(function() {
@@ -31,62 +53,19 @@
 					.fail(function(xhr) {
 						showError("<strong>Error!</strong> " + xhr.responseText);
 					});
-					
 				});
 				
-				
-				$("#get-json").click(function() {
-					/*
-					$.get("${webRoot}/shop/query/group/1.ac", function(data) {
-						showSuccess("<strong>Well done!</strong> data: " + data);
-					}, "json")
-					.fail(function(e) {
-						showError("<strong>Error!</strong> " + e);
-					});
-					*/
-
+				$("#update_order_status").click(function() {
+					var id = $("#order_id").val(), status = $("#order_status").val();
 					$.ajax({
-						url: "${webRoot}/shop/query/group/1.ac",
-						beforeSend: function(req) {
-							req.setRequestHeader("Accept", "application/json");
-						}, 
-						success: function(json) {
-							showSuccess("<strong>Well done!</strong> json: " + json);
-						}, 
-						error: function(xhr) {
-							showError("<strong>Error!</strong> " + xhr.responseText);
-						}
-					});
-					
-				});
-
-				$("#get-json2").click(function() {
-					$.get("${webRoot}/shop/query2/group/1.ac", function(data) {
-						showSuccess("<strong>Well done!</strong> data: " + data);
-					}, "json")
-					.fail(function(e) {
-						showError("<strong>Error!</strong> " + e);
-					});
+						type: "put", 
+						url: "${webRoot}/shop/order/"+id+"?status="+status
+					})
+					.done(function(data) { showSuccess("Success! data: " + data); })
+					.fail(function(xhr) { showError("Fail! error: " + xhr.responseText); });
 				});
 			});
 
-			function showSuccess(html) {
-				showMsg(html, "alert-success");
-			}
-
-			function showError(html) {
-				showMsg(html, "alert-error");
-			}
-
-			function showMsg(html, className) {
-				$("#msg-content").html(html);
-				$("#msg").addClass(className).removeClass("hide")
-					.fadeIn(400)
-					.delay(2000)
-					.fadeOut(800, function() {
-						$(this).removeClass(className).addClass("hide");
-					});
-			}
 		</script>
 	</body>
 </html>

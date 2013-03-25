@@ -395,6 +395,10 @@ body {
   float: right;
   margin-right: -20px;
 }
+.table-list .body ul.plate-list > li ul.food-list li .price {
+  font-style: italic;
+  font-size: 12px;
+}
 .table-list-comment {
   padding: 5px 20px;
 }

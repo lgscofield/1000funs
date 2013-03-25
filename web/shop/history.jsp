@@ -52,15 +52,15 @@
 					<ul>
 						<c:forEach items="${orderList}" var="order" >
 						<li>
-							<div class="table-item <c:if test="${order.orderStatus == 2 }">abnormal</c:if>">
+							<div id="table_item_${order.id }" class="table-item <c:if test="${order.orderStatus == 2 }">abnormal</c:if>">
 								<div class="row-fluid head">
 									<div class="pull-left link left-panel">
 										<span class="">${order.address }</span>
 										<span class="forestgreen">${order.phone }</span>
 									</div>
 									<div class="pull-right">
-										<span class="brown">${order.totalPrice }元 (共${order.totalAmount }个)</span>
-										<a href="#" class="btn btn-mini order-btn-abnormal"><i class="icon-warning-sign"></i>&nbsp;异常</a>
+										<span class="brown">${order.totalPrice }元 </span>
+										<a href="#" class="btn btn-mini order-btn-abnormal" value="${order.id }"><i class="icon-warning-sign"></i>&nbsp;异常</a>
 									</div>
 								</div>
 								<div class="row-fluid body">
@@ -72,22 +72,23 @@
 									</div>
 									<div class="food-collapse">
 										<p class="food-list">
-										<c:forEach items="${order.plateList }" var="foodList" varStatus="status">
-											<span>餐盘${status.count }:</span>
-											<c:forEach items="${foodList }" var="food">
-											<span>${food }</span>
+										<c:forEach items="${order.plateList }" var="plate">
+											<span>餐盘${plate.no }:</span>
+											<c:forEach items="${plate.foodList }" var="food">
+											<span>${food.food } x${food.amount }</span>
 											</c:forEach>
 										</c:forEach>
 										</p>
 									</div>
 									<div class="food-expand">
 										<ul class="plate-list">
-										<c:forEach items="${order.plateList }" var="foodList">
+										<c:forEach items="${order.plateList }" var="plate">
 											<li>
 												<ul class="food-list">
-												<c:forEach items="${foodList }" var="food">
+													<c:forEach items="${plate.foodList }" var="food">
 													<li><span>x${food.amount }</span>${food.food } </li>
-												</c:forEach>
+													</c:forEach>
+													<li><span class="price">￥${plate.price }</span></li>
 												</ul>
 											</li>
 										</c:forEach>
@@ -149,6 +150,28 @@
 				$(".btn-group").buttonGroup().change(function(e) {
 					$("#orderStatus").val(this.val());
 					$("#queryForm").submit();
+				});
+				
+				$(".order-btn-abnormal").click(function() {
+					markAsException($(this).attr("value"));
+					return false;
+				});
+			}
+			
+			//标记为异常
+			function markAsException(id) {
+				$.ajax({
+					type: "put", 
+					url: "${webRoot}/shop/order/"+id+"?status=2"
+				})
+				.done(function(data) {
+					if(data == true) {
+						$("#table_item_"+id).addClass("abnormal");
+						return true;
+					} else {
+						alert("标记为异常失败");
+						return false;
+					}
 				});
 			}
 
