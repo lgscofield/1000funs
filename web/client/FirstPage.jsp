@@ -5,6 +5,7 @@
 	<head>	
 		<title>首页</title>
 		<link rel="stylesheet" href="${webRoot}/web/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="${webRoot}/web/client/css/clientNew.css">
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
@@ -13,47 +14,6 @@
 			body{
 				background: url("${webRoot}/web/client/img/bg.jpg") no-repeat;
 				font-family: "Microsoft Yahei", SimSun, Tahoma, Helvetica, Arial, sans-serif;
-			}
-			
-			.logo{
-				background: url("${webRoot}/web/client/img/logo.png") center bottom no-repeat;
-				height: 150px;
-			}
-			
-			.center{
-				position: relative; 
-				left: 50%; 
-				padding-top: 50px; 
-				overflow: auto;
-				margin-left: -315px;
-			}
-			
-			.bottom{
-				width: 326px;
-				margin-top: 50px;
-				position: relative;
-				left: 50%;
-				margin-left: -163px;
-			}
-			
-			.region{
-				margin-left: 15px; 
-				margin-right: 15px;
-			}
-			
-			.list{
-				margin-bottom: 0px;
-				background-color: white;
-				display: none;
-				position: absolute;
-			}
-			
-			.addAddress{
-				background-color: white;
-			}
-			
-			.text_center{
-				text-align: center;
 			}
 		</style>
 		<script type="text/javascript">

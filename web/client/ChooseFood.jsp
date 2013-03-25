@@ -5,6 +5,7 @@
 	<head>
 		<title>选择食物</title>
 		<link rel="stylesheet" href="${webRoot}/web/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="${webRoot}/web/client/css/clientNew.css">
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/js/1000funs.js"></script>
@@ -17,97 +18,12 @@
 				font-family: "Microsoft Yahei", SimSun, Tahoma, Helvetica, Arial, sans-serif;
 			}
 			
-			.tab{
-				height: 80px; 
-				text-align: center;
-				font-size: 30px;
-				padding-top: 25px;
-				cursor: pointer;
-			}
-			
-			.active{
-				background-color: #0088cc;
-				color: white;
-			}
-			
-			.notActive{
-				background-color: #f7f7f9;
-				color: black;
-			}
-			
-			.plate-area{
-				position: fixed;
-			}
-			
-			.plate{
-				border: 1px solid rgba(0, 0, 0, 0.3);
-				width: 300px;
-				margin-bottom: 10px;
-			}
-			
-			.plate_title{
-				text-align: center;
-				font-size: 18px;
-				height: 30px; 
-				padding-top: 7px;
-				cursor: pointer;
-			}
-			
-			.plate_bottom{
-				border-top: 1px solid rgba(0, 0, 0, 0.3); 
-				text-align: right;
-			}
-			
-			.input_num{
-				width: 11px;
-				margin-bottom: 0px;
-			}
-			
-			.total{
-				text-align: right;
-				font-size: 30px;
-				width: 300px;
-				margin-bottom: 10px;
-			}
-			
-			.ok{
-				width: 300px;
-			}
-			
-			.foods-area {
-				margin: 15px 0px 0px 0px;
-				padding: 0px;
-				width: 750px;
-			}
-			.foods-area td {
-				border-width: 1px 0px 1px 1px;
-				border-style: solid;
-				border-color: rgba(0, 0, 0, 0.15);
-			}
-			.foods-area .food-area-head {
-				font-size: 30px;
-				vertical-align: middle;
-				text-align: center;
-				width: 100px;
-				padding: 0px 10px;
-			}
-			ul.food-area-list {
-				padding: 0px;
-				margin: 0px;
-				list-style: none outside none;
-			}
-			ul.food-area-list > li {
-				float: left;
-				margin: 10px 0px 10px 15px;
-				cursor: pointer;
-			}
-			ul.food-area-list > li > img {
-				width: 100px;
-				height: 100px;
-			}
 		</style>
 		<script type="text/javascript">
-
+			var regionId = "${param.regionId}";
+			var regionName = "${param.regionName}";
+			var addressId = "${param.addressId}";
+			var addressName = "${param.addressName}";
 			var plateCount=1;//餐盘数量
 			//订单
 			var order={foodList:[]};
@@ -117,11 +33,12 @@
 				initPosition();
 				queryFoods();
 				queryPackages();
+				console.log(regionName);
 			});
 
 			//初始化当前地址
 			function initPosition(){
-				if(getParam(window.location.href,'regionId')){
+				if(regionId){
 					$('#position').html(decodeURI(getParam(window.location.href,'regionName')));
 				}else{
 					$('#position').html(decodeURI(getParam(window.location.href,'addressName')));
@@ -171,41 +88,44 @@
 			}
 
 			//添加餐盘
-			function addPlate(obj){
+			function plusPlate(){
 				if(plateCount==5){
 					$('#alert-over-max-num').show();
 					return;
 				}
-				obj.plus();
 				plateCount++;
+				createPlate(plateCount);
+			}
+
+			//创建餐盘
+			function createPlate(plateId){
 				$('#plate-list').append(
-					$('<div>').attr('class','plate').attr('id',plateCount).append(
-						$('<div>').attr('class','plate_title notActive').html('餐盘'+plateCount).click(function(){
+					$('<div>').attr('class','plate').attr('id',plateId).append(
+						$('<div>').attr('class','plate_title notActive').html('餐盘'+plateId).click(function(){
 							$(this).activatePlate();
 						})
 					).append(
 						$('<div>').attr('class','plate_content')
 						.append('<table class="table table-condensed table-hover" style="margin-bottom: 0px;"></table>')
 					).append(
-						$('<div>').attr('class','plate_bottom').css('display','none')
+						$('<div>').attr('class','plate_bottom')
 					)
 				);
 			}
 
 			//向餐盘添加食物
-			function putFoodToPlateBox(vo){
-				var plateId = $('#plate-area').find('.active').parent().attr('id');
+			function putFoodToPlateBox(vo,plateId){
 				if(getFoodFromOrder(vo.id,plateId)){//餐盘中已经有该食物
 					$('#'+vo.id+'_'+plateId+'amount').val(parseInt($('#'+vo.id+'_'+plateId+'amount').val())+1);
 					return;
 				}
-				var name = vo.foodName?vo.foodName:vo.packageName;
-				var food = $('<tr>').append($('<td style="width:50%">').html(name))
+				vo.name = vo.foodName?vo.foodName:vo.packageName;
+				var food = $('<tr>').append($('<td style="width:50%">').html(vo.name))
 									.append($('<td>').html(vo.currentPrice+'元    X'))
 									.append($('<td>').append(
 													$('<a>').attr('href','#').click(function(){
 														$(this).plus();
-														putFoodToOrder(vo);
+														putFoodToOrder(vo,plateId);
 													}).html("<i class='icon-plus'></i>")
 											).append(
 													$('<input>').attr('id',vo.id+'_'+plateId+'amount').attr('class','input_num').attr('type','text').attr('value',1)
@@ -216,16 +136,16 @@
 														}
 													}).html("<i class='icon-minus'></i>")
 											).append($('<span>').html('份')));
-				$('#plate-area').find('.active').next().children().append(food);
+				$('#'+plateId).children('.plate_content').children().append(food);
 			}
 
 			//向订单添加食物
-			function putFoodToOrder(vo){
-				var plateId = $('#plate-area').find('.active').parent().attr('id');
+			function putFoodToOrder(vo,plateId){
 				var foodVO = getFoodFromOrder(vo.id,plateId);
 				if(foodVO==null){
 					foodVO = {};
 					foodVO.id = vo.id;
+					foodVO.name = vo.name;
 					foodVO.price = vo.currentPrice;
 					foodVO.plate = plateId;
 					foodVO.amount = 1;
@@ -306,8 +226,9 @@
 				var name = vo.foodName?vo.foodName:vo.packageName;
 				var $area = vo.foodName?$('#single'):$('#package');
 				var obj=$('<li>').attr('id','food_'+vo.id).attr('title',name).click(function(){
-					putFoodToPlateBox(vo);
-					putFoodToOrder(vo);
+					var plateId = $('#plate-area').find('.active').parent().attr('id');
+					putFoodToPlateBox(vo,plateId);
+					putFoodToOrder(vo,plateId);
 				}).append(
 						$('<img>').attr('src','${webRoot}'+vo.image)
 						);
@@ -332,8 +253,8 @@
 				for(var i=0;i<order.foodList.length;++i){
 					total+=order.foodList[i].price*order.foodList[i].amount;
 				}
-				order.total_price = total;
-				$('#total').html('总价   '+total+'元');
+				order.totalPrice = total;
+				$('#total').html('合计   '+total+'元');
 			}
 
 			//计算并更新餐盘总价
@@ -345,6 +266,11 @@
 					}
 				}
 				$('#'+plateId).children('.plate_bottom').html('总价   '+total+'元');
+			}
+
+			//打开订单页面
+			function openOrderPage(){
+				window.open('${webRoot}/web/client/SubmitOrder.jsp','submitOrder');
 			}
 		</script>
 	</head>
@@ -385,7 +311,7 @@
 			    	<div id="plate-area" class="plate-area">
 				    	<label>
 				    		共
-				    		<a href="#" onclick="addPlate($(this));"><i class="icon-plus"></i></a>
+				    		<a href="#" onclick="$(this).plus();plusPlate();"><i class="icon-plus"></i></a>
 				    		<input id="personNO" class="input_num" type="text" value="1" style="margin-bottom: 0px;" disabled="disabled">
 							<a href="#" onclick="$(this).reduce();reducePlate();"><i class="icon-minus"></i></a>
 				    		人用餐
@@ -409,7 +335,7 @@
 					    </div>
 				    	<div id="total" class="total">
 				    	</div>
-						<button class="btn btn-large btn-primary ok" type="button">确定</button>
+						<button class="btn btn-large btn-primary ok" type="button" onclick="openOrderPage();">确定</button>
 					</div>
 			    </div>
 			</div>
