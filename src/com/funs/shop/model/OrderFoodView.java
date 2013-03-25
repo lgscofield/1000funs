@@ -13,11 +13,16 @@ public class OrderFoodView extends BaseVO {
 	 * 数量
 	 */
 	private int amount;
-
+	
+	/**
+	 * 单价
+	 */
+	private double price;
+	
 	public OrderFoodView() {
 	}
 
-	public OrderFoodView(String food, int amount) {
+	public OrderFoodView(String food, int amount, double price) {
 		this.food = food;
 		this.amount = amount;
 	}
@@ -38,8 +43,26 @@ public class OrderFoodView extends BaseVO {
 		this.amount = amount;
 	}
 
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	/**
+	 * 获取总价
+	 * @return
+	 */
+	public double getTotalPrice() {
+		return price * amount;
+	}
+
 	@Override
 	public String toString() {
-		return food + " x" + amount;
+		return "OrderFoodView [food=" + food + ", amount=" + amount
+				+ ", price=" + price + "]";
 	}
+	
 }

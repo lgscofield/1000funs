@@ -46,7 +46,7 @@ public class OrderView extends BaseVO {
 	/**
 	 * 餐盘列表
 	 */
-	private List<List<OrderFoodView>> plateList;
+	private List<PlateVO> plateList;
 	
 	/**
 	 * 订单状态: 0:new 1:dealed 2:exception 3:evaluated
@@ -108,8 +108,8 @@ public class OrderView extends BaseVO {
 	 */
 	public int getTotalAmount() {
 		int count = 0;
-		for(List<OrderFoodView> list : plateList) {
-			count += list.size();
+		for(PlateVO plate : plateList) {
+			count += plate.getFoodList().size();
 		}
 		return count;
 	}
@@ -130,11 +130,11 @@ public class OrderView extends BaseVO {
 		this.exceptTime = exceptTime;
 	}
 
-	public List<List<OrderFoodView>> getPlateList() {
+	public List<PlateVO> getPlateList() {
 		return plateList;
 	}
 
-	public void setPlateList(List<List<OrderFoodView>> plateList) {
+	public void setPlateList(List<PlateVO> plateList) {
 		this.plateList = plateList;
 	}
 

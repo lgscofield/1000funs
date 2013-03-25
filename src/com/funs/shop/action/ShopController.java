@@ -29,12 +29,22 @@ import com.funs.order.model.OrderVOWithFood;
 import com.funs.shop.model.GroupForm;
 import com.funs.shop.model.OrderFoodView;
 import com.funs.shop.model.OrderView;
+import com.funs.shop.model.PlateVO;
 import com.funs.shop.model.QueryForm;
 import com.funs.shop.util.ShopUtil;
 
 
 /**
  * 店铺管理控制器
+ * 
+ * /shop			-->		主页
+ * /shop/todo		-->		订单管理待处理
+ * /shop/history	-->		订单管理已处理
+ * /shop/catering	-->		配餐模式
+ * /shop/package	-->		套餐模式
+ * 
+ * /shop/save/group	-->		保存分组
+ * /shop/order/{id}?status={value}		method=put	-->		更新订单状态
  * 
  * @author jcchen
  *
@@ -116,6 +126,13 @@ public class ShopController {
 		return "shop/package";
 	}
 	
+	/**
+	 * 保存分组
+	 * @param file
+	 * @param groupForm
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/save/group", method=RequestMethod.POST)
 	public String saveGroup(@RequestParam MultipartFile file, @ModelAttribute GroupForm groupForm, Model model) {
 		
@@ -142,6 +159,19 @@ public class ShopController {
 		return redirect;
 	}
 	
+	/**
+	 * 更新订单状态
+	 * @return
+	 */
+	@RequestMapping(value="/order/{id}", method=RequestMethod.PUT, params="status")
+	public @ResponseBody boolean updateOrderStatus(@PathVariable int id, @RequestParam int status) {
+//		System.out.println("id:"+id+"; status:"+status);
+		OrderVO vo = new OrderVO();
+		vo.setId(id);
+		vo.setOrderStatus(status);
+		int ret = orderAction.updateOrderStatus(vo);
+		return ret > 0;
+	}
 	
 	
 	
@@ -179,8 +209,8 @@ public class ShopController {
 		List<OrderView> ret = new ArrayList<OrderView>();
 		int oldOrderId = 0, oldPlate = 0;
 		OrderView view = null;
-		List<List<OrderFoodView>> plateList = null;
-		List<OrderFoodView> foodList = null;
+		List<PlateVO> plateList = null;
+		PlateVO plate = null;
 		for(OrderVOWithFood vo : list) {
 			if(oldOrderId != vo.getId()) { // new
 				//reset
@@ -198,20 +228,21 @@ public class ShopController {
 				view.setPhone(vo.getPhone());
 				view.setTotalPrice(vo.getTotalPrice());
 				
-				plateList = new ArrayList<List<OrderFoodView>>();
+				plateList = new ArrayList<PlateVO>();
 				view.setPlateList(plateList);
 			}
 			
 			if(oldPlate != vo.getPlate()) {
 				oldPlate = vo.getPlate();
-				foodList = new ArrayList<OrderFoodView>();
-				plateList.add(foodList);
+				plate = new PlateVO(vo.getPlate());
+				plateList.add(plate);
 			}
 			
 			OrderFoodView foodView = new OrderFoodView();
 			foodView.setFood(vo.getFoodName());
 			foodView.setAmount(vo.getAmount());
-			foodList.add(foodView);
+			foodView.setPrice(vo.getPrice());
+			plate.addFood(foodView);
 		}
 		if(view != null) { //add the last one
 			ret.add(view); 

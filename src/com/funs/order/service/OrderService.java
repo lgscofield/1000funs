@@ -77,4 +77,12 @@ public class OrderService extends BaseService {
 	public int queryOrdersCount(OrderQueryCondition params) {
 		return orderDAO.queryOrdersCount(params);
 	}
+	
+	/**
+	 * 更新Order的状态
+	 * @param orderVO
+	 */
+	public int updateOrderStatus(OrderVO orderVO) {
+		return orderDAO.updateOrderStatus(orderVO);
+	}
 }
