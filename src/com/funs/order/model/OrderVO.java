@@ -5,6 +5,8 @@
 
 package com.funs.order.model;
 
+import java.util.List;
+
 import com.funs.core.base.model.BaseVO;
 
 /**
@@ -29,6 +31,8 @@ public class OrderVO extends BaseVO {
 	private String address;
 	private String contact;
 	private String phone;
+	
+	private List<OrderItemVO> foodList;
 	
 	//0:new
 	//1:dealed
@@ -137,5 +141,12 @@ public class OrderVO extends BaseVO {
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	public List<OrderItemVO> getFoodList() {
+		return foodList;
+	}
+	public void setFoodList(List<OrderItemVO> foodList) {
+		this.foodList = foodList;
+	}
+
 	
 }

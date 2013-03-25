@@ -48,6 +48,7 @@ public class OrderAction extends BaseAction {
 	 * @param orderVO
 	 * @return 提交是否成功
 	 */
+	@RemoteMethod
 	public ResultVO submitOrder(OrderVO orderVO) {
 		try {
 			orderService.submitOrder(orderVO);
