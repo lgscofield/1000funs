@@ -48,4 +48,18 @@ public class ConfigService {
 		return configDAO.getConfig(key);
 	}
 	
+	/**
+	 * 获取一个配置值,如果不存在,则使用defaultValue新增一个并返回
+	 * @param key
+	 * @param defaultValue
+	 * @param className
+	 * @return
+	 */
+	public ConfigVO getConfig(String key, String defaultValue, String className) {
+		ConfigVO configVO = getConfig(key);
+		if(configVO != null) return configVO;
+		configVO = new ConfigVO(key, defaultValue, className);
+		insertConfig(configVO);
+		return configVO;
+	}
 }
