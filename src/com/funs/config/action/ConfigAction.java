@@ -24,6 +24,10 @@ public class ConfigAction {
 		return configService.insertConfig(configVO);
 	}
 	
+	public int insertConfig(String key, String value) {
+		return insertConfig(new ConfigVO(key, value));
+	}
+	
 	/**
 	 * 更新配置信息
 	 * @param configVO
@@ -33,6 +37,10 @@ public class ConfigAction {
 		return configService.updateConfig(configVO);
 	}
 	
+	public int updateConfig(String key, String value) {
+		return updateConfig(new ConfigVO(key, value));
+	}
+	
 	/**
 	 * 获取一个配置值
 	 * @param key
@@ -40,6 +48,17 @@ public class ConfigAction {
 	 */
 	public ConfigVO getConfig(String key) {
 		return configService.getConfig(key);
+	}
+	
+	/**
+	 * 获取一个配置值,如果不存在,则使用defaultValue新增一个并返回
+	 * @param key
+	 * @param defaultValue
+	 * @param className
+	 * @return
+	 */
+	public ConfigVO getConfig(String key, String defaultValue, String className) {
+		return configService.getConfig(key, defaultValue, className);
 	}
 	
 	@RequestMapping("/config/test")

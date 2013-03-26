@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.funs.config.action.ConfigAction;
 import com.funs.food.action.FoodAction;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
@@ -31,6 +32,7 @@ import com.funs.shop.model.OrderFoodView;
 import com.funs.shop.model.OrderView;
 import com.funs.shop.model.PlateVO;
 import com.funs.shop.model.QueryForm;
+import com.funs.shop.util.ShopConstants;
 import com.funs.shop.util.ShopUtil;
 
 
@@ -45,6 +47,7 @@ import com.funs.shop.util.ShopUtil;
  * 
  * /shop/save/group	-->		保存分组
  * /shop/order/{id}?status={value}		method=put	-->		更新订单状态
+ * /autoprint/{value}		更新是否自动出单
  * 
  * @author jcchen
  *
@@ -58,6 +61,9 @@ public class ShopController {
 	
 	@Autowired
 	private FoodAction foodAction;
+	
+	@Autowired
+	private ConfigAction configAction;
 
 	/**
 	 * 
@@ -165,7 +171,6 @@ public class ShopController {
 	 */
 	@RequestMapping(value="/order/{id}", method=RequestMethod.PUT, params="status")
 	public @ResponseBody boolean updateOrderStatus(@PathVariable int id, @RequestParam int status) {
-//		System.out.println("id:"+id+"; status:"+status);
 		OrderVO vo = new OrderVO();
 		vo.setId(id);
 		vo.setOrderStatus(status);
@@ -173,6 +178,16 @@ public class ShopController {
 		return ret > 0;
 	}
 	
+	/**
+	 * 是否自动出单(更新配置项信息)
+	 * @param value
+	 * @return
+	 */
+	@RequestMapping(value="/autoprint/{value}")
+	public @ResponseBody boolean updateAutoPrint(@PathVariable String value) {
+		int ret = configAction.updateConfig(ShopConstants.CONFIG_KEY_AUTO_PRINT, value);
+		return ret > 0;
+	}
 	
 	
 	@RequestMapping(value="/query/group/{type}", method=RequestMethod.GET)

@@ -153,12 +153,12 @@
 				
 				//是否自动出单
 				$("#auto_checkbox").change(function() {
-					if($(this).is(":checked")) { //自动出单
-						// 自动出单这个功能必须往后台一张公共表写入配置信息，
-						// 后台读到"是否自动出单",从而在后台自动处理.
-					} else { //不自动
-						
-					}
+					var state = $(this).is(":checked"), 
+						url = "${webRoot}/shop/autoprint/" + state;
+					$.get(url, function(ret) {
+						//更新成功
+					})
+					.fail(function(xhr) { alert(xhr.responseText); }); //自动出单更新失败
 				});
 			}
 			
