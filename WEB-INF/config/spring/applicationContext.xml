@@ -77,6 +77,14 @@
 		<property name="packageDAO" ref="PackageDAOImpl" />
 	</bean>
 	
+	<!-- 配置模块，注入数据源 -->
+	<bean id="ConfigDAOImpl" class="com.funs.config.dao.ConfigDAO">   
+		<property name="sqlSessionTemplate" ref="sqlSession" />
+	</bean>
+	<bean id="ConfigService" class="com.funs.config.service.ConfigService">   
+		<property name="configDAO" ref="ConfigDAOImpl" />
+	</bean>
+	
 	
 	<!-- 配置实现类，注入数据源 -->  
 	<!--

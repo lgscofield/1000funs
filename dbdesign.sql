@@ -278,6 +278,18 @@ CREATE  TABLE IF NOT EXISTS `1000funs`.`temp_address` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `1000funs`.`config`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `1000funs`.`config` ;
+
+CREATE  TABLE IF NOT EXISTS `1000funs`.`config` (
+  `name` VARCHAR(100) NOT NULL ,
+  `value` VARCHAR(1000) NULL ,
+  `class_name` VARCHAR(100) NULL ,
+  PRIMARY KEY (`key`) )
+ENGINE = InnoDB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
