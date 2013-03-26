@@ -11,7 +11,12 @@
 	</head>
 	<body>
 	    <div class="alert hide" id="msg">
-		    <div id="msg-content"><strong>Warning!</strong> Best check yo self, you're not looking too good.</div>
+		    <div >
+		    	<a class="close" href="#">&times;</a>
+		    	<div id="msg-content">
+		    		<strong>Warning!</strong> Best check yo self, you're not looking too good.
+		    	</div>
+		    </div>
 	    </div>
 	    
 		<p>queryTest: <input type="button" value="queryTest" class="btn" id="queryTest"/> </p>
@@ -19,6 +24,10 @@
 			update order status. id:<input type="text" id="order_id" class="input-small" value=""/> 
 			status:<input type="text" id="order_status" class="input-small" value=""/> 
 			<button id="update_order_status" value="" class="btn">updateOrderStatus</button>
+		</p>
+		<p>
+			getConfig. <input type="text" id="txt_config" class="input-small" placeholder="key"/>
+			<input type="button" id="btn_get_config" value="getConfig" class="btn"/>
 		</p>
 		
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
@@ -43,7 +52,26 @@
 					});
 			}
 			
+			function showMsgFixed(html, className) {
+				$("#msg-content").html(html);
+				$("#msg").addClass(className).removeClass("hide").fadeIn(400);
+			}
+			
+			function showSuccessFix(html) {
+				showMsgFixed(html, "alert-success");
+			}
+	
+			function showErrorFix(html) {
+				showMsgFixed(html, "alert-error");
+			}
+			
 			jQuery(function($) {
+				
+				$("#msg .close").click(function() {
+					$("#msg").fadeOut(400, function() {
+						$(this).removeClass("alert-success alert-error").addClass("hide");
+					});
+				});
 
 				$("#queryTest").click(function() {
 					var url = "${webRoot}/shop/query/test.do";
@@ -63,6 +91,15 @@
 					})
 					.done(function(data) { showSuccess("Success! data: " + data); })
 					.fail(function(xhr) { showError("Fail! error: " + xhr.responseText); });
+				});
+				
+				$("#btn_get_config").click(function() {
+					$.get("${webRoot}/config/test?key=" + $("#txt_config").val(), function(data) {
+						showSuccessFix("<strong>Well done!</strong> data: " + JSON.stringify(data));
+					})
+					.fail(function(xhr) {
+						showErrorFix("<strong>Error!</strong> " + xhr.responseText);
+					});
 				});
 			});
 
