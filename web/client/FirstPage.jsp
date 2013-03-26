@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/interface/AddressAction.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/interface/LoginAction.js"></script>
 		<style type="text/css">
 			body{
 				background: url("${webRoot}/web/client/img/bg.jpg") no-repeat;
@@ -56,6 +57,24 @@
 			AddressAction.addTempAddress($('#tempAddress').val(),$('#phone').val(),function(data){
 				$('#addAddress').modal('hide');
 			});
+		}
+
+		//注册
+		function register(){
+			var vo = {};
+			vo.userName = $('#registerUserName').val();
+			vo.password = $('#registerPassword').val();
+			vo.email = $('#registerEmail').val();
+			LoginAction.regist(vo,function(data){
+				if(data.success){
+					$('#register').modal('hide');
+				}
+			});
+		}
+
+		//登录
+		function login(){
+			LoginAction.login($('#loginAccount').val(),$('#loginPassword').val());
 		}
 
 		//打开注册窗口
@@ -150,13 +169,13 @@
 		    <form class="form-sign">
 			  <fieldset>
 			    <label>用户名</label>
-			    <input type="text" class="input-block-level">
+			    <input id="registerUserName" type="text" class="input-block-level">
 				<label>密码</label>
-			    <input type="text" class="input-block-level">
+			    <input id="registerPassword" type="password" class="input-block-level">
 			    <label>确认密码</label>
-			    <input type="text" class="input-block-level">
+			    <input id="registerRePassword" type="password" class="input-block-level">
 			    <label>电子邮箱</label>
-			    <input type="text" class="input-block-level">
+			    <input id="registerEmail" type="email" required class="input-block-level">
 			    <label class="checkbox">
       				<input type="checkbox"> 我同意使用<a href="#">条款和协议</a>
     			</label>
@@ -164,7 +183,7 @@
 			</form>
 		  </div>
 		  <div class="modal-footer">
-		    <button class="btn btn-primary">提交</button>
+		    <button class="btn btn-primary" onclick="register();">提交</button>
 		  </div>
 		</div>
 		
@@ -177,9 +196,9 @@
 		    <form class="form-sign">
 			  <fieldset>
 			    <label>用户名/Email/手机号</label>
-			    <input type="text" class="input-block-level">
+			    <input id="loginAccount" type="text" class="input-block-level">
 				<label>密码</label>
-			    <input type="text" class="input-block-level">
+			    <input id="loginPassword" type="password" class="input-block-level">
 			    <label class="checkbox">
       				<input type="checkbox"> 10天内免登录
       				<div style="float: right;">
