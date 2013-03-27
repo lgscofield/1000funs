@@ -298,7 +298,7 @@ body {
 .search-query-width {
   width: 126px;
 }
-.table-list {
+.common-list {
   border: 1px solid #E5E5E5;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -307,13 +307,22 @@ body {
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
 }
-.table-list ul {
+.common-list > ul {
   padding: 0px;
   margin: 0px;
   list-style: none outside none;
 }
-.table-list .table-item {
+.common-list > ul > li {
+  padding: 10px 10px;
+  border-bottom: 1px solid #E5E5E5;
+}
+.common-list .list-item {
   padding: 5px 10px;
+}
+.table-list ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none outside none;
 }
 .table-list .table-item.expand .body {
   color: #333;
@@ -324,10 +333,6 @@ body {
 }
 .table-list .row {
   margin-left: 0px;
-}
-.table-list > ul > li {
-  padding: 10px 10px;
-  border-bottom: 1px solid #E5E5E5;
 }
 .table-list > ul > li:hover .order-btn-abnormal {
   visibility: visible;
@@ -541,4 +546,49 @@ ul.food-area-list > li .food-add {
 }
 .center {
   text-align: center;
+}
+.btn-right button {
+  float: right;
+  margin: 0px 2px;
+}
+.group-list .list-item > div {
+  height: 80px;
+}
+.group-list .pic {
+  width: 80px;
+  float: left;
+}
+.group-list .pic > img {
+  width: 80px;
+  height: 80px;
+}
+.group-list .btns {
+  float: right;
+  width: 40px;
+  margin-top: 20px;
+}
+.group-list .text {
+  margin-left: 100px;
+  margin-right: 50px;
+  overflow: auto;
+}
+.group-list .text .header {
+  font-weight: bold;
+}
+[class^="icon2-"],
+[class*=" icon2-"] {
+  background-image: url("../img/app-icons.png");
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  vertical-align: text-top;
+  background-repeat: no-repeat;
+  background-position: 20px 20px;
+}
+.icon2-ok {
+  background-position: -220px -60px;
+}
+.icon2-remove {
+  background-position: -260px -60px;
 }

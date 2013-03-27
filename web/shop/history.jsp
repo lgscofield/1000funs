@@ -48,11 +48,11 @@
 					</form:form>
 				</div>
 				
-				<div class="table-list">
+				<div class="common-list table-list">
 					<ul>
 						<c:forEach items="${orderList}" var="order" >
 						<li>
-							<div id="table_item_${order.id }" class="table-item <c:if test="${order.orderStatus == 2 }">abnormal</c:if>">
+							<div id="table_item_${order.id }" class="list-item table-item <c:if test="${order.orderStatus == 2 }">abnormal</c:if>">
 								<div class="row-fluid head">
 									<div class="pull-left link left-panel">
 										<span class="">${order.address }</span>
@@ -101,7 +101,7 @@
 						
 						<c:if test="${fn:length(orderList) < 1}"><!-- empty -->
 						<li>
-							<div class="table-item center">
+							<div class="list-item table-item center">
 								本列表暂无记录
 							</div>
 						</li>
