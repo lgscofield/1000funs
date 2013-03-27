@@ -329,10 +329,10 @@
 					$("#dialog-add-package").modal();
 				});
 
-				$("#addfood-photo").hover(function () {
-					$("#addfood-photo-tips").removeClass("hide");
+				$(".addfood-photo-wrapper").hover(function () {
+					$(this).siblings(".img-tips").removeClass("hide");
 				}, function () {
-					$("#addfood-photo-tips").addClass("hide");
+					$(this).siblings(".img-tips").addClass("hide");
 				});
 
 
