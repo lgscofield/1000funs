@@ -20,13 +20,13 @@
 						<div class="span8">
 						</div>
 						<div class="span4 btn-right">
-							<button type="button" class="btn" data-toggle="button">删除</button>
-							<button type="button" class="btn" data-toggle="button">编辑</button>
-							<button type="button" class="btn" data-toggle="button">新增</button>
+							<button type="button" class="btn" id="btn_delete" data-toggle="button">删除</button>
+							<button type="button" class="btn" id="btn_edit" data-toggle="button">编辑</button>
+							<button type="button" class="btn" id="btn_insert" data-toggle="button">新增</button>
 						</div>
 					</div>
 				</div>
-				<div class="common-list group-list">
+				<div id="groupList" class="common-list group-list">
 					<ul>
 						<li>
 							<div class="list-item">
@@ -34,7 +34,7 @@
 									<img src="assert/img/kuguachaodang.jpg" alt="10元区">
 								</div>
 								<div class="btns hide">
-									<i class="icon2-ok"></i>
+									<i class="icon2-edit"></i>
 								</div>
 								<div class="text">
 									<p class="header">10元区</p>
@@ -62,7 +62,7 @@
 									<img src="assert/img/kuguachaodang.jpg" alt="10元区">
 								</div>
 								<div class="btns hide">
-									<i class="icon2-ok"></i>
+									<i class="icon2-remove"></i>
 								</div>
 								<div class="text">
 									<p class="header">8元区</p>
@@ -84,28 +84,72 @@
 								</div>
 							</div>
 						</li>
+						<li>
+							<div class="list-item">
+								<div class="pic">
+									<img src="assert/img/kuguachaodang.jpg" alt="10元区">
+								</div>
+								<div class="btns hide">
+									<i class="icon2-ok"></i>
+								</div>
+								<div class="text">
+									<p class="header">7元区</p>
+									<p class="detail">7元区放的是7块钱的食物哦7元区放的是7块钱的食物哦7元区放的是7块钱的食物哦</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="list-item">
+								<div class="pic">
+									<img src="assert/img/kuguachaodang.jpg" alt="10元区">
+								</div>
+								<div class="btns hide">
+									<i class="icon2-ok"></i>
+								</div>
+								<div class="text">
+									<p class="header">7元区</p>
+									<p class="detail">7元区放的是7块钱的食物哦7元区放的是7块钱的食物哦7元区放的是7块钱的食物哦</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="list-item">
+								<div class="pic">
+									<img src="assert/img/kuguachaodang.jpg" alt="10元区">
+								</div>
+								<div class="btns hide">
+									<i class="icon2-ok"></i>
+								</div>
+								<div class="text">
+									<p class="header">7元区</p>
+									<p class="detail">7元区放的是7块钱的食物哦7元区放的是7块钱的食物哦7元区放的是7块钱的食物哦</p>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>
-				<div class="panel-bottom">
-					<form action="" method="post" class="form-horizontal form-dialog">
-						<div class="control-label">
-							<div class="addfood-photo-wrapper">
-								<img src="" id="group-preview" class="addfood-photo img-rounded" alt="">
-							</div>
+				<div id="add_panel" class="panel-bottom hide">
+					<form action="" class="group-list">
+						<div class="pic">
+							<div class="img-wapper"><img src=""></div>
 							<div class="img-tips hide">点击上传图片</div>
 							<input type="file" id="group-upload" name="file" class="hide">
 						</div>
-						<div class="controls controls-clear-right">
-							<div class="control-group control-group-small">
+						<div class="btns">
+							<button class="btn btn-primary btn-large">保存</button>
+						</div>
+						<div class="text">
+							<div class="control-group control-group-mini">
 								<label for="" class="control-label">分类</label>
-								<div class="controls"><input type="text" name="groupName"></div>
+								<div class="controls"><input type="text" name="groupName" class="input-block-level"></div>
 							</div>
-							<div class="control-group control-group-small">
+							<div class="control-group control-group-mini">
 								<label for="" class="control-label">描述</label>
-								<div class="controls"><textarea name="detail" rows="4" ></textarea></div>
+								<div class="controls">
+									<input type="text" name="detail" class="input-block-level">
+								</div>
 							</div>
 						</div>
-						<input type="hidden" name="type" value="1"/>
 					</form>
 				</div>
 			
@@ -121,8 +165,71 @@
 		<script type="text/javascript">
 
 			jQuery(function ($) {
+
+				$(".img-wapper").hover(function () {
+					$(this).siblings(".img-tips").removeClass("hide");
+				}, function () {
+					$(this).siblings(".img-tips").addClass("hide");
+				});
+
+				toggle("btn_insert", insertBtnClick);
+
+				toggle("btn_edit", function (checked) {
+					showRowEditBtn(checked, "icon2-edit");
+				});
+
+				toggle("btn_delete", function (checked) {
+					showRowEditBtn(checked, "icon2-remove");
+				})
 				
+				$(window).bind("resize", resetHeight);
 			});
+
+
+			/**
+			 * single toggle button click event
+			 * @param  {string}   id       
+			 * @param  {Function} callback 
+			 */
+			function toggle(id, callback) {
+				$("#"+id).click(function () {
+					var $this = $(this);
+					setTimeout(function() {
+						var checked = $this.hasClass("active");
+						callback(checked);
+					}, 0);
+				});
+			}
+
+			function insertBtnClick (checked) {
+				var $addPanel = $("#add_panel"), 
+					$groupList = $("#groupList"), 
+					winHeight = $(window).height();
+				if(checked) {
+					$groupList.height(winHeight - 200).addClass("overflow");
+					$addPanel.removeClass("hide");
+				} else {
+					$groupList.height(winHeight).removeClass("overflow");
+					$addPanel.addClass("hide");
+				}
+			}
+
+			function resetHeight () {
+				var insertChecked = $("#btn_insert").hasClass("active");
+				if(insertChecked) {
+					$("#groupList").height($(window).height() - 200);
+				}
+			}
+
+			function showRowEditBtn(checked, className) {
+				console.log(checked);
+				var $btns = $("#groupList .btns");
+				if(checked) {
+					$btns.removeClass("hide").children("i").removeClass().addClass(className);
+				} else {
+					$btns.addClass("hide");
+				}
+			}
 
 		</script>
 	</body>
