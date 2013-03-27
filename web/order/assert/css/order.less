@@ -451,3 +451,88 @@ ul.food-area-list {
 	text-align: center;
 }
 
+
+// --------- group mgr --------
+
+.btn-right {
+	button {
+		float: right;
+		margin: 0px 2px;
+	}
+}
+
+.common-list {
+	border: 1px solid #E5E5E5;
+	.border-radius(4px);
+	.box-shadow(0 1px 1px rgba(0, 0, 0, .05) inset);
+
+	> ul {
+		padding: 0px;
+		margin: 0px;
+		list-style: none outside none;
+
+		> li {
+			padding: 10px 10px;
+			border-bottom: 1px solid #E5E5E5;
+		}
+	}
+
+	.list-item {
+		padding: 5px 10px;
+	}	
+}
+
+.group-list {
+	.list-item {
+		> div {
+			height: 80px;
+		}
+	}
+	.pic {
+		width: 80px;
+		float: left;
+
+		> img {
+			width: 80px;
+			height: 80px;
+		}
+	}
+
+	.btns {
+		float: right;
+		width: 40px;
+		margin-top: 20px;
+	}
+
+	.text {
+		margin-left: 100px;
+		margin-right: 50px;
+		overflow: auto;
+
+		.header {
+			font-weight: bold;
+		}
+	}
+}
+
+// ------ icons ------
+@iconsPath: "../img/app-icons.png";
+
+[class^="icon2-"],[class*=" icon2-"] {
+	background-image: url(@iconsPath);
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	vertical-align: text-top;
+	background-repeat: no-repeat;
+	background-position: 20px 20px;
+}
+
+.icon2-ok {
+	background-position: -220px -60px;
+}
+
+.icon2-remove {
+	background-position: -260px -60px;
+}
