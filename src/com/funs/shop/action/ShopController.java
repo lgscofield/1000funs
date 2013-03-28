@@ -149,8 +149,6 @@ public class ShopController {
 	@RequestMapping(value="/save/group", method=RequestMethod.POST)
 	public String saveGroup(@RequestParam MultipartFile file, @ModelAttribute GroupForm groupForm, Model model) {
 		
-		print(groupForm);
-		
 		// save the image file to upload directory
 		String imageName = "";
 		try {

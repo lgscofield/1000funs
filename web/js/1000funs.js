@@ -33,6 +33,20 @@ function setParam(url, name, value) {
 }
 
 /**
+ * startWith & endsWith
+ */
+if (typeof String.prototype.startsWith != 'function') {
+	String.prototype.startsWith = function(str) {
+		return this.slice(0, str.length) === str;
+	};
+}
+if (typeof String.prototype.endsWith != 'function') {
+	String.prototype.endsWith = function (str){
+		return this.slice(-str.length) === str;
+	};
+}
+
+/**
  * html5 图片预览
  * @param $fileInput file文件上传框
  * @param $imageToRender 预览的图片对象
