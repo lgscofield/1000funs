@@ -417,7 +417,7 @@ ul.food-area-list {
 			float: left;
 		}
 		.controls {
-			margin-left: 50px;
+			margin-left: 40px;
 		}
 	}
 
@@ -478,6 +478,11 @@ ul.food-area-list {
 }
 
 .group-list {
+
+	&.overflow {
+		overflow: auto;
+	}
+
 	.list-item {
 		> div {
 			height: 80px;
@@ -497,6 +502,10 @@ ul.food-area-list {
 		float: right;
 		width: 40px;
 		margin-top: 20px;
+
+		> i {
+			cursor: pointer;
+		}
 	}
 
 	.text {
@@ -509,6 +518,61 @@ ul.food-area-list {
 		}
 	}
 }
+
+.panel-bottom {
+	border: 1px solid #E5E5E5;
+	.border-radius(4px);
+	margin-top: 15px;
+	overflow: auto;
+	padding: 15px 20px 0px;
+
+	form {
+		margin: 0px;
+	}
+
+	.img-wapper {
+		width: 80px;
+		height: 80px;
+		border: 1px solid #E5E5E5;
+		.border-radius(4px);
+		cursor: pointer;
+	}
+
+	.img-tips {
+		position: absolute;
+		font-size: 12px;
+		margin-left: 5px;
+		margin-top: -50px;
+		cursor: pointer;
+	}
+
+	.btns {
+		width: 80px;
+	}
+
+	.text {
+		margin-right: 100px;
+	}
+}
+
+// notification
+.alert-notify {
+	position: absolute;
+	top: 2px;
+	left: 300px;
+	height: 18px;
+	line-height: 18px;
+	max-width: 400px;
+
+	.alert-content {
+		margin: 0px 20px 0px 10px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+
+
 
 // ------ icons ------
 @iconsPath: "../img/app-icons.png";
@@ -530,4 +594,8 @@ ul.food-area-list {
 
 .icon2-remove {
 	background-position: -260px -60px;
+}
+
+.icon2-edit {
+	background-position: -460px -100px;
 }

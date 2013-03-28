@@ -58,6 +58,15 @@
 							</div>
 						</li>
 					</ul>
+					
+					<!-- 消息提示 -->
+					<div class="alert alert-notify hide" id="alert-notify">
+						<a class="close" href="#">&times;</a>
+						<p id="alert-content" class="alert-content">
+							<strong>Warning!</strong> Best check you self, you're not looking too good.
+						</p>
+					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -71,6 +80,8 @@
 							<li class="active"><a href="${webRoot}/shop/todo">未处理</a></li>
 							<li><a href="${webRoot}/shop/history">已处理</a></li>
 							<li class="nav-header">餐点管理</li>
+							<li><a href="${webRoot}/shop/group">分类管理</a></li>
+							<li><a href="${webRoot}/shop/food">食物管理</a></li>
 							<li><a href="${webRoot}/shop/catering">配餐模式</a></li>
 							<li><a href="${webRoot}/shop/package">套餐模式</a></li>
 							<li class="nav-header">店铺管理</li>
@@ -101,7 +112,7 @@
 				})
 
 				// 选中第一个.
-				.eq(1).click();
+				.eq(4).click();
 
 				initHeight();
 

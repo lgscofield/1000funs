@@ -132,6 +132,13 @@ public class ShopController {
 		return "shop/package";
 	}
 	
+	@RequestMapping("/group")
+	public String toGroup(Model model) {
+		List<FoodGroupVO> lstGroups = foodAction.queryAllGroups();
+		model.addAttribute("groupList", lstGroups);
+		return "shop/group";
+	}
+	
 	/**
 	 * 保存分组
 	 * @param file
@@ -141,6 +148,8 @@ public class ShopController {
 	 */
 	@RequestMapping(value="/save/group", method=RequestMethod.POST)
 	public String saveGroup(@RequestParam MultipartFile file, @ModelAttribute GroupForm groupForm, Model model) {
+		
+		print(groupForm);
 		
 		// save the image file to upload directory
 		String imageName = "";
