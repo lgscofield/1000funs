@@ -63,4 +63,9 @@ public class FoodDAO extends BaseDAO {
 		List<FoodGroupVO> result = this.sqlSessionTemplate.selectList("com.funs.food.queryGroups", type);
 		return result;
 	}
+	
+	public List<FoodGroupVO> queryAllGroups() {
+		List<FoodGroupVO> result = this.sqlSessionTemplate.selectList("com.funs.food.queryAllGroups");
+		return result;
+	}
 }

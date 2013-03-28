@@ -89,4 +89,12 @@ public class FoodAction extends BaseAction {
 	public List<FoodGroupVO> queryGroups(int type) {
 		return foodService.queryGroups(type);
 	}
+	
+	/**
+	 * 查询所有分组信息
+	 * @return
+	 */
+	public List<FoodGroupVO> queryAllGroups() {
+		return foodService.queryAllGroups();
+	}
 }

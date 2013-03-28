@@ -519,7 +519,7 @@ ul.food-area-list > li .food-add {
   float: left;
 }
 .control-group.control-group-mini .controls {
-  margin-left: 50px;
+  margin-left: 40px;
 }
 .control-group.control-group-left .control-label {
   text-align: left;
@@ -551,6 +551,9 @@ ul.food-area-list > li .food-add {
   float: right;
   margin: 0px 2px;
 }
+.group-list.overflow {
+  overflow: auto;
+}
 .group-list .list-item > div {
   height: 80px;
 }
@@ -567,6 +570,9 @@ ul.food-area-list > li .food-add {
   width: 40px;
   margin-top: 20px;
 }
+.group-list .btns > i {
+  cursor: pointer;
+}
 .group-list .text {
   margin-left: 100px;
   margin-right: 50px;
@@ -574,6 +580,54 @@ ul.food-area-list > li .food-add {
 }
 .group-list .text .header {
   font-weight: bold;
+}
+.panel-bottom {
+  border: 1px solid #E5E5E5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin-top: 15px;
+  overflow: auto;
+  padding: 15px 20px 0px;
+}
+.panel-bottom form {
+  margin: 0px;
+}
+.panel-bottom .img-wapper {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #E5E5E5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.panel-bottom .img-tips {
+  position: absolute;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: -50px;
+  cursor: pointer;
+}
+.panel-bottom .btns {
+  width: 80px;
+}
+.panel-bottom .text {
+  margin-right: 100px;
+}
+.alert-notify {
+  position: absolute;
+  top: 2px;
+  left: 300px;
+  height: 18px;
+  line-height: 18px;
+  max-width: 400px;
+}
+.alert-notify .alert-content {
+  margin: 0px 20px 0px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 [class^="icon2-"],
 [class*=" icon2-"] {
@@ -591,4 +645,7 @@ ul.food-area-list > li .food-add {
 }
 .icon2-remove {
   background-position: -260px -60px;
+}
+.icon2-edit {
+  background-position: -460px -100px;
 }

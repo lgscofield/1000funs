@@ -98,4 +98,9 @@
 		select * from food_group g where g.deleted = false and g.type = #{type} order by g.group_name
 	</select>
 	
+	<!-- 查询所有分组信息(不区分类型信息) -->
+	<select id="queryAllGroups" resultType="com.funs.food.model.FoodGroupVO">
+		select * from food_group g where g.deleted = false order by g.group_name
+	</select>
+	
 </mapper>

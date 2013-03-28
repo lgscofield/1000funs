@@ -38,6 +38,7 @@
 								<i class="icon-user"></i> 张三
 							</a>
 							<div class="dropdown-menu" style="">
+
 								<div class="user-info">
 									<div class="user-avatar">
 										<img src="assert/img/avatar.jpg" alt="" width="96px" height="96px">
@@ -53,9 +54,19 @@
 										</div>
 									</div>
 								</div><!--/ user-info -->
+
 							</div>
 						</li>
 					</ul>
+
+					<!-- 消息提示 -->
+					<div class="alert alert-notify hide" id="alert-notify">
+						<a class="close" href="#">&times;</a>
+						<p id="alert-content" class="alert-content">
+							<strong>Warning!</strong> 新增成功新增成功新增成功新增成功新增成功新增成功新增成功新增成功新增成功新增成功
+						</p>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -85,6 +96,7 @@
 				</div>
 			</div>
 		</div>
+
 	
 		<!-- <script src="../seajs/sea.js" data-config="../js/config" data-main="../js/main"></script> -->
 
@@ -102,7 +114,7 @@
 				})
 
 				// 选中第一个.
-				.eq(5).click();
+				.eq(4).click();
 
 				initHeight();
 

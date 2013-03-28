@@ -88,6 +88,10 @@ public class FoodService extends BaseService{
 	public List<FoodGroupVO> queryGroups(int type) {
 		return foodDAO.queryGroups(type);
 	}
+	
+	public List<FoodGroupVO> queryAllGroups() {
+		return foodDAO.queryAllGroups();
+	}
 
 	public FoodDAO getFoodDAO() {
 		return foodDAO;
