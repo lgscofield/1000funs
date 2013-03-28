@@ -24,7 +24,7 @@
 	
 	<select id="queryUserByNameOrEmailOrPhone" parameterType="String"
 		resultType="com.funs.user.model.UserVO">
-		SELECT * FROM users WHERE code=#{account} or email=#{account} or phone=#{account}
+		SELECT * FROM users WHERE user_name=#{account} or email=#{account} or phone=#{account}
 	</select>
 
 </mapper>

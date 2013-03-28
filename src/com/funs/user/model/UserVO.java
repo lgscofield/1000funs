@@ -5,6 +5,8 @@
 
 package com.funs.user.model;
 
+import java.util.Date;
+
 import com.funs.core.base.model.BaseVO;
 import com.funs.core.util.tools.DataGenerator;
 
@@ -27,7 +29,7 @@ public class UserVO extends BaseVO{
 
 	private String email;
 
-	private String registerTime;
+	private Date registerTime;
 	
 	private int defaultRegionId;
 	
@@ -109,11 +111,11 @@ public class UserVO extends BaseVO{
 		this.email = email;
 	}
 
-	public String getRegisterTime() {
+	public Date getRegisterTime() {
 		return registerTime;
 	}
 
-	public void setRegisterTime(String registerTime) {
+	public void setRegisterTime(Date registerTime) {
 		this.registerTime = registerTime;
 	}
 

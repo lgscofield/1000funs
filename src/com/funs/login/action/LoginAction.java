@@ -6,6 +6,10 @@
 
 package com.funs.login.action;
 
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.slf4j.Logger;
@@ -49,15 +53,9 @@ public class LoginAction extends ApplicationObjectSupport {
      * 
      * @param account
      */
+    @RemoteMethod
     public ResultVO login(String account, String password) {
-        ResultVO resultVO = null;
-        try {
-            resultVO = loginService.login(account, password);
-        } catch (Exception e) {
-            LOGGER.info("login 出错：" + e);
-            resultVO = new ResultVO(e.toString());
-        }
-        return resultVO;
+       return loginService.login(account, password);
     }
     
     /**
@@ -68,6 +66,7 @@ public class LoginAction extends ApplicationObjectSupport {
     @RemoteMethod
     public ResultVO regist(UserVO userVO) {
         try {
+        	userVO.setRegisterTime(new Date());
             loginService.regist(userVO);
         } catch (Exception e) {
             LOGGER.info("regist 出错：" + e);
