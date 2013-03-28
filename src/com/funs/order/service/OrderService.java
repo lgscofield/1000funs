@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import com.funs.core.base.service.BaseService;
 import com.funs.order.dao.OrderDAO;
+import com.funs.order.model.OrderItemVO;
 import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
 import com.funs.order.model.OrderVOWithFood;
@@ -32,6 +33,10 @@ public class OrderService extends BaseService {
 	 */
 	public void submitOrder(OrderVO orderVO) {
 		orderDAO.insertOrder(orderVO);
+		for(int i = 0;i < orderVO.getFoodList().size();++i){
+			orderVO.getFoodList().get(i).setOrderId(orderVO.getId());
+			orderDAO.insertOrderItem(orderVO.getFoodList().get(i));
+		}
 	}
 	
 	public OrderDAO getOrderDAO() {

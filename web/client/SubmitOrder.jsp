@@ -135,8 +135,12 @@
 			order.phone = $('#phone').val();
 			order.address = $('#address').val();
 			order.userRemark = $('#userRemark').val();
-			OrderAction.submitOrder(function(data){
-				console.log(data);
+			order.exceptTimeType = $('input:radio:checked').val();
+			console.log(order);
+			OrderAction.submitOrder(order,function(data){
+				if(data.success){
+					window.location.href = '${webRoot}/web/client/register.jsp';
+				}
 			});
 		}
 		</script>
@@ -176,8 +180,8 @@
 						<div class="pull-right">期望到达时间</div>
 					</div>
 					<div class="span4">
-						<label for="" class="radio inline"><input type="radio">12:00</label>
-						<label for="" class="radio inline"><input type="radio">30分钟内</label>
+						<label for="" class="radio inline"><input type="radio" name="setExceptTimeType" checked="checked" value="0">12:00</label>
+						<label for="" class="radio inline"><input type="radio" name="setExceptTimeType" value="1">30分钟内</label>
 					</div>
 				</div>
 				<div class="row">

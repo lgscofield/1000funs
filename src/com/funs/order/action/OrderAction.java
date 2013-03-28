@@ -4,6 +4,8 @@
  *****************************************************************************/
 package com.funs.order.action;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.directwebremoting.annotations.RemoteMethod;
@@ -50,6 +52,17 @@ public class OrderAction extends BaseAction {
 	@RemoteMethod
 	public ResultVO submitOrder(OrderVO orderVO) {
 		try {
+			Calendar objCal = Calendar.getInstance();
+			if(orderVO.getExceptTimeType()==0){//12点送达
+				objCal.set(Calendar.HOUR, 0);
+				objCal.set(Calendar.MINUTE, 0);
+				objCal.set(Calendar.SECOND, 0);
+			}else{
+				objCal.set(Calendar.MINUTE, objCal.get(Calendar.MINUTE)+30);
+			}
+			orderVO.setExceptTime(objCal.getTime());
+			orderVO.setCreateTime(new Date());
+			orderVO.setShopId(1);
 			orderService.submitOrder(orderVO);
 		} catch (Exception e) {
 			LOGGER.error("submitOrder 出错：" + e);

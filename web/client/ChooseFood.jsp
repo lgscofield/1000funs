@@ -33,7 +33,6 @@
 				initPosition();
 				queryFoods();
 				queryPackages();
-				console.log(regionName);
 			});
 
 			//初始化当前地址
@@ -145,6 +144,7 @@
 				if(foodVO==null){
 					foodVO = {};
 					foodVO.id = vo.id;
+					foodVO.itemId = vo.id;
 					foodVO.name = vo.name;
 					foodVO.price = vo.currentPrice;
 					foodVO.plate = plateId;
