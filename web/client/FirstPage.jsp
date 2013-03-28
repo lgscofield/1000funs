@@ -11,6 +11,7 @@
 		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/interface/AddressAction.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/interface/LoginAction.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/interface/CommonAction.js"></script>
 		<style type="text/css">
 			body{
 				background: url("${webRoot}/web/client/img/bg.jpg") no-repeat;
@@ -68,16 +69,25 @@
 			LoginAction.regist(vo,function(data){
 				if(data.success){
 					$('#register').modal('hide');
+					showSuccess("注册成功");
 				}
 			});
 		}
 
 		//登录
 		function login(){
-			LoginAction.login($('#loginAccount').val(),$('#loginPassword').val());
+			LoginAction.login($('#loginAccount').val(),$('#loginPassword').val(),function(data){
+				if(data.success){
+					$('#login').modal('hide');
+					CommonAction.getUser(function(data){
+						console.log(data);
+					});
+					showSuccess("登录成功");
+				}
+			});
 		}
 
-		//打开注册窗口
+		//打开找回密码窗口
 		function openFindPassword(){
 			window.open('${webRoot}/web/client/FindPassword.jsp','findPassword');
 		}
@@ -109,6 +119,33 @@
 				$("#list").hide();
 			}
 		}
+
+		//显示成功消息
+		function showSuccess(html) {
+			showMsg(html, "alert-success");
+		}
+
+		//显示失败消息
+		function showError(html) {
+			showMsg(html, "alert-error");
+		}
+
+		//显示消息
+		function showMsg(html, className) {
+			$("#msg-content").html(html);
+			$("#msg").addClass(className).removeClass("hide")
+				.fadeIn(400)
+				.delay(2000)
+				.fadeOut(800, function() {
+					$(this).removeClass(className).addClass("hide");
+				});
+			center($("#msg"));
+		}
+
+		//居中
+		function center($obj){
+			$obj.css('left','50%').css('margin-left','-'+$obj.css('width')/2);
+		}
 		</script>
 	</head>
 	<body style="overflow-x: hidden">
@@ -119,6 +156,10 @@
 					<li><a href="#register" data-toggle="modal">注册</a></li>
 				</ul>
 			</div>
+		</div>
+		<div class="alert hide" style="position: absolute;" id="msg">
+	    	<div id="msg-content">
+	    	</div>
 		</div>
 		<div>
 			<div class="logo"></div>
@@ -209,7 +250,7 @@
 			</form>
 		  </div>
 		  <div class="modal-footer">
-		    <button class="btn btn-primary">登录</button>
+		    <button class="btn btn-primary" onclick="login();">登录</button>
 		  </div>
 		</div>
 	</body>

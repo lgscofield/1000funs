@@ -5,9 +5,12 @@
 ******************************************************************************/
 package com.funs.login.service;
 
+import org.directwebremoting.WebContext;
+import org.directwebremoting.WebContextFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.funs.common.model.EnvironmentInfoVO;
 import com.funs.core.base.model.ResultVO;
 import com.funs.user.dao.UserDAO;
 import com.funs.user.model.UserVO;
@@ -34,7 +37,6 @@ public class LoginService {
 	public ResultVO login(String account, String password){
 		ResultVO resultVO = new ResultVO();
 		UserVO userVO = userDAO.queryUserByCodeOrEmailOrPhone(account);
-		
 		if (userVO == null) {
 			resultVO = new ResultVO("帐号不存在");
 		}else{
@@ -42,7 +44,10 @@ public class LoginService {
 				resultVO = new ResultVO("密码不匹配");
 			}
 		}
-		
+		EnvironmentInfoVO objEnvironmentInfoVO = new EnvironmentInfoVO();
+		objEnvironmentInfoVO.setUser(userVO);
+		WebContext objWebContext = WebContextFactory.get();
+		objWebContext.getSession().setAttribute("environmentInfo", objEnvironmentInfoVO);
 		return resultVO;
 	}
 	
