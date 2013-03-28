@@ -5,6 +5,7 @@
 
 package com.funs.order.model;
 
+import java.util.Date;
 import java.util.List;
 
 import com.funs.core.base.model.BaseVO;
@@ -24,8 +25,9 @@ public class OrderVO extends BaseVO {
 	private int id;
 	private String code;
 	private int shopId;
-	private String createTime;
-	private String exceptTime;
+	private Date createTime;
+	private Date exceptTime;
+	private int exceptTimeType;
 	private int userId;
 	private String userRemark;
 	private String address;
@@ -63,16 +65,16 @@ public class OrderVO extends BaseVO {
 	public void setShopId(int shopId) {
 		this.shopId = shopId;
 	}
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	public String getExceptTime() {
+	public Date getExceptTime() {
 		return exceptTime;
 	}
-	public void setExceptTime(String exceptTime) {
+	public void setExceptTime(Date exceptTime) {
 		this.exceptTime = exceptTime;
 	}
 	public int getUserId() {
@@ -146,6 +148,12 @@ public class OrderVO extends BaseVO {
 	}
 	public void setFoodList(List<OrderItemVO> foodList) {
 		this.foodList = foodList;
+	}
+	public int getExceptTimeType() {
+		return exceptTimeType;
+	}
+	public void setExceptTimeType(int exceptTimeType) {
+		this.exceptTimeType = exceptTimeType;
 	}
 
 	

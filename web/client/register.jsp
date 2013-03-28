@@ -34,6 +34,7 @@
 		</script>
 	</head>
 	<body>
+		<div style="text-align: center;margin-bottom: 50px;"><h1>订单已提交成功，注册可享受更多优惠！</h1></div>
 		<div class="container">
 			<form class="form-sign">
 			  <fieldset>

@@ -7,6 +7,7 @@ package com.funs.order.dao;
 import java.util.List;
 
 import com.funs.core.base.dao.BaseDAO;
+import com.funs.order.model.OrderItemVO;
 import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
 import com.funs.order.model.OrderVOWithFood;
@@ -22,8 +23,17 @@ public class OrderDAO extends BaseDAO {
 	 * 插入Order数据到数据库
 	 * @param orderVO
 	 */
-	public void insertOrder(OrderVO orderVO) {
+	public int insertOrder(OrderVO orderVO) {
 		this.sqlSessionTemplate.insert("com.funs.order.insertOrder", orderVO);
+		return orderVO.getId();
+	}
+	
+	/**
+	 * 插入OrderItem数据到数据库
+	 * @param orderItemVO
+	 */
+	public void insertOrderItem(OrderItemVO orderItemVO) {
+		this.sqlSessionTemplate.insert("com.funs.order.insertOrderItem", orderItemVO);
 	}
 	
 	/**
