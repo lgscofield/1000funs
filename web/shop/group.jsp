@@ -99,116 +99,119 @@
 		<script type="text/javascript">
 
 			jQuery(function ($) {
-
-				$(".img-wapper").hover(function () {
-					$(this).siblings(".img-tips").removeClass("hide");
-				}, function () {
-					$(this).siblings(".img-tips").addClass("hide");
-				})
-				.click(function() {
-					$(this).siblings("input[type='file']").click();
-				});
-				
-				imagePreview($("#file-upload"), $("#image-preview"));
-
-				toggle("btn_insert", insertBtnClick);
-
-				toggle("btn_edit", function (checked) {
-					showRowEditBtn(checked, "icon2-edit");
-				});
-
-				toggle("btn_delete", function (checked) {
-					showRowEditBtn(checked, "icon2-remove");
-				});
-				
-				$(window).bind("resize", resetHeight);
-				
-				/*
-				$("#btn_save_group").click(function() {
-					$("#groupForm").submit();
-				});
-				*/
-				
-				$.validation().init();
-				
-				$("#groupForm").submit(function() {
-					return $.validation().check();
-				});
+				Init.run();
 			});
-
-
-			/**
-			 * single toggle button click event
-			 * @param  {string}   id       
-			 * @param  {Function} callback 
-			 */
-			function toggle(id, callback) {
-				$("#"+id).click(function () {
-					var $this = $(this);
-					setTimeout(function() {
-						var checked = $this.hasClass("active");
-						callback(checked);
-					}, 0);
-				});
-			}
-
-			function insertBtnClick (checked) {
-				var $addPanel = $("#add_panel"), 
-					$groupList = $("#groupList"), 
-					winHeight = $(window).height();
-				if(checked) {
-					$groupList.addClass("overflow");
-					$addPanel.removeClass("hide");
-					adjustHeight();
-				} else {
-					$groupList.height(winHeight).removeClass("overflow");
-					$addPanel.addClass("hide");
-				}
-			}
-
-			function resetHeight () {
-				var insertChecked = $("#btn_insert").hasClass("active");
-				if(insertChecked) {
-					adjustHeight();
-				}
-			}
 			
-			function adjustHeight() {
-				$("#groupList").height($(window).height() - 200);
-			}
-
-			function showRowEditBtn(checked, className) {
-				var $btns = $("#groupList .btns");
-				if(checked) {
-					$btns.removeClass("hide").children("i").removeClass().addClass(className);
-				} else {
-					$btns.addClass("hide");
+			// Init
+			var Init = (function($) {
+				
+				/**
+				 * single toggle button click event
+				 * @param  {string}   id       
+				 * @param  {Function} callback 
+				 */
+				function toggle(id, callback) {
+					$("#"+id).click(function () {
+						var $this = $(this);
+						setTimeout(function() {
+							var checked = $this.hasClass("active");
+							callback(checked);
+						}, 0);
+					});
 				}
-			}
+				
+
+				function insertBtnClick (checked) {
+					var $addPanel = $("#add_panel"), 
+						$groupList = $("#groupList"), 
+						winHeight = $(window).height();
+					if(checked) {
+						$groupList.addClass("overflow");
+						$addPanel.removeClass("hide");
+						adjustHeight();
+					} else {
+						$groupList.height(winHeight).removeClass("overflow");
+						$addPanel.addClass("hide");
+					}
+				}
+
+				function resetHeight () {
+					var insertChecked = $("#btn_insert").hasClass("active");
+					if(insertChecked) {
+						adjustHeight();
+					}
+				}
+				
+				function adjustHeight() {
+					$("#groupList").height($(window).height() - 200);
+				}
+
+				function showRowEditBtn(checked, className) {
+					var $btns = $("#groupList .btns");
+					if(checked) {
+						$btns.removeClass("hide").children("i").removeClass().addClass(className);
+					} else {
+						$btns.addClass("hide");
+					}
+				}
+				
+				return {
+					// main
+					run: function() {
+						for(var fn in Init) {
+							if(fn === "run" || fn.startsWith('_')) continue;
+							Init[fn].call(window);
+						}
+					}, 
+					
+					// bind button event
+					btnEvent: function() {
+						toggle("btn_insert", insertBtnClick);
+						toggle("btn_edit", function (checked) {
+							showRowEditBtn(checked, "icon2-edit");
+						});
+						toggle("btn_delete", function (checked) {
+							showRowEditBtn(checked, "icon2-remove");
+						});
+					}, 
+					
+					// image wrapper hover & click event
+					imgUploadEvent: function() {
+						$(".img-wapper").hover(function () {
+							$(this).siblings(".img-tips").removeClass("hide");
+						}, function () {
+							$(this).siblings(".img-tips").addClass("hide");
+						})
+						.click(function() {
+							$(this).siblings("input[type='file']").click();
+						});
+					}, 
+					
+					// html5 upload image preview
+					imagePreview: function() {
+						imagePreview($("#file-upload"), $("#image-preview"));
+					}, 
+					
+					// form submit validate
+					validate: function() {
+						$.validation().init();
+						
+						$("#groupForm").submit(function() {
+							return $.validation().check();
+						});
+					}, 
+					
+					// bind window resize event
+					resizeEvent: function() {
+						$(window).bind("resize", resetHeight);
+					}
+					
+				};
+			})(jQuery);
+			
 			
 			function imgValid() {
 				return !!$("#file-upload").get(0).files[0];
-			}
-			
-			/**
-			 * 校验通过:true; 不通过:false;
-			 */
-			function check() {
-				var msg = [];
-				if(!$("#file-upload").get(0).files[0]) {
-					msg.push("必须上传图片.");
-				}
-				if(!$("#groupName").val()) {
-					msg.push("分类不能为空.");
-				}
-				if(!$("#detail").val()) {
-					msg.push("描述不能为空.");
-				}
-				if(msg.length > 0) {
-					alert(msg.join("\n"));
-					return false;
-				}
-				return true;
 			}
 
 		</script>
