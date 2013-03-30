@@ -36,13 +36,13 @@
 				<div id="groupList" class="common-list group-list">
 					<ul>
 						<c:forEach items="${groupList}" var="group">
-						<li>
+						<li id="item_${group.id }">
 							<div class="list-item">
 								<div class="pic">
 									<img src="${webRoot}/${group.image }" alt="${group.groupName }">
 								</div>
 								<div class="btns hide">
-									<i class="icon2-edit"></i>
+									<i class="icon2-edit" value="${group.id }"></i>
 								</div>
 								<div class="text">
 									<p class="header">${group.groupName }</p>
@@ -63,7 +63,7 @@
 				</div><!-- /end of group list -->
 				
 				<div id="add_panel" class="panel-bottom hide">
-					<form class="group-list" id="groupForm" name="groupForm" action="${webRoot}/shop/save/group" method="post" enctype="multipart/form-data">
+					<form class="group-list" id="groupForm" name="groupForm" action="${webRoot}/shop/group" method="post" enctype="multipart/form-data">
 						<div class="pic">
 							<div class="img-wapper"><img id="image-preview" src="" data-toggle="tooltip" data-placement="right" data-original-title="图片不能为空" data-validate="imgValid();"></div>
 							<div class="img-tips hide">点击上传图片</div>
@@ -96,6 +96,7 @@
 		<script type="text/javascript" src="${webRoot}/web/js/jquery.pagination.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/js/jquery.bootstrap.extension.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/js/1000funs.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/js/jquery.form.js"></script>
 		<script type="text/javascript">
 
 			jQuery(function ($) {
@@ -195,9 +196,43 @@
 					// form submit validate
 					validate: function() {
 						$.validation().init();
-						
+					}, 
+					
+					submit: function() {
 						$("#groupForm").submit(function() {
-							return $.validation().check();
+							if($.validation().check()) { // validate 
+								//ajax submit form
+								var options = {
+									success: function(responseText, statusText, xhr, $form) {
+										var img = responseText.image, 
+											form = $form.get(0), 
+											groupName = form.groupName.value, 
+											detail = form.detail.value;
+										var groupVO = {
+											"groupName": groupName, 
+											"detail": detail, 
+											"image": img
+										};
+										appendToList(groupVO);
+									}
+								};
+								$(this).ajaxSubmit(options);
+							}
+							return false;
+						});
+					}, 
+					
+					// edit and delete
+					operateEvent: function() {
+						$("#groupList .btns i").click(function() {
+							var $this = $(this), 
+								isEdit = $this.hasClass("icon2-edit"), 
+								orderId = $this.attr("value");
+							if(isEdit) {
+								editItem(orderId);
+							} else {
+								deleteItem(orderId);
+							}
 						});
 					}, 
 					
@@ -209,9 +244,27 @@
 				};
 			})(jQuery);
 			
-			
 			function imgValid() {
 				return !!$("#file-upload").get(0).files[0];
+			}
+			
+			/**
+			 */
+			function appendToList(groupVO) {
+				var $firstItem = $("#groupList > ul > li").eq(0), 
+					$newNode = $firstItem.clone();
+				$firstItem.before($newNode);
+				$("img", $newNode).attr("src", "${webRoot}"+groupVO.image);
+				$(".header", $newNode).html(groupVO.groupName);
+				$(".detail", $newNode).html(groupVO.detail);
+			}
+			
+			function deleteItem(orderId) {
+				console.log("delete: " + orderId);
+			}
+			
+			function editItem(orderId) {
+				console.log("edit: " + orderId);
 			}
 
 		</script>

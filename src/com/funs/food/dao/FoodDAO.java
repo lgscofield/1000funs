@@ -37,6 +37,10 @@ public class FoodDAO extends BaseDAO {
 		this.sqlSessionTemplate.insert("com.funs.food.insertFoodGroup",foodGroupVO);
 	}
 	
+	public int deleteGroup(int id) {
+		return this.sqlSessionTemplate.update("com.funs.food.deleteGroup", id);
+	}
+	
 	public List<FoodVO> queryFoodsByShopId(int shopId){
 		List<FoodVO> result =  this.sqlSessionTemplate.selectList("com.funs.food.queryFoodsByShopId", shopId);
 		return result;

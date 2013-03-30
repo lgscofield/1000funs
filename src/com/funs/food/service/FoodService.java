@@ -92,6 +92,10 @@ public class FoodService extends BaseService{
 	public List<FoodGroupVO> queryAllGroups() {
 		return foodDAO.queryAllGroups();
 	}
+	
+	public int deleteGroup(int id) {
+		return foodDAO.deleteGroup(id);
+	}
 
 	public FoodDAO getFoodDAO() {
 		return foodDAO;

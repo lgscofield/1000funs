@@ -97,4 +97,13 @@ public class FoodAction extends BaseAction {
 	public List<FoodGroupVO> queryAllGroups() {
 		return foodService.queryAllGroups();
 	}
+	
+	/**
+	 * 删除分组
+	 * @param id
+	 * @return
+	 */
+	public int deleteGroup(int id) {
+		return foodService.deleteGroup(id);
+	}
 }
