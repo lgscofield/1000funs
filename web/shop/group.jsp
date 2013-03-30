@@ -116,7 +116,7 @@
 						var $this = $(this);
 						setTimeout(function() {
 							var checked = $this.hasClass("active");
-							callback(checked);
+							callback(checked, $this);
 						}, 0);
 					});
 				}
@@ -169,9 +169,11 @@
 					btnEvent: function() {
 						toggle("btn_insert", insertBtnClick);
 						toggle("btn_edit", function (checked) {
+							$("#btn_delete.active").removeClass("active");
 							showRowEditBtn(checked, "icon2-edit");
 						});
 						toggle("btn_delete", function (checked) {
+							$("#btn_edit.active").removeClass("active");
 							showRowEditBtn(checked, "icon2-remove");
 						});
 					}, 
@@ -226,7 +228,7 @@
 					operateEvent: function() {
 						$("#groupList .btns i").click(function() {
 							var $this = $(this), 
-								isEdit = $this.hasClass("icon2-edit"), 
+								isEdit = $this.hasClass("icon2-edit") || $this.hasClass("icon2-ok"), 
 								orderId = $this.attr("value");
 							if(isEdit) {
 								editItem(orderId);
@@ -260,11 +262,40 @@
 			}
 			
 			function deleteItem(orderId) {
-				console.log("delete: " + orderId);
+				var url = "${webRoot}/shop/group/" + orderId;
+				$.ajax({
+					url: url, 
+					type: "delete"
+				})
+				.done(function() {
+					$("#item_"+orderId).animate({
+						opacity: 0, 
+						height: 0
+					}, 1000, function() {
+						$(this).remove();
+					});
+				})
+				.fail(function(jqXHR) {
+					alert("删除失败. " + jqXHR.responseText);
+				});
 			}
 			
 			function editItem(orderId) {
-				console.log("edit: " + orderId);
+				$("#item_" + orderId + " .text p").each(function() {
+					var $this = $(this), 
+						mode = $this.data("mode");
+					if(!mode || mode === "edit") {
+						$this.wrapInner("<input type='text' value='"+$this.html()+"'>").data("mode", "save");
+						$("#item_" + orderId + " .btns i").removeClass().addClass("icon2-ok");
+					} else {
+						var text = $this.children("input").val();
+						$this.html(text).data("mode", "edit");
+						
+						// do save.()
+						
+						$("#item_" + orderId + " .btns i").removeClass().addClass("icon2-edit");
+					}
+				});
 			}
 
 		</script>

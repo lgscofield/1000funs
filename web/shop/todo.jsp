@@ -155,8 +155,9 @@
 				$("#auto_checkbox").change(function() {
 					var state = $(this).is(":checked"), 
 						url = "${webRoot}/shop/autoprint/" + state;
-					$.get(url, function(ret) {
-						//更新成功
+					$.ajax({
+						url: url, 
+						type: "put"
 					})
 					.fail(function(xhr) { alert(xhr.responseText); }); //自动出单更新失败
 				});
