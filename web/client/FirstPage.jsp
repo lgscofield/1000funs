@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="${webRoot}/web/client/css/clientNew.css">
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/client/js/client.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/interface/AddressAction.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/interface/LoginAction.js"></script>
@@ -19,9 +20,13 @@
 			}
 		</style>
 		<script type="text/javascript">
+		var userName = "${environmentInfo.user.userName}";
 		var chooseURL = '${webRoot}/web/client/ChooseFood.jsp';
+		var findPasswordURL = '${webRoot}/web/client/FindPassword.jsp';
+		var registerURL = '${webRoot}/web/client/register.jsp';
 		$(function(){
 			initRegion();
+			initTopBar();
 		});
 
 		//初始化区域
@@ -60,43 +65,6 @@
 			});
 		}
 
-		//注册
-		function register(){
-			var vo = {};
-			vo.userName = $('#registerUserName').val();
-			vo.password = $('#registerPassword').val();
-			vo.email = $('#registerEmail').val();
-			LoginAction.regist(vo,function(data){
-				if(data.success){
-					$('#register').modal('hide');
-					showSuccess("注册成功");
-				}
-			});
-		}
-
-		//登录
-		function login(){
-			LoginAction.login($('#loginAccount').val(),$('#loginPassword').val(),function(data){
-				if(data.success){
-					$('#login').modal('hide');
-					CommonAction.getUser(function(data){
-						console.log(data);
-					});
-					showSuccess("登录成功");
-				}
-			});
-		}
-
-		//打开找回密码窗口
-		function openFindPassword(){
-			window.open('${webRoot}/web/client/FindPassword.jsp','findPassword');
-		}
-
-		//打开注册窗口
-		function openRegister(){
-			window.open('${webRoot}/web/client/register.jsp','register');
-		}
-
 		//查询地址
 		function queryAddress(){
 			var keyword = $('#keyword').val();
@@ -119,47 +87,27 @@
 				$("#list").hide();
 			}
 		}
-
-		//显示成功消息
-		function showSuccess(html) {
-			showMsg(html, "alert-success");
-		}
-
-		//显示失败消息
-		function showError(html) {
-			showMsg(html, "alert-error");
-		}
-
-		//显示消息
-		function showMsg(html, className) {
-			$("#msg-content").html(html);
-			$("#msg").addClass(className).removeClass("hide")
-				.fadeIn(400)
-				.delay(2000)
-				.fadeOut(800, function() {
-					$(this).removeClass(className).addClass("hide");
-				});
-			center($("#msg"));
-		}
-
-		//居中
-		function center($obj){
-			$obj.css('left','50%').css('margin-left','-'+$obj.css('width')/2);
-		}
 		</script>
 	</head>
 	<body style="overflow-x: hidden">
-		<div class="navbar navbar-static-top">
-			<div class="navbar-inner">
-				<ul class="nav pull-right">
-					<li><a href="#login" data-toggle="modal">登录</a></li>
-					<li><a href="#register" data-toggle="modal">注册</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="alert hide" style="position: absolute;" id="msg">
+		<div id="msg" class="alert hide" style="position: absolute;">
 	    	<div id="msg-content">
 	    	</div>
+		</div>
+		<div class="navbar navbar-static-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<ul class="nav pull-right">
+						<li id="userBar">
+							<a href="#">
+							</a>
+						</li>
+						<li id="loginBar"><a href="#login" data-toggle="modal">登录</a></li>
+						<li id="registerBar"><a href="#register" data-toggle="modal">注册</a></li>
+						<li id="exitBar"><a href="#" onclick="exit();">退出</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 		<div>
 			<div class="logo"></div>

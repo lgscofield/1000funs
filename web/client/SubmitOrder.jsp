@@ -139,7 +139,7 @@
 			console.log(order);
 			OrderAction.submitOrder(order,function(data){
 				if(data.success){
-					window.location.href = '${webRoot}/web/client/register.jsp';
+					window.location.href = '${webRoot}/web/client/register.jsp?from=order';
 				}
 			});
 		}

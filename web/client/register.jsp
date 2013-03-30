@@ -7,6 +7,9 @@
 		<link rel="stylesheet" href="${webRoot}/web/bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/client/js/client.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/interface/LoginAction.js"></script>
 		<style type="text/css">
 			
 			body {
@@ -31,25 +34,41 @@
 			
 		</style>
 		<script type="text/javascript">
+			var userName = "${environmentInfo.user.userName}";
+			var from = "${param.from}";
+			$(function(){
+				if(from!='order'){
+					$('#msg').hide();
+				}
+				if(userName){
+					$('#register').hide();
+					$('#msg1').hide();
+				}else{
+					$('#msg2').hide();
+				}
+			});
 		</script>
 	</head>
 	<body>
-		<div style="text-align: center;margin-bottom: 50px;"><h1>订单已提交成功，注册可享受更多优惠！</h1></div>
-		<div class="container">
+		<div id="msg" style="text-align: center;margin-bottom: 50px;">
+			<h1 id="msg1">订单已提交成功，注册可享受更多优惠！</h1>
+			<h1 id="msg2">订单已提交成功！</h1>
+		</div>
+		<div id="register" class="container">
 			<form class="form-sign">
 			  <fieldset>
 			    <legend><h2>免费注册</h2></legend>
 			    <label>用户名</label>
-			    <input type="text" class="input-block-level">
+			    <input id="registerUserName" type="text" class="input-block-level">
 				<label>密码</label>
-			    <input type="text" class="input-block-level">
+			    <input id="registerPassword" type="password" class="input-block-level">
 			    <label>确认密码</label>
-			    <input type="text" class="input-block-level">
+			    <input id="registerRePassword" type="password" class="input-block-level">
 			    <label>电子邮箱</label>
-			    <input type="text" class="input-block-level">
+			    <input id="registerEmail" type="email" class="input-block-level">
 			    <label class="checkbox">
       				<input type="checkbox"> 我同意使用<a href="#">条款和协议</a>
-      				<button type="submit" class="btn btn-primary btn-large btn-login" style="float: right;">提交</button>
+      				<button type="submit" class="btn btn-primary btn-large btn-login" style="float: right;" onclick="register(1);">提交</button>
     			</label>
 			  </fieldset>
 			</form>

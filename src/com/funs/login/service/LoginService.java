@@ -52,13 +52,20 @@ public class LoginService {
 	}
 	
 	/**
+	 * 退出系统
+	 */
+	public void exit(){
+		WebContext objWebContext = WebContextFactory.get();
+		objWebContext.getSession().removeAttribute("environmentInfo");
+	}
+	
+	/**
 	 * 查询用户，根据帐号或者email或者phone
 	 * @param account
 	 * @return
 	 */
 	public UserVO getUser(String account){
-		UserVO userVO = userDAO.queryUserByCodeOrEmailOrPhone(account);
-		return userVO;
+		return userDAO.queryUserByCodeOrEmailOrPhone(account);
 	}
 	
 	/**

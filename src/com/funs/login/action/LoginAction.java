@@ -10,6 +10,8 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.directwebremoting.WebContext;
+import org.directwebremoting.WebContextFactory;
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.slf4j.Logger;
@@ -57,6 +59,14 @@ public class LoginAction extends ApplicationObjectSupport {
     public ResultVO login(String account, String password) {
        return loginService.login(account, password);
     }
+    
+    /**
+	 * 退出系统
+	 */
+    @RemoteMethod
+	public void exit(){
+		loginService.exit();
+	}
     
     /**
      * 注册
