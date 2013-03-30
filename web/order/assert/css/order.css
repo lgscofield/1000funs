@@ -581,6 +581,9 @@ ul.food-area-list > li .food-add {
 .group-list .text .header {
   font-weight: bold;
 }
+.group-list .text input {
+  margin-bottom: 0px;
+}
 .panel-bottom {
   border: 1px solid #E5E5E5;
   -webkit-border-radius: 4px;
@@ -589,9 +592,6 @@ ul.food-area-list > li .food-add {
   margin-top: 15px;
   overflow: auto;
   padding: 15px 20px 0px;
-}
-.panel-bottom form {
-  margin: 0px;
 }
 .panel-bottom .img-wapper {
   width: 80px;

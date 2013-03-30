@@ -217,7 +217,7 @@ public class ShopController {
 	 * @param value
 	 * @return
 	 */
-	@RequestMapping(value="/autoprint/{value}")
+	@RequestMapping(value="/autoprint/{value}", method=RequestMethod.PUT)
 	public @ResponseBody boolean updateAutoPrint(@PathVariable String value) {
 		int ret = configAction.updateConfig(ShopConstants.CONFIG_KEY_AUTO_PRINT, value);
 		return ret > 0;
