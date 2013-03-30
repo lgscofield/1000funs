@@ -33,8 +33,14 @@ public class FoodDAO extends BaseDAO {
 		this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
 	}
 	
-	public void insertFoodGroup(FoodGroupVO foodGroupVO){
+	/**
+	 * 新增分组信息
+	 * @param foodGroupVO
+	 * @return id
+	 */
+	public int insertFoodGroup(FoodGroupVO foodGroupVO){
 		this.sqlSessionTemplate.insert("com.funs.food.insertFoodGroup",foodGroupVO);
+		return foodGroupVO.getId();
 	}
 	
 	public int deleteGroup(int id) {

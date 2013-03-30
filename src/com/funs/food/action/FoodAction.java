@@ -59,15 +59,15 @@ public class FoodAction extends BaseAction {
 	/**
 	 * 增加食物分组
 	 * @param foodGroupVO
+	 * @return int id
 	 */
-	public ResultVO insertFoodGroup(FoodGroupVO foodGroupVO){
+	public int insertFoodGroup(FoodGroupVO foodGroupVO){
 		try{
-			 foodService.insertFoodGroup(foodGroupVO); 
+			return foodService.insertFoodGroup(foodGroupVO); 
 		}catch(Exception e){
 			LOGGER.info("insertFood 出错："+e);
-			return new ResultVO(e.toString());
 		}
-		return new ResultVO();
+		return 0;
 	}
 	
 	/**

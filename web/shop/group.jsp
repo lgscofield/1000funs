@@ -206,14 +206,15 @@
 								//ajax submit form
 								var options = {
 									success: function(responseText, statusText, xhr, $form) {
-										var img = responseText.image, 
+										var data = responseText, 
 											form = $form.get(0), 
 											groupName = form.groupName.value, 
 											detail = form.detail.value;
 										var groupVO = {
 											"groupName": groupName, 
 											"detail": detail, 
-											"image": img
+											"image": data.image, 
+											"id": data.id
 										};
 										appendToList(groupVO);
 									}
@@ -226,14 +227,17 @@
 					
 					// edit and delete
 					operateEvent: function() {
-						$("#groupList .btns i").click(function() {
+						$(document).on("click", "#groupList .btns i", function() {
 							var $this = $(this), 
-								isEdit = $this.hasClass("icon2-edit") || $this.hasClass("icon2-ok"), 
 								orderId = $this.attr("value");
-							if(isEdit) {
-								editItem(orderId);
-							} else {
+							if($this.hasClass("icon2-remove")) {
 								deleteItem(orderId);
+							} else if($this.hasClass("icon2-edit")) {
+								editItem(orderId);
+							} else if($this.hasClass("icon2-ok")) {
+								saveItem(orderId);
+							} else {
+								throw "btns的样式必须是icon2-remove, icon2-edit, icon2-ok之一";
 							}
 						});
 					}, 
@@ -256,9 +260,11 @@
 				var $firstItem = $("#groupList > ul > li").eq(0), 
 					$newNode = $firstItem.clone();
 				$firstItem.before($newNode);
+				$newNode.attr("id", "item_" + groupVO.id);
 				$("img", $newNode).attr("src", "${webRoot}"+groupVO.image);
 				$(".header", $newNode).html(groupVO.groupName);
 				$(".detail", $newNode).html(groupVO.detail);
+				$(".btns i", $newNode).attr("value", groupVO.id);
 			}
 			
 			function deleteItem(orderId) {
@@ -282,19 +288,18 @@
 			
 			function editItem(orderId) {
 				$("#item_" + orderId + " .text p").each(function() {
+					var $this = $(this);
+					$this.wrapInner("<input type='text' value='"+$this.html()+"'>");
+					$("#item_" + orderId + " .btns i").removeClass().addClass("icon2-ok");
+				});
+			}
+			
+			function saveItem(orderId) {
+				$("#item_" + orderId + " .text p").each(function() {
 					var $this = $(this), 
-						mode = $this.data("mode");
-					if(!mode || mode === "edit") {
-						$this.wrapInner("<input type='text' value='"+$this.html()+"'>").data("mode", "save");
-						$("#item_" + orderId + " .btns i").removeClass().addClass("icon2-ok");
-					} else {
-						var text = $this.children("input").val();
-						$this.html(text).data("mode", "edit");
-						
-						// do save.()
-						
-						$("#item_" + orderId + " .btns i").removeClass().addClass("icon2-edit");
-					}
+						text = $this.children("input").val();
+					$this.html(text);
+					$("#item_" + orderId + " .btns i").removeClass().addClass("icon2-edit");
 				});
 			}
 
