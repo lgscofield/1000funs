@@ -178,9 +178,10 @@ public class ShopController {
 	public View saveGroup(@RequestParam MultipartFile file, @ModelAttribute GroupForm groupForm,
 			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model) {
 		
-		String image = saveGroupToDB(file, groupForm, model);
+		FoodGroupVO vo = saveGroupToDB(file, groupForm, model);
 		if(ajaxRequest) {
-			model.addAttribute("image", image);
+			model.addAttribute("image", vo.getImage());
+			model.addAttribute("id", vo.getId());
 			return mappingJacksonJsonView;
 		} else {
 			return new RedirectView("/shop/group", true);
@@ -318,7 +319,7 @@ public class ShopController {
 	 * @return
 	 * @throws IllegalStateException
 	 */
-	private String saveGroupToDB(MultipartFile file, GroupForm groupForm, Model model) throws IllegalStateException {
+	private FoodGroupVO saveGroupToDB(MultipartFile file, GroupForm groupForm, Model model) throws IllegalStateException {
 		// save the image file to upload directory
 		String imageName = "";
 		try {
@@ -334,9 +335,10 @@ public class ShopController {
 		FoodGroupVO vo = new FoodGroupVO();
 		transferGroupFormToFoodGroupVO(groupForm, vo);
 		vo.setImage(imageName);
-		foodAction.insertFoodGroup(vo);
+		int id = foodAction.insertFoodGroup(vo);
+		vo.setId(id);
 		
-		return imageName;
+		return vo;
 	}
 	
 	private <T> void print(T msg) {

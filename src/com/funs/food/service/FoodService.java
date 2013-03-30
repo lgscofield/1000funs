@@ -66,9 +66,10 @@ public class FoodService extends BaseService{
 	/**
 	 * 增加食物分组
 	 * @param foodGroupVO
+	 * @return int id
 	 */
-	public void insertFoodGroup(FoodGroupVO foodGroupVO) {
-			foodDAO.insertFoodGroup(foodGroupVO);
+	public int insertFoodGroup(FoodGroupVO foodGroupVO) {
+		return foodDAO.insertFoodGroup(foodGroupVO);
 	}
 
 	/**
