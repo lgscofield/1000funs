@@ -8,10 +8,13 @@
 		<link rel="stylesheet" href="${webRoot}/web/client/css/clientNew.css">
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/client/js/client.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/js/1000funs.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/interface/FoodAction.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/interface/PackageAction.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/interface/LoginAction.js"></script>
+		<script type="text/javascript" src="${webRoot}/dwr/interface/CommonAction.js"></script>
 		<style type="text/css">
 		
 			body {
@@ -20,6 +23,7 @@
 			
 		</style>
 		<script type="text/javascript">
+			var userName = "${environmentInfo.user.userName}";
 			var regionId = "${param.regionId}";
 			var regionName = "${param.regionName}";
 			var addressId = "${param.addressId}";
@@ -30,6 +34,7 @@
 
 			$(function(){
 				$('#personNO').val(plateCount);
+				initTopBar();
 				initPosition();
 				queryFoods();
 				queryPackages();
@@ -277,11 +282,27 @@
 	<body>
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
-				<ul class="nav pull-right">
-					<li><a href="#">登录</a></li>
-					<li><a href="#">注册</a></li>
-				</ul>
+				<div class="container-fluid">
+					<ul class="nav pull-right">
+						<li id="shopBar">
+							<a href="#">
+								<i class="icon-home"></i> 景田店(001)
+							</a>
+						</li>
+						<li id="userBar">
+							<a href="#">
+							</a>
+						</li>
+						<li id="loginBar"><a href="#login" data-toggle="modal">登录</a></li>
+						<li id="registerBar"><a href="#register" data-toggle="modal">注册</a></li>
+						<li id="exitBar"><a href="#" onclick="exit();">退出</a></li>
+					</ul>
+				</div>
 			</div>
+		</div>
+		<div id="msg" class="alert hide" style="position: absolute;">
+	    	<div id="msg-content">
+	    	</div>
 		</div>
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 10px;">
 			<span id="position"></span>
@@ -339,6 +360,59 @@
 					</div>
 			    </div>
 			</div>
+		</div>
+		
+				<div id="register" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 400px;">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h2 id="myModalLabel">免费注册</h2>
+		  </div>
+		  <div class="modal-body">
+		    <form class="form-sign">
+			  <fieldset>
+			    <label>用户名</label>
+			    <input id="registerUserName" type="text" class="input-block-level">
+				<label>密码</label>
+			    <input id="registerPassword" type="password" class="input-block-level">
+			    <label>确认密码</label>
+			    <input id="registerRePassword" type="password" class="input-block-level">
+			    <label>电子邮箱</label>
+			    <input id="registerEmail" type="email" required class="input-block-level">
+			    <label class="checkbox">
+      				<input type="checkbox"> 我同意使用<a href="#">条款和协议</a>
+    			</label>
+			  </fieldset>
+			</form>
+		  </div>
+		  <div class="modal-footer">
+		    <button class="btn btn-primary" onclick="register();">提交</button>
+		  </div>
+		</div>
+		
+		<div id="login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 400px;">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h2 id="myModalLabel">会员登录</h2>
+		  </div>
+		  <div class="modal-body">
+		    <form class="form-sign">
+			  <fieldset>
+			    <label>用户名/Email/手机号</label>
+			    <input id="loginAccount" type="text" class="input-block-level">
+				<label>密码</label>
+			    <input id="loginPassword" type="password" class="input-block-level">
+			    <label class="checkbox">
+      				<input type="checkbox"> 10天内免登录
+      				<div style="float: right;">
+      					<a href="#" onclick="openFindPassword();">忘记密码</a>|<a href="#" onclick="openRegister();">注册账号</a>
+      				</div>
+    			</label>
+			  </fieldset>
+			</form>
+		  </div>
+		  <div class="modal-footer">
+		    <button class="btn btn-primary" onclick="login();">登录</button>
+		  </div>
 		</div>
 	</body>
 </html>
