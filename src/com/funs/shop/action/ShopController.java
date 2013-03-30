@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +24,7 @@ import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
 import com.funs.config.action.ConfigAction;
 import com.funs.core.util.tools.AjaxUtils;
+import com.funs.core.util.tools.DateTimeFormatUtils;
 import com.funs.food.action.FoodAction;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
@@ -271,8 +271,8 @@ public class ShopController {
 				view.setId(vo.getId());
 				view.setAddress(vo.getAddress());
 				view.setContact(vo.getContact());
-				view.setCreateTime(vo.getCreateTime());
-				view.setExceptTime(vo.getExceptTime());
+				view.setCreateTime(DateTimeFormatUtils.formatDateTime(vo.getCreateTime()));
+				view.setExceptTime(DateTimeFormatUtils.formatDateTime(vo.getExceptTime()));
 				view.setOrderStatus(vo.getOrderStatus());
 				view.setPhone(vo.getPhone());
 				view.setTotalPrice(vo.getTotalPrice());

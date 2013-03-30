@@ -66,7 +66,7 @@ public class TestLoginServlet extends HttpServlet {
 		userVO.setPassword("hello");
 		userVO.setPhone("13488888888");
 		userVO.setQuota(10.00);
-		userVO.setRegisterTime("2013-01-13 10:10:10");
+//		userVO.setRegisterTime("2013-01-13 10:10:10");
 		userVO.setScore(100);
 		userVO.setUserName("林木");
 		userVO.setDefaultRegionId(1);
