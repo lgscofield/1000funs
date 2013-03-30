@@ -12,13 +12,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
 import com.funs.config.action.ConfigAction;
+import com.funs.core.util.tools.AjaxUtils;
 import com.funs.food.action.FoodAction;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
@@ -38,16 +44,25 @@ import com.funs.shop.util.ShopUtil;
 
 /**
  * 店铺管理控制器
- * 
- * /shop			-->		主页
- * /shop/todo		-->		订单管理待处理
- * /shop/history	-->		订单管理已处理
- * /shop/catering	-->		配餐模式
- * /shop/package	-->		套餐模式
- * 
- * /shop/save/group	-->		保存分组
- * /shop/order/{id}?status={value}		method=put	-->		更新订单状态
- * /autoprint/{value}		更新是否自动出单
+ 
+function			method		url
+---------			------		--------
+主页					GET			/shop
+订单管理待处理			GET			/shop/todo
+订单管理已处理			GET			/shop/history
+配餐模式				GET			/shop/catering
+套餐模式				GET			/shop/package
+
+分类管理				GET			/shop/group
+新增分类				POST		/shop/group
+获取一个group			GET			/shop/group/{id}
+删除一个group			DELETE		/shop/group/{id}
+更新一个group			PUT			/shop/group/{id}
+更新订单状态			PUT			/shop/group/{id}?status={value}
+
+更新是否自动出单		PUT			/shop/autoprint/{value}	
+
+
  * 
  * @author jcchen
  *
@@ -64,9 +79,21 @@ public class ShopController {
 	
 	@Autowired
 	private ConfigAction configAction;
+	
+	@Autowired 
+	private MappingJacksonJsonView mappingJacksonJsonView;
+	
+	
+	// Invoked on every request
+	
+	@ModelAttribute
+	public void ajaxAttribute(WebRequest request, Model model) {
+		model.addAttribute("ajaxRequest", AjaxUtils.isAjaxRequest(request));
+	}
+	
 
 	/**
-	 * 
+	 * index
 	 * @return
 	 */
 	@RequestMapping("")
@@ -140,36 +167,36 @@ public class ShopController {
 	}
 	
 	/**
-	 * 保存分组
+	 * 保存分组.(支持ajax/form submit)
 	 * @param file
 	 * @param groupForm
+	 * @param ajaxRequest
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="/save/group", method=RequestMethod.POST)
-	public String saveGroup(@RequestParam MultipartFile file, @ModelAttribute GroupForm groupForm, Model model) {
+	@RequestMapping(value="/group", method=RequestMethod.POST)
+	public View saveGroup(@RequestParam MultipartFile file, @ModelAttribute GroupForm groupForm,
+			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model) {
 		
-		// save the image file to upload directory
-		String imageName = "";
-		try {
-			imageName = ShopUtil.saveImage(file);
-		} catch (Exception e) {
-			e.printStackTrace();
+		String image = saveGroupToDB(file, groupForm, model);
+		if(ajaxRequest) {
+			model.addAttribute("image", image);
+			return mappingJacksonJsonView;
+		} else {
+			return new RedirectView("/shop/group", true);
 		}
-		if(imageName.equals("")) {
-			throw new IllegalStateException("add group fail!");
-		}
+	}
+	
+	@RequestMapping(value="/group/{id}", method=RequestMethod.DELETE)
+	public @ResponseBody boolean deleteGroup(@PathVariable int id) {
+		int ret = foodAction.deleteGroup(id);
+		return ret > 0;
+	}
+	
+	@RequestMapping(value="/group/{id}", method=RequestMethod.PUT)
+	public @ResponseBody boolean updateOrder() {
 		
-		// save vo to db
-		FoodGroupVO vo = new FoodGroupVO();
-		transferGroupFormToFoodGroupVO(groupForm, vo);
-		vo.setImage(imageName);
-		foodAction.insertFoodGroup(vo);
-		
-		//redirect
-		String redirect = "redirect:/shop/" + 
-				(groupForm.getType() == FoodVO.TYPE_FOOD ? "catering.ac" : "package.ac");
-		return redirect;
+		return false;
 	}
 	
 	/**
@@ -281,6 +308,35 @@ public class ShopController {
 		vo.setGroupName(form.getGroupName());
 		vo.setDetail(form.getDetail());
 		vo.setType(form.getType());
+	}
+	
+	/**
+	 * save group to db.
+	 * @param file
+	 * @param groupForm
+	 * @param model
+	 * @return
+	 * @throws IllegalStateException
+	 */
+	private String saveGroupToDB(MultipartFile file, GroupForm groupForm, Model model) throws IllegalStateException {
+		// save the image file to upload directory
+		String imageName = "";
+		try {
+			imageName = ShopUtil.saveImage(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(imageName.equals("")) {
+			throw new IllegalStateException("add group fail!");
+		}
+		
+		// save vo to db
+		FoodGroupVO vo = new FoodGroupVO();
+		transferGroupFormToFoodGroupVO(groupForm, vo);
+		vo.setImage(imageName);
+		foodAction.insertFoodGroup(vo);
+		
+		return imageName;
 	}
 	
 	private <T> void print(T msg) {

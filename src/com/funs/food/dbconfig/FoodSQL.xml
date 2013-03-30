@@ -23,6 +23,11 @@
 		INSERT INTO food_group(group_name,image,detail,type,deleted) VALUES
 		(#{groupName},#{image},#{detail},#{type},false)
 	</insert>
+	
+	<!-- 删除group分组 -->
+	<update id="deleteGroup" parameterType="int">
+		UPDATE food_group set deleted = true where id = #{id};
+	</update>
 
 	<!-- 根据shopId在架的所有单品-->
 	<select id="queryFoodsByShopId" parameterType="int"
