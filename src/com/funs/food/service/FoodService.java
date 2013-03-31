@@ -71,6 +71,15 @@ public class FoodService extends BaseService{
 	public int insertFoodGroup(FoodGroupVO foodGroupVO) {
 		return foodDAO.insertFoodGroup(foodGroupVO);
 	}
+	
+	/**
+	 * 更新分组信息
+	 * @param foodGroupVO
+	 * @return
+	 */
+	public int updateGroup(FoodGroupVO foodGroupVO) {
+		return foodDAO.updateGroup(foodGroupVO);
+	}
 
 	/**
 	 * 查询所有在架食物

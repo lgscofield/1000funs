@@ -2,6 +2,7 @@ package com.funs.shop.model;
 
 public class GroupForm {
 
+	private int id;
 	private String groupName;
 	private String detail;
 	private int type;
@@ -24,9 +25,15 @@ public class GroupForm {
 	public void setType(int type) {
 		this.type = type;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
-		return "GroupForm [groupName=" + groupName + ", detail=" + detail
+		return "GroupForm [id=" + id + ", groupName=" + groupName + ", detail=" + detail
 				+ ", type=" + type + "]";
 	}
 }

@@ -24,6 +24,17 @@
 		(#{groupName},#{image},#{detail},#{type},false)
 	</insert>
 	
+	<!-- 更新group信息 -->
+	<update id="updateGroup" parameterType="com.funs.food.model.FoodGroupVO">
+		update food_group 
+		<set>
+			<if test="groupName != null">group_name=#{groupName},</if>
+			<if test="detail != null">detail=#{detail},</if>
+			<if test="image != null">image=#{image}</if>
+		</set>
+		where id = #{id};
+	</update>
+	
 	<!-- 删除group分组 -->
 	<update id="deleteGroup" parameterType="int">
 		UPDATE food_group set deleted = true where id = #{id};

@@ -39,7 +39,7 @@
 						<li id="item_${group.id }">
 							<div class="list-item">
 								<div class="pic">
-									<img src="${webRoot}/${group.image }" alt="${group.groupName }">
+									<img id="img_${group.id }" src="${webRoot}/${group.image }" alt="${group.groupName }">
 								</div>
 								<div class="btns hide">
 									<i class="icon2-edit" value="${group.id }"></i>
@@ -86,7 +86,13 @@
 						</div>
 					</form>
 				</div><!-- /end of add panel -->
-			
+				
+				<form id="editForm" name="editForm" action="${webRoot}/shop/group" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="id">
+					<input type="hidden" name="groupName">
+					<input type="hidden" name="detail">
+					<input type="file" id="edit-file-upload" name="file" class="hide">
+				</form>
 			</div>
 		</div><!--/ end of container -->
 
@@ -193,6 +199,18 @@
 					// html5 upload image preview
 					imagePreview: function() {
 						imagePreview($("#file-upload"), $("#image-preview"));
+						
+						// when edit
+						$("#edit-file-upload").change(function() {
+							var img = this.files[0], 
+								reader = new FileReader(), 
+								orderId = $(this).data("orderId");
+							
+							reader.onload = function(evt) {
+								$("#img_" + orderId).attr("src", evt.target.result);
+							}
+							reader.readAsDataURL(img);
+						});
 					}, 
 					
 					// form submit validate
@@ -223,9 +241,23 @@
 							}
 							return false;
 						});
+						
+						// form for update
+						$("#editForm").submit(function() {
+							var orderId = $("input[name='id']", this).val(), 
+								options = {
+									type: "put", 
+									url: "${webRoot}/shop/group/" + orderId, 
+									success: function(responseText, statusText, xhr, $form) {
+										//alert(responseText);
+									}
+								};
+							$(this).ajaxSubmit(options);
+							return false;
+						});
 					}, 
 					
-					// edit and delete
+					// edit and delete operate btn
 					operateEvent: function() {
 						$(document).on("click", "#groupList .btns i", function() {
 							var $this = $(this), 
@@ -238,6 +270,16 @@
 								saveItem(orderId);
 							} else {
 								throw "btns的样式必须是icon2-remove, icon2-edit, icon2-ok之一";
+							}
+						});
+					}, 
+					
+					// event for edit/update record dynamic
+					dynamicUpdateEvent: function() {
+						$(document).on("keypress", "#groupList .text p input", function(e) {
+							var keycode = e.which;
+							if(keycode == 13 || keycode == 108) { // Enter
+								saveItem($(this).attr("orderId"));
 							}
 						});
 					}, 
@@ -289,18 +331,35 @@
 			function editItem(orderId) {
 				$("#item_" + orderId + " .text p").each(function() {
 					var $this = $(this);
-					$this.wrapInner("<input type='text' value='"+$this.html()+"'>");
-					$("#item_" + orderId + " .btns i").removeClass().addClass("icon2-ok");
+					$this.wrapInner("<input type='text' orderId='"+orderId+"' value='"+$this.html()+"'>");
+				});
+				$("#item_" + orderId + " .btns i").removeClass().addClass("icon2-ok");
+				$("#item_" + orderId + " .pic").addClass("pointer").on("click", function() {
+					$("#edit-file-upload").data("orderId", orderId).click();
 				});
 			}
 			
 			function saveItem(orderId) {
+				
 				$("#item_" + orderId + " .text p").each(function() {
 					var $this = $(this), 
 						text = $this.children("input").val();
 					$this.html(text);
-					$("#item_" + orderId + " .btns i").removeClass().addClass("icon2-edit");
+					
+					if($this.hasClass("header")) {
+						$("#editForm input[name='groupName']").val(text);
+					} else if($this.hasClass("detail")) {
+						$("#editForm input[name='detail']").val(text);
+					} else {
+					}
+					
 				});
+				$("#item_" + orderId + " .btns i").removeClass().addClass("icon2-edit");
+				$("#item_" + orderId + " .pic").removeClass("pointer").off("click");
+				
+				// do update to db
+				$("#editForm input[name='id']").val(orderId);
+				$("#editForm").submit();
 			}
 
 		</script>

@@ -57,7 +57,7 @@ function			method		url
 新增分类				POST		/shop/group
 获取一个group			GET			/shop/group/{id}
 删除一个group			DELETE		/shop/group/{id}
-更新一个group			PUT			/shop/group/{id}
+更新一个group			POST		/shop/group/{id}
 更新订单状态			PUT			/shop/group/{id}?status={value}
 
 更新是否自动出单		PUT			/shop/autoprint/{value}	
@@ -194,10 +194,20 @@ public class ShopController {
 		return ret > 0;
 	}
 	
-	@RequestMapping(value="/group/{id}", method=RequestMethod.PUT)
-	public @ResponseBody boolean updateOrder() {
+	@RequestMapping(value="/group/{id}", method=RequestMethod.POST)
+	public @ResponseBody boolean updateGroup(@RequestParam(required=false) MultipartFile file, @ModelAttribute GroupForm groupForm,
+			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model) {
 		
-		return false;
+		String image = null;
+		FoodGroupVO vo = new FoodGroupVO();
+		transferGroupFormToFoodGroupVO(groupForm, vo);
+		if(file != null) {
+			image = ShopUtil.saveImage(file);
+			vo.setImage(image);
+		}
+		int ret = foodAction.updateGroup(vo);
+		
+		return ret > 0;
 	}
 	
 	/**
@@ -309,6 +319,7 @@ public class ShopController {
 		vo.setGroupName(form.getGroupName());
 		vo.setDetail(form.getDetail());
 		vo.setType(form.getType());
+		vo.setId(form.getId());
 	}
 	
 	/**
@@ -342,6 +353,7 @@ public class ShopController {
 	}
 	
 	private <T> void print(T msg) {
-		System.out.println(">>>>>>>>>>>>>>>>>>>>\n"+msg.toString()+"\n<<<<<<<<<<<<<<<<<<");
+		if(msg != null)
+			System.out.println(">>>>>>>>>>>>>>>>>>>>\n"+msg.toString()+"\n<<<<<<<<<<<<<<<<<<");
 	}
 }
