@@ -71,6 +71,15 @@ public class FoodAction extends BaseAction {
 	}
 	
 	/**
+	 * 更新分组信息
+	 * @param foodGroupVO
+	 * @return
+	 */
+	public int updateGroup(FoodGroupVO foodGroupVO) {
+		return foodService.updateGroup(foodGroupVO);
+	}
+	
+	/**
 	 * 查询所有在架食物单品
 	 * @return List<FoodVO>
 	 */

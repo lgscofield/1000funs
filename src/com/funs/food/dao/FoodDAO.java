@@ -43,6 +43,15 @@ public class FoodDAO extends BaseDAO {
 		return foodGroupVO.getId();
 	}
 	
+	/**
+	 * 更新分组信息
+	 * @param foodGroupVO
+	 * @return
+	 */
+	public int updateGroup(FoodGroupVO foodGroupVO) {
+		return this.sqlSessionTemplate.update("com.funs.food.updateGroup", foodGroupVO);
+	}
+	
 	public int deleteGroup(int id) {
 		return this.sqlSessionTemplate.update("com.funs.food.deleteGroup", id);
 	}

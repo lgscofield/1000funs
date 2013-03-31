@@ -547,6 +547,9 @@ ul.food-area-list > li .food-add {
 .center {
   text-align: center;
 }
+.pointer {
+  cursor: pointer;
+}
 .btn-right button {
   float: right;
   margin: 0px 2px;
