@@ -6,13 +6,15 @@ import java.util.List;
 public class QueryForm {
 
 	private int pageNo;
-	private int pageSize;
+	private int pageSize = 4;
 	private int recordCount;
 	private String keyword;
 	private int overtime;
 	private String orderStatus;
 
 	public int getPageNo() {
+		if(pageNo > getPageCount())
+			return 1;
 		return pageNo;
 	}
 	public void setPageNo(int pageNo) {

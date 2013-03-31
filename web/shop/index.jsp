@@ -97,38 +97,6 @@
 			</div>
 		</div>
 
-		<%-- <script src="${webRoot}/web/seajs/sea.js" data-config="${webRoot}/web/js/config" data-main="${webRoot}/web/js/main"></script> --%>
-		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
-		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-
-			jQuery(function ($) {
-
-				$(".sidebar .nav > li").click(function() {
-					var $this = $(this);
-					$this.addClass("active").siblings().removeClass("active");
-					setFrameURL($this.children("a").attr("href"));
-					return false;
-				})
-
-				// 选中第一个.
-				.eq(4).click();
-
-				initHeight();
-
-				$(window).bind("resize", initHeight);
-
-			});
-
-			function setFrameURL (url) {
-				$("#mainFrame").attr("src", url);
-			}
-
-			function initHeight () {
-				var height = $(window).height() - $(".navbar-fixed-top").outerHeight() - 60;
-				$("#mainFrame").attr("height", height);
-			}
-
-		</script>
+		<script src="${webRoot}/web/seajs/sea.js" data-config="${webRoot}/web/js/config" data-main="${webRoot}/web/js/shop.index"></script>
 	</body>
 </html>

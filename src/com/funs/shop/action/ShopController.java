@@ -234,6 +234,16 @@ public class ShopController {
 		return ret > 0;
 	}
 	
+	/**
+	 * 获取是否自动出单
+	 * @return
+	 */
+	@RequestMapping("/autoprint")
+	public @ResponseBody boolean getAutoPrint() {
+		String value = configAction.getConfigValue(ShopConstants.CONFIG_KEY_AUTO_PRINT);
+		return Boolean.valueOf(value).booleanValue();
+	}
+	
 	
 	@RequestMapping(value="/query/group/{type}", method=RequestMethod.GET)
 	public @ResponseBody List<FoodGroupVO> queryGroup(@PathVariable int type) {
