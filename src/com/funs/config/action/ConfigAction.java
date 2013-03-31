@@ -51,6 +51,15 @@ public class ConfigAction {
 	}
 	
 	/**
+	 * 获取一个配置值
+	 * @param key
+	 * @return
+	 */
+	public String getConfigValue(String key) {
+		return getConfig(key).getValue();
+	}
+	
+	/**
 	 * 获取一个配置值,如果不存在,则使用defaultValue新增一个并返回
 	 * @param key
 	 * @param defaultValue

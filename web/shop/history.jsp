@@ -108,73 +108,11 @@
 						</c:if>
 					</ul>
 				</div>
-				
-				<div class="table-list-comment">
-					<span class="red">红色</span>表示此订单为异常的订单。
-				</div>
 				<!-- pagination -->
 				<div id="page"></div>
 			</div>
 		</div>
 
-		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
-		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="${webRoot}/web/js/jquery.pagination.js"></script>
-		<script type="text/javascript" src="${webRoot}/web/js/jquery.bootstrap.extension.js"></script>
-		<script type="text/javascript" src="${webRoot}/web/js/order-tablelist.js"></script>
-		<script type="text/javascript">
-
-			jQuery(function ($) {
-				init();
-				initEvent();
-			});
-			
-			function init() {
-				// button group init
-				var status = $("#orderStatus").val();
-				$(".btn-group > button[value='"+status+"']").addClass("active");
-			}
-			
-			function initEvent() {
-				$("#page").pagination({
-					className: "pagination-right", 
-					page: $("#pageNo").val(), 
-					count: $("#pageCount").val(), 
-					callback: function (current_page, new_page) {
-						$("#pageNo").val(new_page);
-						$("#queryForm").submit();
-					}, 
-					refresh: false
-				});
-				
-				$(".btn-group").buttonGroup().change(function(e) {
-					$("#orderStatus").val(this.val());
-					$("#queryForm").submit();
-				});
-				
-				$(".order-btn-abnormal").click(function() {
-					markAsException($(this).attr("value"));
-					return false;
-				});
-			}
-			
-			//标记为异常
-			function markAsException(id) {
-				$.ajax({
-					type: "put", 
-					url: "${webRoot}/shop/order/"+id+"?status=2"
-				})
-				.done(function(data) {
-					if(data == true) {
-						$("#table_item_"+id).addClass("abnormal");
-						return true;
-					} else {
-						alert("标记为异常失败");
-						return false;
-					}
-				});
-			}
-
-		</script>
+		<script src="${webRoot}/web/seajs/sea.js" data-config="${webRoot}/web/js/config" data-main="${webRoot}/web/js/shop.history"></script>
 	</body>
 </html>

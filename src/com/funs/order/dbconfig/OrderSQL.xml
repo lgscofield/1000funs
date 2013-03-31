@@ -65,6 +65,9 @@
 		   	  <foreach collection="orderStatusList" item="item" index="index" open="(" close=")" separator=",">
 			  	#{item}
 			  </foreach>
+			<if test="keyword != null">
+				and concat(address,contact,phone) like concat('%',#{keyword},'%')
+			</if>
 	</select>
 	
 	<!-- 根据shopId查询某个店铺的订单列表(分页查询)(连同食物一起查出来) -->
@@ -78,16 +81,15 @@
 					  <foreach collection="orderStatusList" item="item" index="index" open="(" close=")" separator=",">
 					  	#{item}
 					  </foreach>
+				<if test="keyword != null">
+					and concat(address,contact,phone) like concat('%',#{keyword},'%')
+				</if>
 		     	limit #{pageFrom}, #{pageSize}
 		     ) o, 
 		     food f, food_re_shop fs
 		where i.deleted = false and f.deleted = false and fs.deleted = false
 		  and o.id = i.order_id and i.item_id = f.id 
 		  and o.shop_id = fs.shop_id and f.id = fs.food_id
-		  <!-- and i.item_type = #{itemType} -->
-		  <if test="keyword != null">
-		  	and concat(o.address,o.contact,o.phone) like concat('%',#{keyword},'%')
-		  </if>
 		order by o.id, i.plate, f.food_name
 	</select>
 
