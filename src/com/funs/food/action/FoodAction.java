@@ -46,14 +46,13 @@ public class FoodAction extends BaseAction {
 	 * 增加食物（同时指定到店铺）
 	 * @param foodVO
 	 */
-	public ResultVO insertFood(FoodVO foodVO){
+	public int insertFood(FoodVO foodVO){
 		try{
-			foodService.insertFood(foodVO);
+			return foodService.insertFood(foodVO);
 		}catch(Exception e){
 			LOGGER.info("insertFood 出错："+e);
-			return new ResultVO(e.toString());
 		}
-		return new ResultVO();
+		return 0;
 	}
 	
 	/**
@@ -77,6 +76,15 @@ public class FoodAction extends BaseAction {
 	 */
 	public int updateGroup(FoodGroupVO foodGroupVO) {
 		return foodService.updateGroup(foodGroupVO);
+	}
+	
+	/**
+	 * 更新食品信息
+	 * @param foodVO
+	 * @return
+	 */
+	public int updateFood(FoodVO foodVO) {
+		return foodService.updateFood(foodVO);
 	}
 	
 	/**
@@ -114,5 +122,22 @@ public class FoodAction extends BaseAction {
 	 */
 	public int deleteGroup(int id) {
 		return foodService.deleteGroup(id);
+	}
+	
+	/**
+	 * 删除食物
+	 * @param id
+	 * @return
+	 */
+	public int deleteFood(int id) {
+		return foodService.deleteFood(id);
+	}
+	
+	/**
+	 * 查询单品食物
+	 * @return
+	 */
+	public List<FoodVO> querySingleFoods(FoodQueryCondition queryCondition) {
+		return foodService.querySingleFoods(queryCondition);
 	}
 }

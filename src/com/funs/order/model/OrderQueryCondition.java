@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class OrderQueryCondition {
-	
-	private int pageNo = 1;
-	private int pageSize;
+import com.funs.core.base.model.QueryVO;
 
+public class OrderQueryCondition extends QueryVO {
+	
 	private int userId;
 	private int shopId;
 	private int itemType;
@@ -16,22 +15,6 @@ public class OrderQueryCondition {
 	private List<Integer> orderStatusList = new ArrayList<Integer>();
 	
 	public OrderQueryCondition() {
-	}
-	
-	public int getPageNo() {
-		return pageNo;
-	}
-
-	public void setPageNo(int pageNo) {
-		this.pageNo = pageNo;
-	}
-
-	public int getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
 	}
 
 	public int getUserId() {
@@ -66,8 +49,5 @@ public class OrderQueryCondition {
 	}
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
-	}
-	public int getPageFrom() {
-		return (pageNo-1)*pageSize;
 	}
 }
