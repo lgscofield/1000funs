@@ -2,8 +2,10 @@ package com.funs.food.model;
 
 import org.directwebremoting.annotations.DataTransferObject;
 
+import com.funs.core.base.model.QueryVO;
+
 @DataTransferObject
-public class FoodQueryCondition {
+public class FoodQueryCondition extends QueryVO {
 
 	private int shopId;
 	private int type;

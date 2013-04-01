@@ -32,14 +32,14 @@ public class FoodService extends BaseService{
 	 * 增加食物（不指定店铺）
 	 * @param foodVO
 	 */
-	public void insertFood(FoodVO foodVO) {
+	public int insertFood(FoodVO foodVO) {
 		
 		//生成食物编号
 		int foodCount=foodDAO.queryCountOfFood();
 		String foodCode = CodeGenerator.getCode(CodeGenerator.TYPE.FOOD,foodCount);
 		foodVO.setCode(foodCode);
 		
-		foodDAO.insertFood(foodVO);
+		return foodDAO.insertFood(foodVO);
 	}
 	
 	/**
@@ -80,6 +80,15 @@ public class FoodService extends BaseService{
 	public int updateGroup(FoodGroupVO foodGroupVO) {
 		return foodDAO.updateGroup(foodGroupVO);
 	}
+	
+	/**
+	 * 更新食品信息
+	 * @param foodVO
+	 * @return
+	 */
+	public int updateFood(FoodVO foodVO) {
+		return foodDAO.updateFood(foodVO);
+	}
 
 	/**
 	 * 查询所有在架食物
@@ -105,6 +114,18 @@ public class FoodService extends BaseService{
 	
 	public int deleteGroup(int id) {
 		return foodDAO.deleteGroup(id);
+	}
+	
+	public int deleteFood(int id) {
+		return foodDAO.deleteFood(id);
+	}
+	
+	/**
+	 * 查询单品食物
+	 * @return
+	 */
+	public List<FoodVO> querySingleFoods(FoodQueryCondition queryCondition) {
+		return foodDAO.querySingleFoods(queryCondition);
 	}
 
 	public FoodDAO getFoodDAO() {

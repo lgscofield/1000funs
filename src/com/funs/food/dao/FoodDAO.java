@@ -21,8 +21,9 @@ import com.funs.food.model.FoodVO;
  */
 public class FoodDAO extends BaseDAO {
 
-	public void insertFood(FoodVO foodVO) {
+	public int insertFood(FoodVO foodVO) {
 		this.sqlSessionTemplate.insert("com.funs.food.insertFood", foodVO);
+		return foodVO.getId();
 	}
 	
 	public int queryIdForFoodVO(FoodVO foodVO) {
@@ -52,8 +53,21 @@ public class FoodDAO extends BaseDAO {
 		return this.sqlSessionTemplate.update("com.funs.food.updateGroup", foodGroupVO);
 	}
 	
+	/**
+	 * 更新食品信息
+	 * @param foodVO
+	 * @return
+	 */
+	public int updateFood(FoodVO foodVO) {
+		return this.sqlSessionTemplate.update("com.funs.food.updateFood", foodVO);
+	}
+	
 	public int deleteGroup(int id) {
 		return this.sqlSessionTemplate.update("com.funs.food.deleteGroup", id);
+	}
+	
+	public int deleteFood(int id) {
+		return this.sqlSessionTemplate.update("com.funs.food.deleteFood", id);
 	}
 	
 	public List<FoodVO> queryFoodsByShopId(int shopId){
@@ -86,5 +100,14 @@ public class FoodDAO extends BaseDAO {
 	public List<FoodGroupVO> queryAllGroups() {
 		List<FoodGroupVO> result = this.sqlSessionTemplate.selectList("com.funs.food.queryAllGroups");
 		return result;
+	}
+	
+	/**
+	 * 查询单品食物
+	 * @return
+	 */
+	public List<FoodVO> querySingleFoods(FoodQueryCondition queryCondition) {
+		List<FoodVO> foods = this.sqlSessionTemplate.selectList("com.funs.food.querySingleFoods", queryCondition);
+		return foods;
 	}
 }

@@ -7,7 +7,7 @@
 <mapper namespace="com.funs.food">
 
 	<!-- 插入Food信息 -->
-	<insert id="insertFood" parameterType="com.funs.food.model.FoodVO">
+	<insert id="insertFood" parameterType="com.funs.food.model.FoodVO" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO food(code,food_name,detail,image,deleted) VALUES
 		(#{code},#{foodName},#{detail},#{image},false)
 	</insert>
@@ -35,9 +35,25 @@
 		where id = #{id};
 	</update>
 	
+	<!-- 更新food信息 -->
+	<update id="updateFood" parameterType="com.funs.food.model.FoodVO">
+		update food 
+		<set>
+			<if test="foodName != null">food_name=#{foodName},</if>
+			<if test="detail != null">detail=#{detail},</if>
+			<if test="image != null">image=#{image}</if>
+		</set>
+		where id = #{id};
+	</update>
+	
 	<!-- 删除group分组 -->
 	<update id="deleteGroup" parameterType="int">
 		UPDATE food_group set deleted = true where id = #{id};
+	</update>
+	
+	<!-- 删除food -->
+	<update id="deleteFood" parameterType="int">
+		UPDATE food set deleted = true where id = #{id};
 	</update>
 
 	<!-- 根据shopId在架的所有单品-->
@@ -117,6 +133,11 @@
 	<!-- 查询所有分组信息(不区分类型信息) -->
 	<select id="queryAllGroups" resultType="com.funs.food.model.FoodGroupVO">
 		select * from food_group g where g.deleted = false order by g.group_name
+	</select>
+	
+	<!-- 查询所有单品食物 -->
+	<select id="querySingleFoods" parameterType="com.funs.food.model.FoodQueryCondition" resultType="com.funs.food.model.FoodVO">
+		select * from food where deleted = false order by food_name limit #{pageFrom}, #{pageSize} 
 	</select>
 	
 </mapper>

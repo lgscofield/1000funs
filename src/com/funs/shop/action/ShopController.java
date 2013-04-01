@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +32,7 @@ import com.funs.order.action.OrderAction;
 import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
 import com.funs.order.model.OrderVOWithFood;
+import com.funs.shop.model.FoodForm;
 import com.funs.shop.model.GroupForm;
 import com.funs.shop.model.OrderFoodView;
 import com.funs.shop.model.OrderView;
@@ -59,6 +59,12 @@ function			method		url
 删除一个group			DELETE		/shop/group/{id}
 更新一个group			POST		/shop/group/{id}
 更新订单状态			PUT			/shop/group/{id}?status={value}
+
+食物管理				GET			/shop/food
+新增食物				POST		/shop/food
+获取食物				GET			/shop/food/{id}
+删除食物				DELETE		/shop/food/{id}
+更新食物				POST		/shop/food/{id}
 
 更新是否自动出单		PUT			/shop/autoprint/{value}	
 
@@ -166,6 +172,17 @@ public class ShopController {
 		return "shop/group";
 	}
 	
+	@RequestMapping("/food")
+	public String toFood(Model model) {
+		FoodQueryCondition condition = new FoodQueryCondition();
+		condition.setPageNo(1);
+		condition.setPageSize(8);
+		List<FoodVO> foods = foodAction.querySingleFoods(condition);
+		model.addAttribute("foodList", foods);
+		return "shop/food";
+	}
+	
+	
 	/**
 	 * 保存分组.(支持ajax/form submit)
 	 * @param file
@@ -178,7 +195,7 @@ public class ShopController {
 	public View saveGroup(@RequestParam MultipartFile file, @ModelAttribute GroupForm groupForm,
 			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model) {
 		
-		FoodGroupVO vo = saveGroupToDB(file, groupForm, model);
+		FoodGroupVO vo = saveGroupToDB(file, groupForm);
 		if(ajaxRequest) {
 			model.addAttribute("image", vo.getImage());
 			model.addAttribute("id", vo.getId());
@@ -188,9 +205,35 @@ public class ShopController {
 		}
 	}
 	
+	/**
+	 * 保存食物
+	 * @param file
+	 * @param groupForm
+	 * @param ajaxRequest
+	 * @param model
+	 * @return
+	 */
+	public View saveFood(@RequestParam MultipartFile file, @ModelAttribute FoodForm foodForm,
+			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model) {
+		FoodVO vo = saveFoodToDB(file, foodForm);
+		if(ajaxRequest) {
+			model.addAttribute("image", vo.getImage());
+			model.addAttribute("id", vo.getId());
+			return mappingJacksonJsonView;
+		} else {
+			return new RedirectView("/shop/food", true);
+		}
+	}
+	
 	@RequestMapping(value="/group/{id}", method=RequestMethod.DELETE)
 	public @ResponseBody boolean deleteGroup(@PathVariable int id) {
 		int ret = foodAction.deleteGroup(id);
+		return ret > 0;
+	}
+	
+	@RequestMapping(value="/food/{id}", method=RequestMethod.DELETE)
+	public @ResponseBody boolean deleteFood(@PathVariable int id) {
+		int ret = foodAction.deleteFood(id);
 		return ret > 0;
 	}
 	
@@ -206,6 +249,24 @@ public class ShopController {
 			vo.setImage(image);
 		}
 		int ret = foodAction.updateGroup(vo);
+		
+		return ret > 0;
+	}
+	
+	@RequestMapping(value="/food/{id}", method=RequestMethod.POST)
+	public @ResponseBody boolean updateFood(@RequestParam(required=false) MultipartFile file, @ModelAttribute FoodForm foodForm,
+			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model) {
+		
+		String image = null;
+		FoodVO vo = new FoodVO();
+		vo.setId(foodForm.getId());
+		vo.setFoodName(foodForm.getFoodName());
+		vo.setDetail(foodForm.getDetail());
+		if(file != null) {
+			image = ShopUtil.saveImage(file);
+			vo.setImage(image);
+		}
+		int ret = foodAction.updateFood(vo);
 		
 		return ret > 0;
 	}
@@ -245,22 +306,8 @@ public class ShopController {
 	}
 	
 	
-	@RequestMapping(value="/query/group/{type}", method=RequestMethod.GET)
-	public @ResponseBody List<FoodGroupVO> queryGroup(@PathVariable int type) {
-		List<FoodGroupVO> list = foodAction.queryGroups(type);
-		System.out.println(list);
-		return list;
-	}
 	
-	@RequestMapping("/query/test")
-	public @ResponseBody FoodGroupVO queryTest() {
-		
-		print(" queryTest ");
-		ObjectMapper mapper = new ObjectMapper();
-		print( mapper );
-		
-		return new FoodGroupVO(1, "groupName", "image", "detail", 1);
-	}
+	
 	
 	
 	
@@ -336,11 +383,10 @@ public class ShopController {
 	 * save group to db.
 	 * @param file
 	 * @param groupForm
-	 * @param model
 	 * @return
 	 * @throws IllegalStateException
 	 */
-	private FoodGroupVO saveGroupToDB(MultipartFile file, GroupForm groupForm, Model model) throws IllegalStateException {
+	private FoodGroupVO saveGroupToDB(MultipartFile file, GroupForm groupForm) throws IllegalStateException {
 		// save the image file to upload directory
 		String imageName = "";
 		try {
@@ -357,6 +403,37 @@ public class ShopController {
 		transferGroupFormToFoodGroupVO(groupForm, vo);
 		vo.setImage(imageName);
 		int id = foodAction.insertFoodGroup(vo);
+		vo.setId(id);
+		
+		return vo;
+	}
+	
+	/**
+	 * 保存food 到 DB
+	 * @param file
+	 * @param foodForm
+	 * @return
+	 * @throws IllegalStateException
+	 */
+	private FoodVO saveFoodToDB(MultipartFile file, FoodForm foodForm) throws IllegalStateException {
+		// save the image file to upload directory
+		String imageName = "";
+		try {
+			imageName = ShopUtil.saveImage(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(imageName.equals("")) {
+			throw new IllegalStateException("add group fail!");
+		}
+		
+		// save vo to db
+		FoodVO vo = new FoodVO();
+		vo.setFoodName(foodForm.getFoodName());
+		vo.setDetail(foodForm.getDetail());
+		vo.setType(FoodVO.TYPE_FOOD);
+		vo.setImage(imageName);
+		int id = foodAction.insertFood(vo);
 		vo.setId(id);
 		
 		return vo;
