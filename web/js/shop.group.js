@@ -1,17 +1,12 @@
 define(function(require, exports, module) {
 	
-	var $ = require('jquery'), 
+	var $ = require('jquery');
 		util = require('util'), 
 		webRoot = util.webRoot;
 	require('bootstrap');
 	require('bootstrap.extension');
 	require('js/order-tablelist.js');
 	require('form');
-	
-	jQuery(function ($) {
-		Init.run();
-	});
-	
 	
 	// Init
 	var Init = (function($) {
@@ -145,6 +140,7 @@ define(function(require, exports, module) {
 			
 		};
 	})(jQuery);
+
 	
 	/**
 	 * single toggle button click event
@@ -261,4 +257,12 @@ define(function(require, exports, module) {
 		$("#editForm input[name='id']").val(orderId);
 		$("#editForm").submit();
 	}
+	
+	
+	
+	
+	// main
+	jQuery(function ($) {
+		Init.run();
+	});
 });

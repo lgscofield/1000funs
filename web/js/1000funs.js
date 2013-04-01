@@ -1,3 +1,4 @@
+
 /**
  * global util js
  */
@@ -16,6 +17,8 @@
 	}
 	
 }(function(require, exports, module) {
+	
+	var webRoot = "/1000funs";
 	
 	/**
 	 * 获取url参数
@@ -80,11 +83,12 @@
 	
 	
 	// exports
-	exports.webRoot = "/1000funs";
+	exports.webRoot = webRoot;
 	exports.getParam = getParam;
 	exports.setParam = setParam;
 	exports.imagePreview = imagePreview;
 	
 }));
+
 
 
