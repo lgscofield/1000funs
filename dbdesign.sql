@@ -287,7 +287,7 @@ CREATE  TABLE IF NOT EXISTS `1000funs`.`config` (
   `name` VARCHAR(100) NOT NULL ,
   `value` VARCHAR(1000) NULL ,
   `class_name` VARCHAR(100) NULL ,
-  PRIMARY KEY (`key`) )
+  PRIMARY KEY (`name`) )
 ENGINE = InnoDB;
 
 
