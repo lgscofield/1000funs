@@ -550,7 +550,7 @@ ul.food-area-list > li .food-add {
 .pointer {
   cursor: pointer;
 }
-.btn-right button {
+.btn-right .btn {
   float: right;
   margin: 0px 2px;
 }
@@ -629,6 +629,32 @@ ul.food-area-list > li .food-add {
 .alert-notify .alert-content {
   margin: 0px 20px 0px 10px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+ul.item-list {
+  padding: 0px;
+  margin: 0px;
+  list-style: none outside none;
+}
+ul.item-list > li {
+  display: inline;
+  float: left;
+  margin: 0px 30px 10px 0px;
+}
+.food-grid .item-list > li {
+  width: 80px;
+}
+.food-grid .item-list > li img {
+  height: 80px;
+  cursor: pointer;
+}
+.food-grid .item-list > li span {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  height: 28px;
+  line-height: 28px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

@@ -148,60 +148,131 @@
 			</div>
 			<div class="modal-body">
 				<form action="" class="form-horizontal form-dialog">
-					<div class="control-group">
-						<div class="control-label">
-							<img src="assert/img/kuguachaodang.jpg" class="addfood-photo img-rounded" id="addfood-photo" alt="">
-							<div class="img-tips hide" id="addfood-photo-tips">点击上传图片</div>
-						</div>
-						<div class="controls controls-clear-right">
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">名称</label>
-								<div class="controls"><input type="text"></div>
+
+					<!-- step 1 -->
+					<div id="step1" class="food-grid">
+						<h5>请先选择食物:</h5>
+						<ul class="item-list">
+							<li>
+								<div><img src="assert/img/kuguachaodang.jpg" alt="" class="img-polaroid"><span>苦瓜炒蛋</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/kuguachaodang.jpg" alt=""><span>苦瓜炒蛋</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/kuguachaodang.jpg" alt=""><span>苦瓜炒蛋</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/kuguachaodang.jpg" alt=""><span>苦瓜炒蛋</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/kuguachaodang.jpg" alt=""><span>苦瓜炒蛋</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/kuguachaodang.jpg" alt=""><span>苦瓜炒蛋</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/kuguachaodang.jpg" alt=""><span>苦瓜炒蛋</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/kuguachaodang.jpg" alt=""><span>苦瓜炒蛋</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/chaixin.jpg" alt=""><span>蠔油鮑魚西生菜</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/chaixin.jpg" alt=""><span>蠔油鮑魚西生菜</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/chaixin.jpg" alt=""><span>蠔油鮑魚西生菜</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/chaixin.jpg" alt=""><span>蠔油鮑魚西生菜</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/chaixin.jpg" alt=""><span>蠔油鮑魚西生菜</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/paigu.jpg" alt=""><span>煎羊扒配羅勒青醬汁</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/paigu.jpg" alt=""><span>煎羊扒配羅勒青醬汁</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/paigu.jpg" alt=""><span>煎羊扒配羅勒青醬汁</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/paigu.jpg" alt=""><span>煎羊扒配羅勒青醬汁</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/paigu.jpg" alt=""><span>煎羊扒配羅勒青醬汁</span></div>
+							</li>
+							<li>
+								<div><img src="assert/img/paigu.jpg" alt=""><span>煎羊扒配羅勒青醬汁</span></div>
+							</li>
+						</ul>
+					</div>
+					<!--/ end of step 1 -->
+
+					<!-- step 2 -->
+					<div id="step2" class="hide">
+						<div class="control-group">
+							<div class="control-label">
+								<img src="assert/img/kuguachaodang.jpg" class="addfood-photo img-rounded" id="addfood-photo" alt="">
+								<div class="img-tips hide" id="addfood-photo-tips">点击上传图片</div>
 							</div>
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">分类</label>
-								<div class="controls">
-									<select name="" id="">
-										<option value="">10元区</option>
-										<option value="">9元区</option>
-										<option value="">8元区</option>
-										<option value="">7元区</option>
-										<option value="">6元区</option>
-										<option value="">例汤区</option>
-										<option value="">小吃</option>
-										<option value="">饮品</option>
-									</select>
+							<div class="controls controls-clear-right">
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">名称</label>
+									<div class="controls"><input type="text"></div>
 								</div>
-							</div>
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">价格</label>
-								<div class="controls">
-									<!-- <input type="text"> -->
-									<div class="input-prepend input-append">
-										<span class="add-on">&yen;</span>
-										<input id="price" type="text" style="width:153px;">
-										<span class="add-on">元</span>
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">分类</label>
+									<div class="controls">
+										<select name="" id="">
+											<option value="">10元区</option>
+											<option value="">9元区</option>
+											<option value="">8元区</option>
+											<option value="">7元区</option>
+											<option value="">6元区</option>
+											<option value="">例汤区</option>
+											<option value="">小吃</option>
+											<option value="">饮品</option>
+										</select>
 									</div>
 								</div>
-							</div>
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">价格</label>
+									<div class="controls">
+										<!-- <input type="text"> -->
+										<div class="input-prepend input-append">
+											<span class="add-on">&yen;</span>
+											<input id="price" type="text" style="width:153px;">
+											<span class="add-on">元</span>
+										</div>
+									</div>
+								</div>
 
+							</div>
+						</div>
+						<div class="control-group control-group-mini control-group-left addfood-describe">
+							<label for="" class="control-label">介绍</label>
+							<div class="controls">
+								<textarea name="" rows="3" ></textarea>
+							</div>
+						</div>
+						<div class="pull-right">
+							<label class="checkbox inline"><input type="checkbox" value="">缺货标记</label>
+							<label class="checkbox inline"><input type="checkbox" value="">下架</label>
 						</div>
 					</div>
-					<div class="control-group control-group-mini control-group-left addfood-describe">
-						<label for="" class="control-label">介绍</label>
-						<div class="controls">
-							<textarea name="" rows="3" ></textarea>
-						</div>
-					</div>
-					<div class="pull-right">
-						<label class="checkbox inline"><input type="checkbox" value="">缺货标记</label>
-						<label class="checkbox inline"><input type="checkbox" value="">下架</label>
-					</div>
+					<!--/ end of step 2 -->
+
 				</form>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn btn-primary">保存</a>
-				<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
+				<a href="#" class="btn hide" id="btn_prev" aria-hidden="true">上一步</a>
+				<a href="#" class="btn btn-primary next" id="btn_done">下一步</a>
 			</div>
 		</div><!--/ end of 添加食物 -->
 
@@ -221,6 +292,35 @@
 					$(this).siblings(".img-tips").removeClass("hide");
 				}, function () {
 					$(this).siblings(".img-tips").addClass("hide");
+				});
+
+
+				// 添加套餐,保存&下一步
+				$("#btn_done").click(function() {
+					var $this = $(this), 
+						$prev = $("#btn_prev");
+					if($this.hasClass("next")) { // next
+						$this.html("保存").removeClass("next");
+						$prev.removeClass("hide");
+
+						$("#step1").addClass("hide");
+						$("#step2").removeClass("hide");
+						$("#dialog-add-package").addClass("dialog-select-food");
+						$("#modal-footer-food-select").removeClass("hide");
+						
+					}
+				});
+
+				// 上一步
+				$("#btn_prev").click(function() {
+					var $next = $("#btn_done");
+					$next.html("下一步").addClass("next");
+					$(this).addClass("hide");
+
+					$("#step2").addClass("hide");
+					$("#step1").removeClass("hide");
+					$("#dialog-add-package").removeClass("dialog-select-food");
+					$("#modal-footer-food-select").addClass("hide");
 				});
 			});
 
