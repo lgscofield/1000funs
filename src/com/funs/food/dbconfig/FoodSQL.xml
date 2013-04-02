@@ -8,8 +8,8 @@
 
 	<!-- 插入Food信息 -->
 	<insert id="insertFood" parameterType="com.funs.food.model.FoodVO" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO food(code,food_name,detail,image,deleted) VALUES
-		(#{code},#{foodName},#{detail},#{image},false)
+		INSERT INTO food(code,food_name,detail,image,type,deleted) VALUES
+		(#{code},#{foodName},#{detail},#{image},#{type},false)
 	</insert>
 	
 	<!-- 插入Food_Re_Shop信息 -->
@@ -136,8 +136,13 @@
 	</select>
 	
 	<!-- 查询所有单品食物 -->
+	<select id="querySingleFoodsCount" resultType="int">
+		select count(0) from food where deleted = false and type = 1
+	</select>
+	
+	<!-- 查询所有单品食物 -->
 	<select id="querySingleFoods" parameterType="com.funs.food.model.FoodQueryCondition" resultType="com.funs.food.model.FoodVO">
-		select * from food where deleted = false order by food_name limit #{pageFrom}, #{pageSize} 
+		select * from food where deleted = false and type = 1 order by food_name limit #{pageFrom}, #{pageSize} 
 	</select>
 	
 </mapper>

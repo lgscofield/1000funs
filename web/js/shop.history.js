@@ -26,14 +26,14 @@ define(function(require, exports, module) {
 			count: $("#pageCount").val(), 
 			callback: function (current_page, new_page) {
 				$("#pageNo").val(new_page);
-				$("#queryForm").submit();
+				$("#orderQueryForm").submit();
 			}, 
 			refresh: false
 		});
 		
 		$(".btn-group").buttonGroup().change(function(e) {
 			$("#orderStatus").val(this.val());
-			$("#queryForm").submit();
+			$("#orderQueryForm").submit();
 		});
 		
 		$(".order-btn-abnormal").click(function() {

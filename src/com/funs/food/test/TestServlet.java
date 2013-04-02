@@ -33,8 +33,8 @@ public class TestServlet extends HttpServlet {
 		foodVO.setOriginPrice(4.0);
 		foodVO.setShopId(1);
 		foodVO.setStock(10);
-		ResultVO result = action.insertFood(foodVO);
-		System.out.println(result.isSuccess());
+//		ResultVO result = action.insertFood(foodVO);
+//		System.out.println(result.isSuccess());
 	}
 
 	public static void queryFoods() {
