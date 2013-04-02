@@ -474,7 +474,7 @@ ul.food-area-list {
 // --------- group mgr --------
 
 .btn-right {
-	button {
+	.btn {
 		float: right;
 		margin: 0px 2px;
 	}
@@ -572,6 +572,42 @@ ul.food-area-list {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+	}
+}
+
+
+// item-list
+ul.item-list {
+	padding: 0px;
+	margin: 0px;
+	list-style: none outside none;
+
+	> li {
+		display: inline;
+		float: left;
+		margin: 0px 30px 10px 0px;
+	}
+}
+
+.food-grid {
+
+	.item-list > li {
+		width: 80px;
+
+		img {
+			height: 80px;
+			cursor: pointer;
+		}
+
+		span {
+			display: block;
+			text-align: center;
+			overflow: hidden;
+			height: 28px;
+			line-height: 28px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
 	}
 }
 

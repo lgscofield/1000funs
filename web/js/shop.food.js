@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 	
-	var $ = require('jquery');
+	var $ = require('jquery'), 
 		util = require('util'), 
 		webRoot = util.webRoot;
 	require('bootstrap');

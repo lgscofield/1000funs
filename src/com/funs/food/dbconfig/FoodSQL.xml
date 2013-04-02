@@ -102,7 +102,8 @@
 		        right join
 		    food_group g ON (t.gid = g.id)
 		where
-		    g.type = #{type}
+		    <!-- g.type = #{type} -->
+		    g.deleted = false
 		order by g.group_name desc
 		
 		

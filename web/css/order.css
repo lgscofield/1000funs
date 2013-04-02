@@ -550,7 +550,7 @@ ul.food-area-list > li .food-add {
 .pointer {
   cursor: pointer;
 }
-.btn-right button {
+.btn-right .btn {
   float: right;
   margin: 0px 2px;
 }
