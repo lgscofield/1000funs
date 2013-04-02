@@ -110,4 +110,13 @@ public class FoodDAO extends BaseDAO {
 		List<FoodVO> foods = this.sqlSessionTemplate.selectList("com.funs.food.querySingleFoods", queryCondition);
 		return foods;
 	}
+	
+	/**
+	 * 查询单品食物的总数
+	 * @return
+	 */
+	public int querySingleFoodsCount() {
+		int ret = this.sqlSessionTemplate.selectOne("com.funs.food.querySingleFoodsCount");
+		return ret;
+	}
 }

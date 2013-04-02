@@ -1,5 +1,7 @@
 package com.funs.core.base.model;
 
+import com.funs.core.base.action.QueryForm;
+
 
 /**
  * 查询条件VO
@@ -9,7 +11,7 @@ package com.funs.core.base.model;
  */
 public class QueryVO {
 
-	private int pageNo = 1;
+	private int pageNo;
 	private int pageSize;
 
 	public int getPageNo() {
@@ -30,5 +32,10 @@ public class QueryVO {
 
 	public int getPageFrom() {
 		return (pageNo - 1) * pageSize;
+	}
+	
+	public void setPage(QueryForm queryForm) {
+		this.setPageNo(queryForm.getPageNo());
+		this.setPageSize(queryForm.getPageSize());
 	}
 }

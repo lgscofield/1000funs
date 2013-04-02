@@ -7,6 +7,7 @@ define(function(require, exports, module) {
 	require('bootstrap.extension');
 	require('js/order-tablelist.js');
 	require('form');
+	require('pagination');
 	
 	// Init
 	var Init = (function($) {
@@ -136,8 +137,21 @@ define(function(require, exports, module) {
 			// bind window resize event
 			resizeEvent: function() {
 				$(window).bind("resize", resetHeight);
-			}
+			}, 
 			
+			// pagination
+			pagination: function() {
+				$("#page").pagination({
+					className: "pagination-right", 
+					page: $("#pageNo").val(), 
+					count: $("#pageCount").val(), 
+					callback: function (current_page, new_page) {
+						$("#pageNo").val(new_page);
+						$("#queryForm").submit();
+					}, 
+					refresh: false
+				});
+			}
 		};
 	})(jQuery);
 
@@ -180,7 +194,7 @@ define(function(require, exports, module) {
 	}
 	
 	function adjustHeight() {
-		$("#foodList").height($(window).height() - 200);
+		$("#foodList").height($(window).height() - 280);
 	}
 
 	function showRowEditBtn(checked, className) {
@@ -194,15 +208,15 @@ define(function(require, exports, module) {
 	
 	/**
 	 */
-	function appendToList(groupVO) {
+	function appendToList(foodVO) {
 		var $firstItem = $("#foodList > ul > li").eq(0), 
 			$newNode = $firstItem.clone();
 		$firstItem.before($newNode);
-		$newNode.attr("id", "item_" + groupVO.id);
-		$("img", $newNode).attr("src", webRoot+groupVO.image);
-		$(".header", $newNode).html(groupVO.groupName);
-		$(".detail", $newNode).html(groupVO.detail);
-		$(".btns i", $newNode).attr("value", groupVO.id);
+		$newNode.attr("id", "item_" + foodVO.id);
+		$("img", $newNode).attr("src", webRoot+foodVO.image);
+		$(".header", $newNode).html(foodVO.foodName);
+		$(".detail", $newNode).html(foodVO.detail);
+		$(".btns i", $newNode).attr("value", foodVO.id);
 	}
 	
 	function deleteItem(orderId) {
@@ -243,7 +257,7 @@ define(function(require, exports, module) {
 			$this.html(text);
 			
 			if($this.hasClass("header")) {
-				$("#editForm input[name='groupName']").val(text);
+				$("#editForm input[name='foodName']").val(text);
 			} else if($this.hasClass("detail")) {
 				$("#editForm input[name='detail']").val(text);
 			} else {

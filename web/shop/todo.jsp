@@ -22,7 +22,7 @@
 		<div class="row-fluid container-fixed">
 			<div class="span12">
 				<div class="querybar">
-					<form:form method="post" modelAttribute="queryForm" cssClass="form-search">
+					<form:form method="post" modelAttribute="orderQueryForm" cssClass="form-search">
 					<div class="row-fluid">
 						<div class="span4">
 							<div class="input-prepend">

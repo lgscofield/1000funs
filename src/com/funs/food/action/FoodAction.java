@@ -140,4 +140,12 @@ public class FoodAction extends BaseAction {
 	public List<FoodVO> querySingleFoods(FoodQueryCondition queryCondition) {
 		return foodService.querySingleFoods(queryCondition);
 	}
+	
+	/**
+	 * 查询单品食物的总数
+	 * @return
+	 */
+	public int querySingleFoodsCount() {
+		return foodService.querySingleFoodsCount();
+	}
 }

@@ -22,6 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
 import com.funs.config.action.ConfigAction;
+import com.funs.core.base.action.QueryForm;
 import com.funs.core.util.tools.AjaxUtils;
 import com.funs.core.util.tools.DateTimeFormatUtils;
 import com.funs.food.action.FoodAction;
@@ -35,9 +36,9 @@ import com.funs.order.model.OrderVOWithFood;
 import com.funs.shop.model.FoodForm;
 import com.funs.shop.model.GroupForm;
 import com.funs.shop.model.OrderFoodView;
+import com.funs.shop.model.OrderQueryForm;
 import com.funs.shop.model.OrderView;
 import com.funs.shop.model.PlateVO;
-import com.funs.shop.model.QueryForm;
 import com.funs.shop.util.ShopConstants;
 import com.funs.shop.util.ShopUtil;
 
@@ -108,7 +109,7 @@ public class ShopController {
 	}
 	
 	@RequestMapping("/todo")
-	public String toToodo(Model model, @ModelAttribute QueryForm queryForm) {
+	public String toToodo(Model model, @ModelAttribute OrderQueryForm queryForm) {
 		
 		OrderQueryCondition condition = new OrderQueryCondition();
 		BeanUtils.copyProperties(queryForm, condition);
@@ -121,11 +122,11 @@ public class ShopController {
 	}
 	
 	@RequestMapping("/history")
-	public String toHistory(Model model, @ModelAttribute QueryForm queryForm) {
+	public String toHistory(Model model, @ModelAttribute OrderQueryForm queryForm) {
 		
 		if(queryForm == null) {
 			print("go into history. queryForm = null");
-			queryForm = new QueryForm();
+			queryForm = new OrderQueryForm();
 		}
 		if(queryForm.getPageNo() == 0) queryForm.setPageNo(1);
 		if(queryForm.getPageSize() == 0) queryForm.setPageSize(4);
@@ -173,10 +174,11 @@ public class ShopController {
 	}
 	
 	@RequestMapping("/food")
-	public String toFood(Model model) {
+	public String toFood(@ModelAttribute QueryForm queryForm, Model model) {
 		FoodQueryCondition condition = new FoodQueryCondition();
-		condition.setPageNo(1);
-		condition.setPageSize(8);
+		int count = foodAction.querySingleFoodsCount();
+		queryForm.setRecordCount(count);
+		condition.setPage(queryForm);
 		List<FoodVO> foods = foodAction.querySingleFoods(condition);
 		model.addAttribute("foodList", foods);
 		return "shop/food";
@@ -213,6 +215,7 @@ public class ShopController {
 	 * @param model
 	 * @return
 	 */
+	@RequestMapping(value="/food", method=RequestMethod.POST)
 	public View saveFood(@RequestParam MultipartFile file, @ModelAttribute FoodForm foodForm,
 			@ModelAttribute("ajaxRequest") boolean ajaxRequest, Model model) {
 		FoodVO vo = saveFoodToDB(file, foodForm);

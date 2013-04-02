@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ include file="/web/inc/header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -60,6 +61,11 @@
 				</div>
 				<!-- pagination -->
 				<div id="page"></div>
+				<form:form method="get" modelAttribute="queryForm">
+					<form:hidden path="pageNo"/>
+					<form:hidden path="pageSize"/>
+					<form:hidden path="pageCount"/>
+				</form:form>
 				
 				<div id="add_panel" class="panel-bottom hide">
 					<form class="group-list" id="foodForm" name="foodForm" action="${webRoot}/shop/food" method="post" enctype="multipart/form-data">
@@ -97,5 +103,10 @@
 		</div><!--/ end of container -->
 
 		<script src="${webRoot}/web/seajs/sea.js" data-config="${webRoot}/web/js/config" data-main="${webRoot}/web/js/shop.food"></script>
+		<script type="text/javascript">
+			function imgValid() {
+				return !!$("#file-upload").get(0).files[0];
+			}
+		</script> 
 	</body>
 </html>

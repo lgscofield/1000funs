@@ -35,9 +35,9 @@ public class FoodService extends BaseService{
 	public int insertFood(FoodVO foodVO) {
 		
 		//生成食物编号
-		int foodCount=foodDAO.queryCountOfFood();
+		/*int foodCount=foodDAO.queryCountOfFood();
 		String foodCode = CodeGenerator.getCode(CodeGenerator.TYPE.FOOD,foodCount);
-		foodVO.setCode(foodCode);
+		foodVO.setCode(foodCode);*/
 		
 		return foodDAO.insertFood(foodVO);
 	}
@@ -126,6 +126,14 @@ public class FoodService extends BaseService{
 	 */
 	public List<FoodVO> querySingleFoods(FoodQueryCondition queryCondition) {
 		return foodDAO.querySingleFoods(queryCondition);
+	}
+	
+	/**
+	 * 查询单品食物的总数
+	 * @return
+	 */
+	public int querySingleFoodsCount() {
+		return foodDAO.querySingleFoodsCount();
 	}
 
 	public FoodDAO getFoodDAO() {
