@@ -2,7 +2,6 @@ package com.funs.shop.action;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,7 @@ import com.funs.food.action.FoodAction;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
+import com.funs.food.model.GroupFoods;
 import com.funs.order.action.OrderAction;
 import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
@@ -154,8 +154,8 @@ public class ShopController {
 	
 	@RequestMapping("/catering")
 	public String toCatering(Model model) {
-		Map<String, List<FoodVO>> foodMaps = getCateringFoods();
-		model.addAttribute("foodMaps", foodMaps);
+		List<GroupFoods> groupFoodsList = getCateringFoods();
+		model.addAttribute("groupFoodsList", groupFoodsList);
 		
 		List<FoodVO> foodList = getAllFoods();
 		model.addAttribute("foodList", foodList);
@@ -165,13 +165,13 @@ public class ShopController {
 	@RequestMapping("/package")
 	public String toPackage(Model model) {
 		int shopId = 1;
-		Map<String, List<FoodVO>> packageMaps = getPackageFoods();
-		model.addAttribute("packageMaps", packageMaps);
+		List<GroupFoods> packageFoodsList = getPackageFoods();
+		model.addAttribute("packageFoodsList", packageFoodsList);
 		
 		// 新增套餐时使用
 		FoodQueryCondition foodQueryCondition = new FoodQueryCondition(shopId, FoodVO.TYPE_FOOD);
-		Map<String, List<FoodVO>> foodMaps = foodAction.queryAvailableGroupAndFoods(foodQueryCondition);
-		model.addAttribute("foodMaps", foodMaps);
+		List<GroupFoods> groupFoodsList = foodAction.queryAvailableGroupAndFoods(foodQueryCondition);
+		model.addAttribute("groupFoodsList", groupFoodsList);
 		return "shop/package";
 	}
 	
@@ -351,7 +351,7 @@ public class ShopController {
 	 * 获取配餐所有食物列表(outer join, 空分组也会查出来)
 	 * @return
 	 */
-	private Map<String, List<FoodVO>> getCateringFoods() {
+	private List<GroupFoods> getCateringFoods() {
 		return getAllGroupAndFoods(FoodVO.TYPE_FOOD);
 	}
 	
@@ -359,7 +359,7 @@ public class ShopController {
 	 * 获取套餐所有食物列表
 	 * @return
 	 */
-	private Map<String, List<FoodVO>> getPackageFoods() {
+	private List<GroupFoods> getPackageFoods() {
 		return getAllGroupAndFoods(FoodVO.TYPE_PACKAGE);
 	}
 	
@@ -370,11 +370,11 @@ public class ShopController {
 	 * @param type
 	 * @return
 	 */
-	private Map<String, List<FoodVO>> getAllGroupAndFoods(int type) {
+	private List<GroupFoods> getAllGroupAndFoods(int type) {
 		int shopId = 1;
 		FoodQueryCondition foodQueryCondition = new FoodQueryCondition(shopId, type);
-		Map<String, List<FoodVO>> packageMaps = foodAction.queryAllGroupAndFoods(foodQueryCondition);
-		return packageMaps;
+		List<GroupFoods> lstGroupFoods = foodAction.queryAllGroupAndFoods(foodQueryCondition);
+		return lstGroupFoods;
 	}
 	
 	

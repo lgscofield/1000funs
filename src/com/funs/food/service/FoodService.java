@@ -5,7 +5,6 @@
 package com.funs.food.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +15,7 @@ import com.funs.food.dao.FoodDAO;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
+import com.funs.food.model.GroupFoods;
 
 /**
  * @author Xingling
@@ -104,11 +104,11 @@ public class FoodService extends BaseService{
 		return foodDAO.queryFoodsByShopId(shopId);
 	}
 	
-	public Map<String, List<FoodVO>> queryAllGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+	public List<GroupFoods> queryAllGroupAndFoods(FoodQueryCondition foodQueryCondition) {
 		return foodDAO.queryAllGroupAndFoods(foodQueryCondition);
 	}
 	
-	public Map<String, List<FoodVO>> queryAvailableGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+	public List<GroupFoods> queryAvailableGroupAndFoods(FoodQueryCondition foodQueryCondition) {
 		return foodDAO.queryAvailableGroupAndFoods(foodQueryCondition);
 	}
 	

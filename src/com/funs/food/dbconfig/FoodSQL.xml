@@ -90,7 +90,7 @@
 		resultType="com.funs.food.model.FoodVO">
 		<!--  -->
 		select 
-		    t.*, g.id group_id, g.group_name
+		    t.*, g.id group_id, g.group_name, g.image group_image, g.detail group_detail
 		from
 		    (select 
 		        f.*, fs.group_id gid, fs.origin_price, fs.current_price, fs.stock
@@ -129,7 +129,7 @@
 	<select id="queryAvailableGroupAndFoods" parameterType="com.funs.food.model.FoodQueryCondition"
 		resultType="com.funs.food.model.FoodVO">
 		select 
-		    f.*, fs.group_id, g.group_name, fs.origin_price, fs.current_price, fs.stock
+		    f.*, fs.group_id, fs.origin_price, fs.current_price, fs.stock, g.group_name, g.image group_image, g.detail group_detail
 		from
 		    food_re_shop fs 
 		    join food f ON (fs.food_id = f.id)

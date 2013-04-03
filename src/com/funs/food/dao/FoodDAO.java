@@ -5,14 +5,13 @@
 package com.funs.food.dao;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.funs.core.base.dao.BaseDAO;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
+import com.funs.food.model.GroupFoods;
 
 /**
  * @author Xingling
@@ -84,9 +83,9 @@ public class FoodDAO extends BaseDAO {
 	 * @param foodQueryCondition
 	 * @return
 	 */
-	public Map<String, List<FoodVO>> queryAllGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+	public List<GroupFoods> queryAllGroupAndFoods(FoodQueryCondition foodQueryCondition) {
 		List<FoodVO> foods = this.sqlSessionTemplate.selectList("com.funs.food.queryAllGroupAndFoods", foodQueryCondition);
-		return transferFoodVOToMap(foods);
+		return transferFoodVOToGroupFoods(foods);
 	}
 	
 	/**
@@ -94,9 +93,9 @@ public class FoodDAO extends BaseDAO {
 	 * @param foodQueryCondition
 	 * @return
 	 */
-	public Map<String, List<FoodVO>> queryAvailableGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+	public List<GroupFoods> queryAvailableGroupAndFoods(FoodQueryCondition foodQueryCondition) {
 		List<FoodVO> foods = this.sqlSessionTemplate.selectList("com.funs.food.queryAvailableGroupAndFoods", foodQueryCondition);
-		return transferFoodVOToMap(foods);
+		return transferFoodVOToGroupFoods(foods);
 	}
 	
 	/**
@@ -104,16 +103,28 @@ public class FoodDAO extends BaseDAO {
 	 * @param foods
 	 * @return
 	 */
-	private Map<String, List<FoodVO>> transferFoodVOToMap(List<FoodVO> foods) {
-		Map<String, List<FoodVO>> result = new LinkedHashMap<String, List<FoodVO>>();
+	private List<GroupFoods> transferFoodVOToGroupFoods(List<FoodVO> foods) {
+		List<GroupFoods> lst = new ArrayList<GroupFoods>();
+		int oldGroupId = 0;
+		GroupFoods groupFoods = null;
 		for(FoodVO food : foods) {
-			String groupName = food.getGroupName();
-			if(result.get(groupName) == null) 
-				result.put(groupName, new ArrayList<FoodVO>());
-			if(food.getId() != 0) 
-				result.get(groupName).add(food);
+			int groupId = food.getGroupId();
+			if(groupId != oldGroupId) {
+				// reset oldid
+				oldGroupId = groupId;
+				
+				groupFoods = new GroupFoods();
+				groupFoods.setId(groupId);
+				groupFoods.setGroupName(food.getGroupName());
+				groupFoods.setImage(food.getGroupImage());
+				groupFoods.setDetail(food.getGroupDetail());
+				lst.add(groupFoods);
+			}
+			if(food.getId() != 0) groupFoods.addFood(food);
 		}
-		return result;
+		// add last one
+		if(groupFoods != null && !lst.contains(groupFoods)) lst.add(groupFoods);
+		return lst;
 	}
 	
 	public List<FoodGroupVO> queryGroups(int type) {

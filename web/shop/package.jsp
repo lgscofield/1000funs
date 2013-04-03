@@ -31,22 +31,22 @@
 				</div>
 				<div class="category">
 					<ul>
-						<c:forEach items="${packageMaps}" var="packageMap" varStatus="status">
+						<c:forEach items="${packageFoodsList}" var="groupFoods" varStatus="status">
 						<li>
-							<label class="checkbox"><input type="checkbox" idx="${status.count }" <c:if test="${fn:length(packageMap.value) > 0}">checked</c:if>
-							>${packageMap.key}</label>
+							<label class="checkbox"><input type="checkbox" idx="${status.count }" <c:if test="${fn:length(groupFoods.foodList) > 0}">checked</c:if>
+							>${groupFoods.groupName}</label>
 						</li>
 						</c:forEach>
 					</ul>
 				</div>
 				<table class="foods-area">
-					 <c:forEach items="${packageMaps}" var="packageMap" varStatus="status">
-					 <tr id="tr_${status.count }" class="<c:if test="${fn:length(packageMap.value) == 0}">hide</c:if>">
-						<td class="food-area-head">${packageMap.key}</td>
+					 <c:forEach items="${packageFoodsList}" var="groupFoods" varStatus="status">
+					 <tr id="tr_${status.count }" class="<c:if test="${fn:length(groupFoods.foodList) == 0}">hide</c:if>">
+						<td class="food-area-head">${groupFoods.groupName}</td>
 						<td>
 							<ul class="food-area-list">
-								<c:forEach items="${packageMap.value}" var="packageVO">
-								<li><img src="${webRoot}/${packageVO.image}" alt="${packageVO.foodName}"></li>
+								<c:forEach items="${groupFoods.foodList}" var="food">
+								<li><img src="${webRoot}/${food.image}" alt="${food.foodName}"></li>
 								</c:forEach>
 								<li><img src="${webRoot}/web/img/plus.png" class="food-add" alt=""></li>
 							</ul>
@@ -85,8 +85,8 @@
 									<label for="" class="control-label">分类</label>
 									<div class="controls">
 										<select name="" id="">
-											<c:forEach items="${packageMaps}" var="packageMap" varStatus="status">
-											<option value="">${packageMap.key }</option>
+											<c:forEach items="${packageFoodsList}" var="groupFoods" varStatus="status">
+											<option value="${groupFoods.id}">${groupFoods.groupName }</option>
 											</c:forEach>
 										</select>
 									</div>
@@ -136,12 +136,12 @@
 
 					<!-- step 2 -->
 					<table class="foods-area add-package hide" id="step2">
-						<c:forEach items="${foodMaps}" var="foodMap" varStatus="status">
+						<c:forEach items="${groupFoodsList}" var="groupFoods" varStatus="status">
 						<tr>
-							<td class="food-area-head">${foodMap.key }</td>
+							<td class="food-area-head">${groupFoods.groupName }</td>
 							<td>
 								<ul class="food-area-list">
-									<c:forEach items="${foodMap.value }" var="food">
+									<c:forEach items="${groupFoods.foodList }" var="food">
 									<li>
 										<label>
 											<img src="${webRoot}/${food.image}" alt="${food.foodName }">
