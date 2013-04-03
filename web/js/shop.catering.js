@@ -88,22 +88,6 @@ define(function(require, exports, module) {
 
 		Init.run();
 
-		/*
-		$(".addfood-photo-wrapper").hover(function () {
-			$(this).siblings(".img-tips").removeClass("hide");
-		}, function () {
-			$(this).siblings(".img-tips").addClass("hide");
-		})
-		.click(function() {
-			$(this).siblings("input[type='file']").click();
-		});
-		
-		$("#save_group").click(function() {
-			$("#groupForm").submit();
-		});
-		
-		imagePreview($("#group-upload"), $("#group-preview"));
-		 */
 	});
 	
 	

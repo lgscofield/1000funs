@@ -482,7 +482,7 @@ ul.food-area-list > li .food-add {
   clear: right;
 }
 .form-dialog {
-  padding: 10px 25px;
+  padding: 0px 25px 10px;
 }
 .form-dialog .addfood-photo-wrapper,
 .form-dialog .addfood-photo {
@@ -641,6 +641,11 @@ ul.item-list > li {
   display: inline;
   float: left;
   margin: 0px 30px 10px 0px;
+}
+.food-grid .title {
+  font-weight: bold;
+  margin: -10px 0px 10px;
+  display: block;
 }
 .food-grid .item-list > li {
   width: 80px;

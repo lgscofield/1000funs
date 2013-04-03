@@ -152,9 +152,7 @@ public class ShopController {
 	
 	@RequestMapping("/catering")
 	public String toCatering(Model model) {
-		int shopId = 1;
-		FoodQueryCondition foodQueryCondition = new FoodQueryCondition(shopId, FoodVO.TYPE_FOOD);
-		Map<String, List<FoodVO>> foodMaps = foodAction.queryAllGroupAndFoods(foodQueryCondition);
+		Map<String, List<FoodVO>> foodMaps = getCateringFoods();
 		model.addAttribute("foodMaps", foodMaps);
 		
 		List<FoodVO> foodList = getAllFoods();
@@ -165,11 +163,16 @@ public class ShopController {
 	@RequestMapping("/package")
 	public String toPackage(Model model) {
 		int shopId = 1;
-		FoodQueryCondition foodQueryCondition = new FoodQueryCondition(shopId, FoodVO.TYPE_PACKAGE);
-		Map<String, List<FoodVO>> packageMaps = foodAction.queryAllGroupAndFoods(foodQueryCondition);
+		Map<String, List<FoodVO>> packageMaps = getPackageFoods();
 		model.addAttribute("packageMaps", packageMaps);
+		
+		// 新增套餐时使用
+		FoodQueryCondition foodQueryCondition = new FoodQueryCondition(shopId, FoodVO.TYPE_FOOD);
+		Map<String, List<FoodVO>> foodMaps = foodAction.queryAvailableGroupAndFoods(foodQueryCondition);
+		model.addAttribute("foodMaps", foodMaps);
 		return "shop/package";
 	}
+	
 	
 	@RequestMapping("/group")
 	public String toGroup(Model model) {
@@ -332,6 +335,38 @@ public class ShopController {
 	public @ResponseBody String handle(Exception e) {
 		return e.getMessage();
 	}
+	
+	
+	/**
+	 * 获取配餐所有食物列表(outer join, 空分组也会查出来)
+	 * @return
+	 */
+	private Map<String, List<FoodVO>> getCateringFoods() {
+		return getAllGroupAndFoods(FoodVO.TYPE_FOOD);
+	}
+	
+	/**
+	 * 获取套餐所有食物列表
+	 * @return
+	 */
+	private Map<String, List<FoodVO>> getPackageFoods() {
+		return getAllGroupAndFoods(FoodVO.TYPE_PACKAGE);
+	}
+	
+	
+	
+	/**
+	 * 根据指定类型获取指定类型的所有食物及分组列表集合(outer join, 空分组也会查出来)
+	 * @param type
+	 * @return
+	 */
+	private Map<String, List<FoodVO>> getAllGroupAndFoods(int type) {
+		int shopId = 1;
+		FoodQueryCondition foodQueryCondition = new FoodQueryCondition(shopId, type);
+		Map<String, List<FoodVO>> packageMaps = foodAction.queryAllGroupAndFoods(foodQueryCondition);
+		return packageMaps;
+	}
+	
 	
 	/**
 	 * 将List<OrderVOWithFood>转换为List<OrderViewVO>

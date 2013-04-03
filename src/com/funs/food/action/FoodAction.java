@@ -15,7 +15,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import com.funs.core.base.action.BaseAction;
-import com.funs.core.base.model.ResultVO;
 import com.funs.core.springmvc.ApplicationContextInitor;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
@@ -100,6 +99,10 @@ public class FoodAction extends BaseAction {
 	@RemoteMethod
 	public Map<String, List<FoodVO>> queryAllGroupAndFoods(FoodQueryCondition foodQueryCondition) {
 		return foodService.queryAllGroupAndFoods(foodQueryCondition);
+	}
+	
+	public Map<String, List<FoodVO>> queryAvailableGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+		return foodService.queryAvailableGroupAndFoods(foodQueryCondition);
 	}
 	
 	@RemoteMethod

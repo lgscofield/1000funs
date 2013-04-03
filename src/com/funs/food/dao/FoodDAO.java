@@ -79,8 +79,32 @@ public class FoodDAO extends BaseDAO {
 		return this.sqlSessionTemplate.selectOne("com.funs.food.queryCountOfFood");
 	}
 	
+	/**
+	 * 查询所有分组及食物的信息(包括空分组)
+	 * @param foodQueryCondition
+	 * @return
+	 */
 	public Map<String, List<FoodVO>> queryAllGroupAndFoods(FoodQueryCondition foodQueryCondition) {
 		List<FoodVO> foods = this.sqlSessionTemplate.selectList("com.funs.food.queryAllGroupAndFoods", foodQueryCondition);
+		return transferFoodVOToMap(foods);
+	}
+	
+	/**
+	 * 查询可用的分组及食物信息(不包含空分组)
+	 * @param foodQueryCondition
+	 * @return
+	 */
+	public Map<String, List<FoodVO>> queryAvailableGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+		List<FoodVO> foods = this.sqlSessionTemplate.selectList("com.funs.food.queryAvailableGroupAndFoods", foodQueryCondition);
+		return transferFoodVOToMap(foods);
+	}
+	
+	/**
+	 * transfer the FoodVO to Map<String, List<FoodVO>>
+	 * @param foods
+	 * @return
+	 */
+	private Map<String, List<FoodVO>> transferFoodVOToMap(List<FoodVO> foods) {
 		Map<String, List<FoodVO>> result = new LinkedHashMap<String, List<FoodVO>>();
 		for(FoodVO food : foods) {
 			String groupName = food.getGroupName();
