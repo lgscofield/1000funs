@@ -104,6 +104,10 @@ public class FoodService extends BaseService{
 		return foodDAO.queryAllGroupAndFoods(foodQueryCondition);
 	}
 	
+	public Map<String, List<FoodVO>> queryAvailableGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+		return foodDAO.queryAvailableGroupAndFoods(foodQueryCondition);
+	}
+	
 	public List<FoodGroupVO> queryGroups(int type) {
 		return foodDAO.queryGroups(type);
 	}

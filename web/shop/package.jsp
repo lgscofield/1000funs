@@ -84,10 +84,9 @@
 								<label for="" class="control-label">分类</label>
 								<div class="controls">
 									<select name="" id="">
-										<option value="">25元区</option>
-										<option value="">20元区</option>
-										<option value="">18元区</option>
-										<option value="">15元区</option>
+										<c:forEach items="${packageMaps}" var="packageMap" varStatus="status">
+										<option value="">${packageMap.key }</option>
+										</c:forEach>
 									</select>
 								</div>
 							</div>
@@ -121,114 +120,24 @@
 				<!-- step 2 -->
 				<form action="" class="form-horizontal hide" id="form-add-package-step2">
 					<table class="foods-area add-package">
+						<c:forEach items="${foodMaps}" var="foodMap" varStatus="status">
 						<tr>
-							<td class="food-area-head">25元区</td>
+							<td class="food-area-head">${foodMap.key }</td>
 							<td>
 								<ul class="food-area-list">
+									<c:forEach items="${foodMap.value }" var="food">
 									<li>
 										<label>
-											<img src="${webRoot}/web/img/taochan2.jpg" alt="">
+											<img src="${webRoot}/${food.image}" alt="${food.foodName }">
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan2.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan2.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan2.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan2.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan2.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan2.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
+									</c:forEach>
 								</ul>
 							</td>
 						</tr>
-						<tr>
-							<td class="food-area-head">20元区</td>
-							<td>
-								<ul class="food-area-list">
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan1.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan1.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan1.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan1.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-								</ul>
-							</td>
-						</tr>
-						<tr>
-							<td class="food-area-head">18元区</td>
-							<td>
-								<ul class="food-area-list">
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan3.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan3.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-									<li>
-										<label>
-											<img src="${webRoot}/web/img/taochan3.jpg" alt="">
-											<input type="checkbox" value=""/>
-										</label>
-									</li>
-								</ul>
-							</td>
-						</tr>
+						</c:forEach>
 					</table>
-
-					
 				</form><!--/ end of Step 2 -->
 
 			</div>

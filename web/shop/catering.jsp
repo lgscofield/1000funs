@@ -73,7 +73,7 @@
 
 					<!-- step 1 -->
 					<div id="step1" class="food-grid">
-						<h5>请先选择食物:</h5>
+						<span class="title">请先选择食物:</span>
 						<ul id="food-list" class="item-list">
 							<c:forEach items="${foodList }" var="food" varStatus="status">
 							<li>
@@ -103,16 +103,6 @@
 											<c:forEach items="${foodMaps}" var="foodMap" varStatus="status">
 											<option value="">${foodMap.key }</option>
 											</c:forEach>
-											<!-- 
-											<option value="">10元区</option>
-											<option value="">9元区</option>
-											<option value="">8元区</option>
-											<option value="">7元区</option>
-											<option value="">6元区</option>
-											<option value="">例汤区</option>
-											<option value="">小吃</option>
-											<option value="">饮品</option>
-											 -->
 										</select>
 									</div>
 								</div>
