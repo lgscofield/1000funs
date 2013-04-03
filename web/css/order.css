@@ -507,6 +507,9 @@ ul.food-area-list > li .food-add {
 .form-dialog .addfood-describe textarea {
   width: 415px;
 }
+.form-dialog .control-group {
+  margin-bottom: 5px;
+}
 .control-group.control-group-small .control-label {
   width: 60px;
   float: left;

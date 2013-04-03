@@ -62,6 +62,10 @@ public class FoodService extends BaseService{
 		//插入FoodReShop信息
 		foodDAO.insertFoodReShop(foodVO);
 	}
+	
+	public int insertFoodReShop(FoodVO foodVO){
+		return foodDAO.insertFoodReShop(foodVO);
+	}
 
 	/**
 	 * 增加食物分组

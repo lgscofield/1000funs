@@ -35,6 +35,7 @@ import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
 import com.funs.order.model.OrderVOWithFood;
 import com.funs.shop.model.FoodForm;
+import com.funs.shop.model.FoodReShopForm;
 import com.funs.shop.model.GroupForm;
 import com.funs.shop.model.OrderFoodView;
 import com.funs.shop.model.OrderQueryForm;
@@ -47,30 +48,31 @@ import com.funs.shop.util.ShopUtil;
 /**
  * 店铺管理控制器
  
-function			method			url
----------			------			--------
-主页					GET				/shop
-订单管理待处理		GET				/shop/todo
-订单管理已处理		GET				/shop/history
-配餐模式				GET				/shop/catering
-套餐模式				GET				/shop/package
+function			method				url
+---------			------				--------
+主页					GET					/shop
+订单管理待处理			GET					/shop/todo
+订单管理已处理			GET					/shop/history
+配餐模式				GET					/shop/catering
+套餐模式				GET					/shop/package
 
-分类管理				GET				/shop/group
-新增分类				POST			/shop/group
-获取一个group		GET				/shop/group/{id}
-删除一个group		DELETE			/shop/group/{id}
-更新一个group		POST			/shop/group/{id}
-更新订单状态			PUT				/shop/group/{id}?status={value}
+分类管理				GET					/shop/group
+新增分类				POST				/shop/group
+获取一个group			GET					/shop/group/{id}
+删除一个group			DELETE				/shop/group/{id}
+更新一个group			POST				/shop/group/{id}
+更新订单状态			PUT					/shop/group/{id}?status={value}
 
-食物管理				GET				/shop/food
-获取食物列表(json)	GET + produces	/shop/food
-新增食物				POST			/shop/food
-获取食物				GET				/shop/food/{id}
-删除食物				DELETE			/shop/food/{id}
-更新食物				POST			/shop/food/{id}
+食物管理				GET					/shop/food
+获取食物列表(json)		GET + produces		/shop/food
+新增食物				POST				/shop/food
+获取食物				GET					/shop/food/{id}
+删除食物				DELETE				/shop/food/{id}
+更新食物				POST				/shop/food/{id}
 
-更新是否自动出单		PUT			/shop/autoprint/{value}	
+更新是否自动出单		PUT					/shop/autoprint/{value}	
 
+新增食物关联			POST				/shop/foodreshop
 
  * 
  * @author jcchen
@@ -324,8 +326,16 @@ public class ShopController {
 		return Boolean.valueOf(value).booleanValue();
 	}
 	
-	
-	
+	@RequestMapping(value="/foodreshop", method=RequestMethod.POST)
+	public String saveFoodReShop(@ModelAttribute FoodReShopForm foodReShopForm) {
+		int shopId = 1; //
+		FoodVO foodVO = new FoodVO();
+		BeanUtils.copyProperties(foodReShopForm, foodVO);
+		foodVO.setId(foodReShopForm.getFoodId());
+		foodVO.setShopId(shopId);
+		foodAction.insertFoodReShop(foodVO);
+		return "redirect:/shop/catering";
+	}
 	
 	
 	

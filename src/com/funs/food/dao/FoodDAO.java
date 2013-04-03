@@ -30,8 +30,8 @@ public class FoodDAO extends BaseDAO {
 		return this.sqlSessionTemplate.selectOne("com.funs.food.queryIdForFoodVO", foodVO);
 	}
 	
-	public void insertFoodReShop(FoodVO foodVO){
-		this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
+	public int insertFoodReShop(FoodVO foodVO){
+		return this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
 	}
 	
 	/**

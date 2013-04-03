@@ -68,58 +68,74 @@
 			<div class="modal-body">
 
 				<!-- Step 1 -->
-				<form action="" class="form-horizontal form-dialog" id="form-add-package-step1">
-					<div class="control-group">
-						<div class="control-label">
-							<img src="${webRoot}/web/img/taochan3.jpg" class="addfood-photo img-rounded" alt="">
-							<div class="img-tips hide">点击上传图片</div>
-							<input type="file" name="file" class="hide">
-						</div>
-						<div class="controls controls-clear-right">
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">名称</label>
-								<div class="controls"><input type="text"></div>
+				<form id="packageForm" action="" class="form-horizontal form-dialog">
+					<div id="step1">
+						<div class="control-group">
+							<div class="control-label">
+								<div class="addfood-photo-wrapper"><img src="${webRoot}/web/img/taochan3.jpg" class="addfood-photo img-rounded" alt=""></div>
+								<div class="img-tips hide">点击上传图片</div>
+								<input type="file" name="file" class="hide">
 							</div>
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">分类</label>
-								<div class="controls">
-									<select name="" id="">
-										<c:forEach items="${packageMaps}" var="packageMap" varStatus="status">
-										<option value="">${packageMap.key }</option>
-										</c:forEach>
-									</select>
+							<div class="controls controls-clear-right">
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">名称</label>
+									<div class="controls"><input type="text"></div>
 								</div>
-							</div>
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">原价</label>
-								<div class="controls">
-									<!-- <input type="text"> -->
-									<div class="input-prepend input-append">
-										<span class="add-on">&yen;</span>
-										<input id="price" type="text" style="width:153px;">
-										<span class="add-on">元</span>
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">分类</label>
+									<div class="controls">
+										<select name="" id="">
+											<c:forEach items="${packageMaps}" var="packageMap" varStatus="status">
+											<option value="">${packageMap.key }</option>
+											</c:forEach>
+										</select>
 									</div>
 								</div>
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">原价</label>
+									<div class="controls">
+										<!-- <input type="text"> -->
+										<div class="input-prepend input-append">
+											<span class="add-on">&yen;</span>
+											<input id="price" type="text" style="width:153px;">
+											<span class="add-on">元</span>
+										</div>
+									</div>
+								</div>
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">现价</label>
+									<div class="controls">
+										<!-- <input type="text"> -->
+										<div class="input-prepend input-append">
+											<span class="add-on">&yen;</span>
+											<input id="price" type="text" style="width:153px;">
+											<span class="add-on">元</span>
+										</div>
+									</div>
+								</div>
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">库存</label>
+									<div class="controls"><input type="text"></div>
+								</div>
+
 							</div>
-
 						</div>
-					</div>
-					<div class="control-group control-group-mini control-group-left addfood-describe">
-						<label for="" class="control-label">介绍</label>
-						<div class="controls">
-							<textarea name="" rows="3" ></textarea>
+						<div class="control-group control-group-mini control-group-left addfood-describe">
+							<label for="" class="control-label">介绍</label>
+							<div class="controls">
+								<textarea name="" rows="3" ></textarea>
+							</div>
 						</div>
-					</div>
 
-					<div class="pull-right">
-						<label class="checkbox inline"><input type="checkbox" value="">缺货标记</label>
-						<label class="checkbox inline"><input type="checkbox" value="">下架</label>
-					</div>
-				</form><!--/ end of Step 1 -->
+						<div class="pull-right">
+							<label class="checkbox inline"><input type="checkbox" value="">缺货标记</label>
+							<label class="checkbox inline"><input type="checkbox" value="">下架</label>
+						</div>
 
-				<!-- step 2 -->
-				<form action="" class="form-horizontal hide" id="form-add-package-step2">
-					<table class="foods-area add-package">
+					</div><!--/ end of Step 1 -->
+
+					<!-- step 2 -->
+					<table class="foods-area add-package hide" id="step2">
 						<c:forEach items="${foodMaps}" var="foodMap" varStatus="status">
 						<tr>
 							<td class="food-area-head">${foodMap.key }</td>
@@ -137,8 +153,9 @@
 							</td>
 						</tr>
 						</c:forEach>
-					</table>
-				</form><!--/ end of Step 2 -->
+					</table><!--/ end of Step 2 -->
+
+				</form>
 
 			</div>
 			<div class="modal-footer">
