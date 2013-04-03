@@ -658,6 +658,9 @@ ul.item-list > li {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.selected {
+  background-color: #8D6DD7;
+}
 [class^="icon2-"],
 [class*=" icon2-"] {
   background-image: url("../img/app-icons.png");

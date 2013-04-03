@@ -40,7 +40,10 @@ public class ShopUtil {
 			e.printStackTrace();
 			return "";
 		}
-		return "/" + IMG_UPLOAD_RELATIVE_PATH + File.separator + newname;
+		
+		String uploadPath = File.separator.equals("\\")? 
+				IMG_UPLOAD_RELATIVE_PATH.replaceAll("\\\\", "/"): IMG_UPLOAD_RELATIVE_PATH;
+		return "/" + uploadPath + "/" + newname;
 	}
 
 	private static String _timestamp(Date date) {
