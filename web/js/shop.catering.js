@@ -98,7 +98,8 @@ define(function(require, exports, module) {
 			var $img = $("#"+selectedId);
 			var url = $img.attr("src"), 
 				name = $img.attr("alt");
-			$("#addfood-photo").attr("src", )
+			//$("#addfood-photo").attr("src", url).attr("alt", name);
+
 		}
 	}
 

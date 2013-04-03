@@ -45,6 +45,10 @@ public class FoodVO extends BaseVO{
 	
 	private boolean droped;
 	
+	private String groupImage;
+	
+	private String groupDetail;
+	
 	/**
 	 * 类型: 1-food; 2-package
 	 */
@@ -185,7 +189,26 @@ public class FoodVO extends BaseVO{
 	public void setType(int type) {
 		this.type = type;
 	}
-	
+
+
+	public String getGroupImage() {
+		return groupImage;
+	}
+
+
+	public void setGroupImage(String groupImage) {
+		this.groupImage = groupImage;
+	}
+
+
+	public String getGroupDetail() {
+		return groupDetail;
+	}
+
+
+	public void setGroupDetail(String groupDetail) {
+		this.groupDetail = groupDetail;
+	}
 	
 
 }

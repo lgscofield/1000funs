@@ -5,7 +5,6 @@
 package com.funs.food.action;
 
 import java.util.List;
-import java.util.Map;
 
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
@@ -19,6 +18,7 @@ import com.funs.core.springmvc.ApplicationContextInitor;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
+import com.funs.food.model.GroupFoods;
 import com.funs.food.service.FoodService;
 
 /**
@@ -101,11 +101,11 @@ public class FoodAction extends BaseAction {
 	}
 	
 	@RemoteMethod
-	public Map<String, List<FoodVO>> queryAllGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+	public List<GroupFoods> queryAllGroupAndFoods(FoodQueryCondition foodQueryCondition) {
 		return foodService.queryAllGroupAndFoods(foodQueryCondition);
 	}
 	
-	public Map<String, List<FoodVO>> queryAvailableGroupAndFoods(FoodQueryCondition foodQueryCondition) {
+	public List<GroupFoods> queryAvailableGroupAndFoods(FoodQueryCondition foodQueryCondition) {
 		return foodService.queryAvailableGroupAndFoods(foodQueryCondition);
 	}
 	
