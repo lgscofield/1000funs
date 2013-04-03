@@ -24,6 +24,29 @@ define(function(require, exports, module) {
 				$(".category :checkbox").change(function () {
 					showOrHideTR($(this));
 				});
+			}, 
+			addFoodDlgBtnEvt: function() {
+
+				// 添加套餐,保存&下一步
+				$("#btn_done").click(function() {
+					var $this = $(this), 
+						$prev = $("#btn_prev");
+					if($this.hasClass("next")) { // next
+						$this.html("保存").removeClass("next");
+						$prev.removeClass("hide");
+
+						switchStepView("step2");
+					}
+				});
+
+				// 上一步
+				$("#btn_prev").click(function() {
+					var $next = $("#btn_done");
+					$next.html("下一步").addClass("next");
+					$(this).addClass("hide");
+
+					switchStepView("step1");
+				});
 			}
 		};
 
@@ -41,39 +64,25 @@ define(function(require, exports, module) {
 		}
 	}
 
+	function switchStepView(step) {
+		if(step === "step1") {
+			$("#step2").addClass("hide");
+			$("#step1").removeClass("hide");
+			$("#dialog-add-package").removeClass("dialog-select-food");
+			$("#modal-footer-food-select").addClass("hide");
+			$("#packageForm").addClass("form-dialog");
+		} else if (step === "step2") {
+			$("#step1").addClass("hide");
+			$("#step2").removeClass("hide");
+			$("#dialog-add-package").addClass("dialog-select-food");
+			$("#modal-footer-food-select").removeClass("hide");
+			$("#packageForm").removeClass("form-dialog");
+		} else {}
+	}
+
 
 	jQuery(function ($) {
 		Init.run();
-
-
-		// 添加套餐,保存&下一步
-		$("#btn_done").click(function() {
-			var $this = $(this), 
-				$prev = $("#btn_prev");
-			if($this.hasClass("next")) { // next
-				$this.html("保存").removeClass("next");
-				$prev.removeClass("hide");
-
-				$("#form-add-package-step1").addClass("hide");
-				$("#form-add-package-step2").removeClass("hide");
-				$("#dialog-add-package").addClass("dialog-select-food");
-				$("#modal-footer-food-select").removeClass("hide");
-				
-			}
-		});
-
-		// 上一步
-		$("#btn_prev").click(function() {
-			var $next = $("#btn_done");
-			$next.html("下一步").addClass("next");
-			$(this).addClass("hide");
-
-			$("#form-add-package-step2").addClass("hide");
-			$("#form-add-package-step1").removeClass("hide");
-			$("#dialog-add-package").removeClass("dialog-select-food");
-			$("#modal-footer-food-select").addClass("hide");
-		});
-		
 	});
 
 });

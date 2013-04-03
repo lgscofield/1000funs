@@ -35,11 +35,8 @@ define(function(require, exports, module) {
 						$this.html("保存").removeClass("next");
 						$prev.removeClass("hide");
 
-						$("#step1").addClass("hide");
-						$("#step2").removeClass("hide");
-						$("#dialog-add-package").addClass("dialog-select-food");
-						$("#modal-footer-food-select").removeClass("hide");
-						
+						switchStepView("step2");
+						initEditImage();
 					}
 				});
 
@@ -49,10 +46,7 @@ define(function(require, exports, module) {
 					$next.html("下一步").addClass("next");
 					$(this).addClass("hide");
 
-					$("#step2").addClass("hide");
-					$("#step1").removeClass("hide");
-					$("#dialog-add-package").removeClass("dialog-select-food");
-					$("#modal-footer-food-select").addClass("hide");
+					switchStepView("step1");
 				});
 			}, 
 			addFoodDlgChooseFoodEvt: function () {
@@ -80,6 +74,31 @@ define(function(require, exports, module) {
 			$tr.removeClass("hide");
 		} else {
 			$tr.addClass("hide");
+		}
+	}
+
+	/**
+	 * switch to show which view.
+	 */
+	function switchStepView(step) {
+		if(step === "step1") {
+			$("#step2").addClass("hide");
+			$("#step1").removeClass("hide");
+			$("#dialog-add-package").removeClass("dialog-select-food");
+		} else if (step === "step2") {
+			$("#step1").addClass("hide");
+			$("#step2").removeClass("hide");
+			$("#dialog-add-package").addClass("dialog-select-food");
+		} else {}
+	}
+
+	function initEditImage() {
+		var selectedId = $("#food-list").data("selected_id");
+		if(selectedId) {
+			var $img = $("#"+selectedId);
+			var url = $img.attr("src"), 
+				name = $img.attr("alt");
+			$("#addfood-photo").attr("src", )
 		}
 	}
 

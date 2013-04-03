@@ -77,7 +77,7 @@
 						<ul id="food-list" class="item-list">
 							<c:forEach items="${foodList }" var="food" varStatus="status">
 							<li>
-								<div><img id="food_${status.index }" src="${webRoot}/${food.image}" alt="" class="img-polaroid"><span>${food.foodName }</span></div>
+								<div><img id="food_${status.index }" src="${webRoot}/${food.image}" alt="${food.foodName }" class="img-polaroid"><span>${food.foodName }</span></div>
 							</li>
 							</c:forEach>
 						</ul>
@@ -88,13 +88,13 @@
 					<div id="step2" class="hide">
 						<div class="control-group">
 							<div class="control-label">
-								<img src="${webRoot}/web/img/kuguachaodang.jpg" class="addfood-photo img-rounded" id="addfood-photo" alt="">
+								<div class="addfood-photo-wrapper"><img src="" class="addfood-photo img-rounded" id="addfood-photo" alt=""></div>
 								<div class="img-tips hide">点击上传图片</div>
 							</div>
 							<div class="controls controls-clear-right">
 								<div class="control-group control-group-small">
 									<label for="" class="control-label">名称</label>
-									<div class="controls"><input type="text"></div>
+									<div class="controls"><input type="text" name=""></div>
 								</div>
 								<div class="control-group control-group-small">
 									<label for="" class="control-label">分类</label>
@@ -107,7 +107,7 @@
 									</div>
 								</div>
 								<div class="control-group control-group-small">
-									<label for="" class="control-label">价格</label>
+									<label for="" class="control-label">原价</label>
 									<div class="controls">
 										<!-- <input type="text"> -->
 										<div class="input-prepend input-append">
@@ -117,7 +117,21 @@
 										</div>
 									</div>
 								</div>
-
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">现价</label>
+									<div class="controls">
+										<!-- <input type="text"> -->
+										<div class="input-prepend input-append">
+											<span class="add-on">&yen;</span>
+											<input id="price" type="text" style="width:153px;">
+											<span class="add-on">元</span>
+										</div>
+									</div>
+								</div>
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">库存</label>
+									<div class="controls"><input type="text"></div>
+								</div>
 							</div>
 						</div>
 						<div class="control-group control-group-mini control-group-left addfood-describe">

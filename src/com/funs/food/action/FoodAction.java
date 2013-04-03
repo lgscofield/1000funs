@@ -54,6 +54,10 @@ public class FoodAction extends BaseAction {
 		return 0;
 	}
 	
+	public int insertFoodReShop(FoodVO foodVO){
+		return foodService.insertFoodReShop(foodVO);
+	}
+	
 	/**
 	 * 增加食物分组
 	 * @param foodGroupVO
