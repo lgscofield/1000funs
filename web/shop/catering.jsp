@@ -68,62 +68,86 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h3>添加食物</h3>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body" style="max-height: 350px;">
 				<form action="" class="form-horizontal form-dialog">
-					<div class="control-group">
-						<div class="control-label">
-							<img src="${webRoot}/web/img/kuguachaodang.jpg" class="addfood-photo img-rounded" id="addfood-photo" alt="">
-							<div class="img-tips hide">点击上传图片</div>
-						</div>
-						<div class="controls controls-clear-right">
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">名称</label>
-								<div class="controls"><input type="text"></div>
+
+					<!-- step 1 -->
+					<div id="step1" class="food-grid">
+						<h5>请先选择食物:</h5>
+						<ul id="food-list" class="item-list">
+							<c:forEach items="${foodList }" var="food" varStatus="status">
+							<li>
+								<div><img id="food_${status.index }" src="${webRoot}/${food.image}" alt="" class="img-polaroid"><span>${food.foodName }</span></div>
+							</li>
+							</c:forEach>
+						</ul>
+					</div>
+					<!--/ end of step 1 -->
+
+					<!-- step 2 -->
+					<div id="step2" class="hide">
+						<div class="control-group">
+							<div class="control-label">
+								<img src="${webRoot}/web/img/kuguachaodang.jpg" class="addfood-photo img-rounded" id="addfood-photo" alt="">
+								<div class="img-tips hide">点击上传图片</div>
 							</div>
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">分类</label>
-								<div class="controls">
-									<select name="" id="">
-										<option value="">10元区</option>
-										<option value="">9元区</option>
-										<option value="">8元区</option>
-										<option value="">7元区</option>
-										<option value="">6元区</option>
-										<option value="">例汤区</option>
-										<option value="">小吃</option>
-										<option value="">饮品</option>
-									</select>
+							<div class="controls controls-clear-right">
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">名称</label>
+									<div class="controls"><input type="text"></div>
 								</div>
-							</div>
-							<div class="control-group control-group-small">
-								<label for="" class="control-label">价格</label>
-								<div class="controls">
-									<!-- <input type="text"> -->
-									<div class="input-prepend input-append">
-										<span class="add-on">&yen;</span>
-										<input id="price" type="text" style="width:153px;">
-										<span class="add-on">元</span>
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">分类</label>
+									<div class="controls">
+										<select name="" id="">
+											<c:forEach items="${foodMaps}" var="foodMap" varStatus="status">
+											<option value="">${foodMap.key }</option>
+											</c:forEach>
+											<!-- 
+											<option value="">10元区</option>
+											<option value="">9元区</option>
+											<option value="">8元区</option>
+											<option value="">7元区</option>
+											<option value="">6元区</option>
+											<option value="">例汤区</option>
+											<option value="">小吃</option>
+											<option value="">饮品</option>
+											 -->
+										</select>
 									</div>
 								</div>
-							</div>
+								<div class="control-group control-group-small">
+									<label for="" class="control-label">价格</label>
+									<div class="controls">
+										<!-- <input type="text"> -->
+										<div class="input-prepend input-append">
+											<span class="add-on">&yen;</span>
+											<input id="price" type="text" style="width:153px;">
+											<span class="add-on">元</span>
+										</div>
+									</div>
+								</div>
 
+							</div>
+						</div>
+						<div class="control-group control-group-mini control-group-left addfood-describe">
+							<label for="" class="control-label">介绍</label>
+							<div class="controls">
+								<textarea name="" rows="3" ></textarea>
+							</div>
+						</div>
+						<div class="pull-right">
+							<label class="checkbox inline"><input type="checkbox" value="">缺货标记</label>
+							<label class="checkbox inline"><input type="checkbox" value="">下架</label>
 						</div>
 					</div>
-					<div class="control-group control-group-mini control-group-left addfood-describe">
-						<label for="" class="control-label">介绍</label>
-						<div class="controls">
-							<textarea name="" rows="3" ></textarea>
-						</div>
-					</div>
-					<div class="pull-right">
-						<label class="checkbox inline"><input type="checkbox" value="">缺货标记</label>
-						<label class="checkbox inline"><input type="checkbox" value="">下架</label>
-					</div>
+					<!--/ end of step 2 -->
+					
 				</form>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn btn-primary">保存</a>
-				<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>
+				<a href="#" class="btn hide" id="btn_prev" aria-hidden="true">上一步</a>
+				<a href="#" class="btn btn-primary next" id="btn_done">下一步</a>
 			</div>
 		</div><!--/ end of 添加食物 -->
 

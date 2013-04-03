@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -46,26 +47,27 @@ import com.funs.shop.util.ShopUtil;
 /**
  * 店铺管理控制器
  
-function			method		url
----------			------		--------
-主页					GET			/shop
-订单管理待处理			GET			/shop/todo
-订单管理已处理			GET			/shop/history
-配餐模式				GET			/shop/catering
-套餐模式				GET			/shop/package
+function			method			url
+---------			------			--------
+主页					GET				/shop
+订单管理待处理		GET				/shop/todo
+订单管理已处理		GET				/shop/history
+配餐模式				GET				/shop/catering
+套餐模式				GET				/shop/package
 
-分类管理				GET			/shop/group
-新增分类				POST		/shop/group
-获取一个group			GET			/shop/group/{id}
-删除一个group			DELETE		/shop/group/{id}
-更新一个group			POST		/shop/group/{id}
-更新订单状态			PUT			/shop/group/{id}?status={value}
+分类管理				GET				/shop/group
+新增分类				POST			/shop/group
+获取一个group		GET				/shop/group/{id}
+删除一个group		DELETE			/shop/group/{id}
+更新一个group		POST			/shop/group/{id}
+更新订单状态			PUT				/shop/group/{id}?status={value}
 
-食物管理				GET			/shop/food
-新增食物				POST		/shop/food
-获取食物				GET			/shop/food/{id}
-删除食物				DELETE		/shop/food/{id}
-更新食物				POST		/shop/food/{id}
+食物管理				GET				/shop/food
+获取食物列表(json)	GET + produces	/shop/food
+新增食物				POST			/shop/food
+获取食物				GET				/shop/food/{id}
+删除食物				DELETE			/shop/food/{id}
+更新食物				POST			/shop/food/{id}
 
 更新是否自动出单		PUT			/shop/autoprint/{value}	
 
@@ -154,6 +156,9 @@ public class ShopController {
 		FoodQueryCondition foodQueryCondition = new FoodQueryCondition(shopId, FoodVO.TYPE_FOOD);
 		Map<String, List<FoodVO>> foodMaps = foodAction.queryAllGroupAndFoods(foodQueryCondition);
 		model.addAttribute("foodMaps", foodMaps);
+		
+		List<FoodVO> foodList = getAllFoods();
+		model.addAttribute("foodList", foodList);
 		return "shop/catering";
 	}
 	
@@ -184,6 +189,14 @@ public class ShopController {
 		return "shop/food";
 	}
 	
+	@RequestMapping(value="/food", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<FoodVO> getAllFoods() {
+		FoodQueryCondition condition = new FoodQueryCondition();
+		condition.setPageNo(1);
+		condition.setPageSize(Integer.MAX_VALUE);
+		List<FoodVO> foods = foodAction.querySingleFoods(condition);
+		return foods;
+	}
 	
 	/**
 	 * 保存分组.(支持ajax/form submit)
