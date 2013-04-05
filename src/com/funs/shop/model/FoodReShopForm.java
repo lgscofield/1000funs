@@ -45,7 +45,7 @@ public class FoodReShopForm {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	public boolean isDroped() {
+	public boolean getDroped() {
 		return droped;
 	}
 	public void setDroped(boolean droped) {

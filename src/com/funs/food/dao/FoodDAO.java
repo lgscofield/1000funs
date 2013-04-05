@@ -29,6 +29,10 @@ public class FoodDAO extends BaseDAO {
 		return this.sqlSessionTemplate.selectOne("com.funs.food.queryIdForFoodVO", foodVO);
 	}
 	
+	public FoodVO getFood(int id) {
+		return this.sqlSessionTemplate.selectOne("com.funs.food.getFood", id);
+	}
+	
 	public int insertFoodReShop(FoodVO foodVO){
 		return this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
 	}
@@ -143,6 +147,15 @@ public class FoodDAO extends BaseDAO {
 	 */
 	public List<FoodVO> querySingleFoods(FoodQueryCondition queryCondition) {
 		List<FoodVO> foods = this.sqlSessionTemplate.selectList("com.funs.food.querySingleFoods", queryCondition);
+		return foods;
+	}
+	
+	/**
+	 * 查询可用食物(每种食物在每个店铺只能被添加一次)
+	 * @return
+	 */
+	public List<FoodVO> queryAvailableFoods(FoodQueryCondition queryCondition) {
+		List<FoodVO> foods = this.sqlSessionTemplate.selectList("com.funs.food.queryAvailableFoods", queryCondition);
 		return foods;
 	}
 	

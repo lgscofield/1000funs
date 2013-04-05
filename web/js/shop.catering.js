@@ -4,6 +4,7 @@ define(function(require, exports, module) {
 		util = require('util'), 
 		webRoot = util.webRoot;
 	require('bootstrap');
+	require('bootstrap.extension');
 	
 
 	var Init = (function($) {
@@ -37,6 +38,10 @@ define(function(require, exports, module) {
 
 						switchStepView("step2");
 						initEditImage();
+					} 
+					// submit
+					else {
+						$("#foodreshopForm").submit();
 					}
 				});
 
@@ -60,7 +65,19 @@ define(function(require, exports, module) {
 					$this.addClass("selected");
 					$foodList.data("selected_id", $this.attr("id"));
 				});
+			}, 
+			validate: function () {
+				$.validation().init();
+				$("#foodreshopForm").submit(function () {
+					if(!$.validation().check()) return false;
+				});
+			}, 
+			formBind: function() {
+				$("#droped").change(function() {
+					$("#_droped").val(this.checked);
+				});
 			}
+
 		};
 
 	})(jQuery);
@@ -97,9 +114,17 @@ define(function(require, exports, module) {
 		if(selectedId) {
 			var $img = $("#"+selectedId);
 			var url = $img.attr("src"), 
-				name = $img.attr("alt");
-			//$("#addfood-photo").attr("src", url).attr("alt", name);
+				name = $img.attr("alt"), 
+				id = $img.attr("id").substring(5); //"food_${id}"
 
+			$("#foodId").val(id);
+			$("#addfood-photo").attr("src", url).attr("alt", name);
+			$("#foodName").val(name);
+			
+			// get food detail
+			$.getJSON(webRoot+"/shop/food/"+id, function (json) {
+				$("#detail").val(json['detail']);
+			});
 		}
 	}
 

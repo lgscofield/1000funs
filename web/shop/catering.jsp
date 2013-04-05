@@ -69,7 +69,8 @@
 				<h3>添加食物</h3>
 			</div>
 			<div class="modal-body" style="max-height: 350px;">
-				<form action="" class="form-horizontal form-dialog">
+				<form id="foodreshopForm" action="${webRoot}/shop/foodreshop" method="post" class="form-horizontal form-dialog">
+					<input type="hidden" name="foodId" id="foodId">
 
 					<!-- step 1 -->
 					<div id="step1" class="food-grid">
@@ -77,7 +78,7 @@
 						<ul id="food-list" class="item-list">
 							<c:forEach items="${foodList }" var="food" varStatus="status">
 							<li>
-								<div><img id="food_${status.index }" src="${webRoot}/${food.image}" alt="${food.foodName }" class="img-polaroid"><span>${food.foodName }</span></div>
+								<div><img id="food_${food.id }" src="${webRoot}/${food.image}" alt="${food.foodName }" class="img-polaroid"><span>${food.foodName }</span></div>
 							</li>
 							</c:forEach>
 						</ul>
@@ -94,12 +95,12 @@
 							<div class="controls controls-clear-right">
 								<div class="control-group control-group-small">
 									<label for="" class="control-label">名称</label>
-									<div class="controls"><input type="text" name=""></div>
+									<div class="controls"><input type="text" id="foodName" name="foodName" readonly data-toggle="tooltip" data-original-title="食物名称不能为空" data-validate></div>
 								</div>
 								<div class="control-group control-group-small">
 									<label for="" class="control-label">分类</label>
 									<div class="controls">
-										<select name="" id="">
+										<select name="groupId" id="groupId">
 											<c:forEach items="${groupFoodsList}" var="groupFoods" varStatus="status">
 											<option value="${groupFoods.id }">${groupFoods.groupName }</option>
 											</c:forEach>
@@ -112,7 +113,7 @@
 										<!-- <input type="text"> -->
 										<div class="input-prepend input-append">
 											<span class="add-on">&yen;</span>
-											<input id="price" type="text" style="width:153px;">
+											<input id="originPrice" type="text" name="originPrice" style="width:153px;" data-toggle="tooltip" data-original-title="原价非空且为数字" data-validate="not_null postive_float">
 											<span class="add-on">元</span>
 										</div>
 									</div>
@@ -123,26 +124,27 @@
 										<!-- <input type="text"> -->
 										<div class="input-prepend input-append">
 											<span class="add-on">&yen;</span>
-											<input id="price" type="text" style="width:153px;">
+											<input id="currentPrice" type="text" name="currentPrice" style="width:153px;" data-toggle="tooltip" data-original-title="现价非空且为数字" data-validate="not_null postive_float">
 											<span class="add-on">元</span>
 										</div>
 									</div>
 								</div>
 								<div class="control-group control-group-small">
 									<label for="" class="control-label">库存</label>
-									<div class="controls"><input type="text"></div>
+									<div class="controls"><input type="text" name="stock" id="stock" data-toggle="tooltip" data-original-title="库存须为整数" data-validate="postive_number"></div>
 								</div>
 							</div>
 						</div>
 						<div class="control-group control-group-mini control-group-left addfood-describe">
 							<label for="" class="control-label">介绍</label>
 							<div class="controls">
-								<textarea name="" rows="3" ></textarea>
+								<textarea id="detail" name="detail" rows="3" readonly></textarea>
 							</div>
 						</div>
 						<div class="pull-right">
 							<label class="checkbox inline"><input type="checkbox" value="">缺货标记</label>
-							<label class="checkbox inline"><input type="checkbox" value="">下架</label>
+							<label class="checkbox inline"><input type="checkbox" id="droped" value="">下架</label>
+							<input type="hidden" id="_droped" name="droped" value="false">
 						</div>
 					</div>
 					<!--/ end of step 2 -->

@@ -54,6 +54,10 @@ public class FoodAction extends BaseAction {
 		return 0;
 	}
 	
+	public FoodVO getFood(int id) {
+		return foodService.getFood(id);
+	}
+	
 	public int insertFoodReShop(FoodVO foodVO){
 		return foodService.insertFoodReShop(foodVO);
 	}
@@ -146,6 +150,14 @@ public class FoodAction extends BaseAction {
 	 */
 	public List<FoodVO> querySingleFoods(FoodQueryCondition queryCondition) {
 		return foodService.querySingleFoods(queryCondition);
+	}
+	
+	/**
+	 * 查询可用食物(每种食物在每个店铺只能被添加一次)
+	 * @return
+	 */
+	public List<FoodVO> queryAvailableFoods(FoodQueryCondition queryCondition) {
+		return foodService.queryAvailableFoods(queryCondition);
 	}
 	
 	/**

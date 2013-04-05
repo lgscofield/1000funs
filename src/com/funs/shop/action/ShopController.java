@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -157,7 +159,7 @@ public class ShopController {
 		List<GroupFoods> groupFoodsList = getCateringFoods();
 		model.addAttribute("groupFoodsList", groupFoodsList);
 		
-		List<FoodVO> foodList = getAllFoods();
+		List<FoodVO> foodList = getAvailableFoods(FoodVO.TYPE_FOOD);
 		model.addAttribute("foodList", foodList);
 		return "shop/catering";
 	}
@@ -195,11 +197,14 @@ public class ShopController {
 	}
 	
 	@RequestMapping(value="/food", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<FoodVO> getAllFoods() {
+	public @ResponseBody List<FoodVO> getAvailableFoods(int type) {
+		int shopId = 1;
 		FoodQueryCondition condition = new FoodQueryCondition();
 		condition.setPageNo(1);
 		condition.setPageSize(Integer.MAX_VALUE);
-		List<FoodVO> foods = foodAction.querySingleFoods(condition);
+		condition.setShopId(shopId);
+		condition.setType(type);
+		List<FoodVO> foods = foodAction.queryAvailableFoods(condition);
 		return foods;
 	}
 	
@@ -256,6 +261,11 @@ public class ShopController {
 	public @ResponseBody boolean deleteFood(@PathVariable int id) {
 		int ret = foodAction.deleteFood(id);
 		return ret > 0;
+	}
+	
+	@RequestMapping(value="/food/{id}")
+	public @ResponseBody FoodVO getFood(@PathVariable int id) {
+		return foodAction.getFood(id);
 	}
 	
 	@RequestMapping(value="/group/{id}", method=RequestMethod.POST)
@@ -327,7 +337,10 @@ public class ShopController {
 	}
 	
 	@RequestMapping(value="/foodreshop", method=RequestMethod.POST)
-	public String saveFoodReShop(@ModelAttribute FoodReShopForm foodReShopForm) {
+	public String saveFoodReShop(@Validated FoodReShopForm foodReShopForm, BindingResult result) {
+//		if(result.hasErrors()) {
+//			print(result);
+//		}
 		int shopId = 1; //
 		FoodVO foodVO = new FoodVO();
 		BeanUtils.copyProperties(foodReShopForm, foodVO);
@@ -342,8 +355,10 @@ public class ShopController {
 	
 	
 	@ExceptionHandler
-	public @ResponseBody String handle(Exception e) {
-		return e.getMessage();
+	public String handle(Exception e) {
+		//return e.getMessage();
+		print(e);
+		return "error/500";
 	}
 	
 	
