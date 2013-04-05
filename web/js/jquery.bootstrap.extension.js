@@ -42,16 +42,48 @@
 
 /**
  * Validation
+ * 
+ * Requirement:
+ * 1. jquery, bootstrap.tooltip;
+ * 
+ * Usage:
+ * step1. base usage of bootstrap tooltips: 
+ * 	I) add the attribute to indicate using tooltip: data-toggle='tooltip'
+ *  II) add the attribute which will as the title of the tooltips: data-original-title='some text'
+ *  
+ * step2. additional of validate
+ *  I) add the attribute to indicate to validate the element, and point out how to validate it.
+ *     data-validate  or  data-validate='someRule' 
+ *     (someRule can be: not-null, file-not-null, postive-number, etc. see Rule definition.)
+ *     if the value of data-validate no given, will use 'not-null' by default.
  */
 ;(function ($) {
-
+	
 	/**
-	 * Validate Type
-	 * @type {object}
+	 * Supported types
+	 * 
+	 * format::
+	 * ruleName: checkFunction
 	 */
-	var Type = {
-		NOT_NULL: "notNull", 
-		FILE_NOT_NULL: "fileNotNull"
+	var Rule = {
+		// 	(default)非空
+		"not_null": function($el) {
+			return !!$el.val();
+		}, 
+		// 文件非空
+		"file_not_rule": function($el) {
+			return !!$el.get(0).files[0];
+		}, 
+		// 正整数,允许为空
+		"postive_number": function($el) {
+			var p = /^\d+$/;
+			return !$el.val() || p.test($el.val());
+		}, 
+		// 正的浮点数,即小数;允许为空
+		"postive_float": function($el) {
+			var p = /^\d+(\.\d+)?$/;
+			return !$el.val() || p.test($el.val());
+		}
 	}, 
 
 	validate_selector = "[data-validate]";
@@ -103,7 +135,7 @@
 	};
 
 	function _doValidate(el) {
-		$el = $(el);
+		var $el = $(el);
 		if(!_isPass($el)) {
 			$el.tooltip('show');
 			return false;
@@ -120,21 +152,26 @@
 	 * @return {boolean}     pass:true; nopass:false;
 	 */
 	function _isPass($el) {
-		var type = $el.attr("data-validate") || Type.NOT_NULL;
-		switch(type) {
-			case Type.NOT_NULL: 
-				return !!$el.val();
-				break;
-			case Type.FILE_NOT_NULL:
-				return !!$el.get(0).files[0];
-				break;
-
-			// use customer funtion
-			default:
-				try {
-					return eval(type);
-				} catch(e) {};
+		var validates = $el.attr("data-validate") || "not_null", 
+			types = validates.split(" ");
+		for(var i in types) {
+			var type = types[i];
+			if(type) {
+				if(Rule[type]) {
+					if(!Rule[type].call(window, $el)) 
+						return false;
+				}
+				// user custom function
+				else {
+					try {
+						if(!eval(type)) 
+							return false;
+					} catch(e) {};
+				}
+			}
+			
 		}
+		return true;
 	}
 
 	/**

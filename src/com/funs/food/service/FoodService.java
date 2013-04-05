@@ -63,6 +63,10 @@ public class FoodService extends BaseService{
 		foodDAO.insertFoodReShop(foodVO);
 	}
 	
+	public FoodVO getFood(int id) {
+		return foodDAO.getFood(id);
+	}
+	
 	public int insertFoodReShop(FoodVO foodVO){
 		return foodDAO.insertFoodReShop(foodVO);
 	}
@@ -134,6 +138,14 @@ public class FoodService extends BaseService{
 	 */
 	public List<FoodVO> querySingleFoods(FoodQueryCondition queryCondition) {
 		return foodDAO.querySingleFoods(queryCondition);
+	}
+	
+	/**
+	 * 查询可用食物(每种食物在每个店铺只能被添加一次)
+	 * @return
+	 */
+	public List<FoodVO> queryAvailableFoods(FoodQueryCondition queryCondition) {
+		return foodDAO.queryAvailableFoods(queryCondition);
 	}
 	
 	/**
