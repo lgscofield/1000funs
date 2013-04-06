@@ -156,3 +156,6 @@ INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `
 INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('12', '5', '1', 1, false);
 INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('12', '3', '1', 1, false);
 INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `deleted`) VALUES ('12', '9', '1', 1, false);
+
+
+INSERT INTO `config` (`name`,`value`,`class_name`) VALUES ('shop.autoprint','false','java.lang.String');
