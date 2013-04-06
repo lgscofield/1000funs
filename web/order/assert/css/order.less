@@ -437,11 +437,17 @@ ul.food-area-list {
 
 	.food-to-add {
 		border: 1px solid rgba(0, 0, 0, .15);
-		overflow: auto;
+		overflow-x: auto;
+		overflow-y: hidden;
+		height: 102px;
 
 		img {
 			width: 80px;
 			height: 80px;
+		}
+
+		&.overflow {
+			height: 112px;
 		}
 	}
 

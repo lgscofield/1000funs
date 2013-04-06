@@ -19,6 +19,8 @@ import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
 import com.funs.food.model.GroupFoods;
+import com.funs.food.model.PackageItemVO;
+import com.funs.food.model.PackageVO;
 import com.funs.food.service.FoodService;
 
 /**
@@ -60,6 +62,19 @@ public class FoodAction extends BaseAction {
 	
 	public int insertFoodReShop(FoodVO foodVO){
 		return foodService.insertFoodReShop(foodVO);
+	}
+	
+	public int insertPackageItem(PackageItemVO packageItemVO) {
+		return foodService.insertPackageItem(packageItemVO);
+	}
+	
+	/**
+	 * 新增一个套餐.
+	 * @param packageVO
+	 * @return
+	 */
+	public int insertPackage(PackageVO packageVO) {
+		return foodService.insertPackage(packageVO);
 	}
 	
 	/**
