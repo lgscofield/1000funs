@@ -16,6 +16,8 @@ import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
 import com.funs.food.model.GroupFoods;
+import com.funs.food.model.PackageItemVO;
+import com.funs.food.model.PackageVO;
 
 /**
  * @author Xingling
@@ -69,6 +71,36 @@ public class FoodService extends BaseService{
 	
 	public int insertFoodReShop(FoodVO foodVO){
 		return foodDAO.insertFoodReShop(foodVO);
+	}
+	
+	/**
+	 * insert package_item
+	 * @param packageItemVO
+	 * @return id
+	 */
+	public int insertPackageItem(PackageItemVO packageItemVO) {
+		return foodDAO.insertPackageItem(packageItemVO);
+	}
+	
+	/**
+	 * 新增一个套餐.
+	 * @param packageVO
+	 * @return
+	 */
+	public int insertPackage(PackageVO packageVO) {
+		//1. 先往food表插入一个记录
+		int packageId = insertFood(packageVO);
+		
+		//2. 往package_item表插入相关的关联信息.
+		List<PackageItemVO> items = packageVO.getItems();
+		for(PackageItemVO packageItem : items) {
+			packageItem.setPackageId(packageId);
+			insertPackageItem(packageItem);
+		}
+		
+		//3. 往food_re_shop表插入相关的关联信息
+		insertFoodReShop(packageVO);
+		return packageId;
 	}
 
 	/**

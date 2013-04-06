@@ -529,11 +529,16 @@ ul.food-area-list > li .food-add {
 }
 #dialog-add-package .food-to-add {
   border: 1px solid rgba(0, 0, 0, 0.15);
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 102px;
 }
 #dialog-add-package .food-to-add img {
   width: 80px;
   height: 80px;
+}
+#dialog-add-package .food-to-add.overflow {
+  height: 112px;
 }
 #dialog-add-package.dialog-select-food .modal-body {
   max-height: 250px;

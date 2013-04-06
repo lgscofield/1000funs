@@ -32,6 +32,7 @@ import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
 import com.funs.food.model.GroupFoods;
+import com.funs.food.model.PackageVO;
 import com.funs.order.action.OrderAction;
 import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
@@ -75,6 +76,7 @@ function			method				url
 更新是否自动出单		PUT					/shop/autoprint/{value}	
 
 新增食物关联			POST				/shop/foodreshop
+新增套餐				POST				/shop/package
 
  * 
  * @author jcchen
@@ -344,10 +346,36 @@ public class ShopController {
 		int shopId = 1; //
 		FoodVO foodVO = new FoodVO();
 		BeanUtils.copyProperties(foodReShopForm, foodVO);
-		foodVO.setId(foodReShopForm.getFoodId());
+//		foodVO.setId(foodReShopForm.getFoodId());
 		foodVO.setShopId(shopId);
 		foodAction.insertFoodReShop(foodVO);
 		return "redirect:/shop/catering";
+	}
+	
+	@RequestMapping(value="/package", method=RequestMethod.POST)
+	public String savePackage(@RequestParam(required=false) MultipartFile file, @Validated FoodReShopForm foodReShopForm, BindingResult result) {
+		int shopId = 1;
+		PackageVO packageVO = new PackageVO();
+		BeanUtils.copyProperties(foodReShopForm, packageVO);
+		packageVO.setShopId(shopId);
+		packageVO.setType(FoodVO.TYPE_PACKAGE);
+		if(file != null) {
+			String image = ShopUtil.saveImage(file);
+			packageVO.setImage(image);
+		}
+		
+		// items
+		String strItemIds = foodReShopForm.getItemIds();
+		if(null != strItemIds && !strItemIds.trim().equals("")) {
+			String[] itemIds = strItemIds.split(",");
+			for(String itemId : itemIds) {
+				packageVO.addItem(itemId);
+			}
+		}
+		
+		// save
+		foodAction.insertPackage(packageVO);
+		return "redirect:/shop/package";
 	}
 	
 	

@@ -12,6 +12,7 @@ import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
 import com.funs.food.model.FoodVO;
 import com.funs.food.model.GroupFoods;
+import com.funs.food.model.PackageItemVO;
 
 /**
  * @author Xingling
@@ -35,6 +36,11 @@ public class FoodDAO extends BaseDAO {
 	
 	public int insertFoodReShop(FoodVO foodVO){
 		return this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
+	}
+	
+	public int insertPackageItem(PackageItemVO packageItemVO) {
+		this.sqlSessionTemplate.insert("com.funs.food.insertPackageItem", packageItemVO);
+		return packageItemVO.getId();
 	}
 	
 	/**

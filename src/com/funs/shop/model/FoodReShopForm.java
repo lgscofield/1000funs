@@ -1,14 +1,15 @@
 package com.funs.shop.model;
 
-public class FoodReShopForm {
+public class FoodReShopForm extends FoodForm {
 
 	private int shopId;
-	private int foodId;
 	private int groupId;
 	private double originPrice;
 	private double currentPrice;
 	private int stock;
 	private boolean droped;
+	private String itemIds;
+	
 	public int getShopId() {
 		return shopId;
 	}
@@ -16,10 +17,10 @@ public class FoodReShopForm {
 		this.shopId = shopId;
 	}
 	public int getFoodId() {
-		return foodId;
+		return getId();
 	}
 	public void setFoodId(int foodId) {
-		this.foodId = foodId;
+		setId(foodId);
 	}
 	public int getGroupId() {
 		return groupId;
@@ -51,11 +52,17 @@ public class FoodReShopForm {
 	public void setDroped(boolean droped) {
 		this.droped = droped;
 	}
+	public String getItemIds() {
+		return itemIds;
+	}
+	public void setItemIds(String itemIds) {
+		this.itemIds = itemIds;
+	}
 	@Override
 	public String toString() {
-		return "FoodReShopForm [shopId=" + shopId + ", foodId=" + foodId
+		return "FoodReShopForm [shopId=" + shopId + ", foodId=" + getFoodId()
 				+ ", groupId=" + groupId + ", originPrice=" + originPrice
 				+ ", currentPrice=" + currentPrice + ", stock=" + stock
-				+ ", droped=" + droped + "]";
+				+ ", droped=" + droped + ", itemIds=" + itemIds + "]";
 	}
 }

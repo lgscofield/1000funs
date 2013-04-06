@@ -24,6 +24,12 @@
 		(#{groupName},#{image},#{detail},#{type},false)
 	</insert>
 	
+	<!-- 插入PackageItem信息 -->
+	<insert id="insertPackageItem" parameterType="com.funs.food.model.PackageItemVO" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO package_item(package_id,food_id,deleted) VALUES
+		(#{packageId},#{foodId},false)
+	</insert>
+	
 	<!-- 更新group信息 -->
 	<update id="updateGroup" parameterType="com.funs.food.model.FoodGroupVO">
 		update food_group 

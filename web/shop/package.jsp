@@ -68,23 +68,24 @@
 			<div class="modal-body">
 
 				<!-- Step 1 -->
-				<form id="packageForm" action="" class="form-horizontal form-dialog">
+				<form id="packageForm" action="${webRoot}/shop/package" method="post" enctype="multipart/form-data" class="form-horizontal form-dialog">
 					<div id="step1">
 						<div class="control-group">
 							<div class="control-label">
-								<div class="addfood-photo-wrapper"><img src="${webRoot}/web/img/taochan3.jpg" class="addfood-photo img-rounded" alt=""></div>
+								<div class="addfood-photo-wrapper"><img id="image-preview" src="" class="addfood-photo img-rounded" alt="" data-toggle="tooltip" data-placement="right" data-original-title="图片不能为空" data-validate="imgValid();"></div>
 								<div class="img-tips hide">点击上传图片</div>
-								<input type="file" name="file" class="hide">
+								<input type="file" id="file-upload" name="file" class="hide">
 							</div>
 							<div class="controls controls-clear-right">
 								<div class="control-group control-group-small">
 									<label for="" class="control-label">名称</label>
-									<div class="controls"><input type="text"></div>
+									<div class="controls"><input type="text" id="foodName" name="foodName" data-toggle="tooltip" data-original-title="食物名称不能为空" data-validate></div>
+									<input type="hidden" name="foodId" id="foodId">
 								</div>
 								<div class="control-group control-group-small">
 									<label for="" class="control-label">分类</label>
 									<div class="controls">
-										<select name="" id="">
+										<select name="groupId" id="groupId">
 											<c:forEach items="${packageFoodsList}" var="groupFoods" varStatus="status">
 											<option value="${groupFoods.id}">${groupFoods.groupName }</option>
 											</c:forEach>
@@ -97,7 +98,7 @@
 										<!-- <input type="text"> -->
 										<div class="input-prepend input-append">
 											<span class="add-on">&yen;</span>
-											<input id="price" type="text" style="width:153px;">
+											<input id="originPrice" type="text" name="originPrice" style="width:153px;" data-toggle="tooltip" data-original-title="原价非空且为数字" data-validate="not_null postive_float">
 											<span class="add-on">元</span>
 										</div>
 									</div>
@@ -108,14 +109,14 @@
 										<!-- <input type="text"> -->
 										<div class="input-prepend input-append">
 											<span class="add-on">&yen;</span>
-											<input id="price" type="text" style="width:153px;">
+											<input id="currentPrice" name="currentPrice" type="text" style="width:153px;" data-toggle="tooltip" data-original-title="现价非空且为数字" data-validate="not_null postive_float">
 											<span class="add-on">元</span>
 										</div>
 									</div>
 								</div>
 								<div class="control-group control-group-small">
 									<label for="" class="control-label">库存</label>
-									<div class="controls"><input type="text"></div>
+									<div class="controls"><input type="text" name="stock" id="stock" data-toggle="tooltip" data-original-title="库存须为整数" data-validate="postive_number"></div>
 								</div>
 
 							</div>
@@ -123,13 +124,14 @@
 						<div class="control-group control-group-mini control-group-left addfood-describe">
 							<label for="" class="control-label">介绍</label>
 							<div class="controls">
-								<textarea name="" rows="3" ></textarea>
+								<textarea name="detail" id="detail" name="" rows="3" data-toggle="tooltip" data-original-title="描述不能为空" data-validate></textarea>
 							</div>
 						</div>
 
 						<div class="pull-right">
 							<label class="checkbox inline"><input type="checkbox" value="">缺货标记</label>
-							<label class="checkbox inline"><input type="checkbox" value="">下架</label>
+							<label class="checkbox inline"><input type="checkbox" id="droped" value="">下架</label>
+							<input type="hidden" id="_droped" name="droped" value="false">
 						</div>
 
 					</div><!--/ end of Step 1 -->
@@ -145,7 +147,7 @@
 									<li>
 										<label>
 											<img src="${webRoot}/${food.image}" alt="${food.foodName }">
-											<input type="checkbox" value=""/>
+											<input type="checkbox" value="" class="food-select" foodId="${food.id }"/>
 										</label>
 									</li>
 									</c:forEach>
@@ -154,7 +156,8 @@
 						</tr>
 						</c:forEach>
 					</table><!--/ end of Step 2 -->
-
+					
+					<input type="hidden" name="itemIds" id="itemIds" />
 				</form>
 
 			</div>
@@ -162,10 +165,9 @@
 
 				<div class="control-group control-group-small control-group-left add-package hide" id="modal-footer-food-select">
 					<label for="" class="control-label">已添加</label>
-					<div class="controls food-to-add">
-						<ul class="food-area-list">
-							<li><img src="${webRoot}/web/img/mifan.jpg" alt=""></li>
-							<li><img src="${webRoot}/web/img/chaixin.jpg" alt=""></li>
+					<div id="food-to-add" class="controls food-to-add">
+						<ul id="selected-foods" class="food-area-list">
+							<%-- <li id="selected_item_31"><img src="${webRoot}/web/img/mifan.jpg" alt="mifan"></li> --%>
 						</ul>
 					</div>
 				</div>
@@ -176,6 +178,10 @@
 		</div><!--/ end of 添加食物 -->
 
 		<script src="${webRoot}/web/seajs/sea.js" data-config="${webRoot}/web/js/config" data-main="${webRoot}/web/js/shop.package"></script>
-		
+		<script type="text/javascript">
+			function imgValid() {
+				return !!$("#file-upload").get(0).files[0];
+			}
+		</script> 
 	</body>
 </html>
