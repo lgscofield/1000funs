@@ -23,6 +23,7 @@ import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.Size2DSyntax;
 import javax.print.attribute.standard.MediaPrintableArea;
 
+import com.funs.common.model.EnvironmentInfoVO;
 import com.funs.shop.model.OrderFoodView;
 import com.funs.shop.model.OrderView;
 import com.funs.shop.model.PlateVO;
@@ -36,7 +37,7 @@ import com.funs.shop.model.PlateVO;
  */
 public class PosPrinter {
 	
-	public static String LOGO_PATH = "D:\\1000funs\\funs3.png";
+	public static String LOGO_PATH = EnvironmentInfoVO.WEBROOT+"web/img/logo.png";
 	
 	// web调用打印
 	public static void doPrint(int index, String bf) {
@@ -58,7 +59,7 @@ public class PosPrinter {
 	    
 	    InputStream stream = new ByteArrayInputStream(data3);
 	    Doc doc = new SimpleDoc(stream, flavor, null);
-	    Doc doc2 = new SimpleDoc(new FileInputStream("D:\\1000funs\\funs3.png"), DocFlavor.INPUT_STREAM.PNG, null);
+	    Doc doc2 = new SimpleDoc(new FileInputStream(LOGO_PATH), DocFlavor.INPUT_STREAM.PNG, null);
 
 	    
 	    // 获得打印属性

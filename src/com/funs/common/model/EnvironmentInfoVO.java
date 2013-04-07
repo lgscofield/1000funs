@@ -1,5 +1,7 @@
 package com.funs.common.model;
 
+import org.springframework.web.context.ContextLoader;
+
 import com.funs.user.model.UserVO;
 
 /**
@@ -8,7 +10,11 @@ import com.funs.user.model.UserVO;
  *
  */
 public class EnvironmentInfoVO {
-
+	
+	public final static String WEBROOT = ContextLoader
+			.getCurrentWebApplicationContext().getServletContext()
+			.getRealPath("/");
+	
 	private UserVO user;
 
 	public UserVO getUser() {
@@ -18,5 +24,4 @@ public class EnvironmentInfoVO {
 	public void setUser(UserVO user) {
 		this.user = user;
 	}
-	
 }

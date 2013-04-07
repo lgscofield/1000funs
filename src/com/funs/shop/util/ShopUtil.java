@@ -5,18 +5,16 @@ import java.io.IOException;
 import java.util.Date;
 
 import org.apache.commons.io.FilenameUtils;
-import org.springframework.web.context.ContextLoader;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.funs.common.model.EnvironmentInfoVO;
 import com.funs.core.util.tools.DateTimeFormatUtils;
 
 public class ShopUtil {
 	
 	public static final String IMG_UPLOAD_RELATIVE_PATH = "web" + File.separator + "upload";
 
-	public static final String IMG_UPLOAD_PATH = ContextLoader
-			.getCurrentWebApplicationContext().getServletContext()
-			.getRealPath("/") + IMG_UPLOAD_RELATIVE_PATH;
+	public static final String IMG_UPLOAD_PATH = EnvironmentInfoVO.WEBROOT + IMG_UPLOAD_RELATIVE_PATH;
 
 	/**
 	 * save image to server under the /web/upload folder.
