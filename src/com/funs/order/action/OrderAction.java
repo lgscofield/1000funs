@@ -14,14 +14,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.funs.core.base.action.BaseAction;
 import com.funs.core.base.model.ResultVO;
 import com.funs.core.springmvc.ApplicationContextInitor;
+import com.funs.core.util.tools.PosPrinter;
 import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
 import com.funs.order.model.OrderVOWithFood;
 import com.funs.order.service.OrderService;
+import com.funs.shop.model.OrderView;
 
 /**
  * @author Xingling
@@ -147,4 +151,14 @@ public class OrderAction extends BaseAction {
 		queryCondition.setShopId(currShopId);
 		return orderService.queryOrdersCount(queryCondition);
 	}
+	
+	/**
+	 * 根据订单ID获取一个订单详情(包括相应食物列表)
+	 * @param orderId
+	 * @return
+	 */
+	public List<OrderVOWithFood> getOrderWithFood(int orderId) {
+		return orderService.getOrderWithFood(orderId);
+	}
+	
 }

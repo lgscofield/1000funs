@@ -28,6 +28,7 @@ import com.funs.config.action.ConfigAction;
 import com.funs.core.base.action.QueryForm;
 import com.funs.core.util.tools.AjaxUtils;
 import com.funs.core.util.tools.DateTimeFormatUtils;
+import com.funs.core.util.tools.PosPrinter;
 import com.funs.food.action.FoodAction;
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodQueryCondition;
@@ -75,9 +76,11 @@ function			method				url
 更新食物				POST				/shop/food/{id}
 
 更新是否自动出单		PUT					/shop/autoprint/{value}	
+出单					PUT					/shop/issue/{id}
 
 新增食物关联			POST				/shop/foodreshop
 新增套餐				POST				/shop/package
+
 
  * 
  * @author jcchen
@@ -378,8 +381,15 @@ public class ShopController {
 		return "redirect:/shop/package";
 	}
 	
-	
-	
+	@RequestMapping(value="/issue/{id}", method=RequestMethod.PUT)
+	public @ResponseBody boolean issue(@PathVariable int id) {
+		boolean ret = this.updateOrderStatus(id, OrderVO.ORDER_STATUS_DEALED);
+		if(ret) {
+			OrderView orderView = getOrderView(id);
+			PosPrinter.print(orderView);
+		}
+		return ret;
+	}
 	
 	
 	@ExceptionHandler
@@ -418,6 +428,17 @@ public class ShopController {
 		FoodQueryCondition foodQueryCondition = new FoodQueryCondition(shopId, type);
 		List<GroupFoods> lstGroupFoods = foodAction.queryAllGroupAndFoods(foodQueryCondition);
 		return lstGroupFoods;
+	}
+	
+	/**
+	 * 获取一个订单(及其食物明细)
+	 * @param orderId
+	 * @return OrderView
+	 */
+	private OrderView getOrderView(int orderId) {
+		List<OrderVOWithFood> list = orderAction.getOrderWithFood(orderId);
+		List<OrderView> ret = transferOrderVOToView(list);
+		return ret.size() > 0 ? ret.get(0) : null;
 	}
 	
 	

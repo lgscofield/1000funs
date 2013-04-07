@@ -90,4 +90,13 @@ public class OrderService extends BaseService {
 	public int updateOrderStatus(OrderVO orderVO) {
 		return orderDAO.updateOrderStatus(orderVO);
 	}
+	
+	/**
+	 * 根据订单ID获取一个订单详情(包括相应食物列表)
+	 * @param orderId
+	 * @return
+	 */
+	public List<OrderVOWithFood> getOrderWithFood(int orderId) {
+		return orderDAO.getOrderWithFood(orderId);
+	}
 }
