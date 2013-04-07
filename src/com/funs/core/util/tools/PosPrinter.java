@@ -88,29 +88,29 @@ public class PosPrinter {
 		
 		DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
 		try {
+		    System.out.println(sbPrinter.toString());
+			
 			// 使用默认打印机，如果默认打印机不是POS打印机，请通过名称查找。    
 		    PrintService printer = PrintServiceLookup.lookupDefaultPrintService();
-		    DocPrintJob job = printer.createPrintJob();
 		    
-		    System.out.println(sbPrinter.toString());
-		    
-		    byte[] buf1 = sbPrinter.toString().getBytes();
-		    byte[] data3 = new byte[buf1.length];
-		    System.arraycopy(buf1,0,data3,0,buf1.length);
-		    
-		    // 获得打印属性
-			PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
-			Doc doc2 = new SimpleDoc(new FileInputStream(LOGO_PATH), DocFlavor.INPUT_STREAM.PNG, null);
-			
-			MediaPrintableArea mp = new MediaPrintableArea(0f, 0f, 90f, 20f, Size2DSyntax.MM);// 5f, 5f, 100f, 40f
-			pras.add(mp);
-			DocPrintJob job2 = printer.createPrintJob();
-		    job2.print(doc2, pras);
-		    
-		    InputStream stream = new ByteArrayInputStream(data3);
-		    Doc doc = new SimpleDoc(stream, flavor, null);
-		    job.print(doc, null);
-		    
+		    if (printer != null) {
+				DocPrintJob job = printer.createPrintJob();
+				// 获得打印属性
+				PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
+				Doc doc2 = new SimpleDoc(new FileInputStream(LOGO_PATH), DocFlavor.INPUT_STREAM.PNG, null);
+				MediaPrintableArea mp = new MediaPrintableArea(0f, 0f, 90f, 20f, Size2DSyntax.MM);// 5f, 5f, 100f, 40f
+				pras.add(mp);
+				DocPrintJob job2 = printer.createPrintJob();
+				job2.print(doc2, pras);
+				
+				byte[] buf1 = sbPrinter.toString().getBytes();
+			    byte[] data3 = new byte[buf1.length];
+			    System.arraycopy(buf1,0,data3,0,buf1.length);
+			    
+				InputStream stream = new ByteArrayInputStream(data3);
+				Doc doc = new SimpleDoc(stream, flavor, null);
+				job.print(doc, null);
+			}
 		}catch (Exception e) {
 		    e.printStackTrace();
 		}
@@ -158,8 +158,8 @@ public class PosPrinter {
 				bf.append(" ");
 			}
 		}
-		System.out.println(bf.toString());
-		System.out.println(bf.toString().length());
+//		System.out.println(bf.toString());
+//		System.out.println(bf.toString().length());
 		return bf.toString();
 	}
 	
