@@ -82,7 +82,7 @@
 										<c:forEach items="${order.plateList }" var="plate">
 											<span>餐盘${plate.no }:</span>
 											<c:forEach items="${plate.foodList }" var="food">
-											<span>${food.food } x${food.amount }</span>
+											<span>${food.food } <c:if test="${food.amount > 1}">x${food.amount }</c:if></span>
 											</c:forEach>
 										</c:forEach>
 										</p>
@@ -93,7 +93,7 @@
 											<li>
 												<ul class="food-list">
 													<c:forEach items="${plate.foodList }" var="food">
-													<li><span>x${food.amount }</span>${food.food } </li>
+													<li>${food.food } <c:if test="${food.amount > 1}">x${food.amount }</c:if> </li>
 													</c:forEach>
 													<li><span class="price">￥${plate.price }</span></li>
 												</ul>
