@@ -23,6 +23,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
+import com.funs.common.model.EnvironmentInfoVO;
 import com.funs.config.action.ConfigAction;
 import com.funs.core.base.action.QueryForm;
 import com.funs.core.util.tools.AjaxUtils;
@@ -346,7 +347,6 @@ public class ShopController {
 		int shopId = 1; //
 		FoodVO foodVO = new FoodVO();
 		BeanUtils.copyProperties(foodReShopForm, foodVO);
-//		foodVO.setId(foodReShopForm.getFoodId());
 		foodVO.setShopId(shopId);
 		foodAction.insertFoodReShop(foodVO);
 		return "redirect:/shop/catering";
@@ -541,6 +541,14 @@ public class ShopController {
 		vo.setId(id);
 		
 		return vo;
+	}
+	
+	
+	/////////////////////////
+	
+	@RequestMapping("/test")
+	public @ResponseBody String test() {
+		return EnvironmentInfoVO.WEBROOT;
 	}
 	
 	private <T> void print(T msg) {

@@ -77,7 +77,7 @@
 				});
 
 				$("#queryTest").click(function() {
-					var url = "${webRoot}/shop/query/test.do";
+					var url = "${webRoot}/shop/test";
 					$.getJSON(url, function(json) {
 						showSuccess("<strong>Well done!</strong> data: " + JSON.stringify(json));
 					})
