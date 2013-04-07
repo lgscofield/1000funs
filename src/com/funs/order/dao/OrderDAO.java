@@ -83,4 +83,14 @@ public class OrderDAO extends BaseDAO {
 		int count = this.sqlSessionTemplate.selectOne("com.funs.order.queryOrdersCount", params);
 		return count;
 	}
+	
+	/**
+	 * 根据订单ID获取一个订单详情(包括相应食物列表)
+	 * @param orderId
+	 * @return
+	 */
+	public List<OrderVOWithFood> getOrderWithFood(int orderId) {
+		List<OrderVOWithFood> result = this.sqlSessionTemplate.selectList("com.funs.order.getOrderWithFood", orderId);
+		return result;
+	}
 }
