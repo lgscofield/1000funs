@@ -159,3 +159,9 @@ INSERT INTO `1000funs`.`order_item` (`order_id`, `item_id`, `amount`, `plate`, `
 
 
 INSERT INTO `config` (`name`,`value`,`class_name`) VALUES ('shop.autoprint','false','java.lang.String');
+
+INSERT INTO `region` (`id`,`code`,`region_name`,`parent_id`,`image`,`has_children`,`full_path`,`deleted`) VALUES (1,'1','香丽大厦',-1,'/web/client/img/region.jpg',NULL,NULL,0);
+INSERT INTO `region` (`id`,`code`,`region_name`,`parent_id`,`image`,`has_children`,`full_path`,`deleted`) VALUES (2,'2','妇儿大厦',-1,'/web/client/img/region.jpg',NULL,NULL,0);
+INSERT INTO `region` (`id`,`code`,`region_name`,`parent_id`,`image`,`has_children`,`full_path`,`deleted`) VALUES (3,'3','妇女大厦',-1,'/web/client/img/region.jpg',NULL,NULL,0);
+INSERT INTO `region` (`id`,`code`,`region_name`,`parent_id`,`image`,`has_children`,`full_path`,`deleted`) VALUES (4,'4','少女大厦',-1,'/web/client/img/region.jpg',NULL,NULL,0);
+INSERT INTO `region` (`id`,`code`,`region_name`,`parent_id`,`image`,`has_children`,`full_path`,`deleted`) VALUES (5,'5','悍妇大厦',-1,'/web/client/img/region.jpg',NULL,NULL,0);
