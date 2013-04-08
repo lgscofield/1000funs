@@ -24,9 +24,9 @@ import javax.print.attribute.Size2DSyntax;
 import javax.print.attribute.standard.MediaPrintableArea;
 
 import com.funs.common.model.EnvironmentInfoVO;
-import com.funs.shop.model.OrderFoodView;
-import com.funs.shop.model.OrderView;
-import com.funs.shop.model.PlateVO;
+import com.funs.order.model.OrderFoodView;
+import com.funs.order.model.OrderView;
+import com.funs.order.model.PlateVO;
 
 /**
  * 
