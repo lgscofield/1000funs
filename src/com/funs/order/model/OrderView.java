@@ -1,4 +1,4 @@
-package com.funs.shop.model;
+package com.funs.order.model;
 
 import java.util.List;
 
@@ -50,7 +50,6 @@ public class OrderView extends BaseVO {
 	
 	/**
 	 * 订单状态: 0:new 1:dealed 2:exception 3:evaluated
-	 * TODO:: 字义到常量类中去
 	 */
 	private int orderStatus;
 

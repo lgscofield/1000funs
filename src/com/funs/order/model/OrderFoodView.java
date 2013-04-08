@@ -1,4 +1,4 @@
-package com.funs.shop.model;
+package com.funs.order.model;
 
 import com.funs.core.base.model.BaseVO;
 

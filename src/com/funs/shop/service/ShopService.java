@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.funs.food.model.FoodGroupVO;
 import com.funs.food.model.FoodVO;
+import com.funs.order.model.OrderFoodView;
+import com.funs.order.model.OrderView;
 import com.funs.packages.model.PackageVO;
-import com.funs.shop.model.OrderFoodView;
-import com.funs.shop.model.OrderView;
 
 /**
  * 店铺管理Service

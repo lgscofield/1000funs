@@ -1,7 +1,8 @@
-package com.funs.shop.model;
+package com.funs.order.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * 餐盘实体

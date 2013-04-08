@@ -4,6 +4,7 @@
  *****************************************************************************/
 package com.funs.order.action;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -14,18 +15,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.funs.core.base.action.BaseAction;
 import com.funs.core.base.model.ResultVO;
 import com.funs.core.springmvc.ApplicationContextInitor;
-import com.funs.core.util.tools.PosPrinter;
+import com.funs.core.util.tools.DateTimeFormatUtils;
+import com.funs.order.model.OrderFoodView;
 import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
 import com.funs.order.model.OrderVOWithFood;
+import com.funs.order.model.OrderView;
+import com.funs.order.model.PlateVO;
 import com.funs.order.service.OrderService;
-import com.funs.shop.model.OrderView;
 
 /**
  * @author Xingling
@@ -113,11 +114,20 @@ public class OrderAction extends BaseAction {
 		
 		queryCondition.setUserId(currUserId);
 		queryCondition.setShopId(currShopId);
-//		param.setItemType(OrderItemVO.ITEM_TYPE_FOOD);
 		queryCondition.addStatus(OrderVO.ORDER_STATUS_NEW);
 		
-		
 		return orderService.queryOrdersWithFood(queryCondition);
+	}
+	
+	/**
+	 * 查询订单列表
+	 * @param queryCondition 查询条件
+	 * @return List<OrderView>
+	 */
+	public List<OrderView> queryNewOrderViewList(OrderQueryCondition queryCondition) {
+		List<OrderVOWithFood> list0 = queryNewOrdersWithFood(queryCondition);
+		List<OrderView> list = transferOrderVOToView(list0);
+		return list;
 	}
 
 	/**
@@ -140,6 +150,12 @@ public class OrderAction extends BaseAction {
 		return orderService.queryOrdersWithFoodByPage(queryCondition);
 	}
 	
+	public List<OrderView> queryHistoryOrderViewList(OrderQueryCondition queryCondition) {
+		List<OrderVOWithFood> list0 = queryHistoryOrdersWithFoodByPage(queryCondition, queryCondition.getPageNo(), queryCondition.getPageSize());
+		List<OrderView> list = transferOrderVOToView(list0);
+		return list;
+	}
+	
 	/**
 	 * 查询历史订单的总数
 	 * @param map
@@ -159,6 +175,68 @@ public class OrderAction extends BaseAction {
 	 */
 	public List<OrderVOWithFood> getOrderWithFood(int orderId) {
 		return orderService.getOrderWithFood(orderId);
+	}
+	
+	/**
+	 * 获取一个订单(及其食物明细)
+	 * @param orderId
+	 * @return OrderView
+	 */
+	public OrderView getOrderView(int orderId) {
+		List<OrderVOWithFood> list = this.getOrderWithFood(orderId);
+		List<OrderView> ret = transferOrderVOToView(list);
+		return ret.size() > 0 ? ret.get(0) : null;
+	}
+	
+	
+	/**
+	 * 将List<OrderVOWithFood>转换为List<OrderViewVO>
+	 * @param list
+	 * @return
+	 */
+	private List<OrderView> transferOrderVOToView(List<OrderVOWithFood> list) {
+		List<OrderView> ret = new ArrayList<OrderView>();
+		int oldOrderId = 0, oldPlate = 0;
+		OrderView view = null;
+		List<PlateVO> plateList = null;
+		PlateVO plate = null;
+		for(OrderVOWithFood vo : list) {
+			if(oldOrderId != vo.getId()) { // new
+				//reset
+				oldOrderId = vo.getId();
+				oldPlate = 0;
+				
+				if(view != null) ret.add(view); //add the prior one
+				view = new OrderView();
+				view.setId(vo.getId());
+				view.setAddress(vo.getAddress());
+				view.setContact(vo.getContact());
+				view.setCreateTime(DateTimeFormatUtils.formatDateTime(vo.getCreateTime()));
+				view.setExceptTime(DateTimeFormatUtils.formatDateTime(vo.getExceptTime()));
+				view.setOrderStatus(vo.getOrderStatus());
+				view.setPhone(vo.getPhone());
+				view.setTotalPrice(vo.getTotalPrice());
+				
+				plateList = new ArrayList<PlateVO>();
+				view.setPlateList(plateList);
+			}
+			
+			if(oldPlate != vo.getPlate()) {
+				oldPlate = vo.getPlate();
+				plate = new PlateVO(vo.getPlate());
+				plateList.add(plate);
+			}
+			
+			OrderFoodView foodView = new OrderFoodView();
+			foodView.setFood(vo.getFoodName());
+			foodView.setAmount(vo.getAmount());
+			foodView.setPrice(vo.getPrice());
+			plate.addFood(foodView);
+		}
+		if(view != null) { //add the last one
+			ret.add(view); 
+		}
+		return ret;
 	}
 	
 }

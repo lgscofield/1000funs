@@ -1,6 +1,5 @@
 package com.funs.shop.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -27,7 +26,6 @@ import com.funs.common.model.EnvironmentInfoVO;
 import com.funs.config.action.ConfigAction;
 import com.funs.core.base.action.QueryForm;
 import com.funs.core.util.tools.AjaxUtils;
-import com.funs.core.util.tools.DateTimeFormatUtils;
 import com.funs.core.util.tools.PosPrinter;
 import com.funs.food.action.FoodAction;
 import com.funs.food.model.FoodGroupVO;
@@ -38,14 +36,11 @@ import com.funs.food.model.PackageVO;
 import com.funs.order.action.OrderAction;
 import com.funs.order.model.OrderQueryCondition;
 import com.funs.order.model.OrderVO;
-import com.funs.order.model.OrderVOWithFood;
+import com.funs.order.model.OrderView;
 import com.funs.shop.model.FoodForm;
 import com.funs.shop.model.FoodReShopForm;
 import com.funs.shop.model.GroupForm;
-import com.funs.shop.model.OrderFoodView;
 import com.funs.shop.model.OrderQueryForm;
-import com.funs.shop.model.OrderView;
-import com.funs.shop.model.PlateVO;
 import com.funs.shop.util.ShopConstants;
 import com.funs.shop.util.ShopUtil;
 
@@ -90,30 +85,46 @@ function			method				url
 @RequestMapping("/shop")
 public class ShopController {
 	
+	/**
+	 * orderAction
+	 */
 	@Autowired
 	private OrderAction orderAction;
 	
+	/**
+	 * foodAction
+	 */
 	@Autowired
 	private FoodAction foodAction;
 	
+	/**
+	 * configAction 配置Action
+	 */
 	@Autowired
 	private ConfigAction configAction;
 	
+	/**
+	 * 将model映射为json返回
+	 */
 	@Autowired 
 	private MappingJacksonJsonView mappingJacksonJsonView;
 	
 	
 	// Invoked on every request
-	
+	/**
+	 * 当前请求是否为ajax请求. 每次请求都会调用此方法
+	 * @param request WebRequest
+	 * @param model Model
+	 */
 	@ModelAttribute
 	public void ajaxAttribute(WebRequest request, Model model) {
-		model.addAttribute("ajaxRequest", AjaxUtils.isAjaxRequest(request));
+		model.addAttribute("ajaxRequest", AjaxUtils.isAjaxRequest(request)); 
 	}
 	
 
 	/**
 	 * index
-	 * @return
+	 * @return index page
 	 */
 	@RequestMapping("")
 	public String toIndex() {
@@ -125,10 +136,7 @@ public class ShopController {
 		
 		OrderQueryCondition condition = new OrderQueryCondition();
 		BeanUtils.copyProperties(queryForm, condition);
-		
-		List<OrderVOWithFood> list0 = orderAction.queryNewOrdersWithFood(condition);
-		List<OrderView> list = transferOrderVOToView(list0);
-		
+		List<OrderView> list = orderAction.queryNewOrderViewList(condition);
 		model.addAttribute("orderList", list);
 		return "shop/todo";
 	}
@@ -153,8 +161,7 @@ public class ShopController {
 		int count = orderAction.queryHistoryOrdersCount(condition);
 		queryForm.setRecordCount(count);
 		
-		List<OrderVOWithFood> list0 = orderAction.queryHistoryOrdersWithFoodByPage(condition, queryForm.getPageNo(), queryForm.getPageSize());
-		List<OrderView> list = transferOrderVOToView(list0);
+		List<OrderView> list = orderAction.queryHistoryOrderViewList(condition);
 		model.addAttribute("orderList", list);
 		
 		return "shop/history";
@@ -216,11 +223,7 @@ public class ShopController {
 	
 	/**
 	 * 保存分组.(支持ajax/form submit)
-	 * @param file
-	 * @param groupForm
-	 * @param ajaxRequest
-	 * @param model
-	 * @return
+	 * @return View. 如果是Ajax请求，返回json数据; 如果是普通的Form请求提交，直接跳转到相应的页面.
 	 */
 	@RequestMapping(value="/group", method=RequestMethod.POST)
 	public View saveGroup(@RequestParam MultipartFile file, @ModelAttribute GroupForm groupForm,
@@ -238,11 +241,6 @@ public class ShopController {
 	
 	/**
 	 * 保存食物
-	 * @param file
-	 * @param groupForm
-	 * @param ajaxRequest
-	 * @param model
-	 * @return
 	 */
 	@RequestMapping(value="/food", method=RequestMethod.POST)
 	public View saveFood(@RequestParam MultipartFile file, @ModelAttribute FoodForm foodForm,
@@ -310,7 +308,7 @@ public class ShopController {
 	
 	/**
 	 * 更新订单状态
-	 * @return
+	 * @return boolean true-更新成功; false-更新失败;
 	 */
 	@RequestMapping(value="/order/{id}", method=RequestMethod.PUT, params="status")
 	public @ResponseBody boolean updateOrderStatus(@PathVariable int id, @RequestParam int status) {
@@ -323,8 +321,8 @@ public class ShopController {
 	
 	/**
 	 * 是否自动出单(更新配置项信息)
-	 * @param value
-	 * @return
+	 * @param value true/false 表示开启 or 关闭.
+	 * @return true-开启成功; false-开启失败;
 	 */
 	@RequestMapping(value="/autoprint/{value}", method=RequestMethod.PUT)
 	public @ResponseBody boolean updateAutoPrint(@PathVariable String value) {
@@ -334,7 +332,7 @@ public class ShopController {
 	
 	/**
 	 * 获取是否自动出单
-	 * @return
+	 * @return boolean true-更新成功; false-更新失败;
 	 */
 	@RequestMapping("/autoprint")
 	public @ResponseBody boolean getAutoPrint() {
@@ -385,7 +383,7 @@ public class ShopController {
 	public @ResponseBody boolean issue(@PathVariable int id) {
 		boolean ret = this.updateOrderStatus(id, OrderVO.ORDER_STATUS_DEALED);
 		if(ret) {
-			OrderView orderView = getOrderView(id);
+			OrderView orderView = orderAction.getOrderView(id);
 			PosPrinter.print(orderView);
 		}
 		return ret;
@@ -402,7 +400,7 @@ public class ShopController {
 	
 	/**
 	 * 获取配餐所有食物列表(outer join, 空分组也会查出来)
-	 * @return
+	 * @return List<GroupFoods> 
 	 */
 	private List<GroupFoods> getCateringFoods() {
 		return getAllGroupAndFoods(FoodVO.TYPE_FOOD);
@@ -410,7 +408,7 @@ public class ShopController {
 	
 	/**
 	 * 获取套餐所有食物列表
-	 * @return
+	 * @return List<GroupFoods>
 	 */
 	private List<GroupFoods> getPackageFoods() {
 		return getAllGroupAndFoods(FoodVO.TYPE_PACKAGE);
@@ -420,8 +418,8 @@ public class ShopController {
 	
 	/**
 	 * 根据指定类型获取指定类型的所有食物及分组列表集合(outer join, 空分组也会查出来)
-	 * @param type
-	 * @return
+	 * @param type int 食物的类型 
+	 * @return List<GroupFoods>
 	 */
 	private List<GroupFoods> getAllGroupAndFoods(int type) {
 		int shopId = 1;
@@ -431,71 +429,9 @@ public class ShopController {
 	}
 	
 	/**
-	 * 获取一个订单(及其食物明细)
-	 * @param orderId
-	 * @return OrderView
-	 */
-	private OrderView getOrderView(int orderId) {
-		List<OrderVOWithFood> list = orderAction.getOrderWithFood(orderId);
-		List<OrderView> ret = transferOrderVOToView(list);
-		return ret.size() > 0 ? ret.get(0) : null;
-	}
-	
-	
-	/**
-	 * 将List<OrderVOWithFood>转换为List<OrderViewVO>
-	 * @param list
-	 * @return
-	 */
-	private List<OrderView> transferOrderVOToView(List<OrderVOWithFood> list) {
-		List<OrderView> ret = new ArrayList<OrderView>();
-		int oldOrderId = 0, oldPlate = 0;
-		OrderView view = null;
-		List<PlateVO> plateList = null;
-		PlateVO plate = null;
-		for(OrderVOWithFood vo : list) {
-			if(oldOrderId != vo.getId()) { // new
-				//reset
-				oldOrderId = vo.getId();
-				oldPlate = 0;
-				
-				if(view != null) ret.add(view); //add the prior one
-				view = new OrderView();
-				view.setId(vo.getId());
-				view.setAddress(vo.getAddress());
-				view.setContact(vo.getContact());
-				view.setCreateTime(DateTimeFormatUtils.formatDateTime(vo.getCreateTime()));
-				view.setExceptTime(DateTimeFormatUtils.formatDateTime(vo.getExceptTime()));
-				view.setOrderStatus(vo.getOrderStatus());
-				view.setPhone(vo.getPhone());
-				view.setTotalPrice(vo.getTotalPrice());
-				
-				plateList = new ArrayList<PlateVO>();
-				view.setPlateList(plateList);
-			}
-			
-			if(oldPlate != vo.getPlate()) {
-				oldPlate = vo.getPlate();
-				plate = new PlateVO(vo.getPlate());
-				plateList.add(plate);
-			}
-			
-			OrderFoodView foodView = new OrderFoodView();
-			foodView.setFood(vo.getFoodName());
-			foodView.setAmount(vo.getAmount());
-			foodView.setPrice(vo.getPrice());
-			plate.addFood(foodView);
-		}
-		if(view != null) { //add the last one
-			ret.add(view); 
-		}
-		return ret;
-	}
-	
-	/**
 	 * 将GroupForm 转化为 FoodGroupVO
-	 * @param form
-	 * @param vo
+	 * @param form GroupForm
+	 * @param vo  FoodGroupVO
 	 */
 	private void transferGroupFormToFoodGroupVO(GroupForm form, FoodGroupVO vo) {
 		vo.setGroupName(form.getGroupName());
@@ -506,10 +442,10 @@ public class ShopController {
 	
 	/**
 	 * save group to db.
-	 * @param file
-	 * @param groupForm
-	 * @return
-	 * @throws IllegalStateException
+	 * @param file MultipartFile
+	 * @param groupForm GroupForm
+	 * @return FoodGroupVO
+	 * @throws IllegalStateException 图片为空时，抛异常.
 	 */
 	private FoodGroupVO saveGroupToDB(MultipartFile file, GroupForm groupForm) throws IllegalStateException {
 		// save the image file to upload directory
@@ -535,10 +471,6 @@ public class ShopController {
 	
 	/**
 	 * 保存food 到 DB
-	 * @param file
-	 * @param foodForm
-	 * @return
-	 * @throws IllegalStateException
 	 */
 	private FoodVO saveFoodToDB(MultipartFile file, FoodForm foodForm) throws IllegalStateException {
 		// save the image file to upload directory
