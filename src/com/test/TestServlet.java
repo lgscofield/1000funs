@@ -22,6 +22,6 @@ public class TestServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-			// this is just a template
+			// this is just a template ss
 	}
 }
