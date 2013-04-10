@@ -67,21 +67,5 @@ define(function(require, exports, module) {
 		});
 	}
 	
-	// 更新订单状态
-	// function updateOrders(id) {
-	// 	$.ajax({
-	// 		type: "put", 
-	// 		url: webRoot+"/shop/order/"+id+"?status=1"
-	// 	})
-	// 	.done(function(data) {
-	// 		if(data == true) {
-	// 			$("#order_item_"+id).slideUp();
-	// 			return true;
-	// 		} else {
-	// 			alert("出单失败");
-	// 			return false;
-	// 		}
-	// 	});
-	// }
 	
 });
