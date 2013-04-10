@@ -13,9 +13,11 @@ import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 
+import com.funs.config.action.ConfigAction;
 import com.funs.core.base.action.BaseAction;
 import com.funs.core.base.model.ResultVO;
 import com.funs.core.springmvc.ApplicationContextInitor;
@@ -26,6 +28,7 @@ import com.funs.order.model.OrderVO;
 import com.funs.order.model.OrderVOWithFood;
 import com.funs.order.model.OrderView;
 import com.funs.order.model.PlateVO;
+import com.funs.order.model.OrderConstants;
 import com.funs.order.service.OrderService;
 
 /**
@@ -42,6 +45,9 @@ public class OrderAction extends BaseAction {
 	static ApplicationContext context = null;
 
 	static OrderService orderService = null;
+	
+	@Autowired
+	private ConfigAction configAction;
 
 	static {
 		context = ApplicationContextInitor.getContext();
@@ -51,7 +57,7 @@ public class OrderAction extends BaseAction {
 	/**
 	 * 提交订单
 	 * 
-	 * @param orderVO
+	 * @param orderVO 订单VO
 	 * @return 提交是否成功
 	 */
 	@RemoteMethod
@@ -79,7 +85,7 @@ public class OrderAction extends BaseAction {
 	/**
 	 * 根据用户id查询未处理订单
 	 * 
-	 * @param userId
+	 * @param userId 用户id
 	 * @return 未处理的订单对象集合
 	 */
 	@RemoteMethod
@@ -94,7 +100,7 @@ public class OrderAction extends BaseAction {
 	
 	/**
 	 * 更新Order的状态
-	 * @param orderVO
+	 * @param orderVO 订单VO
 	 */
 	public int updateOrderStatus(OrderVO orderVO) {
 		return orderService.updateOrderStatus(orderVO);
@@ -102,10 +108,6 @@ public class OrderAction extends BaseAction {
 
 	/**
 	 * 根据条件查询订单列表
-	 * 
-	 * @param map
-	 *            查询条件
-	 * @return
 	 */
 	@RemoteMethod
 	public List<OrderVOWithFood> queryNewOrdersWithFood(OrderQueryCondition queryCondition) {
@@ -133,9 +135,6 @@ public class OrderAction extends BaseAction {
 	/**
 	 * 根据条件查询历史订单列表,分页方式
 	 * 
-	 * @param map
-	 *            查询条件
-	 * @return
 	 */
 	public List<OrderVOWithFood> queryHistoryOrdersWithFoodByPage(
 			OrderQueryCondition queryCondition, int pageNo, int pageSize) {
@@ -158,8 +157,6 @@ public class OrderAction extends BaseAction {
 	
 	/**
 	 * 查询历史订单的总数
-	 * @param map
-	 * @return
 	 */
 	public int queryHistoryOrdersCount(OrderQueryCondition queryCondition) {
 		// 当前用户ID, 店铺ID, 应该可以在全局进行查找, 这里暂时写死.
@@ -170,8 +167,6 @@ public class OrderAction extends BaseAction {
 	
 	/**
 	 * 根据订单ID获取一个订单详情(包括相应食物列表)
-	 * @param orderId
-	 * @return
 	 */
 	public List<OrderVOWithFood> getOrderWithFood(int orderId) {
 		return orderService.getOrderWithFood(orderId);
@@ -179,7 +174,7 @@ public class OrderAction extends BaseAction {
 	
 	/**
 	 * 获取一个订单(及其食物明细)
-	 * @param orderId
+	 * @param orderId 订单ID
 	 * @return OrderView
 	 */
 	public OrderView getOrderView(int orderId) {
@@ -188,11 +183,29 @@ public class OrderAction extends BaseAction {
 		return ret.size() > 0 ? ret.get(0) : null;
 	}
 	
+	/**
+	 * 更新是否自动出单
+	 * @return true-更新成功; false-更新失败
+	 */
+	public boolean updateAutoPrint(String value) {
+		int ret = configAction.updateConfig(OrderConstants.CONFIG_KEY_AUTO_PRINT, value);
+		return ret > 0;
+	}
+	
+	/**
+	 * 获取是否自动出单
+	 * @return true-开启自动出单; false-关闭自动出单
+	 */
+	public boolean getAutoPrint() {
+		String value = configAction.getConfigValue(OrderConstants.CONFIG_KEY_AUTO_PRINT);
+		return Boolean.valueOf(value).booleanValue();
+	}
+	
 	
 	/**
 	 * 将List<OrderVOWithFood>转换为List<OrderViewVO>
-	 * @param list
-	 * @return
+	 * @param list List<OrderVOWithFood>
+	 * @return List<OrderViewVO>
 	 */
 	private List<OrderView> transferOrderVOToView(List<OrderVOWithFood> list) {
 		List<OrderView> ret = new ArrayList<OrderView>();
