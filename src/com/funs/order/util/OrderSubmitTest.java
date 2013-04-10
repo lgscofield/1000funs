@@ -8,9 +8,6 @@ import com.funs.order.model.OrderVO;
 @Controller
 public class OrderSubmitTest extends OrderStatePublisher {
 
-	/**
-	 * @param args
-	 */
 	@RequestMapping("/test/autoprint")
 	public void testAutoprint() {
 		OrderVO vo = new OrderVO();
@@ -24,7 +21,7 @@ public class OrderSubmitTest extends OrderStatePublisher {
 	
 	/**
 	 * 提交订单
-	 * @param orderVO
+	 * @param orderVO 订单VO
 	 */
 	public void submitOrder(OrderVO orderVO) {
 		System.out.println("提交订单了...");

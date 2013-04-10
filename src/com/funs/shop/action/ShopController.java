@@ -23,7 +23,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
 import com.funs.common.model.EnvironmentInfoVO;
-import com.funs.config.action.ConfigAction;
 import com.funs.core.base.action.QueryForm;
 import com.funs.core.util.tools.AjaxUtils;
 import com.funs.core.util.tools.PosPrinter;
@@ -41,7 +40,6 @@ import com.funs.shop.model.FoodForm;
 import com.funs.shop.model.FoodReShopForm;
 import com.funs.shop.model.GroupForm;
 import com.funs.shop.model.OrderQueryForm;
-import com.funs.shop.util.ShopConstants;
 import com.funs.shop.util.ShopUtil;
 
 
@@ -96,12 +94,6 @@ public class ShopController {
 	 */
 	@Autowired
 	private FoodAction foodAction;
-	
-	/**
-	 * configAction 配置Action
-	 */
-	@Autowired
-	private ConfigAction configAction;
 	
 	/**
 	 * 将model映射为json返回
@@ -326,8 +318,7 @@ public class ShopController {
 	 */
 	@RequestMapping(value="/autoprint/{value}", method=RequestMethod.PUT)
 	public @ResponseBody boolean updateAutoPrint(@PathVariable String value) {
-		int ret = configAction.updateConfig(ShopConstants.CONFIG_KEY_AUTO_PRINT, value);
-		return ret > 0;
+		return orderAction.updateAutoPrint(value);
 	}
 	
 	/**
@@ -336,8 +327,7 @@ public class ShopController {
 	 */
 	@RequestMapping("/autoprint")
 	public @ResponseBody boolean getAutoPrint() {
-		String value = configAction.getConfigValue(ShopConstants.CONFIG_KEY_AUTO_PRINT);
-		return Boolean.valueOf(value).booleanValue();
+		return orderAction.getAutoPrint();
 	}
 	
 	@RequestMapping(value="/foodreshop", method=RequestMethod.POST)

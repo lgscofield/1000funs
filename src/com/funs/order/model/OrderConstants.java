@@ -1,6 +1,6 @@
-package com.funs.shop.util;
+package com.funs.order.model;
 
-public interface ShopConstants {
+public interface OrderConstants {
 
 	/**
 	 * 是否自动出单的配置键值
