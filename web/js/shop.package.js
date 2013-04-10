@@ -87,7 +87,7 @@ define(function(require, exports, module) {
 				
 				$(".food-select").change(function() {
 					var $this = $(this),
-						$img = $this.prev("img"), 
+						$img = $this.prevAll("img"), 
 						foodId = $this.attr("foodId"), 
 						src = $img.attr("src"), 
 						foodName = $img.attr("alt"), 
@@ -106,7 +106,7 @@ define(function(require, exports, module) {
 	})(jQuery);
 
 	// template
-	var tempSelectedFood = '<li id="selected_item_${foodId}"><img src="${src}" alt="${foodName}"></li>';
+	var tempSelectedFood = '<li id="selected_item_${foodId}"><img src="${src}" alt="${foodName}"><span>${foodName}</span></li>';
 
 	/**
 	 * show or hide TR, according to the checkbox state.
@@ -140,7 +140,7 @@ define(function(require, exports, module) {
 		var html = tempSelectedFood
 						.replace("${foodId}", foodId)
 						.replace("${src}", src)
-						.replace("${foodName}", foodName);
+						.replace(/\${foodName}/g, foodName);
 		$("#selected-foods").append(html);
 		adjustSelectedFoodSize();
 	}
@@ -153,15 +153,16 @@ define(function(require, exports, module) {
 	function adjustSelectedFoodSize() {
 		var $foodToAdd = $("#food-to-add"), 
 			$selectedFoods = $("#selected-foods"), 
-			width = $selectedFoods.children("li").length * 95 + 15, 
-			overflow = width > 448;
+			foodToAddWidth = $foodToAdd.width(), 
+			width = $selectedFoods.children("li").length * 90 + 10, 
+			overflow = width > foodToAddWidth;
 
 		if(overflow) {
 			$selectedFoods.width(width);
 			$foodToAdd.addClass("overflow");
 		}
 		else {
-			$selectedFoods.width(448);
+			$selectedFoods.width(foodToAddWidth);
 			$foodToAdd.removeClass("overflow");
 		}
 	}

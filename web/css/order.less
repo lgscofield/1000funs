@@ -304,6 +304,8 @@ body {
 		border-width: 1px 0px 1px 1px;
 		border-style: solid;
 		border-color: rgba(0, 0, 0, .15);
+
+		padding: @item_list_spacing 0px 0px @item_list_spacing;
 	}
 
 	.food-area-head {
@@ -314,46 +316,101 @@ body {
 		padding: 0px 10px;
 	}
 
+	
+	// add-package
+	
 	&.add-package {
+
 		.food-area-head {
 			font-size: 15px;
 			width: 50px;
 		}
-		img {
-			width: 80px;
-			height: 80px;
-			cursor: pointer;
-		}
-		.food-area-list {
-			label {
-				position: relative;
 
-				input[type="checkbox"] {
-					position: absolute;
-					right: 1px;
-					top: 60px;
+		.item-list.food-area-list {
+
+			li {
+				width: 80px;
+
+				img {
+					height: 80px;
+					cursor: pointer;
+				}
+
+				label {
+					position: relative;
+
+					input[type="checkbox"] {
+						position: absolute;
+						right: 1px;
+						top: 60px;
+					}
 				}
 			}
+			
 		}
 	}
-
 }
 
-ul.food-area-list {
+
+
+// item-list
+// ------------------
+ul.item-list {
 	padding: 0px;
 	margin: 0px;
 	list-style: none outside none;
 
 	> li {
+		display: inline;
 		float: left;
-		margin: 10px 0px 10px 15px;
+		margin: 0px @item_list_spacing @item_list_spacing 0px;
+	}
+	
 
-		> img {
-			// width: 100px; //under ie, it cause img can't display. 
-			height: 100px;
+	// item-list with .img-text-below
+	// -----------------
+	&.img-text-below > li {
+		width: @item_list_img_width;
+
+		img {
+			height: @item_list_img_height;
 		}
 
-		.food-add {
+		span {
+			display: block;
+			text-align: center;
+			overflow: hidden;
+			height: 28px;
+			line-height: 28px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+}
+
+
+// food-area-list speciality
+
+.food-add {
+	cursor: pointer;
+}
+
+
+// food
+.food-grid {
+
+	.title {
+		font-weight: bold;
+		margin: -10px 0px 10px;
+		display: block;
+	}
+
+	.item-list.choose-food > li {
+		width: 80px;
+		margin-right: 30px;
+
+		img {
+			height: 80px;
 			cursor: pointer;
 		}
 	}
@@ -439,15 +496,20 @@ ul.food-area-list {
 		border: 1px solid rgba(0, 0, 0, .15);
 		overflow-x: auto;
 		overflow-y: hidden;
-		height: 102px;
+		height: 112px;
 
-		img {
+		padding: @item_list_spacing 0px 0px @item_list_spacing;
+
+		li {
 			width: 80px;
-			height: 80px;
+
+			img {
+				height: 80px;
+			}
 		}
 
 		&.overflow {
-			height: 112px;
+			height: 122px;
 		}
 	}
 
@@ -586,46 +648,6 @@ ul.food-area-list {
 }
 
 
-// item-list
-ul.item-list {
-	padding: 0px;
-	margin: 0px;
-	list-style: none outside none;
-
-	> li {
-		display: inline;
-		float: left;
-		margin: 0px 30px 10px 0px;
-	}
-}
-
-.food-grid {
-
-	.title {
-		font-weight: bold;
-		margin: -10px 0px 10px;
-		display: block;
-	}
-
-	.item-list > li {
-		width: 80px;
-
-		img {
-			height: 80px;
-			cursor: pointer;
-		}
-
-		span {
-			display: block;
-			text-align: center;
-			overflow: hidden;
-			height: 28px;
-			line-height: 28px;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
-	}
-}
 
 .selected {
 	background-color: #8D6DD7; //#08c;

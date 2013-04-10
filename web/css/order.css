@@ -2,7 +2,7 @@
  *  
  */
 /**
- * 
+ * search box width
  */
 /* for those unsupport the toggle style: ie9- */
 label.toggle div.toggle {
@@ -438,6 +438,7 @@ body {
   border-width: 1px 0px 1px 1px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.15);
+  padding: 10px 0px 0px 10px;
 }
 .foods-area .food-area-head {
   font-size: 30px;
@@ -450,32 +451,60 @@ body {
   font-size: 15px;
   width: 50px;
 }
-.foods-area.add-package img {
+.foods-area.add-package .item-list.food-area-list li {
   width: 80px;
+}
+.foods-area.add-package .item-list.food-area-list li img {
   height: 80px;
   cursor: pointer;
 }
-.foods-area.add-package .food-area-list label {
+.foods-area.add-package .item-list.food-area-list li label {
   position: relative;
 }
-.foods-area.add-package .food-area-list label input[type="checkbox"] {
+.foods-area.add-package .item-list.food-area-list li label input[type="checkbox"] {
   position: absolute;
   right: 1px;
   top: 60px;
 }
-ul.food-area-list {
+ul.item-list {
   padding: 0px;
   margin: 0px;
   list-style: none outside none;
 }
-ul.food-area-list > li {
+ul.item-list > li {
+  display: inline;
   float: left;
-  margin: 10px 0px 10px 15px;
+  margin: 0px 10px 10px 0px;
 }
-ul.food-area-list > li > img {
+ul.item-list.img-text-below > li {
+  width: 100px;
+}
+ul.item-list.img-text-below > li img {
   height: 100px;
 }
-ul.food-area-list > li .food-add {
+ul.item-list.img-text-below > li span {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  height: 28px;
+  line-height: 28px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.food-add {
+  cursor: pointer;
+}
+.food-grid .title {
+  font-weight: bold;
+  margin: -10px 0px 10px;
+  display: block;
+}
+.food-grid .item-list.choose-food > li {
+  width: 80px;
+  margin-right: 30px;
+}
+.food-grid .item-list.choose-food > li img {
+  height: 80px;
   cursor: pointer;
 }
 .controls-clear-right .control-group:after {
@@ -531,14 +560,17 @@ ul.food-area-list > li .food-add {
   border: 1px solid rgba(0, 0, 0, 0.15);
   overflow-x: auto;
   overflow-y: hidden;
-  height: 102px;
+  height: 112px;
+  padding: 10px 0px 0px 10px;
 }
-#dialog-add-package .food-to-add img {
+#dialog-add-package .food-to-add li {
   width: 80px;
+}
+#dialog-add-package .food-to-add li img {
   height: 80px;
 }
 #dialog-add-package .food-to-add.overflow {
-  height: 112px;
+  height: 122px;
 }
 #dialog-add-package.dialog-select-food .modal-body {
   max-height: 250px;
@@ -637,37 +669,6 @@ ul.food-area-list > li .food-add {
 .alert-notify .alert-content {
   margin: 0px 20px 0px 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-ul.item-list {
-  padding: 0px;
-  margin: 0px;
-  list-style: none outside none;
-}
-ul.item-list > li {
-  display: inline;
-  float: left;
-  margin: 0px 30px 10px 0px;
-}
-.food-grid .title {
-  font-weight: bold;
-  margin: -10px 0px 10px;
-  display: block;
-}
-.food-grid .item-list > li {
-  width: 80px;
-}
-.food-grid .item-list > li img {
-  height: 80px;
-  cursor: pointer;
-}
-.food-grid .item-list > li span {
-  display: block;
-  text-align: center;
-  overflow: hidden;
-  height: 28px;
-  line-height: 28px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
