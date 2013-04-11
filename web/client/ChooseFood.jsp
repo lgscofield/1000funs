@@ -43,9 +43,9 @@
 			//初始化当前地址
 			function initPosition(){
 				if(regionId){
-					$('#position').html(decodeURI(getParam(window.location.href,'regionName')));
+					$('#position').html('您的当前地址:'+decodeURI(getParam(window.location.href,'regionName')));
 				}else{
-					$('#position').html(decodeURI(getParam(window.location.href,'addressName')));
+					$('#position').html('您的当前地址:'+decodeURI(getParam(window.location.href,'addressName')));
 				}
 			}
 
@@ -283,6 +283,7 @@
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
+					<img title="跳转到首页" src="${webRoot}/web/client/img/logo.png" class="logo" onclick="toPage('${webRoot}/web/client/FirstPage.jsp');">
 					<ul class="nav pull-right">
 						<li id="shopBar">
 							<a href="#">
@@ -306,7 +307,7 @@
 		</div>
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 10px;">
 			<span id="position"></span>
-			<a href="/1000funs/web/client/FirstPage.jsp">[修改地址]</a>
+			<a href="/1000funs/web/client/FirstPage.jsp">[修改]</a>
 		</div>
 		<div class="container-fluid">
 			<div class="row-fluid">

@@ -1,7 +1,12 @@
 @CHARSET "UTF-8";
 
 .logo{
-	background: url("/1000funs/web/client/img/logo.png") center bottom no-repeat;
+	width: 95px;
+	cursor: pointer;
+}
+
+.word{
+	background: url("/1000funs/web/client/img/word.png") center bottom no-repeat;
 	height: 150px;
 }
 

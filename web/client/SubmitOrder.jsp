@@ -207,10 +207,10 @@
 				<div class="row">
 					<div class="span4"></div>
 					<div class="span2">
-						<button class="btn btn-large btn-primary" type="button" onclick="submitOrder();">提交</button>
+						<button class="btn btn-large btn-primary" type="button" onclick="submitOrder();">提交订单</button>
 					</div>
 					<div class="span2">
-						<button class="btn btn-large" type="button" onclick="window.close();">取消</button>
+						<button class="btn btn-large" type="button" onclick="window.close();">继续挑选</button>
 					</div>
 					<div class="span4"></div>
 				</div>

@@ -97,6 +97,7 @@
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
+					<img title="跳转到首页" src="${webRoot}/web/client/img/logo.png" class="logo" onclick="toPage('${webRoot}/web/client/FirstPage.jsp');">
 					<ul class="nav pull-right">
 						<li id="userBar">
 							<a href="#">
@@ -110,7 +111,7 @@
 			</div>
 		</div>
 		<div>
-			<div class="logo"></div>
+			<div class="word"></div>
 			<div class="center">
 				<ul id="region_box" class="thumbnails">
 				</ul>
@@ -118,7 +119,7 @@
 			<div class="bottom" align="center">
 				<table id="list" class="table table-hover list">
 				</table>
-				<div class="input-prepend" align="center">
+				<div class="input-prepend" align="center" style="display: none;">
 					<span class="add-on"><i class="icon-search"></i></span>
 					<input class="span4" id="keyword" type="text" placeholder="输入地址查找" onkeyup="queryAddress();">
 				</div>
