@@ -94,3 +94,8 @@ function showMsg(html, className) {
 function center($obj){
 	$obj.css('left','50%').css('margin-left','-'+$obj.css('width')/2);
 }
+
+//跳转到指定页面
+function toPage(url){
+	window.location.href = url;
+}
