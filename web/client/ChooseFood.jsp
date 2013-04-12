@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="${webRoot}/web/client/css/clientNew.css">
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/js/cookie.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/client/js/client.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/js/1000funs.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
@@ -277,6 +278,13 @@
 			function openOrderPage(){
 				window.open('${webRoot}/web/client/SubmitOrder.jsp','submitOrder');
 			}
+
+			//修改地址
+			function changeAddress(){
+				deleteCookie('regionId');
+				deleteCookie('regionName');
+				window.location.href = "${webRoot}/web/client/FirstPage.jsp";
+			}
 		</script>
 	</head>
 	<body>
@@ -307,7 +315,7 @@
 		</div>
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 10px;">
 			<span id="position"></span>
-			<a href="/1000funs/web/client/FirstPage.jsp">[修改]</a>
+			<a href="#" onclick="changeAddress();">[修改]</a>
 		</div>
 		<div class="container-fluid">
 			<div class="row-fluid">
