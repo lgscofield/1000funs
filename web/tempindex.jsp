@@ -1,3 +1,4 @@
+<%@page import="com.funs.tempindex.action.TempIndexController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/web/inc/header.jsp" %>
 <!DOCTYPE html>
@@ -28,6 +29,7 @@
 	 	text-align: center;
 	 	padding: 130px;
 		margin-bottom: 130px;
+		display:none;
 	 }
 	 .menuhidden {
 	 	padding: 30px;
@@ -126,7 +128,7 @@
             <ul class="nav">
               <li class="active"><a href="">首页</a></li>
               <li><a href="#about">关于我们</a></li>
-              <li><a href="#menu" onclick="showMenu();">查看今天菜单</a></li>
+              <li><a href="#" onclick="showMenu();">查看今天菜单</a></li>
             </ul>
             <form class="navbar-form pull-right">
               <input class="span2" type="text" placeholder="用户名">
@@ -150,39 +152,39 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><%=application.getAttribute("price1")%></td>	
+                  <td><%=(String)TempIndexController.info.get("price1")%></td>	
                   <td>A</td>
-                  <td><%=application.getAttribute("mainfood1")%></td>
+                  <td><%=(String)TempIndexController.info.get("mainfood1")%></td>
                   <td>1</td>
-                  <td><%=application.getAttribute("secondfood1")%></td>
+                  <td><%=(String)TempIndexController.info.get("secondfood1")%></td>
                 </tr>
                 <tr>
-                  <td><%=application.getAttribute("price2")%></td>
+                  <td><%=(String)TempIndexController.info.get("price2")%></td>
                   <td>B</td>
-                  <td><%=application.getAttribute("mainfood2")%></td>
+                  <td><%=(String)TempIndexController.info.get("mainfood2")%></td>
                   <td>2</td>
-                  <td><%=application.getAttribute("secondfood2")%></td>
+                  <td><%=(String)TempIndexController.info.get("secondfood2")%></td>
                 </tr>
                 <tr>
-                  <td><%=application.getAttribute("price3")%></td>
+                  <td><%=(String)TempIndexController.info.get("price3")%></td>
                   <td>C</td>
-                  <td><%=application.getAttribute("mainfood3")%></td>
+                  <td><%=(String)TempIndexController.info.get("mainfood3")%></td>
                   <td>3</td>
-                  <td><%=application.getAttribute("secondfood3")%></td>
+                  <td><%=(String)TempIndexController.info.get("secondfood3")%></td>
                 </tr>
                 <tr>
-                  <td><%=application.getAttribute("price4")%></td>
+                  <td><%=(String)TempIndexController.info.get("price4")%></td>
                   <td>D</td>
-                  <td><%=application.getAttribute("mainfood4")%></td>
+                  <td><%=(String)TempIndexController.info.get("mainfood4")%></td>
                   <td>4</td>
-                  <td><%=application.getAttribute("secondfood4")%></td>
+                  <td><%=(String)TempIndexController.info.get("secondfood4")%></td>
                 </tr>
                 <tr>
-                  <td><%=application.getAttribute("price5")%></td>
+                  <td><%=(String)TempIndexController.info.get("price5")%></td>
                   <td>E</td>
-                  <td><%=application.getAttribute("mainfood5")%></td>
+                  <td><%=(String)TempIndexController.info.get("mainfood5")%></td>
                   <td>5</td>
-                  <td><%=application.getAttribute("secondfood5")%></td>
+                  <td><%=(String)TempIndexController.info.get("secondfood5")%></td>
                 </tr>
               </tbody>
       	</table>

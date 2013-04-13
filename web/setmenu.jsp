@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/web/inc/header.jsp" %>
 <!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>千方百味欢迎您</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,7 +142,7 @@
     </div>
     <div id="menudiv" class="menudiv">
       	<%-- <img src="${webRoot}/web/img/ordermenu.jpg" class="img-polaroid"> --%>
-      	<form action="tempindex/setmenu">
+      	<form action="${webRoot}/tempindex/setmenu">
   		<fieldset>
       	<table id="menutable" class="table table-bordered">
       		 <thead>
