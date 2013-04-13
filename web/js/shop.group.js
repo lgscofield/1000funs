@@ -22,12 +22,12 @@ define(function(require, exports, module) {
 			
 			// bind button event
 			btnEvent: function() {
-				toggle("btn_insert", insertBtnClick);
-				toggle("btn_edit", function (checked) {
+				$("#btn_insert").toggleButton(insertBtnClick);
+				$("#btn_edit").toggleButton(function (checked) {
 					$("#btn_delete.active").removeClass("active");
 					showRowEditBtn(checked, "icon2-edit");
 				});
-				toggle("btn_delete", function (checked) {
+				$("#btn_delete").toggleButton(function (checked) {
 					$("#btn_edit.active").removeClass("active");
 					showRowEditBtn(checked, "icon2-remove");
 				});
@@ -142,22 +142,6 @@ define(function(require, exports, module) {
 	})(jQuery);
 
 	
-	/**
-	 * single toggle button click event
-	 * @param  {string}   id       
-	 * @param  {Function} callback 
-	 */
-	function toggle(id, callback) {
-		$("#"+id).click(function () {
-			var $this = $(this);
-			setTimeout(function() {
-				var checked = $this.hasClass("active");
-				callback(checked, $this);
-			}, 0);
-		});
-	}
-	
-
 	function insertBtnClick (checked) {
 		var $addPanel = $("#add_panel"), 
 			$groupList = $("#groupList"), 

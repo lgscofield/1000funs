@@ -316,6 +316,33 @@ body {
 		padding: 0px 10px;
 	}
 
+	.food-area-list {
+		li {
+			position: relative;
+		}
+	}
+
+	.btns {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		display: none;
+
+		i {
+			cursor: pointer;
+		}
+	}
+
+	// edit mode
+	&.edit {
+		img {
+			// cursor: pointer;
+		}
+		.btns {
+			display: block;
+		}
+	}
+	
 	// add-package
 	
 	&.add-package {
