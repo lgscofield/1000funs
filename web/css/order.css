@@ -447,6 +447,9 @@ body {
   width: 100px;
   padding: 0px 10px;
 }
+.foods-area.edit img {
+  cursor: pointer;
+}
 .foods-area.add-package .food-area-head {
   font-size: 15px;
   width: 50px;
