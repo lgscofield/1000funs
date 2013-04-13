@@ -27,15 +27,15 @@ public class FoodDAO extends BaseDAO {
 	}
 	
 	public int queryIdForFoodVO(FoodVO foodVO) {
-		return this.sqlSessionTemplate.selectOne("com.funs.food.queryIdForFoodVO", foodVO);
+		return (Integer)this.sqlSessionTemplate.selectOne("com.funs.food.queryIdForFoodVO", foodVO);
 	}
 	
 	public FoodVO getFood(int id) {
-		return this.sqlSessionTemplate.selectOne("com.funs.food.getFood", id);
+		return (FoodVO)this.sqlSessionTemplate.selectOne("com.funs.food.getFood", id);
 	}
 	
 	public int insertFoodReShop(FoodVO foodVO){
-		return this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
+		return (Integer)this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
 	}
 	
 	public int insertPackageItem(PackageItemVO packageItemVO) {
@@ -85,7 +85,7 @@ public class FoodDAO extends BaseDAO {
 	}
 	
 	public int queryCountOfFood(){
-		return this.sqlSessionTemplate.selectOne("com.funs.food.queryCountOfFood");
+		return (Integer)this.sqlSessionTemplate.selectOne("com.funs.food.queryCountOfFood");
 	}
 	
 	/**
@@ -170,7 +170,7 @@ public class FoodDAO extends BaseDAO {
 	 * @return
 	 */
 	public int querySingleFoodsCount() {
-		int ret = this.sqlSessionTemplate.selectOne("com.funs.food.querySingleFoodsCount");
+		int ret = (Integer)this.sqlSessionTemplate.selectOne("com.funs.food.querySingleFoodsCount");
 		return ret;
 	}
 }
