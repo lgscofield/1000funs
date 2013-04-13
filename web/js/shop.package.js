@@ -58,6 +58,34 @@ define(function(require, exports, module) {
 					switchStepView("step1");
 				});
 			}, 
+			btnEvt: function() {
+				$("#btn_edit").toggleButton(function(checked) {
+					var $tbFoods = $("#tb_foods");
+					if(checked) {
+						$tbFoods.addClass("edit");
+					} else {
+						$tbFoods.removeClass("edit");
+					}
+				});
+			}, 
+			foodOperationBtnEvt: function() {
+				$(".foods-area .icon-remove").click(function () {
+					console.log("delete a food");
+					var $this = $(this), 
+						$item = $this.closest("li"), 
+						packageId = $item.attr("id").substring(5);
+
+					deletePackage(packageId);
+				});
+
+				$(".foods-area .icon-edit").click(function () {
+					console.log("edit a food");
+				});
+
+				$(".foods-area .icon-leaf").click(function () {
+					console.log("mark out of stock");
+				});
+			}, 
 			validate: function() {
 				$.validation().init();
 				$("#packageForm").submit(function () {
@@ -175,6 +203,24 @@ define(function(require, exports, module) {
 		});
 		$("#itemIds").val(ids);
 	}
+
+	function deletePackage(packageId) {
+		var url = webRoot + "/shop/package/" + packageId;
+		$.ajax({
+			url: url, 
+			type: "delete"
+		})
+		.done(function() {
+			var $item = $("#item_" + packageId);
+			$item.fadeOut(function() {
+				$item.remove();
+			});
+		})
+		.fail(function(jqXHR) {
+			alert("删除失败. " + jqXHR.responseText);
+		});
+	}
+
 
 
 	jQuery(function ($) {

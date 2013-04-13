@@ -79,6 +79,28 @@ public class FoodDAO extends BaseDAO {
 		return this.sqlSessionTemplate.update("com.funs.food.deleteFood", id);
 	}
 	
+	/**
+	 * 删除食物关联
+	 * @param foodId 食物ID
+	 * @return 成功删除的条数
+	 */
+	public int deleteFoodReShop(int foodId) {
+		int shopId = 1; //TODO:从环境中取shopId
+		FoodVO foodVO = new FoodVO();
+		foodVO.setId(foodId);
+		foodVO.setShopId(shopId);
+		return this.sqlSessionTemplate.delete("com.funs.food.deleteFoodReShop", foodVO);
+	}
+	
+	/**
+	 * 删除套餐关联
+	 * @param packageId 套餐id
+	 * @return 成功删除的条数
+	 */
+	public int deletePackageItem(int packageId) {
+		return this.sqlSessionTemplate.delete("com.funs.food.deletePackageItem", packageId);
+	}
+	
 	public List<FoodVO> queryFoodsByShopId(int shopId){
 		List<FoodVO> result =  this.sqlSessionTemplate.selectList("com.funs.food.queryFoodsByShopId", shopId);
 		return result;
