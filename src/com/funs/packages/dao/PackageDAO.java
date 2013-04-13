@@ -25,7 +25,7 @@ public class PackageDAO extends BaseDAO{
 	}
 	
 	public int queryIdForPackageVO(PackageVO packageVO) {
-		return this.sqlSessionTemplate.selectOne("com.funs.packages.queryIdForPackageVO", packageVO);
+		return (Integer)this.sqlSessionTemplate.selectOne("com.funs.packages.queryIdForPackageVO", packageVO);
 	}
 	
 	public void insertPackageReShop(PackageVO packageVO){
@@ -42,7 +42,7 @@ public class PackageDAO extends BaseDAO{
 	}
 	
 	public int queryCountOfPackage(){
-		return this.sqlSessionTemplate.selectOne("com.funs.packages.queryCountOfPackage");
+		return (Integer)this.sqlSessionTemplate.selectOne("com.funs.packages.queryCountOfPackage");
 	}
 
 }

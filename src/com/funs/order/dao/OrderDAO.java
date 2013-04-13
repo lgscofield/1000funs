@@ -80,7 +80,7 @@ public class OrderDAO extends BaseDAO {
 	 * @return
 	 */
 	public int queryOrdersCount(OrderQueryCondition params) {
-		int count = this.sqlSessionTemplate.selectOne("com.funs.order.queryOrdersCount", params);
+		int count = (Integer)this.sqlSessionTemplate.selectOne("com.funs.order.queryOrdersCount", params);
 		return count;
 	}
 	
