@@ -160,6 +160,24 @@ public class FoodAction extends BaseAction {
 	}
 	
 	/**
+	 * 删除食物关联
+	 * @param foodId Food ID
+	 * @return 成功删除的条数
+	 */
+	public int deleteFoodReShop(int foodId) {
+		return foodService.deleteFoodReShop(foodId);
+	}
+	
+	/**
+	 * 删除一个套餐
+	 * @param packageVO 
+	 * @return
+	 */
+	public boolean deletePackage(int packageId) {
+		return foodService.deletePackage(packageId);
+	}
+	
+	/**
 	 * 查询单品食物
 	 * @return
 	 */

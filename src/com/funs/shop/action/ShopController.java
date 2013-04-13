@@ -72,7 +72,11 @@ function			method				url
 出单					PUT					/shop/issue/{id}
 
 新增食物关联			POST				/shop/foodreshop
+删除食物关联			DELETE				/shop/foodreshop/{id}
+更新物关联			POST				/shop/foodreshop/{id}
+
 新增套餐				POST				/shop/package
+删除套餐				DELETE				/shop/package/{id}
 
 
  * 
@@ -343,6 +347,17 @@ public class ShopController {
 		return "redirect:/shop/catering";
 	}
 	
+	/**
+	 * 配餐模式-删除; 删除一个食品关联
+	 * @param foodId foodId
+	 * @return true-删除成功; false-删除失败
+	 */
+	@RequestMapping(value="/foodreshop/{id}", method=RequestMethod.DELETE)
+	public @ResponseBody boolean deleteFoodReShop(@PathVariable(value="id") int foodId) {
+		int ret = foodAction.deleteFoodReShop(foodId);
+		return ret > 0;
+	}
+	
 	@RequestMapping(value="/package", method=RequestMethod.POST)
 	public String savePackage(@RequestParam(required=false) MultipartFile file, @Validated FoodReShopForm foodReShopForm, BindingResult result) {
 		int shopId = 1;
@@ -367,6 +382,17 @@ public class ShopController {
 		// save
 		foodAction.insertPackage(packageVO);
 		return "redirect:/shop/package";
+	}
+	
+	/**
+	 * 套餐模式，删除一个套餐
+	 * @param packageId
+	 * @return
+	 */
+	@RequestMapping(value="/package/{id}", method=RequestMethod.DELETE)
+	public @ResponseBody boolean deletePackage(@PathVariable(value="id") int packageId) {
+		boolean ret = foodAction.deletePackage(packageId);
+		return ret;
 	}
 	
 	@RequestMapping(value="/issue/{id}", method=RequestMethod.PUT)
