@@ -27,7 +27,7 @@
 						<div class="span6">
 						</div>
 						<div class="span3 btn-right">
-							<a class="btn" href="#dialog-add-food" data-toggle="modal"><i class="icon-plus"></i>添加食物</a>
+							<a class="btn" id="btn_add" href="#dialog-add-food"><i class="icon-plus"></i>添加食物</a>
 							<button class="btn" id="btn_edit" data-toggle="button"><i class="icon-pencil"></i>编辑</button>
 						</div>
 					</div>
