@@ -195,3 +195,19 @@
 
 })(jQuery);
 
+/**
+ * Toggle Button
+ */
+;(function() {
+	
+	$.fn.toggleButton = function(callback) {
+		var $el = $(this);
+		$el.click(function() {
+			setTimeout(function() {
+				var checked = $el.hasClass("active");
+				callback(checked, $el);
+			}, 0);
+		});
+	}
+	
+})(jQuery);

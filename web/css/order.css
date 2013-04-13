@@ -447,8 +447,20 @@ body {
   width: 100px;
   padding: 0px 10px;
 }
-.foods-area.edit img {
+.foods-area .food-area-list li {
+  position: relative;
+}
+.foods-area .btns {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: none;
+}
+.foods-area .btns i {
   cursor: pointer;
+}
+.foods-area.edit .btns {
+  display: block;
 }
 .foods-area.add-package .food-area-head {
   font-size: 15px;
