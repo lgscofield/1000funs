@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="${webRoot}/web/client/css/clientNew.css">
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/js/cookie.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/client/js/client.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/interface/AddressAction.js"></script>
@@ -25,9 +26,20 @@
 		var findPasswordURL = '${webRoot}/web/client/FindPassword.jsp';
 		var registerURL = '${webRoot}/web/client/register.jsp';
 		$(function(){
+			readCookie();
 			initRegion();
 			initTopBar();
 		});
+
+		//读cookie中的信息，做相应操作
+		function readCookie(){
+			if(getCookie('regionId')){
+				window.location.href = chooseURL+'?regionId='+getCookie('regionId')+'&regionName='+getCookie('regionName');
+			}
+			if(getCookie('account')){
+				login(getCookie('account'),getCookie('password'),false);
+			}
+		}
 
 		//初始化区域
 		function initRegion(){
@@ -43,7 +55,13 @@
 			var objLi = $('<li>').append(
 						$('<a>').attr('href',encodeURI(chooseURL+'?regionId='+obj.id+'&regionName='+obj.regionName)).attr('class','thumbnail text_center').append(
 							$('<img>').attr('src','${webRoot}'+obj.image).css('width','100px').css('height','100px').attr('class','img-circle')
-						).append($('<div>').html(obj.regionName))
+						).append($('<div>').html(obj.regionName)).click(function(){
+							var Days = 10;
+							var exp = new Date(); 
+							exp.setTime(exp.getTime() + Days*24*60*60*1000);		
+							setCookie('regionId', obj.id, exp.toGMTString());
+							setCookie('regionName', obj.regionName, exp.toGMTString());
+						})
 					);
 			$('#region_box').append(objLi);
 		}
@@ -97,6 +115,7 @@
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
+					<img title="跳转到首页" src="${webRoot}/web/client/img/logo.png" class="logo" onclick="toPage('${webRoot}/web/client/FirstPage.jsp');">
 					<ul class="nav pull-right">
 						<li id="userBar">
 							<a href="#">
@@ -110,7 +129,7 @@
 			</div>
 		</div>
 		<div>
-			<div class="logo"></div>
+			<div class="word"></div>
 			<div class="center">
 				<ul id="region_box" class="thumbnails">
 				</ul>
@@ -118,7 +137,7 @@
 			<div class="bottom" align="center">
 				<table id="list" class="table table-hover list">
 				</table>
-				<div class="input-prepend" align="center">
+				<div class="input-prepend" align="center" style="display: none;">
 					<span class="add-on"><i class="icon-search"></i></span>
 					<input class="span4" id="keyword" type="text" placeholder="输入地址查找" onkeyup="queryAddress();">
 				</div>
@@ -189,7 +208,7 @@
 				<label>密码</label>
 			    <input id="loginPassword" type="password" class="input-block-level">
 			    <label class="checkbox">
-      				<input type="checkbox"> 10天内免登录
+      				<input id="isCookie" type="checkbox"> 10天内免登录
       				<div style="float: right;">
       					<a href="#" onclick="openFindPassword();">忘记密码</a>|<a href="#" onclick="openRegister();">注册账号</a>
       				</div>
@@ -198,7 +217,7 @@
 			</form>
 		  </div>
 		  <div class="modal-footer">
-		    <button class="btn btn-primary" onclick="login();">登录</button>
+		    <button class="btn btn-primary" onclick="login($('#loginAccount').val(),$('#loginPassword').val(),$('#isCookie').attr('checked'));">登录</button>
 		  </div>
 		</div>
 	</body>

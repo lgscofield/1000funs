@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="${webRoot}/web/client/css/clientNew.css">
 		<script type="text/javascript" src="${webRoot}/web/js/jquery-1.8.0.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${webRoot}/web/js/cookie.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/client/js/client.js"></script>
 		<script type="text/javascript" src="${webRoot}/web/js/1000funs.js"></script>
 		<script type="text/javascript" src="${webRoot}/dwr/engine.js"></script>
@@ -43,9 +44,9 @@
 			//初始化当前地址
 			function initPosition(){
 				if(regionId){
-					$('#position').html(decodeURI(getParam(window.location.href,'regionName')));
+					$('#position').html('您的当前地址:'+decodeURI(getParam(window.location.href,'regionName')));
 				}else{
-					$('#position').html(decodeURI(getParam(window.location.href,'addressName')));
+					$('#position').html('您的当前地址:'+decodeURI(getParam(window.location.href,'addressName')));
 				}
 			}
 
@@ -277,12 +278,20 @@
 			function openOrderPage(){
 				window.open('${webRoot}/web/client/SubmitOrder.jsp','submitOrder');
 			}
+
+			//修改地址
+			function changeAddress(){
+				deleteCookie('regionId');
+				deleteCookie('regionName');
+				window.location.href = "${webRoot}/web/client/FirstPage.jsp";
+			}
 		</script>
 	</head>
 	<body>
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
+					<img title="跳转到首页" src="${webRoot}/web/client/img/logo.png" class="logo" onclick="toPage('${webRoot}/web/client/FirstPage.jsp');">
 					<ul class="nav pull-right">
 						<li id="shopBar">
 							<a href="#">
@@ -306,7 +315,7 @@
 		</div>
 		<div style="padding-left: 50px; padding-top: 10px; padding-bottom: 10px;">
 			<span id="position"></span>
-			<a href="/1000funs/web/client/FirstPage.jsp">[修改地址]</a>
+			<a href="#" onclick="changeAddress();">[修改]</a>
 		</div>
 		<div class="container-fluid">
 			<div class="row-fluid">

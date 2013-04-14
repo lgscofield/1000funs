@@ -27,7 +27,8 @@
 						<div class="span6">
 						</div>
 						<div class="span3 btn-right">
-							<a class="btn" href="#dialog-add-food" data-toggle="modal"><i class="icon-plus"></i>添加食物</a>
+							<a class="btn" id="btn_add" href="#dialog-add-food"><i class="icon-plus"></i>添加食物</a>
+							<button class="btn" id="btn_edit" data-toggle="button"><i class="icon-pencil"></i>编辑</button>
 						</div>
 					</div>
 				</div>
@@ -42,14 +43,23 @@
 					</ul>
 				</div>
 				
-				<table class="foods-area">
+				<table id="tb_foods" class="foods-area">
 					<c:forEach items="${groupFoodsList}" var="groupFoods" varStatus="status">
 					<tr id="tr_${status.count }" class="<c:if test="${fn:length(groupFoods.foodList) == 0}">hide</c:if>">
 						<td class="food-area-head">${groupFoods.groupName}</td>
 						<td>
-							<ul class="food-area-list">
+							<ul class="item-list img-text-below food-area-list">
 								<c:forEach items="${groupFoods.foodList }" var="food">
-								<li><img src="${webRoot}/${food.image}" alt="${food.foodName }"></li>
+								<li id="item_${food.id }">
+									<div>
+										<img src="${webRoot}/${food.image}" alt="${food.foodName }"><span>${food.foodName }</span>
+										<div class="btns">
+											<i class="icon-leaf" title="缺货标记"></i>
+											<i class="icon-edit" title="编辑食物"></i>
+											<i class="icon-remove" title="删除食物"></i>
+										</div>
+									</div>
+								</li>
 								</c:forEach>
 								<li><img src="${webRoot}/web/img/plus.png" class="food-add" alt=""></li>
 							</ul>
@@ -75,7 +85,7 @@
 					<!-- step 1 -->
 					<div id="step1" class="food-grid">
 						<span class="title">请先选择食物:</span>
-						<ul id="food-list" class="item-list">
+						<ul id="food-list" class="item-list img-text-below choose-food">
 							<c:forEach items="${foodList }" var="food" varStatus="status">
 							<li>
 								<div><img id="food_${food.id }" src="${webRoot}/${food.image}" alt="${food.foodName }" class="img-polaroid"><span>${food.foodName }</span></div>

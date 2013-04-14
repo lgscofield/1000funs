@@ -7,3 +7,4 @@ target/
 *.DS_Store
 session/
 work/
+.settings/org.eclipse.jdt.core.prefs

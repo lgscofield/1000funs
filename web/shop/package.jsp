@@ -26,6 +26,7 @@
 						</div>
 						<div class="span3 btn-right">
 							<a class="btn" href="#dialog-add-package" data-toggle="modal"><i class="icon-plus"></i>添加套餐</a>
+							<button class="btn" id="btn_edit" data-toggle="button"><i class="icon-pencil"></i>编辑</button>
 						</div>
 					</div>
 				</div>
@@ -39,14 +40,23 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<table class="foods-area">
+				<table id="tb_foods" class="foods-area">
 					 <c:forEach items="${packageFoodsList}" var="groupFoods" varStatus="status">
 					 <tr id="tr_${status.count }" class="<c:if test="${fn:length(groupFoods.foodList) == 0}">hide</c:if>">
 						<td class="food-area-head">${groupFoods.groupName}</td>
 						<td>
-							<ul class="food-area-list">
+							<ul class="item-list img-text-below food-area-list">
 								<c:forEach items="${groupFoods.foodList}" var="food">
-								<li><img src="${webRoot}/${food.image}" alt="${food.foodName}"></li>
+								<li id="item_${food.id }">
+									<div>
+										<img src="${webRoot}/${food.image}" alt="${food.foodName}"><span>${food.foodName}</span>
+										<div class="btns">
+											<i class="icon-leaf" title="缺货标记"></i>
+											<i class="icon-edit" title="编辑食物"></i>
+											<i class="icon-remove" title="删除食物"></i>
+										</div>
+									</div>
+								</li>
 								</c:forEach>
 								<li><img src="${webRoot}/web/img/plus.png" class="food-add" alt=""></li>
 							</ul>
@@ -142,11 +152,12 @@
 						<tr>
 							<td class="food-area-head">${groupFoods.groupName }</td>
 							<td>
-								<ul class="food-area-list">
+								<ul class="item-list img-text-below food-area-list">
 									<c:forEach items="${groupFoods.foodList }" var="food">
 									<li>
 										<label>
 											<img src="${webRoot}/${food.image}" alt="${food.foodName }">
+											<span>${food.foodName }</span>
 											<input type="checkbox" value="" class="food-select" foodId="${food.id }"/>
 										</label>
 									</li>
@@ -166,7 +177,7 @@
 				<div class="control-group control-group-small control-group-left add-package hide" id="modal-footer-food-select">
 					<label for="" class="control-label">已添加</label>
 					<div id="food-to-add" class="controls food-to-add">
-						<ul id="selected-foods" class="food-area-list">
+						<ul id="selected-foods" class="item-list img-text-below food-area-list">
 							<%-- <li id="selected_item_31"><img src="${webRoot}/web/img/mifan.jpg" alt="mifan"></li> --%>
 						</ul>
 					</div>

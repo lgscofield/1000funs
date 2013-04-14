@@ -33,8 +33,8 @@ function register(type){
 }
 
 //登录
-function login(){
-	LoginAction.login($('#loginAccount').val(),$('#loginPassword').val(),function(data){
+function login(account,password,isCookie){
+	LoginAction.login(account,password,function(data){
 		if(data.success){
 			$('#login').modal('hide');
 			$('#loginBar').hide();
@@ -45,6 +45,13 @@ function login(){
 				$('#userBar').children().html('<i class="icon-user"></i> '+data.userName);
 			});
 			showSuccess("登录成功");
+			if(isCookie){
+				var Days = 10;
+				var exp = new Date(); 
+				exp.setTime(exp.getTime() + Days*24*60*60*1000);		
+				setCookie('account', account, exp.toGMTString());
+				setCookie('password', password, exp.toGMTString());
+			}
 		}
 	});
 }
@@ -56,6 +63,8 @@ function exit(){
 		$('#registerBar').show();
 		$('#userBar').hide();
 		$('#exitBar').hide();
+		deleteCookie('account');
+		deleteCookie('password');
 	});
 }
 
@@ -93,4 +102,9 @@ function showMsg(html, className) {
 //居中
 function center($obj){
 	$obj.css('left','50%').css('margin-left','-'+$obj.css('width')/2);
+}
+
+//跳转到指定页面
+function toPage(url){
+	window.location.href = url;
 }

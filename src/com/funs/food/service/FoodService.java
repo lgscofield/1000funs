@@ -165,6 +165,42 @@ public class FoodService extends BaseService{
 	}
 	
 	/**
+	 * 删除一个套餐
+	 * @param packageVO 
+	 * @return
+	 */
+	public boolean deletePackage(int packageId) {
+		// 1.删除food_re_shop中的相关关联信息
+		deleteFoodReShop(packageId);
+		
+		// 2.删除package_item的相关关联信息
+		deletePackageItem(packageId);
+		
+		// 3.删除food表中将package删除(deleted=true)
+		deleteFood(packageId);
+		
+		return true;
+	}
+	
+	/**
+	 * 删除食物关联
+	 * @param foodId 食物ID
+	 * @return 成功删除的条数
+	 */
+	public int deleteFoodReShop(int foodId) {
+		return foodDAO.deleteFoodReShop(foodId);
+	}
+	
+	/**
+	 * 删除套餐关联
+	 * @param packageId 套餐id
+	 * @return 成功删除的条数
+	 */
+	public int deletePackageItem(int packageId) {
+		return foodDAO.deletePackageItem(packageId);
+	}
+	
+	/**
 	 * 查询单品食物
 	 * @return
 	 */

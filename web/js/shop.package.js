@@ -58,6 +58,34 @@ define(function(require, exports, module) {
 					switchStepView("step1");
 				});
 			}, 
+			btnEvt: function() {
+				$("#btn_edit").toggleButton(function(checked) {
+					var $tbFoods = $("#tb_foods");
+					if(checked) {
+						$tbFoods.addClass("edit");
+					} else {
+						$tbFoods.removeClass("edit");
+					}
+				});
+			}, 
+			foodOperationBtnEvt: function() {
+				$(".foods-area .icon-remove").click(function () {
+					console.log("delete a food");
+					var $this = $(this), 
+						$item = $this.closest("li"), 
+						packageId = $item.attr("id").substring(5);
+
+					deletePackage(packageId);
+				});
+
+				$(".foods-area .icon-edit").click(function () {
+					console.log("edit a food");
+				});
+
+				$(".foods-area .icon-leaf").click(function () {
+					console.log("mark out of stock");
+				});
+			}, 
 			validate: function() {
 				$.validation().init();
 				$("#packageForm").submit(function () {
@@ -87,7 +115,7 @@ define(function(require, exports, module) {
 				
 				$(".food-select").change(function() {
 					var $this = $(this),
-						$img = $this.prev("img"), 
+						$img = $this.prevAll("img"), 
 						foodId = $this.attr("foodId"), 
 						src = $img.attr("src"), 
 						foodName = $img.attr("alt"), 
@@ -106,7 +134,7 @@ define(function(require, exports, module) {
 	})(jQuery);
 
 	// template
-	var tempSelectedFood = '<li id="selected_item_${foodId}"><img src="${src}" alt="${foodName}"></li>';
+	var tempSelectedFood = '<li id="selected_item_${foodId}"><img src="${src}" alt="${foodName}"><span>${foodName}</span></li>';
 
 	/**
 	 * show or hide TR, according to the checkbox state.
@@ -140,7 +168,7 @@ define(function(require, exports, module) {
 		var html = tempSelectedFood
 						.replace("${foodId}", foodId)
 						.replace("${src}", src)
-						.replace("${foodName}", foodName);
+						.replace(/\${foodName}/g, foodName);
 		$("#selected-foods").append(html);
 		adjustSelectedFoodSize();
 	}
@@ -153,15 +181,16 @@ define(function(require, exports, module) {
 	function adjustSelectedFoodSize() {
 		var $foodToAdd = $("#food-to-add"), 
 			$selectedFoods = $("#selected-foods"), 
-			width = $selectedFoods.children("li").length * 95 + 15, 
-			overflow = width > 448;
+			foodToAddWidth = $foodToAdd.width(), 
+			width = $selectedFoods.children("li").length * 90 + 10, 
+			overflow = width > foodToAddWidth;
 
 		if(overflow) {
 			$selectedFoods.width(width);
 			$foodToAdd.addClass("overflow");
 		}
 		else {
-			$selectedFoods.width(448);
+			$selectedFoods.width(foodToAddWidth);
 			$foodToAdd.removeClass("overflow");
 		}
 	}
@@ -174,6 +203,24 @@ define(function(require, exports, module) {
 		});
 		$("#itemIds").val(ids);
 	}
+
+	function deletePackage(packageId) {
+		var url = webRoot + "/shop/package/" + packageId;
+		$.ajax({
+			url: url, 
+			type: "delete"
+		})
+		.done(function() {
+			var $item = $("#item_" + packageId);
+			$item.fadeOut(function() {
+				$item.remove();
+			});
+		})
+		.fail(function(jqXHR) {
+			alert("删除失败. " + jqXHR.responseText);
+		});
+	}
+
 
 
 	jQuery(function ($) {

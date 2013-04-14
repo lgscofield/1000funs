@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration >
-
 <!-- @author Xingling -->
-
 <configuration scan="true">
 	<contextName>1000funs</contextName>
-	<!--<consolePlugin port="4321"/>-->
+	<!--<consolePlugin port="4321"/> -->
 	<jmxConfigurator />
-	<substitutionProperty name="logs.dir" value="d:/temp/log" />
-	<timestamp key="byDate" datePattern="yyyyMMdd"/>
-	
+	<substitutionProperty name="logs.dir" value="/data/logs/1000funs" />
+	<timestamp key="byDate" datePattern="yyyyMMdd" />
 	<appender name="StdoutLogger" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<!--
-				<pattern>%d{yyyy-MM-dd HH:mm:ss}[%-5level] [%thread]:%caller{1}%message%n %caller{10}%n ${user.dir}</pattern>
-			-->
+			<!-- <pattern>%d{yyyy-MM-dd HH:mm:ss}[%-5level] [%thread]:%caller{1}%message%n %caller{10}%n ${user.dir}</pattern> -->
 			<pattern>[%-5level] %date{yyyy-MM-dd HH:mm:ss} %logger \(%file:%line\) - %message%n</pattern>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>INFO</level>
 		</filter>
 	</appender>
-
 	<appender name="AllLogger" class="ch.qos.logback.core.FileAppender">
 		<Append>true</Append>
 		<file>${logs.dir}/AllLog.log</file>
-		<!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>AllLog.%d{yyyy-MM-dd}.log</fileNamePattern>
-			<maxHistory>30</maxHistory> 
-		</rollingPolicy>
-		-->
+		<!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> <fileNamePattern>AllLog.%d{yyyy-MM-dd}.log</fileNamePattern> 
+			<maxHistory>30</maxHistory> </rollingPolicy> -->
 		<encoder>
 			<pattern>[%-5level] %date{yyyy-MM-dd HH:mm:ss} %logger \(%file:%line\) - %message%n</pattern>
 		</encoder>
@@ -37,10 +28,9 @@
 			<level>DEBUG</level>
 		</filter>
 	</appender>
-
 	<appender name="WarnLogger" class="ch.qos.logback.core.FileAppender">
 		<Append>true</Append>
-		<!--<file>${logs.dir}/WARNLog-${byDate}.log</file>-->
+		<!--<file>${logs.dir}/WARNLog-${byDate}.log</file> -->
 		<file>${logs.dir}/WARNLog.log</file>
 		<encoder>
 			<pattern>[%-5p] %d{yyyy-MM-dd HH:mm:ss} %logger.%method \(%file:%line\) - %message%n</pattern>
@@ -49,7 +39,6 @@
 			<level>WARN</level>
 		</filter>
 	</appender>
-
 	<appender name="SqlLogLogger" class="ch.qos.logback.core.FileAppender">
 		<Append>true</Append>
 		<file>${logs.dir}/SqlLog.log</file>
@@ -57,19 +46,9 @@
 			<pattern>[%-5p] %d{yyyy-MM-dd HH:mm:ss} %logger \(%file:%line\) - %message%n</pattern>
 		</encoder>
 	</appender>
-	
-	<!--
-	<appender name="SOCKET" class="ch.qos.logback.classic.net.SocketAppender"> 
-		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>INFO</level>
-		</filter>
-    	<RemoteHost>127.0.0.1</RemoteHost> 
-    	<Port>4445</Port> 
-    	<ReconnectionDelay>10000</ReconnectionDelay> 
-    	<IncludeCallerData>true</IncludeCallerData> 
-	</appender>
-	-->
-	
+	<!-- <appender name="SOCKET" class="ch.qos.logback.classic.net.SocketAppender"> <filter class="ch.qos.logback.classic.filter.ThresholdFilter"> 
+		<level>INFO</level> </filter> <RemoteHost>127.0.0.1</RemoteHost> <Port>4445</Port> <ReconnectionDelay>10000</ReconnectionDelay> 
+		<IncludeCallerData>true</IncludeCallerData> </appender> -->
 	<!-- MyBatis 日志配置 -->
 	<logger name="org.apache.ibatis" level="DEBUG" additivity="true">
 		<appender-ref ref="SqlLogLogger" />
@@ -105,11 +84,9 @@
 	<logger name="org.hibernate.persister.entity.AbstractEntityPersister" level="ERROR" additivity="false">
 		<appender-ref ref="SqlLogLogger" />
 	</logger>
-	
 	<logger name="jsp.request" level="DEBUG" additivity="false">
 		<appender-ref ref="StdoutLogger" />
 	</logger>
-
 	<root level="DEBUG">
 		<appender-ref ref="AllLogger" />
 		<appender-ref ref="StdoutLogger" />

@@ -19,9 +19,11 @@
 					<div class="row-fluid">
 						<div class="span3">
 						</div>
-						<div class="span6">
+						<div class="span5">
 						</div>
-						<div class="span3">
+						<div class="span4">
+							<!-- <a class="btn" href="#" id="btn_edit"><i class="icon-pencil"></i>编辑</a> -->
+							<button type="button" class="btn" id="btn_edit" data-toggle="button"><i class="icon-pencil"></i>编辑</button>
 							<a class="btn" href="#dialog-add-category" data-toggle="modal"><i class="icon-plus"></i>添加分类</a>
 							<a class="btn" href="#dialog-add-food" data-toggle="modal"><i class="icon-plus"></i>添加食物</a>
 						</div>
@@ -55,18 +57,27 @@
 						</li>
 					</ul>
 				</div>
-				<table class="foods-area">
+				<table id="tb_foods" class="foods-area">
 					<tr>
 						<td class="food-area-head">10元区</td>
 						<td>
-							<ul class="food-area-list">
-								<li><img src="assert/img/paigu.jpg" alt=""></li>
-								<li><img src="assert/img/paigu.jpg" alt=""></li>
-								<li><img src="assert/img/paigu.jpg" alt=""></li>
-								<li><img src="assert/img/paigu.jpg" alt=""></li>
-								<li><img src="assert/img/paigu.jpg" alt=""></li>
-								<li><img src="assert/img/paigu.jpg" alt=""></li>
-								<li><img src="assert/img/paigu.jpg" alt=""></li>
+							<ul class="food-area-list item-list img-text-below">
+								<li>
+									<div>
+										<img src="assert/img/paigu.jpg" alt=""><span>青蕉排骨</span>
+										<div class="btns">
+											<i class="icon-leaf" title="缺货标记"></i>
+											<i class="icon-edit" title="编辑食物"></i>
+											<i class="icon-remove" title="删除食物"></i>
+										</div>
+									</div>
+								</li>
+								<li><img src="assert/img/paigu.jpg" alt=""><span>青蕉排骨</span></li>
+								<li><img src="assert/img/paigu.jpg" alt=""><span>青蕉排骨</span></li>
+								<li><img src="assert/img/paigu.jpg" alt=""><span>青蕉排骨</span></li>
+								<li><img src="assert/img/paigu.jpg" alt=""><span>青蕉排骨</span></li>
+								<li><img src="assert/img/paigu.jpg" alt=""><span>青蕉排骨</span></li>
+								<li><img src="assert/img/paigu.jpg" alt=""><span>青蕉排骨</span></li>
 								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
 							</ul>
 						</td>
@@ -74,11 +85,11 @@
 					<tr>
 						<td class="food-area-head">9元区</td>
 						<td>
-							<ul class="food-area-list">
-								<li><img src="assert/img/chaixin.jpg" alt=""></li>
-								<li><img src="assert/img/chaixin.jpg" alt=""></li>
-								<li><img src="assert/img/chaixin.jpg" alt=""></li>
-								<li><img src="assert/img/chaixin.jpg" alt=""></li>
+							<ul class="food-area-list item-list img-text-below">
+								<li><img src="assert/img/chaixin.jpg" alt=""><span>蠔油鮑魚西生菜</span></li>
+								<li><img src="assert/img/chaixin.jpg" alt=""><span>蠔油鮑魚西生菜</span></li>
+								<li><img src="assert/img/chaixin.jpg" alt=""><span>蠔油鮑魚西生菜</span></li>
+								<li><img src="assert/img/chaixin.jpg" alt=""><span>蠔油鮑魚西生菜</span></li>
 								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
 							</ul>
 						</td>
@@ -86,10 +97,10 @@
 					<tr>
 						<td class="food-area-head">8元区</td>
 						<td>
-							<ul class="food-area-list">
-								<li><img src="assert/img/kuguachaodang.jpg" alt=""></li>
-								<li><img src="assert/img/kuguachaodang.jpg" alt=""></li>
-								<li><img src="assert/img/kuguachaodang.jpg" alt=""></li>
+							<ul class="food-area-list item-list img-text-below">
+								<li><img src="assert/img/kuguachaodang.jpg" alt=""><span>煎羊扒配羅勒青醬汁</span></li>
+								<li><img src="assert/img/kuguachaodang.jpg" alt=""><span>煎羊扒配羅勒青醬汁</span></li>
+								<li><img src="assert/img/kuguachaodang.jpg" alt=""><span>煎羊扒配羅勒青醬汁</span></li>
 								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
 							</ul>
 						</td>
@@ -97,7 +108,7 @@
 					<tr>
 						<td class="food-area-head">7元区</td>
 						<td>
-							<ul class="food-area-list">
+							<ul class="food-area-list item-list img-text-below">
 								<li><img src="assert/img/plus.png" alt="" class="food-add"></li>
 							</ul>
 						</td>
@@ -152,7 +163,7 @@
 					<!-- step 1 -->
 					<div id="step1" class="food-grid">
 						<span class="title">请先选择食物:</span>
-						<ul class="item-list">
+						<ul class="item-list img-text-below choose-food">
 							<li>
 								<div><img src="assert/img/kuguachaodang.jpg" alt="" class="img-polaroid selected"><span>苦瓜炒蛋</span></div>
 							</li>
@@ -337,7 +348,45 @@
 					$("#dialog-add-package").removeClass("dialog-select-food");
 					$("#modal-footer-food-select").addClass("hide");
 				});
+
+				// edit button
+				toggle("btn_edit", function(checked) {
+
+					var $tbFoods = $("#tb_foods");
+					if(checked) {
+						$tbFoods.addClass("edit");
+					} else {
+						$tbFoods.removeClass("edit");
+					}
+				});
+
+				$(".foods-area .icon-remove").click(function () {
+					console.log("delete a food");
+				});
+
+				$(".foods-area .icon-edit").click(function () {
+					console.log("edit a food");
+				});
+
+				$(".foods-area .icon-leaf").click(function () {
+					console.log("mark out of stock");
+				});
 			});
+
+			/**
+			 * single toggle button click event
+			 * @param  {string}   id       
+			 * @param  {Function} callback 
+			 */
+			function toggle(id, callback) {
+				$("#"+id).click(function () {
+					var $this = $(this);
+					setTimeout(function() {
+						var checked = $this.hasClass("active");
+						callback(checked);
+					}, 0);
+				});
+			}
 
 		</script>
 	</body>

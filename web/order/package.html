@@ -17,11 +17,12 @@
 			<div class="span12">
 				<div class="querybar">
 					<div class="row-fluid">
-						<div class="span6">
+						<div class="span5">
 						</div>
 						<div class="span3">
 						</div>
-						<div class="span3">
+						<div class="span4">
+							<button type="button" class="btn" id="btn_edit" data-toggle="button"><i class="icon-pencil"></i>编辑</button>
 							<a class="btn" href="#dialog-add-category" data-toggle="modal"><i class="icon-plus"></i>添加分类</a>
 							<a class="btn" href="#dialog-add-package" data-toggle="modal"><i class="icon-plus"></i>添加套餐</a>
 						</div>
@@ -43,18 +44,27 @@
 						</li>
 					</ul>
 				</div>
-				<table class="foods-area">
+				<table id="tb_foods" class="foods-area">
 					<tr>
 						<td class="food-area-head">25元区</td>
 						<td>
-							<ul class="food-area-list">
-								<li><img src="assert/img/taochan2.jpg" alt=""></li>
-								<li><img src="assert/img/taochan2.jpg" alt=""></li>
-								<li><img src="assert/img/taochan2.jpg" alt=""></li>
-								<li><img src="assert/img/taochan2.jpg" alt=""></li>
-								<li><img src="assert/img/taochan2.jpg" alt=""></li>
-								<li><img src="assert/img/taochan2.jpg" alt=""></li>
-								<li><img src="assert/img/taochan2.jpg" alt=""></li>
+							<ul class="food-area-list item-list img-text-below">
+								<li>
+									<div>
+										<img src="assert/img/taochan2.jpg" alt=""><span>香汁排骨套餐</span>
+										<div class="btns">
+											<i class="icon-leaf" title="缺货标记"></i>
+											<i class="icon-edit" title="编辑食物"></i>
+											<i class="icon-remove" title="删除食物"></i>
+										</div>
+									</div>
+								</li>
+								<li><img src="assert/img/taochan2.jpg" alt=""><span>香汁排骨套餐</span></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""><span>香汁排骨套餐</span></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""><span>香汁排骨套餐</span></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""><span>香汁排骨套餐</span></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""><span>香汁排骨套餐</span></li>
+								<li><img src="assert/img/taochan2.jpg" alt=""><span>香汁排骨套餐</span></li>
 								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
 							</ul>
 						</td>
@@ -62,11 +72,11 @@
 					<tr>
 						<td class="food-area-head">20元区</td>
 						<td>
-							<ul class="food-area-list">
-								<li><img src="assert/img/taochan1.jpg" alt=""></li>
-								<li><img src="assert/img/taochan1.jpg" alt=""></li>
-								<li><img src="assert/img/taochan1.jpg" alt=""></li>
-								<li><img src="assert/img/taochan1.jpg" alt=""></li>
+							<ul class="food-area-list item-list img-text-below">
+								<li><img src="assert/img/taochan1.jpg" alt=""><span>鼎香肥牛套餐</span></li>
+								<li><img src="assert/img/taochan1.jpg" alt=""><span>鼎香肥牛套餐</span></li>
+								<li><img src="assert/img/taochan1.jpg" alt=""><span>鼎香肥牛套餐</span></li>
+								<li><img src="assert/img/taochan1.jpg" alt=""><span>鼎香肥牛套餐</span></li>
 								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
 							</ul>
 						</td>
@@ -74,10 +84,10 @@
 					<tr>
 						<td class="food-area-head">18元区</td>
 						<td>
-							<ul class="food-area-list">
-								<li><img src="assert/img/taochan3.jpg" alt=""></li>
-								<li><img src="assert/img/taochan3.jpg" alt=""></li>
-								<li><img src="assert/img/taochan3.jpg" alt=""></li>
+							<ul class="food-area-list item-list img-text-below">
+								<li><img src="assert/img/taochan3.jpg" alt=""><span>鸡腿豆腐青菜套餐</span></li>
+								<li><img src="assert/img/taochan3.jpg" alt=""><span>鸡腿豆腐青菜套餐</span></li>
+								<li><img src="assert/img/taochan3.jpg" alt=""><span>鸡腿豆腐青菜套餐</span></li>
 								<li><img src="assert/img/plus.png" class="food-add" alt=""></li>
 							</ul>
 						</td>
@@ -85,7 +95,7 @@
 					<tr>
 						<td class="food-area-head">15元区</td>
 						<td>
-							<ul class="food-area-list">
+							<ul class="food-area-list item-list img-text-below">
 								<li><img src="assert/img/plus.png" alt="" class="food-add"></li>
 							</ul>
 						</td>
@@ -207,46 +217,53 @@
 						<tr>
 							<td class="food-area-head">25元区</td>
 							<td>
-								<ul class="food-area-list">
+								<ul class="food-area-list item-list img-text-below">
 									<li>
 										<label>
 											<img src="assert/img/taochan2.jpg" alt="">
+											<span>深井烧鸭套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan2.jpg" alt="">
+											<span>深井烧鸭套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan2.jpg" alt="">
+											<span>深井烧鸭套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan2.jpg" alt="">
+											<span>深井烧鸭套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan2.jpg" alt="">
+											<span>深井烧鸭套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan2.jpg" alt="">
+											<span>深井烧鸭套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan2.jpg" alt="">
+											<span>深井烧鸭套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
@@ -256,28 +273,32 @@
 						<tr>
 							<td class="food-area-head">20元区</td>
 							<td>
-								<ul class="food-area-list">
+								<ul class="food-area-list item-list img-text-below">
 									<li>
 										<label>
 											<img src="assert/img/taochan1.jpg" alt="">
+											<span>孜然羊肉套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan1.jpg" alt="">
+											<span>孜然羊肉套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan1.jpg" alt="">
+											<span>孜然羊肉套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan1.jpg" alt="">
+											<span>孜然羊肉套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
@@ -287,22 +308,25 @@
 						<tr>
 							<td class="food-area-head">18元区</td>
 							<td>
-								<ul class="food-area-list">
+								<ul class="food-area-list item-list img-text-below">
 									<li>
 										<label>
 											<img src="assert/img/taochan3.jpg" alt="">
+											<span>香汗排骨套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan3.jpg" alt="">
+											<span>香汗排骨套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
 									<li>
 										<label>
 											<img src="assert/img/taochan3.jpg" alt="">
+											<span>香汗排骨套餐</span>
 											<input type="checkbox" value=""/>
 										</label>
 									</li>
@@ -320,9 +344,9 @@
 				<div class="control-group control-group-small control-group-left add-package hide" id="modal-footer-food-select">
 					<label for="" class="control-label">已添加</label>
 					<div class="controls food-to-add">
-						<ul class="food-area-list">
-							<li><img src="assert/img/mifan.jpg" alt=""></li>
-							<li><img src="assert/img/chaixin.jpg" alt=""></li>
+						<ul class="food-area-list item-list img-text-below">
+							<li><img src="assert/img/mifan.jpg" alt=""><span>米饭</span></li>
+							<li><img src="assert/img/chaixin.jpg" alt=""><span>菜心</span></li>
 						</ul>
 					</div>
 				</div>
@@ -379,7 +403,45 @@
 					$("#modal-footer-food-select").addClass("hide");
 				});
 
+				// edit button
+				toggle("btn_edit", function(checked) {
+
+					var $tbFoods = $("#tb_foods");
+					if(checked) {
+						$tbFoods.addClass("edit");
+					} else {
+						$tbFoods.removeClass("edit");
+					}
+				});
+
+				$(".foods-area .icon-remove").click(function () {
+					console.log("delete a food");
+				});
+
+				$(".foods-area .icon-edit").click(function () {
+					console.log("edit a food");
+				});
+
+				$(".foods-area .icon-leaf").click(function () {
+					console.log("mark out of stock");
+				});
+
 			});
+
+			/**
+			 * single toggle button click event
+			 * @param  {string}   id       
+			 * @param  {Function} callback 
+			 */
+			function toggle(id, callback) {
+				$("#"+id).click(function () {
+					var $this = $(this);
+					setTimeout(function() {
+						var checked = $this.hasClass("active");
+						callback(checked);
+					}, 0);
+				});
+			}
 
 		</script>
 	</body>

@@ -1,8 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
 	<!-- @author Xingling -->
-
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.funs</groupId>
 	<artifactId>1000funs</artifactId>
@@ -10,11 +9,9 @@
 	<name>com.funs.project</name>
 	<description>a maven version</description>
 	<packaging>war</packaging>
-
 	<properties>
 		<spring.version>3.2.0.RELEASE</spring.version>
 	</properties>
-
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<outputDirectory>WEB-INF/classes</outputDirectory>
@@ -34,6 +31,7 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -47,6 +45,21 @@
 							<classpathPrefix>MAVEN-BUILD</classpathPrefix>
 						</manifest>
 					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webXml>WEB-INF\web.xml</webXml>
+					<webResources>
+						<resource>
+							<directory>web</directory>
+						</resource>
+						<resource>
+							<directory>WEB-INF/config</directory>
+						</resource>
+					</webResources>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -180,13 +193,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.22</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.11</version>
 		</dependency>
-
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
@@ -197,7 +208,6 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.5</version>
 		</dependency>
-		
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -221,7 +231,6 @@
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
-		
 		<!-- JSR 303 with Hibernate Validator -->
 		<dependency>
 			<groupId>javax.validation</groupId>
@@ -233,7 +242,6 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.1.0.Final</version>
 		</dependency>
-
 		<!-- File Upload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -245,7 +253,6 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.0.1</version>
 		</dependency>
-
 	</dependencies>
 	<repositories>
 		<repository>

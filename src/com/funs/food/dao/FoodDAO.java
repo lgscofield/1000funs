@@ -27,15 +27,15 @@ public class FoodDAO extends BaseDAO {
 	}
 	
 	public int queryIdForFoodVO(FoodVO foodVO) {
-		return this.sqlSessionTemplate.selectOne("com.funs.food.queryIdForFoodVO", foodVO);
+		return (Integer)this.sqlSessionTemplate.selectOne("com.funs.food.queryIdForFoodVO", foodVO);
 	}
 	
 	public FoodVO getFood(int id) {
-		return this.sqlSessionTemplate.selectOne("com.funs.food.getFood", id);
+		return (FoodVO)this.sqlSessionTemplate.selectOne("com.funs.food.getFood", id);
 	}
 	
 	public int insertFoodReShop(FoodVO foodVO){
-		return this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
+		return (Integer)this.sqlSessionTemplate.insert("com.funs.food.insertFoodReShop", foodVO);
 	}
 	
 	public int insertPackageItem(PackageItemVO packageItemVO) {
@@ -79,13 +79,35 @@ public class FoodDAO extends BaseDAO {
 		return this.sqlSessionTemplate.update("com.funs.food.deleteFood", id);
 	}
 	
+	/**
+	 * 删除食物关联
+	 * @param foodId 食物ID
+	 * @return 成功删除的条数
+	 */
+	public int deleteFoodReShop(int foodId) {
+		int shopId = 1; //TODO:从环境中取shopId
+		FoodVO foodVO = new FoodVO();
+		foodVO.setId(foodId);
+		foodVO.setShopId(shopId);
+		return this.sqlSessionTemplate.delete("com.funs.food.deleteFoodReShop", foodVO);
+	}
+	
+	/**
+	 * 删除套餐关联
+	 * @param packageId 套餐id
+	 * @return 成功删除的条数
+	 */
+	public int deletePackageItem(int packageId) {
+		return this.sqlSessionTemplate.delete("com.funs.food.deletePackageItem", packageId);
+	}
+	
 	public List<FoodVO> queryFoodsByShopId(int shopId){
 		List<FoodVO> result =  this.sqlSessionTemplate.selectList("com.funs.food.queryFoodsByShopId", shopId);
 		return result;
 	}
 	
 	public int queryCountOfFood(){
-		return this.sqlSessionTemplate.selectOne("com.funs.food.queryCountOfFood");
+		return (Integer)this.sqlSessionTemplate.selectOne("com.funs.food.queryCountOfFood");
 	}
 	
 	/**
@@ -170,7 +192,7 @@ public class FoodDAO extends BaseDAO {
 	 * @return
 	 */
 	public int querySingleFoodsCount() {
-		int ret = this.sqlSessionTemplate.selectOne("com.funs.food.querySingleFoodsCount");
+		int ret = (Integer)this.sqlSessionTemplate.selectOne("com.funs.food.querySingleFoodsCount");
 		return ret;
 	}
 }

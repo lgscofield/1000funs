@@ -23,12 +23,12 @@ define(function(require, exports, module) {
 			
 			// bind button event
 			btnEvent: function() {
-				toggle("btn_insert", insertBtnClick);
-				toggle("btn_edit", function (checked) {
+				$("#btn_insert").toggleButton(insertBtnClick);
+				$("#btn_edit").toggleButton(function (checked) {
 					$("#btn_delete.active").removeClass("active");
 					showRowEditBtn(checked, "icon2-edit");
 				});
-				toggle("btn_delete", function (checked) {
+				$("#btn_delete").toggleButton(function (checked) {
 					$("#btn_edit.active").removeClass("active");
 					showRowEditBtn(checked, "icon2-remove");
 				});
