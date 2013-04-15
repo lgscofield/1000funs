@@ -136,6 +136,10 @@ p {
 		}
 	}
 	function showMenu() {
+		if (!shophidden) {
+			$('#shopdiv').fadeOut("normal", hideShopTable);
+			shophidden = true;
+		}
 		if (menuhidden) {
 			$('#menudiv').slideDown("normal", showMenuTable);
 			if (!menuinited) {
@@ -184,24 +188,19 @@ p {
 	}
 
 	$(function() {
-		$("body").click(function(event) {
-			if (event.pageY > 65) {
-				closeSubPage();
-			} else {
-			}
+		$("#shopdiv").click(function(event) {
+			$('#shopdiv').fadeOut("normal", hideShopTable);
+			shophidden = true;
+		});
+	});
+	
+	$(function() {
+		$("#menudiv").click(function(event) {
+			$('#menudiv').slideUp("normal", hideMenuTable);
+			menuhidden = true;
 		});
 	});
 
-	function closeSubPage() {
-		if (!menuhidden) {
-			$('#menudiv').slideUp("normal", hideMenuTable);
-			menuhidden = true;
-		}
-		if (!shophidden) {
-			$('#shopdiv').fadeOut("normal", hideShopTable);
-			shophidden = true;
-		}
-	}
 </script>
 </head>
 <body onload="initPage();">
